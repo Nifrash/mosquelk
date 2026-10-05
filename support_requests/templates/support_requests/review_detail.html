@@ -1,0 +1,108 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ support_request.request_no }} | {% trans "Process Support Request" %}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-start gap-3">
+            <div>
+                <span class="dashboard-kicker">{% trans "Support Administration" %}</span>
+                <h1>{{ support_request.request_no }}</h1>
+                <p>{{ support_request.mosque.localized_name }} · {{ support_request.get_category_display }}</p>
+            </div>
+            <a href="{% url 'support_requests:review_queue' %}" class="btn btn-outline-light"><i class="bi bi-arrow-left me-1"></i>{% trans "Back to Queue" %}</a>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        {% include "support_requests/partials_messages.html" %}
+
+        <div class="row g-4">
+            <div class="col-xl-8">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between gap-3 mb-4">
+                            <div><h3>{{ support_request.title }}</h3><span class="badge support-priority-{{ support_request.priority|lower }}">{{ support_request.get_priority_display }}</span></div>
+                            <span class="badge support-status support-status-{{ support_request.status|lower }} align-self-start">{{ support_request.get_status_display }}</span>
+                        </div>
+                        <div class="support-detail-block"><span>{% trans "Issue / Current Situation" %}</span><p>{{ support_request.issue_description|linebreaksbr }}</p></div>
+                        <div class="support-detail-block"><span>{% trans "Support Requested" %}</span><p>{{ support_request.requested_support|linebreaksbr }}</p></div>
+                        <div class="row g-4">
+                            <div class="col-md-6"><span class="detail-label">{% trans "Requested Amount" %}</span><strong>{% if support_request.requested_amount %}LKR {{ support_request.requested_amount }}{% else %}—{% endif %}</strong></div>
+                            <div class="col-md-6"><span class="detail-label">{% trans "Approved Amount" %}</span><strong>{% if support_request.approved_amount %}LKR {{ support_request.approved_amount }}{% else %}—{% endif %}</strong></div>
+                            <div class="col-md-6"><span class="detail-label">{% trans "Contact Person" %}</span><strong>{{ support_request.contact_person }}</strong></div>
+                            <div class="col-md-6"><span class="detail-label">{% trans "Contact Phone" %}</span><strong>{{ support_request.contact_phone }}</strong></div>
+                            <div class="col-md-6"><span class="detail-label">{% trans "Submitted" %}</span><strong>{{ support_request.submitted_at|date:"Y-m-d H:i"|default:"—" }}</strong></div>
+                            <div class="col-md-6"><span class="detail-label">{% trans "Assigned Officer" %}</span><strong>{{ support_request.assigned_to|default:"—" }}</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <h3>{% trans "Supporting Documents" %}</h3>
+                        <div class="list-group list-group-flush mt-3">
+                            {% for document in support_request.documents.all %}
+                                <div class="list-group-item px-0 d-flex justify-content-between align-items-center">
+                                    <div><strong>{{ document.title }}</strong><small class="d-block text-muted">{{ document.created_at|date:"Y-m-d H:i" }}</small></div>
+                                    <a href="{{ document.file.url }}" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye me-1"></i>{% trans "Open" %}</a>
+                                </div>
+                            {% empty %}<div class="text-muted py-3">{% trans "No documents uploaded." %}</div>{% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3>{% trans "Status History" %}</h3>
+                        <div class="support-timeline mt-3">
+                            {% for item in support_request.history.all %}
+                                <div class="support-timeline-item">
+                                    <div class="support-timeline-marker"></div>
+                                    <div><strong>{{ item.get_from_status_display }} → {{ item.get_to_status_display }}</strong><small class="d-block text-muted">{{ item.created_at|date:"Y-m-d H:i" }} · {{ item.actor|default:"System" }}</small>{% if item.notes %}<p class="mb-0 mt-2">{{ item.notes|linebreaksbr }}</p>{% endif %}</div>
+                                </div>
+                            {% empty %}<p class="text-muted">{% trans "No status history yet." %}</p>{% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <h4>{% trans "Mosque Details" %}</h4>
+                        <p><strong>{{ support_request.mosque.localized_name }}</strong><br>{{ support_request.mosque.mosque_id }}<br>{{ support_request.mosque.district.localized_name }}</p>
+                        <a href="{% url 'mosques:portal' support_request.mosque.mosque_id %}" class="btn btn-outline-secondary w-100">{% trans "Open Mosque Portal" %}</a>
+                    </div>
+                </div>
+
+                {% if form.fields.action.choices %}
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4>{% trans "Review / Request Additional Information" %}</h4><p class="text-muted small">{% trans "If information or documents are missing, choose Request Additional Information / Documents and clearly list what the mosque must provide. The Mosque Admin will be notified in the dashboard, by email and by registered mobile/SMS." %}</p>
+                            <form method="post" action="{% url 'support_requests:review_action' support_request.request_no %}" novalidate>
+                                {% csrf_token %}
+                                {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+                                {% for field in form %}
+                                    <div class="mb-3">
+                                        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                        {{ field }}
+                                        {% for error in field.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                                    </div>
+                                {% endfor %}
+                                <button type="submit" class="btn btn-primary-custom w-100">{% trans "Update Status" %}</button>
+                            </form>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-secondary">{% trans "No further officer action is available for the current status." %}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

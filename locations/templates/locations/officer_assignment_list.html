@@ -1,0 +1,73 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "District Officer Assignments" %}{% endblock %}
+
+{% block content %}
+<section class="page-header py-5">
+    <div class="container">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+            <div>
+                <a class="text-white-50 text-decoration-none" href="{% url 'locations:management' %}">
+                    <i class="bi bi-arrow-left me-1"></i>{% trans "Location Management" %}
+                </a>
+                <h1 class="mt-2">{% trans "District Officer Assignments" %}</h1>
+            </div>
+            <a href="{% url 'locations:officer_assignment_add' %}" class="btn btn-light">
+                <i class="bi bi-person-plus me-1"></i>{% trans "Assign Officer" %}
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        {% include "locations/partials_messages.html" %}
+        <div class="card border-0 shadow-sm">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0 location-table">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Officer" %}</th>
+                            <th>{% trans "Email" %}</th>
+                            <th>{% trans "District" %}</th>
+                            <th>{% trans "Province" %}</th>
+                            <th>{% trans "Status" %}</th>
+                            <th class="text-end">{% trans "Actions" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for assignment in assignments %}
+                            <tr>
+                                <td><strong>{{ assignment.user }}</strong></td>
+                                <td>{{ assignment.user.email }}</td>
+                                <td>{{ assignment.district.localized_name }}</td>
+                                <td>{{ assignment.district.province.localized_name }}</td>
+                                <td>
+                                    {% if assignment.is_active %}
+                                        <span class="badge text-bg-success">{% trans "Active" %}</span>
+                                    {% else %}
+                                        <span class="badge text-bg-secondary">{% trans "Inactive" %}</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-outline-primary" href="{% url 'locations:officer_assignment_edit' assignment.pk %}">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-outline-danger" href="{% url 'locations:officer_assignment_delete' assignment.pk %}">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-5">{% trans "No district officers have been assigned yet." %}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

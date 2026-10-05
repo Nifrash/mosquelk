@@ -1,0 +1,15 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Access Denied" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+{% block content %}
+<section class="auth-section">
+    <div class="container text-center">
+        <div class="error-card mx-auto">
+            <i class="bi bi-shield-exclamation display-3"></i>
+            <h1 class="h2 mt-3">{% trans "Access Denied" %}</h1>
+            <p class="text-muted">{% trans "Your account does not have permission to open this workspace." %}</p>
+            <a href="{% url 'dashboard:home' %}" class="btn btn-primary-custom">{% trans "Return to My Dashboard" %}</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

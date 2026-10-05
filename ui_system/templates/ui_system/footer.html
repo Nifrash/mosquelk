@@ -1,0 +1,45 @@
+{% load i18n %}
+<footer class="main-footer">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <h4 class="footer-title"><i class="bi bi-moon-stars-fill me-2"></i>{% trans "Mosques Sri Lanka" %}</h4>
+                <p class="footer-text mt-3">
+                    {% blocktrans %}A digital platform supporting mosque registration, administration and community assistance throughout Sri Lanka.{% endblocktrans %}
+                </p>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <h5>{% trans "Quick Links" %}</h5>
+                <ul class="footer-links">
+                    <li><a href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+                    <li><a href="{% url 'core:about' %}">{% trans "About Us" %}</a></li>
+                    <li><a href="{% url 'core:services' %}">{% trans "Services" %}</a></li>
+                    <li><a href="{% url 'core:contact' %}">{% trans "Contact Us" %}</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h5>{% trans "Mosque Services" %}</h5>
+                <ul class="footer-links">
+                    <li><a href="#">{% trans "Mosque Registration" %}</a></li>
+                    <li><a href="#">{% trans "Mosque Directory" %}</a></li>
+                    <li><a href="#">{% trans "Request Support" %}</a></li>
+                    <li><a href="#">{% trans "Track Request" %}</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3">
+                <h5>{% trans "Contact" %}</h5>
+                <p class="footer-text"><i class="bi bi-geo-alt-fill me-2"></i> Sri Lanka</p>
+                <p class="footer-text"><i class="bi bi-envelope-fill me-2"></i> info@mosques.lk</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container text-center py-3">
+            <small>© {% now "Y" %} {% trans "Mosques Sri Lanka" %}. {% trans "All Rights Reserved." %}</small>
+        </div>
+    </div>
+</footer>

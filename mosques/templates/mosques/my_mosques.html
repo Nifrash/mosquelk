@@ -1,0 +1,59 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "My Mosques" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+        <div>
+            <span class="dashboard-kicker">{% trans "Mosque Workspace" %}</span>
+            <h1>{% trans "My Mosques" %}</h1>
+            <p>{% trans "View mosque registrations linked to your account." %}</p>
+        </div>
+        {% if request.user.role == 'MOSQUE_ADMIN' or request.user.is_superuser %}
+            <a href="{% url 'mosques:create' %}" class="btn btn-light"><i class="bi bi-building-add me-1"></i>{% trans "Register Mosque" %}</a>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        {% include "mosques/partials_messages.html" %}
+        <div class="row g-4">
+            {% for membership in memberships %}
+                <div class="col-md-6 col-xl-4">
+                    <div class="mosque-workspace-card h-100">
+                        <div class="d-flex justify-content-between gap-2 align-items-start">
+                            <div class="mosque-directory-icon"><i class="bi bi-building"></i></div>
+                            <span class="status-badge status-{{ membership.mosque.status|lower }}">{{ membership.mosque.get_status_display }}</span>
+                        </div>
+                        <h3>{{ membership.mosque.localized_name }}</h3>
+                        <p class="text-muted small">{{ membership.mosque.mosque_id }}</p>
+                        <p><i class="bi bi-geo-alt me-2"></i>{{ membership.mosque.district.localized_name }}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge text-bg-light">{{ membership.get_membership_role_display }}</span>
+                            {% if membership.mosque.status == 'APPROVED' %}
+                                <a class="btn btn-primary-custom btn-sm" href="{% url 'mosques:portal' membership.mosque.mosque_id %}">{% trans "Open Portal" %}</a>
+                            {% else %}
+                                <a class="btn btn-outline-success btn-sm" href="{% url 'mosques:detail' membership.mosque.mosque_id %}">{% trans "Open Registration" %}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <div class="empty-state-card">
+                        <i class="bi bi-building-add"></i>
+                        <h3>{% trans "No mosque is linked to your account yet" %}</h3>
+                        {% if request.user.role == 'MOSQUE_ADMIN' %}
+                            <p>{% trans "Start a new mosque registration to create your mosque workspace." %}</p>
+                            <a href="{% url 'mosques:create' %}" class="btn btn-primary-custom">{% trans "Register Mosque" %}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

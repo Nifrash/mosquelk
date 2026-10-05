@@ -1,0 +1,218 @@
+{% extends "platform_control/base_control.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Platform Control Center" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block control_content %}
+<div class="control-page">
+    <div class="control-page-header">
+        <div>
+            <span class="control-kicker">{% trans "Platform Administration" %}</span>
+            <h1>{% trans "Operations Overview" %}</h1>
+            <p>{% trans "Monitor mosque registration, support services, users, locations and notification delivery from one workspace." %}</p>
+        </div>
+        <div class="control-user">
+            <i class="bi bi-person-circle"></i>
+            <div>
+                <strong>{{ request.user.get_full_name|default:request.user.username }}</strong>
+                <small>{{ request.user.get_role_display }}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-xxl-3">
+            <a class="control-stat" href="{% url 'platform_control:user_list' %}">
+                <span class="control-stat-icon"><i class="bi bi-people"></i></span>
+                <div><small>{% trans "Active Users" %}</small><strong>{{ user_count }}</strong></div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+            <a class="control-stat" href="{% url 'mosques:review_queue' %}">
+                <span class="control-stat-icon"><i class="bi bi-building-exclamation"></i></span>
+                <div><small>{% trans "Mosques Pending Approval" %}</small><strong>{{ mosque_pending_count }}</strong></div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+            <a class="control-stat" href="{% url 'support_requests:review_queue' %}">
+                <span class="control-stat-icon"><i class="bi bi-inboxes"></i></span>
+                <div><small>{% trans "Open Support Cases" %}</small><strong>{{ support_open_count }}</strong></div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-xxl-3">
+            <a class="control-stat" href="{% url 'platform_control:notification_delivery_monitor' %}?status=FAILED">
+                <span class="control-stat-icon"><i class="bi bi-exclamation-triangle"></i></span>
+                <div><small>{% trans "Delivery Failures (7 days)" %}</small><strong>{{ delivery_failed_count }}</strong></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-xl-8">
+            <div class="control-card h-100">
+                <div class="control-card-header">
+                    <div>
+                        <h2>{% trans "Operational Status" %}</h2>
+                        <p>{% trans "Current mosque and support workflow counts." %}</p>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="control-mini-stat">
+                            <span>{% trans "Approved Mosques" %}</span>
+                            <strong>{{ mosque_approved_count }}</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="control-mini-stat">
+                            <span>{% trans "Need Additional Info" %}</span>
+                            <strong>{{ support_documents_required_count }}</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="control-mini-stat">
+                            <span>{% trans "Completed Support Cases" %}</span>
+                            <strong>{{ support_completed_count }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h3 class="h6 mb-3">{% trans "Sri Lanka Location Master Data" %}</h3>
+                <div class="row g-3">
+                    <div class="col-6 col-lg">
+                        <div class="control-location-stat"><strong>{{ province_count }}</strong><span>{% trans "Provinces" %}</span></div>
+                    </div>
+                    <div class="col-6 col-lg">
+                        <div class="control-location-stat"><strong>{{ district_count }}</strong><span>{% trans "Districts" %}</span></div>
+                    </div>
+                    <div class="col-6 col-lg">
+                        <div class="control-location-stat"><strong>{{ ds_count }}</strong><span>{% trans "DS Divisions" %}</span></div>
+                    </div>
+                    <div class="col-6 col-lg">
+                        <div class="control-location-stat"><strong>{{ gn_count }}</strong><span>{% trans "GN Divisions" %}</span></div>
+                    </div>
+                    <div class="col-6 col-lg">
+                        <div class="control-location-stat"><strong>{{ district_officer_assignment_count }}</strong><span>{% trans "District Officers" %}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4">
+            <div class="control-card h-100">
+                <div class="control-card-header">
+                    <div>
+                        <h2>{% trans "Quick Operations" %}</h2>
+                        <p>{% trans "Common Platform Admin actions." %}</p>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <a href="{% url 'platform_control:user_create' %}" class="btn btn-primary-custom"><i class="bi bi-person-plus me-1"></i>{% trans "Create User / Officer" %}</a>
+                    <a href="{% url 'mosques:review_queue' %}" class="btn btn-outline-success"><i class="bi bi-building-check me-1"></i>{% trans "Mosque Approval Queue" %}</a>
+                    <a href="{% url 'support_requests:review_queue' %}" class="btn btn-outline-success"><i class="bi bi-inboxes me-1"></i>{% trans "Support Request Queue" %}</a>
+                    <a href="{% url 'locations:management' %}" class="btn btn-outline-secondary"><i class="bi bi-geo-alt me-1"></i>{% trans "Location Management" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-xl-6">
+            <div class="control-card h-100">
+                <div class="control-card-header">
+                    <div>
+                        <h2>{% trans "Recent Mosque Registrations" %}</h2>
+                        <p>{% trans "Latest mosque records created on the platform." %}</p>
+                    </div>
+                    <a href="{% url 'mosques:review_queue' %}" class="btn btn-sm btn-outline-secondary">{% trans "Approval Queue" %}</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-middle control-table mb-0">
+                        <thead><tr><th>{% trans "Mosque" %}</th><th>{% trans "District" %}</th><th>{% trans "Status" %}</th></tr></thead>
+                        <tbody>
+                            {% for mosque in recent_mosques %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ mosque.localized_name }}</strong>
+                                        <small>{{ mosque.mosque_id }}</small>
+                                    </td>
+                                    <td>{{ mosque.district.localized_name }}</td>
+                                    <td><span class="badge text-bg-light">{{ mosque.get_status_display }}</span></td>
+                                </tr>
+                            {% empty %}
+                                <tr><td colspan="3" class="text-muted py-4">{% trans "No mosque registrations yet." %}</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="control-card h-100">
+                <div class="control-card-header">
+                    <div>
+                        <h2>{% trans "Recent Support Requests" %}</h2>
+                        <p>{% trans "Latest support cases and current processing state." %}</p>
+                    </div>
+                    <a href="{% url 'support_requests:review_queue' %}" class="btn btn-sm btn-outline-secondary">{% trans "Open Queue" %}</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-middle control-table mb-0">
+                        <thead><tr><th>{% trans "Request" %}</th><th>{% trans "Mosque" %}</th><th>{% trans "Status" %}</th></tr></thead>
+                        <tbody>
+                            {% for item in recent_support_requests %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'support_requests:review_detail' item.request_no %}"><strong>{{ item.request_no }}</strong></a>
+                                        <small>{{ item.title }}</small>
+                                    </td>
+                                    <td>{{ item.mosque.localized_name }}</td>
+                                    <td><span class="badge support-status support-status-{{ item.status|lower }}">{{ item.get_status_display }}</span></td>
+                                </tr>
+                            {% empty %}
+                                <tr><td colspan="3" class="text-muted py-4">{% trans "No support requests yet." %}</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {% if recent_delivery_failures %}
+        <div class="col-12">
+            <div class="control-card control-card-warning">
+                <div class="control-card-header">
+                    <div>
+                        <h2>{% trans "Recent Notification Delivery Failures" %}</h2>
+                        <p>{% trans "Email/SMS deliveries that require configuration or provider attention." %}</p>
+                    </div>
+                    <a href="{% url 'platform_control:notification_delivery_monitor' %}?status=FAILED" class="btn btn-sm btn-outline-danger">{% trans "View Failures" %}</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-middle control-table mb-0">
+                        <thead><tr><th>{% trans "Request" %}</th><th>{% trans "Channel" %}</th><th>{% trans "Recipient" %}</th><th>{% trans "Details" %}</th></tr></thead>
+                        <tbody>
+                            {% for delivery in recent_delivery_failures %}
+                                <tr>
+                                    <td>{{ delivery.notification.support_request.request_no }}</td>
+                                    <td>{{ delivery.get_channel_display }}</td>
+                                    <td>{{ delivery.recipient|default:"—" }}</td>
+                                    <td class="text-danger">{{ delivery.details|truncatechars:100 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

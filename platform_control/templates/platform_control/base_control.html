@@ -1,0 +1,67 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="control-shell">
+    <div class="container-fluid px-lg-4">
+        <div class="row g-0">
+            <aside class="col-xl-2 control-sidebar">
+                <div class="control-sidebar-inner">
+                    <div class="control-brand">
+                        <div class="control-brand-icon"><i class="bi bi-shield-check"></i></div>
+                        <div>
+                            <strong>{% trans "Platform Control" %}</strong>
+                            <small>{% trans "Operations Center" %}</small>
+                        </div>
+                    </div>
+
+                    <nav class="control-nav">
+                        <a href="{% url 'platform_control:overview' %}">
+                            <i class="bi bi-speedometer2"></i>{% trans "Overview" %}
+                        </a>
+                        <a href="{% url 'platform_control:user_list' %}">
+                            <i class="bi bi-people"></i>{% trans "Users & Officers" %}
+                        </a>
+                        <a href="{% url 'mosques:review_queue' %}">
+                            <i class="bi bi-building-check"></i>{% trans "Mosque Approvals" %}
+                        </a>
+                        <a href="{% url 'support_requests:review_queue' %}">
+                            <i class="bi bi-inboxes"></i>{% trans "Support Requests" %}
+                        </a>
+                        <a href="{% url 'locations:management' %}">
+                            <i class="bi bi-geo-alt"></i>{% trans "Locations" %}
+                        </a>
+                        <a href="{% url 'locations:officer_assignments' %}">
+                            <i class="bi bi-person-gear"></i>{% trans "District Officers" %}
+                        </a>
+                        <a href="{% url 'platform_control:notification_delivery_monitor' %}">
+                            <i class="bi bi-broadcast"></i>{% trans "Notification Delivery" %}
+                        </a>
+                    </nav>
+
+                    <div class="control-sidebar-footer">
+                        <a href="{% url 'dashboard:home' %}">
+                            <i class="bi bi-arrow-left"></i>{% trans "Role Dashboard" %}
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="col-xl-10 control-content">
+                {% if messages %}
+                    <div class="pt-4 px-3 px-lg-4">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% block control_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

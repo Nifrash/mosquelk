@@ -1,0 +1,35 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Upload Support Document" %}{% endblock %}
+
+{% block content %}
+<section class="page-header py-5">
+    <div class="container">
+        <h1>{% trans "Upload Supporting Document" %}</h1>
+        <p>{{ support_request.request_no }} · {{ support_request.title }}</p>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container" style="max-width: 760px;">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4 p-lg-5">
+                <div class="alert alert-info">{% trans "Allowed file types: PDF, JPG, JPEG and PNG. Maximum size: 10 MB." %}</div>
+                <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% for error in field.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary-custom">{% trans "Upload Document" %}</button>
+                    <a href="{% url 'support_requests:detail' support_request.request_no %}" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

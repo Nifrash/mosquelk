@@ -1,0 +1,22 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Remove District Officer Assignment" %}{% endblock %}
+
+{% block content %}
+<section class="section-padding bg-light">
+    <div class="container" style="max-width: 680px;">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-5">
+                <h2>{% trans "Remove Assignment?" %}</h2>
+                <p>{% blocktrans with user=assignment.user district=assignment.district.name_en %}Remove {{ user }} from {{ district }} district?{% endblocktrans %}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">{% trans "Remove" %}</button>
+                    <a class="btn btn-outline-secondary" href="{% url 'locations:officer_assignments' %}">{% trans "Cancel" %}</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

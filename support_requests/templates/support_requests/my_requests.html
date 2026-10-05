@@ -1,0 +1,88 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Support Requests" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+            <div>
+                <span class="dashboard-kicker">{% trans "Mosque Assistance" %}</span>
+                <h1>{% trans "Support Requests" %}</h1>
+                <p>{% trans "Create, track and review mosque assistance requests." %}</p>
+            </div>
+            {% if can_create %}
+                <a href="{% url 'support_requests:create' %}" class="btn btn-light">
+                    <i class="bi bi-plus-lg me-1"></i>{% trans "New Support Request" %}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        {% include "support_requests/partials_messages.html" %}
+
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <form method="get" class="row g-2 mb-4">
+                    <div class="col-lg-6">
+                        <input type="search" name="q" value="{{ query }}" class="form-control" placeholder="{% trans 'Search request number, mosque or title' %}">
+                    </div>
+                    <div class="col-lg-3">
+                        <select name="status" class="form-select">
+                            <option value="">{% trans "All statuses" %}</option>
+                            {% for value, label in status_choices %}
+                                <option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-lg-3 d-grid">
+                        <button class="btn btn-primary-custom" type="submit"><i class="bi bi-search me-1"></i>{% trans "Filter" %}</button>
+                    </div>
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table align-middle support-table">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Request" %}</th>
+                                <th>{% trans "Mosque" %}</th>
+                                <th>{% trans "Category" %}</th>
+                                <th>{% trans "Priority" %}</th>
+                                <th>{% trans "Status" %}</th>
+                                <th>{% trans "Updated" %}</th>
+                                <th class="text-end">{% trans "Action" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in support_requests %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ item.request_no }}</strong>
+                                        <small class="d-block text-muted">{{ item.title }}</small>
+                                    </td>
+                                    <td>{{ item.mosque.localized_name }}</td>
+                                    <td>{{ item.get_category_display }}</td>
+                                    <td><span class="badge support-priority-{{ item.priority|lower }}">{{ item.get_priority_display }}</span></td>
+                                    <td><span class="badge support-status support-status-{{ item.status|lower }}">{{ item.get_status_display }}</span></td>
+                                    <td>{{ item.updated_at|date:"Y-m-d H:i" }}</td>
+                                    <td class="text-end">
+                                        <a href="{% url 'support_requests:detail' item.request_no %}" class="btn btn-sm btn-outline-success">
+                                            {% trans "View" %}
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr><td colspan="7" class="text-center text-muted py-5">{% trans "No support requests found." %}</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

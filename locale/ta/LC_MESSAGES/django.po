@@ -1,0 +1,2165 @@
+# Sri Lanka Mosque Platform translations
+msgid ""
+msgstr ""
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "%(name)s saved successfully."
+msgstr "%(பெயர்)s saved successfully."
+
+msgid "A Central Digital Platform for Sri Lankan Mosques"
+msgstr "A Central Digital தளம் for Sri Lankan பள்ளிவாசல்கள்"
+
+msgid "A centralized digital platform for mosque registration, administration, support requests and community services."
+msgstr "பள்ளிவாசல் பதிவு, நிர்வாகம், ஆதரவு கோரிக்கைகள் மற்றும் சமூக சேவைகளுக்கான மையப்படுத்தப்பட்ட டிஜிட்டல் தளம்."
+
+msgid "A connected mosque community supported by reliable information, transparent administration and modern digital services."
+msgstr "A connected பள்ளிவாசல் community supported by reliable தகவல், transparent administration and modern digital services."
+
+msgid "A connected national network of well-managed mosques serving their communities."
+msgstr "தங்கள் சமூகங்களுக்கு சேவை செய்யும் சிறப்பாக நிர்வகிக்கப்படும் பள்ளிவாசல்களின் இணைந்த தேசிய வலையமைப்பு."
+
+msgid "A digital platform supporting mosque registration, administration and community assistance throughout Sri Lanka."
+msgstr "A digital தளம் supporting பள்ளிவாசல் பதிவு, administration and community assistance throughout Sri Lanka."
+
+msgid "A multilingual digital platform for mosque registration, administration and community assistance throughout Sri Lanka."
+msgstr "இலங்கை முழுவதும் பள்ளிவாசல் பதிவு, நிர்வாகம் மற்றும் சமூக உதவிக்கான பன்மொழி டிஜிட்டல் தளம்."
+
+msgid "A single platform to connect, manage and support mosques throughout Sri Lanka."
+msgstr "இலங்கை முழுவதும் பள்ளிவாசல்களை இணைக்க, நிர்வகிக்க மற்றும் ஆதரிக்க ஒரே தளம்."
+
+msgid "A trusted multilingual digital platform supporting mosque administration, transparency and community assistance across Sri Lanka."
+msgstr "இலங்கை முழுவதும் பள்ளிவாசல் நிர்வாகம், வெளிப்படைத்தன்மை மற்றும் சமூக ஆதரவை மேம்படுத்தும் நம்பகமான பல்மொழி டிஜிட்டல் தளம்."
+
+msgid "A unified platform to register, connect, support and develop mosques across Sri Lanka."
+msgstr "இலங்கை முழுவதும் பள்ளிவாசல்களை பதிவு செய்யவும், இணைக்கவும், ஆதரிக்கவும், மேம்படுத்தவும் உதவும் ஒருங்கிணைந்த தளம்."
+
+msgid "About Our Platform"
+msgstr "எங்கள் தளத்தைப் பற்றி"
+
+msgid "About This Mosque"
+msgstr "About This பள்ளிவாசல்"
+
+msgid "About Us"
+msgstr "எங்களைப் பற்றி"
+
+msgid "About the Platform"
+msgstr "தளத்தைப் பற்றி"
+
+msgid "Access Denied"
+msgstr "அணுகல் மறுக்கப்பட்டது"
+
+msgid "Access district-level operational functions for your assigned district."
+msgstr "Access மாவட்டம்-level operational functions for your ஒதுக்கப்பட்டது மாவட்டம்."
+
+msgid "Access is based on your assigned mosque platform role."
+msgstr "Access is based on your ஒதுக்கப்பட்டது பள்ளிவாசல் தளம் பங்கு."
+
+msgid "Access the mosque functions assigned to staff members."
+msgstr "Access the பள்ளிவாசல் functions ஒதுக்கப்பட்டது to பணியாளர் members."
+
+msgid "Account"
+msgstr "கணக்கு"
+
+msgid "Account Details"
+msgstr "கணக்கு விவரங்கள்"
+
+msgid "Account Status"
+msgstr "கணக்கு நிலை"
+
+msgid "Action"
+msgstr "செயல்"
+
+msgid "Actions"
+msgstr "செயல்கள்"
+
+msgid "Active"
+msgstr "செயலில்"
+
+msgid "Active Users"
+msgstr "செயலில் உள்ள பயனர்கள்"
+
+msgid "Active access"
+msgstr "செயலில் access"
+
+msgid "Active and historical mosque memberships for this user."
+msgstr "செயலில் and historical பள்ளிவாசல் memberships for this பயனர்."
+
+msgid "Add"
+msgstr "சேர்"
+
+msgid "Add Committee Member"
+msgstr "குழு உறுப்பினரைச் சேர்க்கவும்"
+
+msgid "Add Mosque User"
+msgstr "சேர் பள்ளிவாசல் பயனர்"
+
+msgid "Add Mosque User Access"
+msgstr "சேர் பள்ளிவாசல் பயனர் Access"
+
+msgid "Add User"
+msgstr "சேர் பயனர்"
+
+msgid "Additional Information"
+msgstr "கூடுதல் தகவல்"
+
+msgid "Additional Information / Documents Required"
+msgstr "கூடுதல் தகவல் / ஆவணங்கள் தேவை"
+
+msgid "Additional Information / Officer Note:"
+msgstr "கூடுதல் தகவல் / அதிகாரி குறிப்பு:"
+
+msgid "Address"
+msgstr "முகவரி"
+
+msgid "Address & Contact"
+msgstr "முகவரி & Contact"
+
+msgid "Administer users, locations and Platform Admin mosque approvals."
+msgstr "Administer பயனர்கள், locations and தளம் நிர்வாகி பள்ளிவாசல் approvals."
+
+msgid "Administration"
+msgstr "நிர்வாகம்"
+
+msgid "Administrative Location"
+msgstr "Administrative Location"
+
+msgid "After submission or resubmission, the request returns to the Platform/Support review queue."
+msgstr "சமர்ப்பித்ததும் அல்லது மீண்டும் சமர்ப்பித்ததும், கோரிக்கை தள/ஆதரவு மதிப்பாய்வு வரிசைக்கு திரும்பும்."
+
+msgid "All Requests"
+msgstr "அனைத்து கோரிக்கைகளும்"
+
+msgid "All Rights Reserved."
+msgstr "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை."
+
+msgid "All account states"
+msgstr "அனைத்து கணக்கு states"
+
+msgid "All categories"
+msgstr "அனைத்து வகைகளும்"
+
+msgid "All channels"
+msgstr "அனைத்து வழிகளும்"
+
+msgid "All delivery states"
+msgstr "அனைத்து அனுப்பல் நிலைகளும்"
+
+msgid "All districts"
+msgstr "அனைத்து districts"
+
+msgid "All roles"
+msgstr "அனைத்து roles"
+
+msgid "All statuses"
+msgstr "அனைத்து நிலைகளும்"
+
+msgid "All support notifications marked as read."
+msgstr "அனைத்து ஆதரவு அறிவிப்புகள் marked as read."
+
+msgid "Allowed file types: PDF, JPG, JPEG and PNG. Maximum size: 10 MB."
+msgstr "Allowed file types: PDF, JPG, JPEG and PNG. Maximum size: 10 MB."
+
+msgid "Approval Queue"
+msgstr "அனுமதி Queue"
+
+msgid "Approve Registration"
+msgstr "பதிவை அனுமதிக்கவும்"
+
+msgid "Approve Request"
+msgstr "கோரிக்கையை அனுமதிக்கவும்"
+
+msgid "Approve or reject mosque registration applications before they enter the public directory."
+msgstr "Approve or reject பள்ளிவாசல் பதிவு applications before they enter the பொது அடைவு."
+
+msgid "Approved"
+msgstr "அனுமதிக்கப்பட்டது"
+
+msgid "Approved Amount"
+msgstr "அனுமதிக்கப்பட்ட தொகை"
+
+msgid "Approved Mosque"
+msgstr "அனுமதிக்கப்பட்ட பள்ளிவாசல்"
+
+msgid "Approved Mosque Portal"
+msgstr "அனுமதிக்கப்பட்ட பள்ளிவாசல் தளம்"
+
+msgid "Approved Mosque Profiles"
+msgstr "அங்கீகரிக்கப்பட்ட பள்ளிவாசல் சுயவிவரங்கள்"
+
+msgid "Approved Mosques"
+msgstr "அனுமதிக்கப்பட்ட பள்ளிவாசல்கள்"
+
+msgid "Approved Registration"
+msgstr "அனுமதிக்கப்பட்ட பதிவு"
+
+msgid "Approved amount (LKR)"
+msgstr "அனுமதிக்கப்பட்ட தொகை (LKR)"
+
+msgid "Approved amount cannot be negative."
+msgstr "அனுமதிக்கப்பட்டது தொகை cannot be negative."
+
+msgid "Approved mosques can submit requests, upload supporting information and track every decision from the mosque portal."
+msgstr "அனுமதிக்கப்பட்ட பள்ளிவாசல்கள் கோரிக்கைகளை சமர்ப்பித்து, ஆதாரத் தகவலை பதிவேற்றி, பள்ளிவாசல் தளத்தில் ஒவ்வொரு முடிவையும் கண்காணிக்கலாம்."
+
+msgid "Approved mosques will appear here"
+msgstr "அனுமதிக்கப்பட்ட பள்ளிவாசல்கள் இங்கே காணப்படும்"
+
+msgid "Arabic Name"
+msgstr "அரபு பெயர்"
+
+msgid "Assign District Officer"
+msgstr "மாவட்ட அதிகாரியை ஒதுக்குக"
+
+msgid "Assign Officer"
+msgstr "அதிகாரியை ஒதுக்குக"
+
+msgid "Assigned District"
+msgstr "ஒதுக்கப்பட்டது மாவட்டம்"
+
+msgid "Assigned Officer"
+msgstr "ஒதுக்கப்பட்ட அதிகாரி"
+
+msgid "Assigned district: %(district)s (%(province)s)"
+msgstr "ஒதுக்கப்பட்டது மாவட்டம்: %(மாவட்டம்)s (%(மாகாணம்)s)"
+
+msgid "Back to Home"
+msgstr "முகப்புக்கு திரும்பவும்"
+
+msgid "Back to Queue"
+msgstr "Back to Queue"
+
+msgid "Browse directory"
+msgstr "Browse அடைவு"
+
+msgid "Building / Construction Document"
+msgstr "Building / Construction Document"
+
+msgid "Building Stronger Mosques for Stronger Communities"
+msgstr "வலிமையான சமூகங்களுக்காக வலிமையான பள்ளிவாசல்களை உருவாக்குவோம்"
+
+msgid "Built Around Service, Trust and Community"
+msgstr "சேவை, நம்பிக்கை மற்றும் சமூகத்தை மையமாகக் கொண்டு"
+
+msgid "Cancel"
+msgstr "ரத்து செய்"
+
+msgid "Cancel Request"
+msgstr "கோரிக்கையை ரத்து செய்"
+
+msgid "Cancel this request if assistance is no longer required."
+msgstr "Cancel this கோரிக்கை if assistance is no longer தேவை."
+
+msgid "Cancelled"
+msgstr "ரத்து செய்யப்பட்டது"
+
+msgid "Cancelled by mosque administration."
+msgstr "ரத்து செய்யப்பட்டது by பள்ளிவாசல் administration."
+
+msgid "Category"
+msgstr "வகை"
+
+msgid "Channel"
+msgstr "Channel"
+
+msgid "Clear"
+msgstr "அழிக்க"
+
+msgid "Clear Search"
+msgstr "தேடலை அழிக்கவும்"
+
+msgid "Code"
+msgstr "குறியீடு"
+
+msgid "Committee"
+msgstr "குழு"
+
+msgid "Committee & Documents"
+msgstr "குழு மற்றும் ஆவணங்கள்"
+
+msgid "Committee & Key Contacts"
+msgstr "குழு மற்றும் முக்கிய தொடர்புகள்"
+
+msgid "Committee Authorization / Letter"
+msgstr "குழு Authorization / Letter"
+
+msgid "Committee Contacts"
+msgstr "குழு தொடர்புகள்"
+
+msgid "Committee Member"
+msgstr "குழு உறுப்பினர்"
+
+msgid "Committee member added."
+msgstr "குழு member added."
+
+msgid "Committee member removed."
+msgstr "குழு member removed."
+
+msgid "Committee member updated."
+msgstr "குழு member updated."
+
+msgid "Common Platform Admin actions."
+msgstr "Common தளம் நிர்வாகி actions."
+
+msgid "Communications"
+msgstr "தொடர்புகள்"
+
+msgid "Community Assistance"
+msgstr "சமூக உதவி"
+
+msgid "Completed"
+msgstr "முடிக்கப்பட்டது"
+
+msgid "Completed Support Cases"
+msgstr "முடிக்கப்பட்ட ஆதரவு வழக்குகள்"
+
+msgid "Confirm new password"
+msgstr "புதிய கடவுச்சொல்லை உறுதிப்படுத்தவும்"
+
+msgid "Confirm password"
+msgstr "கடவுச்சொல்லை உறுதிப்படுத்தவும்"
+
+msgid "Connecting Mosques, Strengthening Communities"
+msgstr "பள்ளிவாசல்களை இணைத்து, சமூகங்களை வலுப்படுத்துவோம்"
+
+msgid "Connecting and Supporting Mosques Across Sri Lanka"
+msgstr "இலங்கை முழுவதும் பள்ளிவாசல்களை இணைத்து ஆதரிக்கிறோம்"
+
+msgid "Connecting mosques, communities and support services across Sri Lanka."
+msgstr "Connecting பள்ளிவாசல்கள், communities and ஆதரவு services across Sri Lanka."
+
+msgid "Construction"
+msgstr "கட்டுமானம்"
+
+msgid "Contact"
+msgstr "தொடர்பு"
+
+msgid "Contact Our Team"
+msgstr "எங்கள் குழுவை தொடர்பு கொள்ளுங்கள்"
+
+msgid "Contact Person"
+msgstr "தொடர்பு நபர்"
+
+msgid "Contact Phone"
+msgstr "தொடர்பு தொலைபேசி"
+
+msgid "Contact Us"
+msgstr "தொடர்பு கொள்ளுங்கள்"
+
+msgid "Contact information shown in the mosque directory."
+msgstr "Contact தகவல் shown in the பள்ளிவாசல் அடைவு."
+
+msgid "Contact our team for assistance and platform information."
+msgstr "Contact our team for assistance and தளம் தகவல்."
+
+msgid "Contact the platform team and access guidance for mosque services."
+msgstr "தள குழுவை தொடர்பு கொண்டு பள்ளிவாசல் சேவைகளுக்கான வழிகாட்டுதலைப் பெறுங்கள்."
+
+msgid "Control"
+msgstr "நிர்வாகம்"
+
+msgid "Create Draft"
+msgstr "உருவாக்கு Draft"
+
+msgid "Create Request"
+msgstr "கோரிக்கையை உருவாக்கவும்"
+
+msgid "Create User"
+msgstr "பயனர் உருவாக்குக"
+
+msgid "Create User / Officer"
+msgstr "பயனர் / அதிகாரி உருவாக்குக"
+
+msgid "Create Your Account"
+msgstr "உங்கள் கணக்கை உருவாக்குங்கள்"
+
+msgid "Create and track construction, salary, utility, maintenance and other mosque assistance requests."
+msgstr "கட்டுமானம், சம்பளம், அத்தியாவசிய சேவைகள், பராமரிப்பு மற்றும் பிற பள்ளிவாசல் உதவி கோரிக்கைகளை உருவாக்கி கண்காணிக்கவும்."
+
+msgid "Create users and assign platform roles from the administration area."
+msgstr "உருவாக்கு பயனர்கள் and assign தளம் roles from the administration area."
+
+msgid "Create, track and review mosque assistance requests."
+msgstr "உருவாக்கு, track and மதிப்பாய்வு பள்ளிவாசல் assistance கோரிக்கைகள்."
+
+msgid "Current mosque and support workflow counts."
+msgstr "தற்போதைய பள்ளிவாசல் and ஆதரவு workflow counts."
+
+msgid "DS Divisions"
+msgstr "பிரதேச செயலகப் பிரிவுகள்"
+
+msgid "Dashboard"
+msgstr "கட்டுப்பாட்டு பலகம்"
+
+msgid "Decision"
+msgstr "முடிவு"
+
+msgid "Delete"
+msgstr "நீக்கு"
+
+msgid "Delete Location"
+msgstr "நீக்கு Location"
+
+msgid "Delete Location Record?"
+msgstr "நீக்கு Location Record?"
+
+msgid "Delivery Failures (7 days)"
+msgstr "அனுப்பல் தோல்விகள் (7 நாட்கள்)"
+
+msgid "Describe the issue / current situation"
+msgstr "Describe the issue / தற்போதைய situation"
+
+msgid "Describe the mosque for visitors in the supported languages."
+msgstr "Describe the பள்ளிவாசல் for visitors in the supported languages."
+
+msgid "Describe the mosque issue and the assistance required."
+msgstr "Describe the பள்ளிவாசல் issue and the assistance தேவை."
+
+msgid "Description"
+msgstr "விளக்கம்"
+
+msgid "Description (Arabic)"
+msgstr "விளக்கம் (அரபு)"
+
+msgid "Description (English)"
+msgstr "விளக்கம் (ஆங்கிலம்)"
+
+msgid "Description (Tamil)"
+msgstr "விளக்கம் (தமிழ்)"
+
+msgid "Designation"
+msgstr "பதவி"
+
+msgid "Details"
+msgstr "விவரங்கள்"
+
+msgid "Digital Services for Stronger Mosque Communities"
+msgstr "வலுவான பள்ளிவாசல் சமூகங்களுக்கான டிஜிட்டல் சேவைகள்"
+
+msgid "Digital services supporting mosque administration and community needs."
+msgstr "Digital services supporting பள்ளிவாசல் administration and community needs."
+
+msgid "Discover Platform Admin-approved mosques across Sri Lanka."
+msgstr "தள நிர்வாகி அனுமதித்த இலங்கையின் பள்ளிவாசல்களை கண்டறியுங்கள்."
+
+msgid "District"
+msgstr "மாவட்டம்"
+
+msgid "District Assignment"
+msgstr "மாவட்டம் Assignment"
+
+msgid "District Officer"
+msgstr "மாவட்ட அதிகாரி"
+
+msgid "District Officer Assignment"
+msgstr "மாவட்ட அதிகாரி ஒதுக்கீடு"
+
+msgid "District Officer Assignments"
+msgstr "மாவட்ட அதிகாரி ஒதுக்கீடுகள்"
+
+msgid "District Officer Dashboard"
+msgstr "மாவட்ட அதிகாரி கட்டுப்பாட்டு பலகம்"
+
+msgid "District Officers"
+msgstr "மாவட்ட அதிகாரிகள்"
+
+msgid "District officer assignment removed."
+msgstr "மாவட்டம் அதிகாரி assignment removed."
+
+msgid "District officer assignment saved for %(user)s."
+msgstr "மாவட்டம் அதிகாரி assignment saved for %(பயனர்)s."
+
+msgid "District-level mosque information access can be added in a later operational phase."
+msgstr "மாவட்டம்-level பள்ளிவாசல் தகவல் access can be added in a later operational phase."
+
+msgid "District-level support-request review will be connected to the support engine."
+msgstr "மாவட்டம்-level ஆதரவு-கோரிக்கை மதிப்பாய்வு will be connected to the ஆதரவு engine."
+
+msgid "Districts"
+msgstr "மாவட்டங்கள்"
+
+msgid "Districts Covered"
+msgstr "உள்ளடக்கப்பட்ட மாவட்டங்கள்"
+
+msgid "Divisional Secretariat"
+msgstr "பிரதேச செயலகம்"
+
+msgid "Divisional Secretariats"
+msgstr "பிரதேச செயலகங்கள்"
+
+msgid "Django Administration"
+msgstr "Django Administration"
+
+msgid "Document Management"
+msgstr "ஆவண மேலாண்மை"
+
+msgid "Document removed."
+msgstr "Document removed."
+
+msgid "Documents"
+msgstr "ஆவணங்கள்"
+
+msgid "Documents & Tracking"
+msgstr "ஆவணங்கள் மற்றும் கண்காணிப்பு"
+
+msgid "Does Your Mosque Need Assistance?"
+msgstr "உங்கள் பள்ளிவாசலுக்கு உதவி தேவையா?"
+
+msgid "Draft"
+msgstr "வரைவு"
+
+msgid "Draft Created"
+msgstr "Draft Created"
+
+msgid "Edit"
+msgstr "திருத்து"
+
+msgid "Edit Committee Member"
+msgstr "குழு உறுப்பினரைத் திருத்தவும்"
+
+msgid "Edit District Officer Assignment"
+msgstr "திருத்து மாவட்டம் அதிகாரி Assignment"
+
+msgid "Edit Mosque Profile"
+msgstr "திருத்து பள்ளிவாசல் சுயவிவரம்"
+
+msgid "Edit Mosque Registration"
+msgstr "திருத்து பள்ளிவாசல் பதிவு"
+
+msgid "Edit Public Profile"
+msgstr "பொது சுயவிவரத்தை திருத்துக"
+
+msgid "Edit Registration"
+msgstr "திருத்து பதிவு"
+
+msgid "Edit Support Request"
+msgstr "திருத்து ஆதரவு கோரிக்கை"
+
+msgid "Edit User"
+msgstr "பயனரை திருத்துக"
+
+msgid "Email"
+msgstr "மின்னஞ்சல்"
+
+msgid "Email address"
+msgstr "மின்னஞ்சல் முகவரி"
+
+msgid "Email/SMS deliveries that require configuration or provider attention."
+msgstr "மின்னஞ்சல்/SMS deliveries that require configuration or provider attention."
+
+msgid "Emergency Assistance"
+msgstr "அவசர உதவி"
+
+msgid "English Name"
+msgstr "ஆங்கில பெயர்"
+
+msgid "English, Tamil and Arabic support"
+msgstr "ஆங்கிலம், தமிழ் மற்றும் அரபு ஆதரவு"
+
+msgid "Enter a valid mosque establishment year."
+msgstr "Enter a valid பள்ளிவாசல் establishment year."
+
+msgid "Established"
+msgstr "நிறுவப்பட்ட ஆண்டு"
+
+msgid "Everything Your Mosque Needs in One Place"
+msgstr "உங்கள் பள்ளிவாசலுக்கு தேவையான அனைத்தும் ஒரே இடத்தில்"
+
+msgid "Existing Registration Certificate"
+msgstr "Existing பதிவு Certificate"
+
+msgid "Existing Registration No."
+msgstr "Existing பதிவு No."
+
+msgid "Explore Approved Mosques Across Sri Lanka"
+msgstr "இலங்கை முழுவதும் அனுமதிக்கப்பட்ட பள்ளிவாசல்களை காணுங்கள்"
+
+msgid "Explore Mosques"
+msgstr "பள்ளிவாசல்களை காண்க"
+
+msgid "Explore Mosques Across Sri Lanka"
+msgstr "இலங்கை முழுவதும் பள்ளிவாசல்களை காண்க"
+
+msgid "Facilities"
+msgstr "வசதிகள்"
+
+msgid "Failed"
+msgstr "தோல்வி"
+
+msgid "Faith • Unity • Service • Community"
+msgstr "ஈமான் • ஒற்றுமை • சேவை • சமூகம்"
+
+msgid "Faith, unity, service, transparency and responsible stewardship guide every part of the platform."
+msgstr "ஈமான், ஒற்றுமை, சேவை, வெளிப்படைத்தன்மை மற்றும் பொறுப்பான நிர்வாகம் எங்கள் தளத்தின் அடிப்படை மதிப்புகள்."
+
+msgid "Filter"
+msgstr "வடிகட்டு"
+
+msgid "Financial Assistance"
+msgstr "நிதி உதவி"
+
+msgid "Financial Support"
+msgstr "நிதி உதவி"
+
+msgid "Financial assistance for eligible mosque requirements."
+msgstr "Financial assistance for eligible பள்ளிவாசல் requirements."
+
+msgid "Find registered mosques by district, town and other location information."
+msgstr "Find registered பள்ளிவாசல்கள் by மாவட்டம், town and other location தகவல்."
+
+msgid "Follow every support-request status update and additional-information request."
+msgstr "ஒவ்வொரு ஆதரவு கோரிக்கை நிலை புதுப்பிப்பையும் கூடுதல் தகவல் கோரிக்கையையும் கண்காணிக்கவும்."
+
+msgid "Full administrative access to the Sri Lanka Mosque Platform."
+msgstr "Full administrative access to the Sri Lanka பள்ளிவாசல் தளம்."
+
+msgid "Furniture / Equipment"
+msgstr "தளபாடங்கள் / உபகரணங்கள்"
+
+msgid "GN Division"
+msgstr "கிராம அலுவலர் பிரிவு"
+
+msgid "GN Divisions"
+msgstr "கிராம அலுவலர் பிரிவுகள்"
+
+msgid "GN division"
+msgstr "GN division"
+
+msgid "GN divisions"
+msgstr "GN divisions"
+
+msgid "General Mosque Issue"
+msgstr "பொது பள்ளிவாசல் பிரச்சினை"
+
+msgid "Get in Touch"
+msgstr "தொடர்பில் இருங்கள்"
+
+msgid "Go to Dashboard"
+msgstr "கட்டுப்பாட்டு பலகைக்கு செல்லவும்"
+
+msgid "High"
+msgstr "உயர்"
+
+msgid "Home"
+msgstr "முகப்பு"
+
+msgid "How It Works"
+msgstr "இது எவ்வாறு செயல்படுகிறது"
+
+msgid "How We Serve Our Mosques"
+msgstr "எங்கள் பள்ளிவாசல்களுக்கு நாம் எவ்வாறு சேவை செய்கிறோம்"
+
+msgid "How can we help?"
+msgstr "எவ்வாறு உதவலாம்?"
+
+msgid "Identity & Access"
+msgstr "அடையாளம் மற்றும் அணுகல்"
+
+msgid "Identity, role and contact channels."
+msgstr "Identity, பங்கு and contact channels."
+
+msgid "If dependent records exist, deletion will be blocked. In that case, mark the record inactive instead."
+msgstr "If dependent records exist, deletion will be blocked. In that case, mark the record செயலற்றது instead."
+
+msgid "If information or documents are missing, choose Request Additional Information / Documents and clearly list what the mosque must provide. The Mosque Admin will be notified in the dashboard, by email and by registered mobile/SMS."
+msgstr "தகவல் அல்லது ஆவணங்கள் குறைந்திருந்தால், “கூடுதல் தகவல் / ஆவணங்களை கோருக” என்பதைத் தேர்ந்தெடுத்து பள்ளிவாசல் வழங்க வேண்டியவற்றை தெளிவாக குறிப்பிடவும். பள்ளிவாசல் நிர்வாகிக்கு கட்டுப்பாட்டு பலகம், மின்னஞ்சல் மற்றும் பதிவு செய்யப்பட்ட கைபேசி/SMS வழியாக அறிவிக்கப்படும்."
+
+msgid "Imam"
+msgstr "இமாம்"
+
+msgid "Imam / Muezzin / Staff Salary"
+msgstr "இமாம் / முஅத்தின் / பணியாளர் சம்பளம்"
+
+msgid "Imam, Muezzin and mosque staff assistance."
+msgstr "Imam, Muezzin and பள்ளிவாசல் பணியாளர் assistance."
+
+msgid "In Progress"
+msgstr "செயல்பாட்டில்"
+
+msgid "Inactive"
+msgstr "செயலற்றது"
+
+msgid "Information visible to the community and used for daily mosque operations."
+msgstr "தகவல் visible to the community and used for daily பள்ளிவாசல் operations."
+
+msgid "Invalid username/email or password."
+msgstr "தவறான பயனர் பெயர்/மின்னஞ்சல் அல்லது கடவுச்சொல்."
+
+msgid "Invoices, quotations, letters, photos and other supporting files."
+msgstr "Invoices, quotations, letters, photos and other supporting files."
+
+msgid "Is Your Mosque Registered?"
+msgstr "உங்கள் பள்ளிவாசல் பதிவு செய்யப்பட்டுள்ளதா?"
+
+msgid "Issue / Current Situation"
+msgstr "பிரச்சினை / தற்போதைய நிலை"
+
+msgid "Join the national mosque platform and access digital mosque management and support services."
+msgstr "Join the national பள்ளிவாசல் தளம் and access digital பள்ளிவாசல் மேலாண்மை and ஆதரவு services."
+
+msgid "Jumma Mosque"
+msgstr "Jumma பள்ளிவாசல்"
+
+msgid "Jummah Time"
+msgstr "ஜும்ஆ நேரம்"
+
+msgid "Key contacts"
+msgstr "Key contacts"
+
+msgid "Land / Property Document"
+msgstr "Land / Property Document"
+
+msgid "Language"
+msgstr "மொழி"
+
+msgid "Last Updated"
+msgstr "கடைசியாக புதுப்பிக்கப்பட்டது"
+
+msgid "Latest mosque records created on the platform."
+msgstr "Latest பள்ளிவாசல் records created on the தளம்."
+
+msgid "Latest support cases and current processing state."
+msgstr "Latest ஆதரவு cases and தற்போதைய processing state."
+
+msgid "Learn More About Us"
+msgstr "எங்களைப் பற்றி மேலும் அறியுங்கள்"
+
+msgid "Leave blank to keep the current password."
+msgstr "Leave blank to keep the தற்போதைய password."
+
+msgid "Location & Contact"
+msgstr "Location & Contact"
+
+msgid "Location Management"
+msgstr "இட மேலாண்மை"
+
+msgid "Location record deleted successfully."
+msgstr "Location record deleted successfully."
+
+msgid "Locations"
+msgstr "இடங்கள்"
+
+msgid "Login"
+msgstr "உள்நுழை"
+
+msgid "Login and account access"
+msgstr "உள்நுழைவு மற்றும் கணக்கு அணுகல்"
+
+msgid "Logout"
+msgstr "வெளியேறு"
+
+msgid "Madrasa"
+msgstr "மத்ரஸா"
+
+msgid "Maintain current mosque leadership and contact persons."
+msgstr "Maintain தற்போதைய பள்ளிவாசல் leadership and contact persons."
+
+msgid "Maintain current supporting and operational documents."
+msgstr "Maintain தற்போதைய supporting and operational ஆவணங்கள்."
+
+msgid "Maintain login identity, role, contact information and account state."
+msgstr "Maintain login identity, பங்கு, contact தகவல் and கணக்கு state."
+
+msgid "Maintain mosque information, contacts, committee details and important documents."
+msgstr "Maintain பள்ளிவாசல் தகவல், contacts, குழு விவரங்கள் and important ஆவணங்கள்."
+
+msgid "Maintenance"
+msgstr "பராமரிப்பு"
+
+msgid "Manage Assignments"
+msgstr "ஒதுக்கீடுகளை நிர்வகிக்கவும்"
+
+msgid "Manage District Assignments"
+msgstr "மாவட்ட ஒதுக்கீடுகளை நிர்வகிக்கவும்"
+
+msgid "Manage Divisional Secretariats"
+msgstr "Manage Divisional Secretariats"
+
+msgid "Manage GN Divisions"
+msgstr "Manage GN Divisions"
+
+msgid "Manage approved mosque public profile, committee, documents and portal users."
+msgstr "Manage அனுமதிக்கப்பட்டது பள்ளிவாசல் பொது சுயவிவரம், குழு, ஆவணங்கள் and portal பயனர்கள்."
+
+msgid "Manage district records"
+msgstr "Manage மாவட்டம் records"
+
+msgid "Manage operational user accounts, roles, contact details and account status."
+msgstr "செயற்பாட்டு பயனர் கணக்குகள், பங்குகள், தொடர்பு விவரங்கள் மற்றும் கணக்கு நிலையை நிர்வகிக்கவும்."
+
+msgid "Manage province records"
+msgstr "Manage மாகாணம் records"
+
+msgid "Manage provinces, districts, DS divisions, GN divisions and district officer assignments."
+msgstr "Manage provinces, districts, DS divisions, GN divisions and மாவட்டம் அதிகாரி assignments."
+
+msgid "Manage public profile, committee information, documents and mosque staff access."
+msgstr "பொது சுயவிவரம், குழு தகவல், ஆவணங்கள் மற்றும் பள்ளிவாசல் பணியாளர் அணுகலை நிர்வகிக்கவும்."
+
+msgid "Manage the administrative hierarchy used by mosque registration, officer assignment, search and reporting."
+msgstr "Manage the administrative hierarchy used by பள்ளிவாசல் பதிவு, அதிகாரி assignment, தேடுக and reporting."
+
+msgid "Manage the administrative location hierarchy and platform configuration."
+msgstr "Manage the administrative location hierarchy and தளம் configuration."
+
+msgid "Manage users, permissions and system records."
+msgstr "Manage பயனர்கள், permissions and system records."
+
+msgid "Mark All Read"
+msgstr "அனைத்தையும் வாசித்ததாக குறிக்கவும்"
+
+msgid "Mark Completed"
+msgstr "முடிந்தது என குறிக்கவும்"
+
+msgid "Mark In Progress"
+msgstr "செயல்பாட்டில் என குறிக்கவும்"
+
+msgid "Mark Under Review"
+msgstr "மதிப்பாய்வில் என குறிக்கவும்"
+
+msgid "Membership"
+msgstr "Membership"
+
+msgid "Men Capacity"
+msgstr "ஆண்கள் கொள்ளளவு"
+
+msgid "Message"
+msgstr "செய்தி"
+
+msgid "Mobile"
+msgstr "கைபேசி"
+
+msgid "Monitor email and SMS delivery attempts generated by the mosque support workflow."
+msgstr "பள்ளிவாசல் ஆதரவு செயல்முறையால் உருவாக்கப்பட்ட மின்னஞ்சல் மற்றும் SMS அனுப்பல் முயற்சிகளை கண்காணிக்கவும்."
+
+msgid "Monitor mosque registration, support services, users, locations and notification delivery from one workspace."
+msgstr "பள்ளிவாசல் பதிவு, ஆதரவு சேவைகள், பயனர்கள், இடங்கள் மற்றும் அறிவிப்பு அனுப்பலை ஒரே பணிப்பகுதியில் கண்காணிக்கவும்."
+
+msgid "Mosque"
+msgstr "பள்ளிவாசல்"
+
+msgid "Mosque / Masjid"
+msgstr "பள்ளிவாசல் / Masjid"
+
+msgid "Mosque Access"
+msgstr "பள்ளிவாசல் அணுகல்"
+
+msgid "Mosque Admin"
+msgstr "பள்ளிவாசல் நிர்வாகி"
+
+msgid "Mosque Admin Dashboard"
+msgstr "பள்ளிவாசல் நிர்வாகி கட்டுப்பாட்டு பலகம்"
+
+msgid "Mosque Approval Queue"
+msgstr "பள்ளிவாசல் அனுமதி வரிசை"
+
+msgid "Mosque Approvals"
+msgstr "பள்ளிவாசல் அனுமதிகள்"
+
+msgid "Mosque Assistance"
+msgstr "பள்ளிவாசல் உதவி"
+
+msgid "Mosque Details"
+msgstr "பள்ளிவாசல் விவரங்கள்"
+
+msgid "Mosque Directory"
+msgstr "பள்ளிவாசல் அடைவு"
+
+msgid "Mosque Documents"
+msgstr "பள்ளிவாசல் ஆவணங்கள்"
+
+msgid "Mosque ID"
+msgstr "பள்ளிவாசல் அடையாள எண்"
+
+msgid "Mosque ID, name or district"
+msgstr "பள்ளிவாசல் ID, பெயர் or மாவட்டம்"
+
+msgid "Mosque ID, name, town or district"
+msgstr "பள்ளிவாசல் ID, பெயர், town or மாவட்டம்"
+
+msgid "Mosque Identity"
+msgstr "பள்ளிவாசல் அடையாளம்"
+
+msgid "Mosque Information"
+msgstr "பள்ளிவாசல் தகவல்"
+
+msgid "Mosque Management"
+msgstr "பள்ளிவாசல் மேலாண்மை"
+
+msgid "Mosque Management & Support Platform"
+msgstr "பள்ளிவாசல் மேலாண்மை மற்றும் ஆதரவு தளம்"
+
+msgid "Mosque Photograph"
+msgstr "பள்ளிவாசல் Photograph"
+
+msgid "Mosque Platform Access"
+msgstr "பள்ளிவாசல் தளம் Access"
+
+msgid "Mosque Portal"
+msgstr "பள்ளிவாசல் தளம்"
+
+msgid "Mosque Portal Members"
+msgstr "பள்ளிவாசல் தள உறுப்பினர்கள்"
+
+msgid "Mosque Profile Management"
+msgstr "பள்ளிவாசல் சுயவிவர மேலாண்மை"
+
+msgid "Mosque Registration"
+msgstr "பள்ளிவாசல் பதிவு"
+
+msgid "Mosque Services"
+msgstr "பள்ளிவாசல் Services"
+
+msgid "Mosque Staff"
+msgstr "பள்ளிவாசல் பணியாளர்"
+
+msgid "Mosque Staff Dashboard"
+msgstr "பள்ளிவாசல் பணியாளர் கட்டுப்பாட்டு பலகம்"
+
+msgid "Mosque Support"
+msgstr "பள்ளிவாசல் ஆதரவு"
+
+msgid "Mosque Support Request"
+msgstr "பள்ளிவாசல் ஆதரவு கோரிக்கை"
+
+msgid "Mosque Users"
+msgstr "பள்ளிவாசல் பயனர்கள்"
+
+msgid "Mosque Workspace"
+msgstr "பள்ளிவாசல் பணிப்பகுதி"
+
+msgid "Mosque community"
+msgstr "பள்ளிவாசல் சமூகம்"
+
+msgid "Mosque name (Arabic)"
+msgstr "பள்ளிவாசல் பெயர் (அரபு)"
+
+msgid "Mosque name (English)"
+msgstr "பள்ளிவாசல் பெயர் (ஆங்கிலம்)"
+
+msgid "Mosque name (Tamil)"
+msgstr "பள்ளிவாசல் பெயர் (தமிழ்)"
+
+msgid "Mosque public and operational profile updated."
+msgstr "பள்ளிவாசல் பொது and operational சுயவிவரம் updated."
+
+msgid "Mosque records"
+msgstr "பள்ளிவாசல் records"
+
+msgid "Mosque registration assistance"
+msgstr "பள்ளிவாசல் பதிவு உதவி"
+
+msgid "Mosque registration details updated."
+msgstr "பள்ளிவாசல் பதிவு விவரங்கள் updated."
+
+msgid "Mosque registration draft created successfully. Add committee members or documents, then submit it for Platform Admin approval."
+msgstr "பள்ளிவாசல் பதிவு draft created successfully. சேர் குழு members or ஆவணங்கள், then submit it for தளம் நிர்வாகி அனுமதி."
+
+msgid "Mosque registration submitted successfully for Platform Admin approval."
+msgstr "பள்ளிவாசல் பதிவு சமர்ப்பிக்கப்பட்டது successfully for தளம் நிர்வாகி அனுமதி."
+
+msgid "Mosque user access added."
+msgstr "பள்ளிவாசல் பயனர் access added."
+
+msgid "Mosque user access removed."
+msgstr "பள்ளிவாசல் பயனர் access removed."
+
+msgid "Mosques Pending Approval"
+msgstr "அனுமதி நிலுவையில் உள்ள பள்ளிவாசல்கள்"
+
+msgid "Mosques Sri Lanka"
+msgstr "இலங்கை பள்ளிவாசல்கள்"
+
+msgid "Mosques Sri Lanka is designed to provide a centralized digital platform for mosque registration, administration, support coordination and community services."
+msgstr "பள்ளிவாசல்கள் Sri Lanka is designed to provide a centralized digital தளம் for பள்ளிவாசல் பதிவு, administration, ஆதரவு coordination and community services."
+
+msgid "Move approved assistance through In Progress and Completed states."
+msgstr "Move அனுமதிக்கப்பட்டது assistance through In Progress and முடிக்கப்பட்டது states."
+
+msgid "Muezzin"
+msgstr "முஅத்தின்"
+
+msgid "Multilingual access"
+msgstr "பல்மொழி அணுகல்"
+
+msgid "Musalla / Prayer Hall"
+msgstr "Musalla / Prayer Hall"
+
+msgid "My Account"
+msgstr "என் கணக்கு"
+
+msgid "My Mosques"
+msgstr "என் பள்ளிவாசல்கள்"
+
+msgid "My Profile"
+msgstr "என் சுயவிவரம்"
+
+msgid "Name"
+msgstr "பெயர்"
+
+msgid "Names and basic registration details."
+msgstr "Names and basic பதிவு விவரங்கள்."
+
+msgid "Need Additional Info"
+msgstr "கூடுதல் தகவல் தேவை"
+
+msgid "Need Assistance?"
+msgstr "உதவி தேவையா?"
+
+msgid "New"
+msgstr "புதிய"
+
+msgid "New Mosque Support Request"
+msgstr "புதிய பள்ளிவாசல் ஆதரவு கோரிக்கை"
+
+msgid "New Support Request"
+msgstr "புதிய ஆதரவு கோரிக்கை"
+
+msgid "New construction and renovation requirements."
+msgstr "புதிய construction and renovation requirements."
+
+msgid "New password"
+msgstr "புதிய கடவுச்சொல்"
+
+msgid "Next"
+msgstr "அடுத்தது"
+
+msgid "No active district has been assigned yet."
+msgstr "No செயலில் மாவட்டம் has been ஒதுக்கப்பட்டது yet."
+
+msgid "No approved mosques found"
+msgstr "No அனுமதிக்கப்பட்டது பள்ளிவாசல்கள் found"
+
+msgid "No committee contacts added yet."
+msgstr "No குழு contacts added yet."
+
+msgid "No committee contacts submitted."
+msgstr "No குழு contacts சமர்ப்பிக்கப்பட்டது."
+
+msgid "No district assignment is required for this role."
+msgstr "No மாவட்டம் assignment is தேவை for this பங்கு."
+
+msgid "No district officers have been assigned yet."
+msgstr "No மாவட்டம் officers have been ஒதுக்கப்பட்டது yet."
+
+msgid "No documents uploaded yet."
+msgstr "No ஆவணங்கள் uploaded yet."
+
+msgid "No documents uploaded."
+msgstr "No ஆவணங்கள் uploaded."
+
+msgid "No further officer action is available for the current status."
+msgstr "No further அதிகாரி action is available for the தற்போதைய நிலை."
+
+msgid "No location records found."
+msgstr "No location records found."
+
+msgid "No mosque is linked to your account yet"
+msgstr "No பள்ளிவாசல் is linked to your கணக்கு yet"
+
+msgid "No mosque memberships."
+msgstr "No பள்ளிவாசல் memberships."
+
+msgid "No mosque registrations are waiting for Platform Admin approval."
+msgstr "No பள்ளிவாசல் registrations are waiting for தளம் நிர்வாகி அனுமதி."
+
+msgid "No mosque registrations yet."
+msgstr "No பள்ளிவாசல் registrations yet."
+
+msgid "No mosque users linked."
+msgstr "No பள்ளிவாசல் பயனர்கள் linked."
+
+msgid "No notification delivery records found."
+msgstr "No அறிவிப்பு delivery records found."
+
+msgid "No review actions recorded yet."
+msgstr "No மதிப்பாய்வு actions recorded yet."
+
+msgid "No status history yet."
+msgstr "No நிலை வரலாறு yet."
+
+msgid "No support notifications yet."
+msgstr "No ஆதரவு அறிவிப்புகள் yet."
+
+msgid "No support requests found."
+msgstr "No ஆதரவு கோரிக்கைகள் found."
+
+msgid "No support requests match the selected filters."
+msgstr "No ஆதரவு கோரிக்கைகள் match the selected filters."
+
+msgid "No support requests yet."
+msgstr "No ஆதரவு கோரிக்கைகள் yet."
+
+msgid "No supporting documents uploaded yet."
+msgstr "No supporting ஆவணங்கள் uploaded yet."
+
+msgid "No users match the selected filters."
+msgstr "No பயனர்கள் match the selected filters."
+
+msgid "Normal"
+msgstr "சாதாரண"
+
+msgid "Not Verified"
+msgstr "சரிபார்க்கப்படவில்லை"
+
+msgid "Notification Delivery"
+msgstr "அறிவிப்பு அனுப்பல்"
+
+msgid "Notification Delivery Monitor"
+msgstr "அறிவிப்பு அனுப்பல் கண்காணிப்பு"
+
+msgid "Notifications"
+msgstr "அறிவிப்புகள்"
+
+msgid "Officer"
+msgstr "அதிகாரி"
+
+msgid "Officer note / requested information"
+msgstr "அதிகாரி note / requested தகவல்"
+
+msgid "Official Email"
+msgstr "Official மின்னஞ்சல்"
+
+msgid "Official Phone"
+msgstr "Official தொலைபேசி"
+
+msgid "Official location and communication details."
+msgstr "Official location and communication விவரங்கள்."
+
+msgid "Once Platform Admin approves mosque registrations, they are published automatically in the public directory."
+msgstr "தள நிர்வாகி பள்ளிவாசல் பதிவுகளை அனுமதித்ததும் அவை பொது அடைவில் தானாக வெளியிடப்படும்."
+
+msgid "One Login for Every Mosque Platform Role"
+msgstr "ஒவ்வொரு தளப் பங்கிற்கும் ஒரே உள்நுழைவு"
+
+msgid "Only PDF, JPG, JPEG and PNG files are allowed."
+msgstr "PDF, JPG, JPEG மற்றும் PNG கோப்புகள் மட்டுமே அனுமதிக்கப்படுகின்றன."
+
+msgid "Only active users with the Mosque Admin or Mosque Staff role can be linked. Create the user account first if it does not appear here."
+msgstr "Only செயலில் பயனர்கள் with the பள்ளிவாசல் நிர்வாகி or பள்ளிவாசல் பணியாளர் பங்கு can be linked. உருவாக்கு the பயனர் கணக்கு first if it does not appear here."
+
+msgid "Only users with the District Officer role can be assigned to a district."
+msgstr "Only பயனர்கள் with the மாவட்டம் அதிகாரி பங்கு can be ஒதுக்கப்பட்டது to a மாவட்டம்."
+
+msgid "Open"
+msgstr "திறக்க"
+
+msgid "Open Mosque Directory"
+msgstr "பள்ளிவாசல் அடைவைத் திறக்கவும்"
+
+msgid "Open Mosque Portal"
+msgstr "பள்ளிவாசல் தளத்தைத் திறக்கவும்"
+
+msgid "Open Portal"
+msgstr "திறக்க Portal"
+
+msgid "Open Queue"
+msgstr "திறக்க Queue"
+
+msgid "Open Registration"
+msgstr "திறக்க பதிவு"
+
+msgid "Open Support Cases"
+msgstr "திறந்த ஆதரவு வழக்குகள்"
+
+msgid "Operational Activity"
+msgstr "செயற்பாட்டு நடவடிக்கை"
+
+msgid "Operational Status"
+msgstr "செயற்பாட்டு நிலை"
+
+msgid "Operational information useful to mosque visitors."
+msgstr "Operational தகவல் useful to பள்ளிவாசல் visitors."
+
+msgid "Operations Center"
+msgstr "செயற்பாட்டு மையம்"
+
+msgid "Operations Overview"
+msgstr "செயற்பாட்டு கண்ணோட்டம்"
+
+msgid "Optional multilingual description of the mosque."
+msgstr "Optional multilingual description of the பள்ளிவாசல்."
+
+msgid "Optional until the master data is loaded."
+msgstr "Optional until the master data is loaded."
+
+msgid "Other"
+msgstr "மற்றவை"
+
+msgid "Other Supporting Document"
+msgstr "Other Supporting Document"
+
+msgid "Our Mission"
+msgstr "எங்கள் நோக்கம்"
+
+msgid "Our Platform"
+msgstr "எங்கள் தளம்"
+
+msgid "Our Purpose"
+msgstr "எங்கள் நோக்கம்"
+
+msgid "Our Services"
+msgstr "எங்கள் சேவைகள்"
+
+msgid "Our Values"
+msgstr "எங்கள் மதிப்புகள்"
+
+msgid "Our Vision"
+msgstr "எங்கள் பார்வை"
+
+msgid "Our team can guide you through the platform."
+msgstr "எங்கள் குழு தளத்தைப் பயன்படுத்த உங்களுக்கு வழிகாட்டும்."
+
+msgid "Oversee Platform Admin mosque registration approvals."
+msgstr "Oversee தளம் நிர்வாகி பள்ளிவாசல் பதிவு approvals."
+
+msgid "Oversee mosque support requests and the full assistance workflow."
+msgstr "Oversee பள்ளிவாசல் ஆதரவு கோரிக்கைகள் and the full assistance workflow."
+
+msgid "Overview"
+msgstr "Overview"
+
+msgid "PDF/JPG/PNG files, maximum 10 MB each."
+msgstr "PDF/JPG/PNG files, maximum 10 MB each."
+
+msgid "Parking"
+msgstr "வாகன நிறுத்தம்"
+
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+msgid "Pending"
+msgstr "Pending"
+
+msgid "Pending Platform Approval"
+msgstr "தள அனுமதி நிலுவையில்"
+
+msgid "People responsible for the mosque registration and administration."
+msgstr "People responsible for the பள்ளிவாசல் பதிவு and administration."
+
+msgid "Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported from verified official CSV data using the supplied management command."
+msgstr "Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported from verified official CSV data using the supplied மேலாண்மை command."
+
+msgid "Phone"
+msgstr "தொலைபேசி"
+
+msgid "Platform Admin"
+msgstr "தள நிர்வாகி"
+
+msgid "Platform Admin Dashboard"
+msgstr "தள நிர்வாகி கட்டுப்பாட்டு பலகம்"
+
+msgid "Platform Admin Decision"
+msgstr "தள நிர்வாகி முடிவு"
+
+msgid "Platform Administration"
+msgstr "தள நிர்வாகம்"
+
+msgid "Platform Approval"
+msgstr "தள நிர்வாகி அனுமதி"
+
+msgid "Platform Configuration"
+msgstr "தளம் Configuration"
+
+msgid "Platform Control"
+msgstr "தள கட்டுப்பாடு"
+
+msgid "Platform Control Center"
+msgstr "தள கட்டுப்பாட்டு மையம்"
+
+msgid "Platform Mosque Approval"
+msgstr "தளம் பள்ளிவாசல் அனுமதி"
+
+msgid "Platform Services"
+msgstr "தள சேவைகள்"
+
+msgid "Platform Support"
+msgstr "தள ஆதரவு"
+
+msgid "Platform statistics"
+msgstr "தள புள்ளிவிவரங்கள்"
+
+msgid "Please specify the additional information/documents required, or provide the rejection reason."
+msgstr "Please specify the கூடுதல் தகவல்/ஆவணங்கள் தேவை, or provide the rejection reason."
+
+msgid "Portal Login"
+msgstr "தள உள்நுழைவு"
+
+msgid "Portal Users"
+msgstr "தள பயனர்கள்"
+
+msgid "Practical digital services for mosque registration, management, support and transparent follow-up."
+msgstr "பள்ளிவாசல் பதிவு, மேலாண்மை, ஆதரவு மற்றும் வெளிப்படையான கண்காணிப்பிற்கான நடைமுறை டிஜிட்டல் சேவைகள்."
+
+msgid "Preferred Language"
+msgstr "விருப்ப மொழி"
+
+msgid "President / Chairman"
+msgstr "தலைவர்"
+
+msgid "Previous"
+msgstr "முந்தையது"
+
+msgid "Primary"
+msgstr "முதன்மை"
+
+msgid "Primary contact"
+msgstr "முதன்மை தொடர்பு"
+
+msgid "Priority"
+msgstr "முன்னுரிமை"
+
+msgid "Process Request"
+msgstr "கோரிக்கையை செயலாக்கு"
+
+msgid "Process Support Request"
+msgstr "ஆதரவு கோரிக்கையை செயலாக்கு"
+
+msgid "Profile Complete"
+msgstr "சுயவிவரம் Complete"
+
+msgid "Provide the official mosque information below. Save the application as a draft, add any required contacts or documents, then submit it for Platform Admin approval."
+msgstr "Provide the official பள்ளிவாசல் தகவல் below. சேமி the application as a draft, சேர் any தேவை contacts or ஆவணங்கள், then submit it for தளம் நிர்வாகி அனுமதி."
+
+msgid "Provider / Details"
+msgstr "சேவை வழங்குநர் / விவரங்கள்"
+
+msgid "Province"
+msgstr "மாகாணம்"
+
+msgid "Provinces"
+msgstr "மாகாணங்கள்"
+
+msgid "Public & Operational Profile"
+msgstr "பொது மற்றும் செயற்பாட்டு சுயவிவரம்"
+
+msgid "Public Contact"
+msgstr "பொது தொடர்பு"
+
+msgid "Public Phone"
+msgstr "பொது தொலைபேசி"
+
+msgid "Public Summary"
+msgstr "பொது சுருக்கம்"
+
+msgid "Public description has not been added yet."
+msgstr "பொது description has not been added yet."
+
+msgid "Public operational details"
+msgstr "பொது operational விவரங்கள்"
+
+msgid "Public summary (Arabic)"
+msgstr "பொது சுருக்கம் (அரபு)"
+
+msgid "Public summary (English)"
+msgstr "பொது சுருக்கம் (ஆங்கிலம்)"
+
+msgid "Public summary (Tamil)"
+msgstr "பொது சுருக்கம் (தமிழ்)"
+
+msgid "Quick Links"
+msgstr "விரைவு இணைப்புகள்"
+
+msgid "Quick Operations"
+msgstr "விரைவு செயல்பாடுகள்"
+
+msgid "Ready to connect your mosque to the platform?"
+msgstr "உங்கள் பள்ளிவாசலை தளத்துடன் இணைக்க தயாரா?"
+
+msgid "Receive notifications about registration and support request progress."
+msgstr "Receive அறிவிப்புகள் about பதிவு and ஆதரவு கோரிக்கை progress."
+
+msgid "Recent Mosque Registrations"
+msgstr "சமீபத்திய பள்ளிவாசல் பதிவுகள்"
+
+msgid "Recent Notification Delivery Failures"
+msgstr "சமீபத்திய அறிவிப்பு அனுப்பல் தோல்விகள்"
+
+msgid "Recent Support Requests"
+msgstr "சமீபத்திய ஆதரவு கோரிக்கைகள்"
+
+msgid "Recipient"
+msgstr "பெறுநர்"
+
+msgid "Register Mosque"
+msgstr "பள்ளிவாசலை பதிவு செய்யுங்கள்"
+
+msgid "Register Your Mosque"
+msgstr "உங்கள் பள்ளிவாசலை பதிவு செய்யுங்கள்"
+
+msgid "Register a Mosque"
+msgstr "Register a பள்ளிவாசல்"
+
+msgid "Register a mosque and receive a unique mosque identification number after verification."
+msgstr "Register a பள்ளிவாசல் and receive a unique பள்ளிவாசல் identification number after verification."
+
+msgid "Register and Manage Your Mosque"
+msgstr "உங்கள் பள்ளிவாசலை பதிவு செய்து நிர்வகிக்கவும்"
+
+msgid "Register and manage your mosque account and access mosque services."
+msgstr "Register and manage your பள்ளிவாசல் கணக்கு and access பள்ளிவாசல் services."
+
+msgid "Register mosques through a structured online registration process and obtain a unique mosque identification number."
+msgstr "Register பள்ளிவாசல்கள் through a structured online பதிவு process and obtain a unique பள்ளிவாசல் identification number."
+
+msgid "Register new mosques and follow Platform Admin approval status."
+msgstr "Register புதிய பள்ளிவாசல்கள் and follow தளம் நிர்வாகி அனுமதி நிலை."
+
+msgid "Register your mosque through the structured Platform Admin approval workflow."
+msgstr "தள நிர்வாகியின் ஒழுங்கமைக்கப்பட்ட அனுமதி செயல்முறை மூலம் உங்கள் பள்ளிவாசலை பதிவு செய்யுங்கள்."
+
+msgid "Register your mosque, manage its profile and access support services through one secure portal."
+msgstr "உங்கள் பள்ளிவாசலை பதிவு செய்து, அதன் சுயவிவரத்தை நிர்வகித்து, ஒரே பாதுகாப்பான தளத்தில் ஆதரவு சேவைகளைப் பெறுங்கள்."
+
+msgid "Registered mosques will be able to submit, document and track different types of assistance requests through the platform."
+msgstr "Registered பள்ளிவாசல்கள் will be able to submit, document and track different types of assistance கோரிக்கைகள் through the தளம்."
+
+msgid "Registration & Community Details"
+msgstr "பதிவு மற்றும் சமூக விவரங்கள்"
+
+msgid "Registration Details"
+msgstr "பதிவு விவரங்கள்"
+
+msgid "Registration Information"
+msgstr "பதிவு தகவல்"
+
+msgid "Registration Rejected"
+msgstr "பதிவு நிராகரிக்கப்பட்டது"
+
+msgid "Registration Status"
+msgstr "பதிவு நிலை"
+
+msgid "Registration status updated to %(status)s."
+msgstr "பதிவு நிலை updated to %(நிலை)s."
+
+msgid "Reject Registration"
+msgstr "பதிவை நிராகரிக்கவும்"
+
+msgid "Reject Request"
+msgstr "கோரிக்கையை நிராகரிக்கவும்"
+
+msgid "Rejected"
+msgstr "நிராகரிக்கப்பட்டது"
+
+msgid "Religious & Capacity Details"
+msgstr "Religious & Capacity விவரங்கள்"
+
+msgid "Religious / Educational Program"
+msgstr "மத / கல்வித் திட்டம்"
+
+msgid "Remember me"
+msgstr "என்னை நினைவில் கொள்ளவும்"
+
+msgid "Remove"
+msgstr "அகற்று"
+
+msgid "Remove Assignment?"
+msgstr "Remove Assignment?"
+
+msgid "Remove District Officer Assignment"
+msgstr "Remove மாவட்டம் அதிகாரி Assignment"
+
+msgid "Renovation / Repair"
+msgstr "புதுப்பிப்பு / பழுதுபார்ப்பு"
+
+msgid "Request"
+msgstr "கோரிக்கை"
+
+msgid "Request Additional Information / Documents"
+msgstr "கூடுதல் தகவல் / ஆவணங்களை கோருக"
+
+msgid "Request History"
+msgstr "கோரிக்கை வரலாறு"
+
+msgid "Request Queue"
+msgstr "கோரிக்கை வரிசை"
+
+msgid "Request Status"
+msgstr "கோரிக்கை நிலை"
+
+msgid "Request Support"
+msgstr "ஆதரவு கோருங்கள்"
+
+msgid "Request Support When Your Mosque Needs Assistance"
+msgstr "உங்கள் பள்ளிவாசலுக்கு உதவி தேவைப்படும் போது ஆதரவு கோருங்கள்"
+
+msgid "Request Tracking"
+msgstr "கோரிக்கை கண்காணிப்பு"
+
+msgid "Request and Track Support"
+msgstr "ஆதரவை கோரி கண்காணிக்கவும்"
+
+msgid "Request assistance for construction, salaries, maintenance, utilities and other requirements."
+msgstr "கோரிக்கை assistance for construction, salaries, maintenance, utilities and other requirements."
+
+msgid "Request missing information or supporting documents and track resubmissions."
+msgstr "கோரிக்கை missing தகவல் or supporting ஆவணங்கள் and track resubmissions."
+
+msgid "Requested Amount"
+msgstr "கோரப்பட்ட தொகை"
+
+msgid "Requested amount (LKR)"
+msgstr "கோரப்பட்ட தொகை (LKR)"
+
+msgid "Requested amount cannot be negative."
+msgstr "Requested தொகை cannot be negative."
+
+msgid "Resubmit"
+msgstr "மீண்டும் சமர்ப்பிக்கவும்"
+
+msgid "Resubmit Request"
+msgstr "கோரிக்கையை மீண்டும் சமர்ப்பிக்கவும்"
+
+msgid "Return to My Dashboard"
+msgstr "என் கட்டுப்பாட்டு பலகைக்கு திரும்பவும்"
+
+msgid "Review"
+msgstr "மதிப்பாய்வு"
+
+msgid "Review / Request Additional Information"
+msgstr "மதிப்பாய்வு / கோரிக்கை கூடுதல் தகவல்"
+
+msgid "Review History"
+msgstr "மதிப்பாய்வு வரலாறு"
+
+msgid "Review additional-information requests, approvals and support-request updates."
+msgstr "மதிப்பாய்வு கூடுதல்-தகவல் கோரிக்கைகள், approvals and ஆதரவு-கோரிக்கை updates."
+
+msgid "Review and process mosque assistance requests across the platform."
+msgstr "தளம் முழுவதும் பள்ளிவாசல் உதவி கோரிக்கைகளை மதிப்பாய்வு செய்து செயலாக்கவும்."
+
+msgid "Review and process mosque support requests."
+msgstr "மதிப்பாய்வு and process பள்ளிவாசல் ஆதரவு கோரிக்கைகள்."
+
+msgid "Review and process submitted mosque support requests."
+msgstr "சமர்ப்பிக்கப்பட்ட பள்ளிவாசல் ஆதரவு கோரிக்கைகளை மதிப்பாய்வு செய்து செயலாக்கவும்."
+
+msgid "Review mosque registrations submitted for Platform Admin approval. Approved mosques are published in the public mosque directory."
+msgstr "தள நிர்வாகி அனுமதிக்காக சமர்ப்பிக்கப்பட்ட பள்ளிவாசல் பதிவுகளை மதிப்பாய்வு செய்யவும். அனுமதிக்கப்பட்ட பள்ளிவாசல்கள் பொது பள்ளிவாசல் அடைவில் வெளியிடப்படும்."
+
+msgid "Review notes"
+msgstr "மதிப்பாய்வு குறிப்புகள்"
+
+msgid "Review notes are required when rejecting a mosque registration."
+msgstr "மதிப்பாய்வு notes are தேவை when rejecting a பள்ளிவாசல் பதிவு."
+
+msgid "Review notes are required when rejecting a mosque registration. Approval notes are optional."
+msgstr "மதிப்பாய்வு notes are தேவை when rejecting a பள்ளிவாசல் பதிவு. அனுமதி notes are optional."
+
+msgid "Review submitted and resubmitted mosque support requests."
+msgstr "மதிப்பாய்வு சமர்ப்பிக்கப்பட்டது and resubmitted பள்ளிவாசல் ஆதரவு கோரிக்கைகள்."
+
+msgid "Role"
+msgstr "பங்கு"
+
+msgid "Role Assignment"
+msgstr "பங்கு ஒதுக்கீடு"
+
+msgid "Role Dashboard"
+msgstr "பங்கு கட்டுப்பாட்டு பலகம்"
+
+msgid "Role Workspace"
+msgstr "பங்கு பணிப்பகுதி"
+
+msgid "SMS / Mobile"
+msgstr "SMS / Mobile"
+
+msgid "Salary Support"
+msgstr "சம்பள உதவி"
+
+msgid "Save"
+msgstr "சேமி"
+
+msgid "Save Assignment"
+msgstr "சேமி Assignment"
+
+msgid "Save Changes"
+msgstr "மாற்றங்களை சேமிக்கவும்"
+
+msgid "Save Platform Admin Decision"
+msgstr "தள நிர்வாகி முடிவை சேமிக்கவும்"
+
+msgid "Save Profile"
+msgstr "சுயவிவரத்தை சேமிக்கவும்"
+
+msgid "Save User"
+msgstr "பயனரை சேமிக்கவும்"
+
+msgid "Search"
+msgstr "தேடுக"
+
+msgid "Search Directory"
+msgstr "அடைவில் தேடவும்"
+
+msgid "Search approved mosque records across Sri Lanka."
+msgstr "தேடுக அனுமதிக்கப்பட்டது பள்ளிவாசல் records across Sri Lanka."
+
+msgid "Search by code, name or parent location"
+msgstr "தேடுக by code, பெயர் or parent location"
+
+msgid "Search mosque"
+msgstr "தேடுக பள்ளிவாசல்"
+
+msgid "Search name, username, email or mobile"
+msgstr "தேடுக பெயர், username, மின்னஞ்சல் or mobile"
+
+msgid "Search request number, mosque or title"
+msgstr "கோரிக்கை எண், பள்ளிவாசல் அல்லது தலைப்பை தேடுக"
+
+msgid "Search request, mosque or district"
+msgstr "கோரிக்கை, பள்ளிவாசல் அல்லது மாவட்டத்தை தேடுக"
+
+msgid "Search request, mosque, user or recipient"
+msgstr "கோரிக்கை, பள்ளிவாசல், பயனர் அல்லது பெறுநரை தேடுக"
+
+msgid "Search verified mosques using geographical and administrative information."
+msgstr "தேடுக verified பள்ளிவாசல்கள் using geographical and administrative தகவல்."
+
+msgid "Secretary"
+msgstr "செயலாளர்"
+
+msgid "Secure Platform Access"
+msgstr "பாதுகாப்பான தள அணுகல்"
+
+msgid "Secure role-based portals"
+msgstr "பாதுகாப்பான பங்கு அடிப்படையிலான தளங்கள்"
+
+msgid "Select the Divisional Secretariat before selecting a GN Division."
+msgstr "Select the Divisional Secretariat before selecting a GN Division."
+
+msgid "Select the Sri Lanka administrative hierarchy for this mosque."
+msgstr "Select the Sri Lanka administrative hierarchy for this பள்ளிவாசல்."
+
+msgid "Select the facilities currently available at the mosque."
+msgstr "Select the வசதிகள் currently available at the பள்ளிவாசல்."
+
+msgid "Send Message"
+msgstr "செய்தி அனுப்புக"
+
+msgid "Send Us a Message"
+msgstr "எங்களுக்கு செய்தி அனுப்புங்கள்"
+
+msgid "Send a Message"
+msgstr "செய்தி அனுப்புங்கள்"
+
+msgid "Sent"
+msgstr "அனுப்பப்பட்டது"
+
+msgid "Services"
+msgstr "சேவைகள்"
+
+msgid "Services for Mosques and Communities"
+msgstr "பள்ளிவாசல்கள் மற்றும் சமூகங்களுக்கான சேவைகள்"
+
+msgid "Serving Mosques Across Sri Lanka"
+msgstr "இலங்கை முழுவதும் பள்ளிவாசல்களுக்கு சேவை"
+
+msgid "Serving mosque communities across all districts."
+msgstr "அனைத்து மாவட்டங்களிலும் பள்ளிவாசல் சமூகங்களுக்கு சேவை செய்கிறோம்."
+
+msgid "Show or hide password"
+msgstr "கடவுச்சொல்லை காட்டு அல்லது மறை"
+
+msgid "Sign In"
+msgstr "உள்நுழைக"
+
+msgid "Sign in with your username or email address."
+msgstr "Sign in with your username or மின்னஞ்சல் முகவரி."
+
+msgid "Signed in as"
+msgstr "Signed in as"
+
+msgid "Simple Workflows, Clear Responsibilities"
+msgstr "எளிய நடைமுறைகள், தெளிவான பொறுப்புகள்"
+
+msgid "Skipped"
+msgstr "தவிர்க்கப்பட்டது"
+
+msgid "Sri Lanka"
+msgstr "இலங்கை"
+
+msgid "Sri Lanka Location Management"
+msgstr "இலங்கை இட மேலாண்மை"
+
+msgid "Sri Lanka Location Master Data"
+msgstr "இலங்கை இட அடிப்படைத் தரவு"
+
+msgid "Sri Lanka Mosque Platform"
+msgstr "இலங்கை பள்ளிவாசல் தளம்"
+
+msgid "Start Registration"
+msgstr "பதிவை தொடங்குங்கள்"
+
+msgid "Start a new mosque registration to create your mosque workspace."
+msgstr "Start a புதிய பள்ளிவாசல் பதிவு to உருவாக்கு your பள்ளிவாசல் workspace."
+
+msgid "Status"
+msgstr "நிலை"
+
+msgid "Status History"
+msgstr "நிலை வரலாறு"
+
+msgid "Strengthen mosques through accessible technology, support and transparent services."
+msgstr "எளிதில் அணுகக்கூடிய தொழில்நுட்பம், ஆதரவு மற்றும் வெளிப்படையான சேவைகள் மூலம் பள்ளிவாசல்களை வலுப்படுத்துதல்."
+
+msgid "Subject"
+msgstr "தலைப்பு"
+
+msgid "Submit"
+msgstr "சமர்ப்பிக்கவும்"
+
+msgid "Submit Request"
+msgstr "கோரிக்கையை சமர்ப்பிக்கவும்"
+
+msgid "Submit a Support Request"
+msgstr "ஆதரவு கோரிக்கையை சமர்ப்பிக்கவும்"
+
+msgid "Submit and track construction, salary, maintenance, utility and other assistance requests."
+msgstr "Submit and track construction, salary, maintenance, utility and other assistance கோரிக்கைகள்."
+
+msgid "Submit construction, salary, maintenance and other assistance requests online."
+msgstr "கட்டுமானம், சம்பளம், பராமரிப்பு மற்றும் பிற உதவி கோரிக்கைகளை இணையத்தில் சமர்ப்பிக்கவும்."
+
+msgid "Submit construction, salary, maintenance, financial and other mosque support requests online."
+msgstr "Submit construction, salary, maintenance, financial and other பள்ளிவாசல் ஆதரவு கோரிக்கைகள் online."
+
+msgid "Submit for Platform Approval"
+msgstr "தள நிர்வாகி அனுமதிக்காக சமர்ப்பிக்கவும்"
+
+msgid "Submit this registration for Platform Admin approval?"
+msgstr "Submit this பதிவு for தளம் நிர்வாகி அனுமதி?"
+
+msgid "Submitted"
+msgstr "சமர்ப்பிக்கப்பட்டது"
+
+msgid "Submitted by"
+msgstr "சமர்ப்பிக்கப்பட்டது by"
+
+msgid "Super Admin"
+msgstr "முதன்மை நிர்வாகி"
+
+msgid "Super Admin Dashboard"
+msgstr "முதன்மை நிர்வாகி கட்டுப்பாட்டு பலகம்"
+
+msgid "Support Administration"
+msgstr "ஆதரவு நிர்வாகம்"
+
+msgid "Support Notifications"
+msgstr "ஆதரவு அறிவிப்புகள்"
+
+msgid "Support Officer"
+msgstr "ஆதரவு அதிகாரி"
+
+msgid "Support Officer Dashboard"
+msgstr "ஆதரவு அதிகாரி கட்டுப்பாட்டு பலகம்"
+
+msgid "Support Request"
+msgstr "ஆதரவு கோரிக்கை"
+
+msgid "Support Request Approved"
+msgstr "ஆதரவு கோரிக்கை அனுமதிக்கப்பட்டது"
+
+msgid "Support Request Queue"
+msgstr "ஆதரவு கோரிக்கை வரிசை"
+
+msgid "Support Request Resubmitted"
+msgstr "ஆதரவு கோரிக்கை மீண்டும் சமர்ப்பிக்கப்பட்டது"
+
+msgid "Support Request Submitted"
+msgstr "ஆதரவு கோரிக்கை சமர்ப்பிக்கப்பட்டது"
+
+msgid "Support Requested"
+msgstr "கோரப்பட்ட ஆதரவு"
+
+msgid "Support Requests"
+msgstr "ஆதரவு கோரிக்கைகள்"
+
+msgid "Support Requests Assigned"
+msgstr "ஆதரவு கோரிக்கைகள் ஒதுக்கப்பட்டது"
+
+msgid "Support Requests Created"
+msgstr "ஆதரவு கோரிக்கைகள் Created"
+
+msgid "Support Reviews"
+msgstr "ஆதரவு Reviews"
+
+msgid "Support request cancelled."
+msgstr "ஆதரவு கோரிக்கை ரத்து செய்யப்பட்டது."
+
+msgid "Support request details updated."
+msgstr "ஆதரவு கோரிக்கை விவரங்கள் updated."
+
+msgid "Support request document removed."
+msgstr "ஆதரவு கோரிக்கை document removed."
+
+msgid "Support request draft created. Add supporting documents if needed, then submit it."
+msgstr "ஆதரவு கோரிக்கை draft created. சேர் supporting ஆவணங்கள் if needed, then submit it."
+
+msgid "Support request guidance"
+msgstr "ஆதரவு கோரிக்கை வழிகாட்டல்"
+
+msgid "Support request status updated to %(status)s."
+msgstr "ஆதரவு கோரிக்கை நிலை updated to %(நிலை)s."
+
+msgid "Support request submitted successfully."
+msgstr "ஆதரவு கோரிக்கை சமர்ப்பிக்கப்பட்டது successfully."
+
+msgid "Support requested"
+msgstr "ஆதரவு requested"
+
+msgid "Support requests can only be created for approved mosques."
+msgstr "ஆதரவு கோரிக்கைகள் can only be created for அனுமதிக்கப்பட்டது பள்ளிவாசல்கள்."
+
+msgid "Supporting Documents"
+msgstr "ஆதார ஆவணங்கள்"
+
+msgid "Supporting Mosques • Strengthening Communities"
+msgstr "பள்ளிவாசல்களுக்கு ஆதரவு • சமூகங்களை வலுப்படுத்துதல்"
+
+msgid "Supporting document uploaded."
+msgstr "Supporting document uploaded."
+
+msgid "Tamil Name"
+msgstr "தமிழ் பெயர்"
+
+msgid "Telephone"
+msgstr "தொலைபேசி"
+
+msgid "Tell Us How We Can Help"
+msgstr "நாங்கள் எவ்வாறு உதவலாம் என்பதை தெரிவிக்கவும்"
+
+msgid "The approved identity and registered location remain protected from normal portal edits."
+msgstr "The அனுமதிக்கப்பட்டது identity and registered location remain protected from normal portal edits."
+
+msgid "The document must be 10 MB or smaller."
+msgstr "The document must be 10 MB or smaller."
+
+msgid "The maximum file size is 10 MB."
+msgstr "அதிகபட்ச கோப்பு அளவு 10 MB ஆகும்."
+
+msgid "The monitor displays up to the latest 250 matching delivery attempts."
+msgstr "The monitor displays up to the latest 250 matching delivery attempts."
+
+msgid "The operational mosque portal becomes available after Platform Admin approval."
+msgstr "The operational பள்ளிவாசல் portal becomes available after தளம் நிர்வாகி அனுமதி."
+
+msgid "The original mosque administrator cannot be removed from this registration."
+msgstr "The original பள்ளிவாசல் administrator cannot be removed from this பதிவு."
+
+msgid "The platform will help mosque administrators maintain accurate mosque information and request assistance through transparent digital processes."
+msgstr "The தளம் will help பள்ளிவாசல் administrators maintain accurate பள்ளிவாசல் தகவல் and கோரிக்கை assistance through transparent digital processes."
+
+msgid "The selected Divisional Secretariat does not belong to the selected district."
+msgstr "The selected Divisional Secretariat does not belong to the selected மாவட்டம்."
+
+msgid "The selected GN Division does not belong to the selected Divisional Secretariat."
+msgstr "The selected GN Division does not belong to the selected Divisional Secretariat."
+
+msgid "The selected district does not belong to the selected province."
+msgstr "The selected மாவட்டம் does not belong to the selected மாகாணம்."
+
+msgid "The two password fields do not match."
+msgstr "The two password fields do not match."
+
+msgid "These operational details can be updated without changing the approved registration identity or location."
+msgstr "These operational விவரங்கள் can be updated without changing the அனுமதிக்கப்பட்டது பதிவு identity or location."
+
+msgid "This District Officer does not have an active district assignment."
+msgstr "This மாவட்டம் அதிகாரி does not have an செயலில் மாவட்டம் assignment."
+
+msgid "This record cannot be deleted because other records depend on it. Deactivate it instead."
+msgstr "This record cannot be deleted because other records depend on it. Deactivate it instead."
+
+msgid "This registration has already reached a final status."
+msgstr "This பதிவு has already reached a final நிலை."
+
+msgid "This status change is not allowed."
+msgstr "This நிலை change is not allowed."
+
+msgid "Time"
+msgstr "நேரம்"
+
+msgid "To improve communication, administration and support services for mosques using secure and accessible digital technology."
+msgstr "To improve communication, administration and ஆதரவு services for பள்ளிவாசல்கள் using secure and accessible digital technology."
+
+msgid "Together for Stronger Mosques in Sri Lanka"
+msgstr "இலங்கையில் வலிமையான பள்ளிவாசல்களுக்காக ஒன்றிணைவோம்"
+
+msgid "Toggle navigation"
+msgstr "Toggle navigation"
+
+msgid "Track Request"
+msgstr "கோரிக்கையை கண்காணிக்கவும்"
+
+msgid "Track Requests"
+msgstr "கோரிக்கைகளை கண்காணிக்கவும்"
+
+msgid "Track mosque registration and assistance requests through transparent status updates."
+msgstr "Track பள்ளிவாசல் பதிவு and assistance கோரிக்கைகள் through transparent நிலை updates."
+
+msgid "Transparent support workflows"
+msgstr "வெளிப்படையான ஆதரவு நடைமுறைகள்"
+
+msgid "Treasurer"
+msgstr "பொருளாளர்"
+
+msgid "Trustee"
+msgstr "அறங்காவலர்"
+
+msgid "Try another search term or district."
+msgstr "Try another தேடுக term or மாவட்டம்."
+
+msgid "Under Review"
+msgstr "மதிப்பாய்வில்"
+
+msgid "United for Stronger Communities"
+msgstr "வலுவான சமூகங்களுக்காக ஒன்றிணைவோம்"
+
+msgid "Universal Login"
+msgstr "பொது உள்நுழைவு"
+
+msgid "Update Status"
+msgstr "நிலையை புதுப்பிக்கவும்"
+
+msgid "Updated"
+msgstr "புதுப்பிக்கப்பட்டது"
+
+msgid "Updates requiring your attention and recent support-request decisions."
+msgstr "உங்கள் கவனம் தேவைப்படும் புதுப்பிப்புகள் மற்றும் சமீபத்திய ஆதரவு கோரிக்கை முடிவுகள்."
+
+msgid "Upload"
+msgstr "பதிவேற்று"
+
+msgid "Upload Document"
+msgstr "ஆவணத்தை பதிவேற்று"
+
+msgid "Upload Mosque Document"
+msgstr "Upload பள்ளிவாசல் Document"
+
+msgid "Upload Support Document"
+msgstr "ஆதரவு ஆவணத்தை பதிவேற்று"
+
+msgid "Upload Supporting Document"
+msgstr "ஆதார ஆவணத்தை பதிவேற்று"
+
+msgid "Upload a PDF, JPG, JPEG, or PNG file."
+msgstr "Upload a PDF, JPG, JPEG, or PNG file."
+
+msgid "Upload and securely manage mosque registration and support documents."
+msgstr "Upload and securely manage பள்ளிவாசல் பதிவு and ஆதரவு ஆவணங்கள்."
+
+msgid "Urgent"
+msgstr "அவசரம்"
+
+msgid "User"
+msgstr "பயனர்"
+
+msgid "User %(username)s created successfully."
+msgstr "பயனர் %(username)s created successfully."
+
+msgid "User %(username)s updated successfully."
+msgstr "பயனர் %(username)s updated successfully."
+
+msgid "User Access"
+msgstr "பயனர் Access"
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Username or email"
+msgstr "பயனர் பெயர் அல்லது மின்னஞ்சல்"
+
+msgid "Users & Officers"
+msgstr "பயனர்கள் மற்றும் அதிகாரிகள்"
+
+msgid "Utilities"
+msgstr "அத்தியாவசிய சேவைகள்"
+
+msgid "Verification"
+msgstr "சரிபார்ப்பு"
+
+msgid "Verified"
+msgstr "சரிபார்க்கப்பட்டது"
+
+msgid "Verified mosque information"
+msgstr "சரிபார்க்கப்பட்ட பள்ளிவாசல் தகவல்கள்"
+
+msgid "View"
+msgstr "பார்க்க"
+
+msgid "View All Mosques"
+msgstr "அனைத்து பள்ளிவாசல்களையும் பார்க்கவும்"
+
+msgid "View All Notifications"
+msgstr "அனைத்து அறிவிப்புகளையும் பார்க்கவும்"
+
+msgid "View Failures"
+msgstr "பார்க்க Failures"
+
+msgid "View Mosque"
+msgstr "பார்க்க பள்ளிவாசல்"
+
+msgid "View Mosque Profile"
+msgstr "பள்ளிவாசல் சுயவிவரத்தைப் பார்க்கவும்"
+
+msgid "View Notifications"
+msgstr "அறிவிப்புகளைப் பார்க்கவும்"
+
+msgid "View Public Profile"
+msgstr "பொது சுயவிவரத்தை பார்க்கவும்"
+
+msgid "View Registration Record"
+msgstr "பதிவு பதிவை பார்க்கவும்"
+
+msgid "View Support Requests"
+msgstr "ஆதரவு கோரிக்கைகளை பார்க்கவும்"
+
+msgid "View approved mosque operational profiles where you have active staff access."
+msgstr "பார்க்க அனுமதிக்கப்பட்டது பள்ளிவாசல் operational profiles where you have செயலில் பணியாளர் access."
+
+msgid "View committee contacts and mosque documents shared through the portal."
+msgstr "பார்க்க குழு contacts and பள்ளிவாசல் ஆவணங்கள் shared through the portal."
+
+msgid "View mosque registrations linked to your account."
+msgstr "பார்க்க பள்ளிவாசல் registrations linked to your கணக்கு."
+
+msgid "View support requests for mosques where you have active staff access."
+msgstr "பார்க்க ஆதரவு கோரிக்கைகள் for பள்ளிவாசல்கள் where you have செயலில் பணியாளர் access."
+
+msgid "Visit Website"
+msgstr "இணையதளத்தைப் பார்வையிடவும்"
+
+msgid "Water / Electricity / Utilities"
+msgstr "நீர் / மின்சாரம் / அத்தியாவசிய சேவைகள்"
+
+msgid "Water, electricity and essential facility issues."
+msgstr "Water, electricity and essential வசதி issues."
+
+msgid "We Are Here to Help"
+msgstr "உதவ நாங்கள் இருக்கிறோம்"
+
+msgid "We connect mosque administrators with practical digital tools for registration, public information, support requests and transparent administration across Sri Lanka."
+msgstr "பதிவு, பொது தகவல், ஆதரவு கோரிக்கைகள் மற்றும் வெளிப்படையான நிர்வாகத்திற்கான நடைமுறை டிஜிட்டல் கருவிகள் மூலம் இலங்கை முழுவதும் பள்ளிவாசல் நிர்வாகிகளை இணைக்கிறோம்."
+
+msgid "Website"
+msgstr "இணையதளம்"
+
+msgid "Welcome Back"
+msgstr "மீண்டும் வரவேற்கிறோம்"
+
+msgid "Welcome back, %(name)s."
+msgstr "மீண்டும் வரவேற்கிறோம், %(name)s."
+
+msgid "Wheelchair Access"
+msgstr "சக்கர நாற்காலி அணுகல்"
+
+msgid "Who We Are"
+msgstr "நாங்கள் யார்"
+
+msgid "Women Capacity"
+msgstr "பெண்கள் கொள்ளளவு"
+
+msgid "Women Prayer Area"
+msgstr "பெண்கள் தொழுகைப் பகுதி"
+
+msgid "Write your message here"
+msgstr "உங்கள் செய்தியை இங்கே எழுதுங்கள்"
+
+msgid "Wudu Facilities"
+msgstr "வுழூ வசதிகள்"
+
+msgid "You cannot assign this role."
+msgstr "You cannot assign this பங்கு."
+
+msgid "You have been signed out successfully."
+msgstr "நீங்கள் வெற்றிகரமாக வெளியேறிவிட்டீர்கள்."
+
+msgid "Your account does not have permission to open this workspace."
+msgstr "இந்த பணிப்பகுதியை திறக்க உங்கள் கணக்கிற்கு அனுமதி இல்லை."
+
+msgid "Your message has been sent successfully. Our team will contact you soon."
+msgstr "உங்கள் செய்தி வெற்றிகரமாக அனுப்பப்பட்டது. எங்கள் குழு விரைவில் உங்களை தொடர்பு கொள்ளும்."
+
+msgid "Your message will be sent to the platform support team."
+msgstr "உங்கள் செய்தி தள ஆதரவு குழுவுக்கு அனுப்பப்படும்."
+
+msgid "Your name"
+msgstr "Your பெயர்"
+
+msgid "Your platform account and access information."
+msgstr "Your தளம் கணக்கு and access தகவல்."
+
+msgid "district"
+msgstr "மாவட்டம்"
+
+msgid "district officer assignment"
+msgstr "மாவட்டம் அதிகாரி assignment"
+
+msgid "district officer assignments"
+msgstr "மாவட்டம் அதிகாரி assignments"
+
+msgid "districts"
+msgstr "districts"
+
+msgid "divisional secretariat"
+msgstr "divisional secretariat"
+
+msgid "divisional secretariats"
+msgstr "divisional secretariats"
+
+msgid "email address"
+msgstr "மின்னஞ்சல் முகவரி"
+
+msgid "mosque"
+msgstr "பள்ளிவாசல்"
+
+msgid "mosque operational profile"
+msgstr "பள்ளிவாசல் operational சுயவிவரம்"
+
+msgid "mosque operational profiles"
+msgstr "பள்ளிவாசல் operational profiles"
+
+msgid "mosque review history"
+msgstr "பள்ளிவாசல் மதிப்பாய்வு வரலாறு"
+
+msgid "mosque support request"
+msgstr "பள்ளிவாசல் ஆதரவு கோரிக்கை"
+
+msgid "mosque support requests"
+msgstr "பள்ளிவாசல் ஆதரவு கோரிக்கைகள்"
+
+msgid "mosques"
+msgstr "பள்ளிவாசல்கள்"
+
+msgid "province"
+msgstr "மாகாணம்"
+
+msgid "provinces"
+msgstr "provinces"
+
+msgid "results"
+msgstr "முடிவுகள்"
+
+msgid "support notification"
+msgstr "ஆதரவு அறிவிப்பு"
+
+msgid "support notification deliveries"
+msgstr "ஆதரவு அறிவிப்பு deliveries"
+
+msgid "support notification delivery"
+msgstr "ஆதரவு அறிவிப்பு delivery"
+
+msgid "support notifications"
+msgstr "ஆதரவு அறிவிப்புகள்"
+
+msgid "support request history"
+msgstr "ஆதரவு கோரிக்கை வரலாறு"
+
+msgid "user"
+msgstr "பயனர்"
+
+msgid "users"
+msgstr "பயனர்கள்"

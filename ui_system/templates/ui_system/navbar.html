@@ -1,0 +1,66 @@
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<header>
+    <div class="top-bar py-2">
+        <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div class="small">
+                <i class="bi bi-envelope me-1"></i> info@mosques.lk
+                <span class="mx-2">|</span>
+                <i class="bi bi-telephone me-1"></i> +94 XX XXX XXXX
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                {% if request.user.is_authenticated %}
+                    <span class="small d-none d-md-inline"><i class="bi bi-person-check me-1"></i>{{ request.user.username }}</span>
+                {% endif %}
+                <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.path }}">
+                    <select name="language" class="form-select form-select-sm" onchange="this.form.submit()" aria-label="{% trans 'Language' %}">
+                        <option value="en" {% if CURRENT_LANGUAGE == "en" %}selected{% endif %}>English</option>
+                        <option value="ta" {% if CURRENT_LANGUAGE == "ta" %}selected{% endif %}>தமிழ்</option>
+                        <option value="ar" {% if CURRENT_LANGUAGE == "ar" %}selected{% endif %}>العربية</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark mosque-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'core:home' %}">
+                <span class="brand-icon me-2"><i class="bi bi-moon-stars-fill"></i></span>
+                <span>
+                    <strong>{% trans "Mosques Sri Lanka" %}</strong>
+                    <small class="brand-subtitle d-block">{% trans "Mosque Management & Support Platform" %}</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-label="{% trans 'Toggle navigation' %}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'core:about' %}">{% trans "About Us" %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'core:services' %}">{% trans "Services" %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'core:contact' %}">{% trans "Contact Us" %}</a></li>
+
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item ms-lg-2 my-2 my-lg-0"><a href="{% url 'dashboard:home' %}" class="btn btn-outline-light btn-sm px-3"><i class="bi bi-grid me-1"></i>{% trans "Dashboard" %}</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <form method="post" action="{% url 'accounts:logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn mosque-support-btn btn-sm px-3"><i class="bi bi-box-arrow-right me-1"></i>{% trans "Logout" %}</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item ms-lg-3 my-2 my-lg-0"><a href="#" class="btn btn-outline-light btn-sm px-3"><i class="bi bi-building-add me-1"></i>{% trans "Register Mosque" %}</a></li>
+                        <li class="nav-item ms-lg-2"><a href="{% url 'accounts:login' %}" class="btn mosque-support-btn btn-sm px-3"><i class="bi bi-box-arrow-in-right me-1"></i>{% trans "Login" %}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,6 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Access Denied" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+{% block content %}
+<section class="premium-error-section"><div class="container"><div class="premium-error-card mx-auto"><span class="premium-error-icon"><i class="bi bi-shield-exclamation"></i></span><span class="public-section-label">403</span><h1>{% trans "Access Denied" %}</h1><p>{% trans "Your account does not have permission to open this workspace." %}</p><div class="d-flex justify-content-center flex-wrap gap-2"><a href="{% url 'dashboard:home' %}" class="btn btn-primary-custom">{% trans "Return to My Dashboard" %}</a><a href="{% url 'core:home' %}" class="btn btn-outline-success">{% trans "Back to Home" %}</a></div></div></div></section>
+{% endblock %}

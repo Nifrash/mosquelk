@@ -1,0 +1,256 @@
+{% extends "ui_system/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Home" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<section class="home-hero" id="home-top">
+    <div class="home-hero-pattern" aria-hidden="true"></div>
+    <div class="container position-relative home-hero-container">
+        <div class="row align-items-center min-vh-home-hero">
+            <div class="col-xl-6 col-lg-7">
+                <div class="home-hero-copy">
+                    <span class="home-eyebrow">
+                        <i class="bi bi-stars"></i>
+                        {% trans "Supporting Mosques • Strengthening Communities" %}
+                    </span>
+
+                    <h1 class="home-display-title">
+                        {% trans "Together for Stronger Mosques in Sri Lanka" %}
+                    </h1>
+
+                    <p class="home-hero-lead">
+                        {% trans "A unified platform to register, connect, support and develop mosques across Sri Lanka." %}
+                    </p>
+
+                    <div class="home-hero-actions">
+                        <a href="{% url 'mosques:create' %}" class="btn home-btn-gold">
+                            <i class="bi bi-building-add"></i>
+                            <span>{% trans "Register Mosque" %}</span>
+                            <i class="bi bi-arrow-right home-action-arrow"></i>
+                        </a>
+                        <a href="{% url 'support_requests:create' %}" class="btn home-btn-outline">
+                            <i class="bi bi-hand-heart"></i>
+                            <span>{% trans "Request Support" %}</span>
+                            <i class="bi bi-arrow-right home-action-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-stats" aria-label="{% trans 'Platform statistics' %}">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-6 col-lg-3 home-stat-col">
+                <div class="home-stat-item">
+                    <span class="home-stat-icon"><i class="bi bi-buildings"></i></span>
+                    <div>
+                        <strong>{{ approved_mosque_count }}</strong>
+                        <span>{% trans "Approved Mosques" %}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 home-stat-col">
+                <div class="home-stat-item">
+                    <span class="home-stat-icon"><i class="bi bi-people-fill"></i></span>
+                    <div>
+                        <strong>{{ mosque_member_count }}</strong>
+                        <span>{% trans "Mosque Portal Members" %}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 home-stat-col">
+                <div class="home-stat-item">
+                    <span class="home-stat-icon"><i class="bi bi-heart-pulse-fill"></i></span>
+                    <div>
+                        <strong>{{ completed_support_count }}</strong>
+                        <span>{% trans "Completed Support Cases" %}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3 home-stat-col">
+                <div class="home-stat-item">
+                    <span class="home-stat-icon"><i class="bi bi-geo-alt-fill"></i></span>
+                    <div>
+                        <strong>{{ district_count }}</strong>
+                        <span>{% trans "Districts Covered" %}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-section home-services-section">
+    <div class="container">
+        <div class="home-section-heading text-center">
+            <span class="home-section-kicker">{% trans "Our Services" %}</span>
+            <h2>{% trans "How We Serve Our Mosques" %}</h2>
+            <p>{% trans "Practical digital services for mosque registration, management, support and transparent follow-up." %}</p>
+        </div>
+
+        <div class="row g-3 g-xl-4 mt-4">
+            <div class="col-md-6 col-xl-4">
+                <a href="{% url 'mosques:create' %}" class="home-service-card">
+                    <span class="home-service-icon home-service-icon-green"><i class="bi bi-building-add"></i></span>
+                    <h3>{% trans "Mosque Registration" %}</h3>
+                    <p>{% trans "Register your mosque through the structured Platform Admin approval workflow." %}</p>
+                    <span class="home-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <a href="{% url 'support_requests:create' %}" class="home-service-card">
+                    <span class="home-service-icon home-service-icon-gold"><i class="bi bi-hand-heart"></i></span>
+                    <h3>{% trans "Mosque Support" %}</h3>
+                    <p>{% trans "Submit construction, salary, maintenance and other assistance requests online." %}</p>
+                    <span class="home-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <a href="{% url 'mosques:directory' %}" class="home-service-card">
+                    <span class="home-service-icon home-service-icon-green"><i class="bi bi-map"></i></span>
+                    <h3>{% trans "Mosque Directory" %}</h3>
+                    <p>{% trans "Discover Platform Admin-approved mosques across Sri Lanka." %}</p>
+                    <span class="home-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <a href="{% url 'mosques:my_mosques' %}" class="home-service-card">
+                    <span class="home-service-icon home-service-icon-gold"><i class="bi bi-window-sidebar"></i></span>
+                    <h3>{% trans "Mosque Portal" %}</h3>
+                    <p>{% trans "Manage public profile, committee information, documents and mosque staff access." %}</p>
+                    <span class="home-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <a href="{% url 'support_requests:my_requests' %}" class="home-service-card">
+                    <span class="home-service-icon home-service-icon-green"><i class="bi bi-clock-history"></i></span>
+                    <h3>{% trans "Request Tracking" %}</h3>
+                    <p>{% trans "Follow every support-request status update and additional-information request." %}</p>
+                    <span class="home-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <a href="{% url 'core:contact' %}" class="home-service-card">
+                    <span class="home-service-icon home-service-icon-gold"><i class="bi bi-chat-square-heart"></i></span>
+                    <h3>{% trans "Community Assistance" %}</h3>
+                    <p>{% trans "Contact the platform team and access guidance for mosque services." %}</p>
+                    <span class="home-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-section home-about-section">
+    <div class="container">
+        <div class="home-about-shell">
+            <div class="row g-0 align-items-stretch">
+                <div class="col-lg-5">
+                    <div class="home-about-photo" role="img" aria-label="{% trans 'Mosque community' %}"></div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="home-about-content">
+                        <span class="home-section-kicker">{% trans "About Our Platform" %}</span>
+                        <h2>{% trans "Building Stronger Mosques for Stronger Communities" %}</h2>
+                        <p>
+                            {% trans "We connect mosque administrators with practical digital tools for registration, public information, support requests and transparent administration across Sri Lanka." %}
+                        </p>
+                        <a href="{% url 'core:about' %}" class="btn home-btn-green">
+                            {% trans "Learn More About Us" %}
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                        <div class="home-values-grid">
+                            <div class="home-value-item">
+                                <span><i class="bi bi-bullseye"></i></span>
+                                <div>
+                                    <h3>{% trans "Our Mission" %}</h3>
+                                    <p>{% trans "Strengthen mosques through accessible technology, support and transparent services." %}</p>
+                                </div>
+                            </div>
+                            <div class="home-value-item">
+                                <span><i class="bi bi-eye"></i></span>
+                                <div>
+                                    <h3>{% trans "Our Vision" %}</h3>
+                                    <p>{% trans "A connected national network of well-managed mosques serving their communities." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-section home-directory-section">
+    <div class="container">
+        <div class="home-section-heading home-heading-row">
+            <div>
+                <span class="home-section-kicker">{% trans "Mosque Directory" %}</span>
+                <h2>{% trans "Explore Approved Mosques Across Sri Lanka" %}</h2>
+            </div>
+            <a href="{% url 'mosques:directory' %}" class="home-text-link">
+                {% trans "View All Mosques" %}
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        {% if featured_mosques %}
+            <div class="row g-4 mt-2">
+                {% for mosque in featured_mosques %}
+                    <div class="col-md-6 col-xl-3">
+                        <a href="{% url 'mosques:public_detail' mosque.mosque_id %}" class="home-mosque-card">
+                            <div class="home-mosque-image">
+                                {% if mosque.home_photo_url %}
+                                    <img src="{{ mosque.home_photo_url }}" alt="{{ mosque.localized_name }}">
+                                {% else %}
+                                    <img src="{% static 'img/home/featured-mosque.jpg' %}" alt="{{ mosque.localized_name }}">
+                                {% endif %}
+                            </div>
+                            <div class="home-mosque-body">
+                                <div>
+                                    <h3>{{ mosque.localized_name }}</h3>
+                                    <p><i class="bi bi-geo-alt-fill"></i>{{ mosque.city_or_town }}, {{ mosque.district.localized_name }}</p>
+                                </div>
+                                <span class="home-card-arrow"><i class="bi bi-arrow-right"></i></span>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="home-directory-empty mt-4">
+                <img src="{% static 'img/home/featured-mosque.jpg' %}" alt="{% trans 'Mosque Directory' %}">
+                <div>
+                    <h3>{% trans "Approved mosques will appear here" %}</h3>
+                    <p>{% trans "Once Platform Admin approves mosque registrations, they are published automatically in the public directory." %}</p>
+                    <a href="{% url 'mosques:directory' %}" class="btn home-btn-green">{% trans "Open Mosque Directory" %}</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="home-support-cta">
+    <div class="container">
+        <div class="home-support-cta-inner">
+            <div class="home-support-cta-copy">
+                <span class="home-section-kicker home-section-kicker-light">{% trans "Request Support" %}</span>
+                <h2>{% trans "Does Your Mosque Need Assistance?" %}</h2>
+                <p>{% trans "Approved mosques can submit requests, upload supporting information and track every decision from the mosque portal." %}</p>
+            </div>
+            <a href="{% url 'support_requests:create' %}" class="btn home-btn-gold home-support-cta-btn">
+                <i class="bi bi-send"></i>
+                {% trans "Submit a Support Request" %}
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

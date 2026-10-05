@@ -1,0 +1,64 @@
+{% extends "ui_system/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{ mosque.localized_name }} | {% trans "Mosque Directory" %}{% endblock %}
+{% block content %}
+<section class="mosque-profile-hero">
+    <div class="mosque-profile-cover">
+        {% if mosque.public_photo_url %}<img src="{{ mosque.public_photo_url }}" alt="{{ mosque.localized_name }}">{% else %}<img src="{% static 'img/home/mosque-community.jpg' %}" alt="{{ mosque.localized_name }}">{% endif %}
+        <div class="mosque-profile-overlay"></div>
+    </div>
+    <div class="container mosque-profile-hero-inner">
+        <a href="{% url 'mosques:directory' %}" class="public-back-link"><i class="bi bi-arrow-left"></i>{% trans "Mosque Directory" %}</a>
+        <div class="mosque-profile-title-row">
+            <div>
+                <span class="premium-approved-badge position-static"><i class="bi bi-patch-check-fill"></i>{% trans "Approved Mosque" %}</span>
+                <h1>{{ mosque.localized_name }}</h1>
+                <p>{{ mosque.mosque_id }} · {{ mosque.get_category_display }} · {{ mosque.district.localized_name }}</p>
+            </div>
+            <a href="{% url 'support_requests:create' %}" class="btn btn-premium-gold"><i class="bi bi-hand-heart"></i>{% trans "Request Support" %}</a>
+        </div>
+    </div>
+</section>
+
+<section class="public-section public-soft-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-xl-8">
+                <div class="public-content-card mb-4">
+                    <span class="public-section-label">{% trans "About This Mosque" %}</span>
+                    <h2 class="h3 mt-2">{{ mosque.localized_name }}</h2>
+                    {% if profile and profile.localized_summary %}<p class="public-lead mb-0 mt-3">{{ profile.localized_summary|linebreaksbr }}</p>{% elif mosque.description_en %}<p class="public-lead mb-0 mt-3">{{ mosque.description_en|linebreaksbr }}</p>{% else %}<p class="text-muted mb-0 mt-3">{% trans "Public description has not been added yet." %}</p>{% endif %}
+                </div>
+                <div class="public-content-card">
+                    <div class="public-card-heading"><div><span class="public-section-label">{% trans "Mosque Information" %}</span><h2 class="h3 mt-2">{% trans "Registration & Community Details" %}</h2></div><span class="mosque-id-pill">{{ mosque.mosque_id }}</span></div>
+                    <div class="public-detail-grid">
+                        <div><span>{% trans "English Name" %}</span><strong>{{ mosque.name_en }}</strong></div>
+                        {% if mosque.name_ta %}<div><span>{% trans "Tamil Name" %}</span><strong>{{ mosque.name_ta }}</strong></div>{% endif %}
+                        {% if mosque.name_ar %}<div><span>{% trans "Arabic Name" %}</span><strong>{{ mosque.name_ar }}</strong></div>{% endif %}
+                        <div><span>{% trans "District" %}</span><strong>{{ mosque.district.localized_name }}</strong></div>
+                        {% if mosque.divisional_secretariat %}<div><span>{% trans "Divisional Secretariat" %}</span><strong>{{ mosque.divisional_secretariat.localized_name }}</strong></div>{% endif %}
+                        {% if mosque.gn_division %}<div><span>{% trans "GN Division" %}</span><strong>{{ mosque.gn_division.localized_name }}</strong></div>{% endif %}
+                        {% if mosque.established_year %}<div><span>{% trans "Established" %}</span><strong>{{ mosque.established_year }}</strong></div>{% endif %}
+                        {% if profile and profile.imam_name %}<div><span>{% trans "Imam" %}</span><strong>{{ profile.imam_name }}</strong></div>{% endif %}
+                        {% if profile and profile.jummah_prayer_time %}<div><span>{% trans "Jummah Time" %}</span><strong>{{ profile.jummah_prayer_time|time:"H:i" }}</strong></div>{% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="public-side-card mb-4">
+                    <span class="public-side-icon"><i class="bi bi-geo-alt"></i></span><h3>{% trans "Location & Contact" %}</h3>
+                    <div class="public-contact-list">
+                        <div><i class="bi bi-geo-alt-fill"></i><span>{{ mosque.address_line1 }}{% if mosque.address_line2 %}, {{ mosque.address_line2 }}{% endif %}<br>{{ mosque.city_or_town }}{% if mosque.postal_code %} {{ mosque.postal_code }}{% endif %}</span></div>
+                        <div><i class="bi bi-telephone-fill"></i><span>{% if profile and profile.public_phone %}{{ profile.public_phone }}{% else %}{{ mosque.official_phone }}{% endif %}</span></div>
+                        {% if profile and profile.public_email %}<div><i class="bi bi-envelope-fill"></i><span>{{ profile.public_email }}</span></div>{% elif mosque.official_email %}<div><i class="bi bi-envelope-fill"></i><span>{{ mosque.official_email }}</span></div>{% endif %}
+                        {% if profile and profile.whatsapp_number %}<div><i class="bi bi-whatsapp"></i><span>{{ profile.whatsapp_number }}</span></div>{% endif %}
+                    </div>
+                    {% if mosque.website %}<a class="btn btn-outline-success w-100 mt-3" href="{{ mosque.website }}" target="_blank" rel="noopener"><i class="bi bi-globe me-1"></i>{% trans "Visit Website" %}</a>{% endif %}
+                </div>
+                {% if profile %}<div class="public-side-card"><span class="public-side-icon"><i class="bi bi-stars"></i></span><h3>{% trans "Facilities" %}</h3><div class="premium-facility-list"><span class="{% if profile.has_wudu_facilities %}available{% endif %}"><i class="bi bi-droplet"></i>{% trans "Wudu Facilities" %}</span><span class="{% if profile.has_womens_prayer_area %}available{% endif %}"><i class="bi bi-people"></i>{% trans "Women Prayer Area" %}</span><span class="{% if profile.has_parking %}available{% endif %}"><i class="bi bi-car-front"></i>{% trans "Parking" %}</span><span class="{% if profile.wheelchair_accessible %}available{% endif %}"><i class="bi bi-universal-access"></i>{% trans "Wheelchair Access" %}</span><span class="{% if profile.has_madrasa %}available{% endif %}"><i class="bi bi-book"></i>{% trans "Madrasa" %}</span></div></div>{% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

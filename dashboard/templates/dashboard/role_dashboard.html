@@ -1,0 +1,95 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ dashboard_title }} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+            <div>
+                <span class="dashboard-kicker">{% trans "Role Workspace" %}</span>
+                <h1>{{ dashboard_title }}</h1>
+                <p>{{ dashboard_description }}</p>
+            </div>
+            <div class="dashboard-user-chip">
+                <i class="bi bi-person-circle"></i>
+                <div>
+                    <strong>{{ request.user.get_full_name|default:request.user.username }}</strong>
+                    <small>{{ request.user.get_role_display }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row g-4">
+            {% for title, description, icon in modules %}
+                <div class="col-md-6 col-xl-4">
+                    <div class="dashboard-module h-100">
+                        <div class="dashboard-module-icon"><i class="bi {{ icon }}"></i></div>
+                        <h3>{{ title }}</h3>
+                        <p>{{ description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+
+        {% if support_notifications %}
+            <div class="card border-0 shadow-sm mt-4 support-notification-panel">
+                <div class="card-body p-4">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
+                        <div>
+                            <h3 class="h5 mb-1">
+                                <i class="bi bi-bell me-1"></i>{% trans "Support Notifications" %}
+                                {% if unread_support_notification_count %}
+                                    <span class="badge text-bg-danger ms-1">{{ unread_support_notification_count }}</span>
+                                {% endif %}
+                            </h3>
+                            <p class="text-muted mb-0">{% trans "Updates requiring your attention and recent support-request decisions." %}</p>
+                        </div>
+                        <a href="{% url 'support_requests:notifications' %}" class="btn btn-sm btn-outline-success">{% trans "View All Notifications" %}</a>
+                    </div>
+
+                    <div class="list-group list-group-flush">
+                        {% for notification in support_notifications %}
+                            <a href="{% url 'support_requests:notification_open' notification.pk %}" class="list-group-item list-group-item-action px-0 {% if not notification.is_read %}support-notification-unread{% endif %}">
+                                <div class="d-flex justify-content-between gap-3">
+                                    <div>
+                                        <strong>{{ notification.title }}</strong>
+                                        <p class="mb-1 small text-muted">{{ notification.message|truncatechars:180 }}</p>
+                                        <small>{{ notification.support_request.request_no }} · {{ notification.support_request.mosque.localized_name }}</small>
+                                    </div>
+                                    <small class="text-muted text-nowrap">{{ notification.created_at|date:"Y-m-d H:i" }}</small>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="dashboard-account-bar mt-4">
+            <div>
+                <strong>{% trans "Signed in as" %} {{ request.user.username }}</strong>
+                <span>{{ request.user.email }}</span>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+                {% for action_title, action_url, action_icon in quick_actions %}
+                    <a href="{% url action_url %}" class="btn btn-outline-success">
+                        <i class="bi {{ action_icon }} me-1"></i>{{ action_title }}
+                    </a>
+                {% endfor %}
+                <a href="{% url 'accounts:profile' %}" class="btn btn-outline-success"><i class="bi bi-person me-1"></i>{% trans "My Profile" %}</a>
+                {% if request.user.is_staff %}
+                    <a href="{% url 'admin:index' %}" class="btn btn-primary-custom"><i class="bi bi-shield-lock me-1"></i>{% trans "Administration" %}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

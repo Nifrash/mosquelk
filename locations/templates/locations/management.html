@@ -1,0 +1,72 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Location Management" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container">
+        <span class="dashboard-kicker">{% trans "Platform Administration" %}</span>
+        <h1>{% trans "Sri Lanka Location Management" %}</h1>
+        <p>{% trans "Manage the administrative hierarchy used by mosque registration, officer assignment, search and reporting." %}</p>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        {% include "locations/partials_messages.html" %}
+
+        <div class="row g-4">
+            <div class="col-md-6 col-xl-3">
+                <a class="location-stat-card" href="{% url 'locations:list' 'provinces' %}">
+                    <span>{% trans "Provinces" %}</span>
+                    <strong>{{ province_count }}</strong>
+                    <small>{% trans "Manage province records" %}</small>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a class="location-stat-card" href="{% url 'locations:list' 'districts' %}">
+                    <span>{% trans "Districts" %}</span>
+                    <strong>{{ district_count }}</strong>
+                    <small>{% trans "Manage district records" %}</small>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a class="location-stat-card" href="{% url 'locations:list' 'ds-divisions' %}">
+                    <span>{% trans "DS Divisions" %}</span>
+                    <strong>{{ ds_count }}</strong>
+                    <small>{% trans "Manage Divisional Secretariats" %}</small>
+                </a>
+            </div>
+            <div class="col-md-6 col-xl-3">
+                <a class="location-stat-card" href="{% url 'locations:list' 'gn-divisions' %}">
+                    <span>{% trans "GN Divisions" %}</span>
+                    <strong>{{ gn_count }}</strong>
+                    <small>{% trans "Manage GN Divisions" %}</small>
+                </a>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-body p-4 d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+                <div>
+                    <h4 class="mb-1">{% trans "District Officer Assignments" %}</h4>
+                    <p class="text-muted mb-0">
+                        {% blocktrans with count=assignment_count %}
+                        {{ count }} active district officer assignment(s).
+                        {% endblocktrans %}
+                    </p>
+                </div>
+                <a href="{% url 'locations:officer_assignments' %}" class="btn btn-primary-custom">
+                    <i class="bi bi-person-gear me-1"></i>{% trans "Manage Assignments" %}
+                </a>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-4 mb-0">
+            <i class="bi bi-info-circle me-2"></i>
+            {% trans "Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported from verified official CSV data using the supplied management command." %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "ui_system/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "About Us" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+{% block content %}
+<section class="public-page-hero about-page-hero">
+    <div class="container position-relative">
+        <div class="public-hero-content">
+            <span class="public-eyebrow"><i class="bi bi-moon-stars-fill"></i>{% trans "About the Platform" %}</span>
+            <h1>{% trans "Connecting Mosques, Strengthening Communities" %}</h1>
+            <p>{% trans "A trusted multilingual digital platform supporting mosque administration, transparency and community assistance across Sri Lanka." %}</p>
+            <div class="public-hero-actions">
+                <a href="{% url 'mosques:directory' %}" class="btn btn-premium-gold"><i class="bi bi-buildings"></i>{% trans "Explore Mosques" %}</a>
+                <a href="{% url 'core:services' %}" class="btn btn-premium-outline-light"><i class="bi bi-grid"></i>{% trans "Our Services" %}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="public-stat-band">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-4"><div class="public-stat-item"><i class="bi bi-building-check"></i><div><strong>{{ approved_mosque_count }}</strong><span>{% trans "Approved Mosques" %}</span></div></div></div>
+            <div class="col-4"><div class="public-stat-item"><i class="bi bi-hand-heart"></i><div><strong>{{ completed_support_count }}</strong><span>{% trans "Completed Support Cases" %}</span></div></div></div>
+            <div class="col-4"><div class="public-stat-item"><i class="bi bi-geo-alt-fill"></i><div><strong>{{ district_count }}</strong><span>{% trans "Districts Across Sri Lanka" %}</span></div></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="public-photo-card">
+                    <img src="{% static 'img/home/mosque-community.jpg' %}" alt="{% trans 'Mosque community' %}">
+                    <div class="public-photo-badge"><i class="bi bi-stars"></i>{% trans "Faith • Unity • Service • Community" %}</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <span class="public-section-label">{% trans "Who We Are" %}</span>
+                <h2 class="public-display-title">{% trans "A Central Digital Platform for Sri Lankan Mosques" %}</h2>
+                <p class="public-lead">{% blocktrans %}Mosques Sri Lanka brings mosque registration, administration, support coordination and public information into one secure multilingual platform.{% endblocktrans %}</p>
+                <p>{% blocktrans %}Our goal is to help mosque administrators maintain reliable records, communicate clearly, access assistance and serve their communities through transparent digital processes.{% endblocktrans %}</p>
+                <div class="public-check-grid mt-4">
+                    <div><i class="bi bi-check-circle-fill"></i><span>{% trans "Verified mosque information" %}</span></div>
+                    <div><i class="bi bi-check-circle-fill"></i><span>{% trans "Multilingual access" %}</span></div>
+                    <div><i class="bi bi-check-circle-fill"></i><span>{% trans "Transparent support workflows" %}</span></div>
+                    <div><i class="bi bi-check-circle-fill"></i><span>{% trans "Secure role-based portals" %}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section public-soft-section">
+    <div class="container">
+        <div class="public-section-heading text-center mx-auto">
+            <span class="public-section-label">{% trans "Our Purpose" %}</span>
+            <h2 class="public-display-title">{% trans "Built Around Service, Trust and Community" %}</h2>
+            <p>{% trans "Our platform is designed to make mosque services easier to access, easier to manage and easier to understand." %}</p>
+        </div>
+        <div class="row g-4 mt-2">
+            <div class="col-lg-4"><div class="public-value-card h-100"><span class="public-value-icon"><i class="bi bi-bullseye"></i></span><h3>{% trans "Our Mission" %}</h3><p>{% trans "To improve communication, administration and support services for mosques using secure and accessible digital technology." %}</p></div></div>
+            <div class="col-lg-4"><div class="public-value-card h-100"><span class="public-value-icon"><i class="bi bi-eye"></i></span><h3>{% trans "Our Vision" %}</h3><p>{% trans "A connected mosque community supported by reliable information, transparent administration and modern digital services." %}</p></div></div>
+            <div class="col-lg-4"><div class="public-value-card h-100"><span class="public-value-icon"><i class="bi bi-shield-check"></i></span><h3>{% trans "Our Values" %}</h3><p>{% trans "Faith, unity, service, transparency and responsible stewardship guide every part of the platform." %}</p></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section">
+    <div class="container">
+        <div class="public-cta-panel">
+            <div>
+                <span class="public-section-label text-warning">{% trans "Serving Mosques Across Sri Lanka" %}</span>
+                <h2>{% trans "Ready to connect your mosque to the platform?" %}</h2>
+                <p>{% trans "Register your mosque, manage its profile and access support services through one secure portal." %}</p>
+            </div>
+            <div class="public-cta-actions">
+                <a href="{% url 'mosques:create' %}" class="btn btn-premium-gold">{% trans "Register Mosque" %}</a>
+                <a href="{% url 'accounts:login' %}" class="btn btn-premium-outline-light">{% trans "Portal Login" %}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

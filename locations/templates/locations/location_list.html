@@ -1,0 +1,134 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans "Location Management" %}{% endblock %}
+
+{% block content %}
+<section class="page-header py-5">
+    <div class="container">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
+            <div>
+                <a href="{% url 'locations:management' %}" class="text-white-50 text-decoration-none">
+                    <i class="bi bi-arrow-left me-1"></i>{% trans "Location Management" %}
+                </a>
+                <h1 class="mt-2 mb-0">{{ title }}</h1>
+            </div>
+            <a href="{% url 'locations:add' entity %}" class="btn btn-light">
+                <i class="bi bi-plus-lg me-1"></i>{% trans "Add" %} {{ singular }}
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        {% include "locations/partials_messages.html" %}
+
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <form method="get" class="row g-2 mb-4">
+                    <div class="col-md-9">
+                        <input class="form-control" type="search" name="q" value="{{ query }}" placeholder="{% trans 'Search by code, name or parent location' %}">
+                    </div>
+                    <div class="col-md-3 d-grid d-md-flex gap-2">
+                        <button class="btn btn-primary-custom" type="submit"><i class="bi bi-search me-1"></i>{% trans "Search" %}</button>
+                        {% if query %}
+                            <a class="btn btn-outline-secondary" href="{% url 'locations:list' entity %}">{% trans "Clear" %}</a>
+                        {% endif %}
+                    </div>
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table align-middle location-table">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Code" %}</th>
+                                <th>{% trans "Name" %}</th>
+
+                                {% if entity == "districts" %}
+                                    <th>{% trans "Province" %}</th>
+                                {% elif entity == "ds-divisions" %}
+                                    <th>{% trans "District" %}</th>
+                                {% elif entity == "gn-divisions" %}
+                                    <th>{% trans "Divisional Secretariat" %}</th>
+                                    <th>{% trans "District" %}</th>
+                                {% endif %}
+
+                                <th>{% trans "Status" %}</th>
+                                <th class="text-end">{% trans "Actions" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for obj in page_obj %}
+                                <tr>
+                                    <td><span class="badge text-bg-light">{{ obj.code }}</span></td>
+                                    <td>
+                                        <strong>{{ obj.localized_name }}</strong>
+                                        {% if obj.name_ta or obj.name_ar %}
+                                            <small class="d-block text-muted">
+                                                {% if obj.name_ta %}{{ obj.name_ta }}{% endif %}
+                                                {% if obj.name_ar %} · {{ obj.name_ar }}{% endif %}
+                                            </small>
+                                        {% endif %}
+                                    </td>
+
+                                    {% if entity == "districts" %}
+                                        <td>{{ obj.province.localized_name }}</td>
+                                    {% elif entity == "ds-divisions" %}
+                                        <td>{{ obj.district.localized_name }}</td>
+                                    {% elif entity == "gn-divisions" %}
+                                        <td>{{ obj.divisional_secretariat.localized_name }}</td>
+                                        <td>{{ obj.divisional_secretariat.district.localized_name }}</td>
+                                    {% endif %}
+
+                                    <td>
+                                        {% if obj.is_active %}
+                                            <span class="badge text-bg-success">{% trans "Active" %}</span>
+                                        {% else %}
+                                            <span class="badge text-bg-secondary">{% trans "Inactive" %}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end">
+                                        <a class="btn btn-sm btn-outline-primary" href="{% url 'locations:edit' entity obj.pk %}">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-outline-danger" href="{% url 'locations:delete' entity obj.pk %}">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted py-5">{% trans "No location records found." %}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                {% if page_obj.paginator.num_pages > 1 %}
+                    <nav class="mt-4">
+                        <ul class="pagination mb-0">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?q={{ query|urlencode }}&page={{ page_obj.previous_page_number }}">{% trans "Previous" %}</a>
+                                </li>
+                            {% endif %}
+                            <li class="page-item disabled">
+                                <span class="page-link">
+                                    {% blocktrans with current=page_obj.number total=page_obj.paginator.num_pages %}Page {{ current }} of {{ total }}{% endblocktrans %}
+                                </span>
+                            </li>
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?q={{ query|urlencode }}&page={{ page_obj.next_page_number }}">{% trans "Next" %}</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

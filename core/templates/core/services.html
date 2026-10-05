@@ -1,0 +1,65 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Services" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+{% block content %}
+<section class="public-page-hero services-page-hero">
+    <div class="container position-relative">
+        <div class="public-hero-content">
+            <span class="public-eyebrow"><i class="bi bi-grid"></i>{% trans "Our Services" %}</span>
+            <h1>{% trans "Digital Services for Stronger Mosque Communities" %}</h1>
+            <p>{% trans "From mosque registration to support-request tracking, our services are designed to make administration simpler and community assistance more transparent." %}</p>
+            <div class="public-hero-actions">
+                <a href="{% url 'mosques:create' %}" class="btn btn-premium-gold"><i class="bi bi-building-add"></i>{% trans "Register Mosque" %}</a>
+                <a href="{% url 'support_requests:create' %}" class="btn btn-premium-outline-light"><i class="bi bi-hand-heart"></i>{% trans "Request Support" %}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section public-soft-section">
+    <div class="container">
+        <div class="public-section-heading text-center mx-auto">
+            <span class="public-section-label">{% trans "Platform Services" %}</span>
+            <h2 class="public-display-title">{% trans "Everything Your Mosque Needs in One Place" %}</h2>
+            <p>{% trans "Each service is connected to the same mosque profile, user account and secure workflow." %}</p>
+        </div>
+        <div class="row g-4 mt-2">
+            <div class="col-md-6 col-xl-4"><a class="public-service-card h-100" href="{% url 'mosques:create' %}"><span class="public-service-number">01</span><span class="public-service-icon"><i class="bi bi-building-add"></i></span><h3>{% trans "Mosque Registration" %}</h3><p>{% trans "Register a mosque and receive a unique mosque identification number after Platform Admin approval." %}</p><span class="public-card-link">{% trans "Start Registration" %}<i class="bi bi-arrow-right"></i></span></a></div>
+            <div class="col-md-6 col-xl-4"><a class="public-service-card h-100" href="{% url 'mosques:my_mosques' %}"><span class="public-service-number">02</span><span class="public-service-icon"><i class="bi bi-person-vcard"></i></span><h3>{% trans "Mosque Profile Management" %}</h3><p>{% trans "Maintain public contacts, committee information, documents, facilities and mosque operational details." %}</p><span class="public-card-link">{% trans "Open Mosque Portal" %}<i class="bi bi-arrow-right"></i></span></a></div>
+            <div class="col-md-6 col-xl-4"><a class="public-service-card h-100" href="{% url 'support_requests:create' %}"><span class="public-service-number">03</span><span class="public-service-icon"><i class="bi bi-hand-heart"></i></span><h3>{% trans "Support Requests" %}</h3><p>{% trans "Request assistance for construction, renovation, salaries, maintenance, utilities and other mosque needs." %}</p><span class="public-card-link">{% trans "Create Request" %}<i class="bi bi-arrow-right"></i></span></a></div>
+            <div class="col-md-6 col-xl-4"><a class="public-service-card h-100" href="{% url 'mosques:directory' %}"><span class="public-service-number">04</span><span class="public-service-icon"><i class="bi bi-search"></i></span><h3>{% trans "Mosque Directory" %}</h3><p>{% trans "Search approved mosques by name, district, town or unique mosque identification number." %}</p><span class="public-card-link">{% trans "Search Directory" %}<i class="bi bi-arrow-right"></i></span></a></div>
+            <div class="col-md-6 col-xl-4"><a class="public-service-card h-100" href="{% url 'support_requests:my_requests' %}"><span class="public-service-number">05</span><span class="public-service-icon"><i class="bi bi-file-earmark-text"></i></span><h3>{% trans "Documents & Tracking" %}</h3><p>{% trans "Upload supporting documents and follow every request status change through a clear digital history." %}</p><span class="public-card-link">{% trans "Track Requests" %}<i class="bi bi-arrow-right"></i></span></a></div>
+            <div class="col-md-6 col-xl-4"><a class="public-service-card h-100" href="{% url 'support_requests:notifications' %}"><span class="public-service-number">06</span><span class="public-service-icon"><i class="bi bi-bell"></i></span><h3>{% trans "Notifications" %}</h3><p>{% trans "Receive important support-request updates through the dashboard, email and registered mobile notification channels." %}</p><span class="public-card-link">{% trans "View Notifications" %}<i class="bi bi-arrow-right"></i></span></a></div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5">
+                <span class="public-section-label">{% trans "How It Works" %}</span>
+                <h2 class="public-display-title">{% trans "Simple Workflows, Clear Responsibilities" %}</h2>
+                <p class="public-lead">{% trans "The platform keeps each process easy to understand while protecting role-based access and approved mosque records." %}</p>
+                <a href="{% url 'core:contact' %}" class="btn btn-primary-custom mt-2">{% trans "Contact Our Team" %}</a>
+            </div>
+            <div class="col-lg-7">
+                <div class="public-process-list">
+                    <div class="public-process-item"><span>1</span><div><h4>{% trans "Create Your Account" %}</h4><p>{% trans "Use the universal login to access the workspace assigned to your platform role." %}</p></div></div>
+                    <div class="public-process-item"><span>2</span><div><h4>{% trans "Register and Manage Your Mosque" %}</h4><p>{% trans "Submit mosque details for Platform Admin approval, then maintain the operational mosque profile." %}</p></div></div>
+                    <div class="public-process-item"><span>3</span><div><h4>{% trans "Request and Track Support" %}</h4><p>{% trans "Create assistance requests, add documents, respond to information requests and monitor decisions." %}</p></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="public-section pt-0">
+    <div class="container">
+        <div class="public-cta-panel">
+            <div><span class="public-section-label text-warning">{% trans "Need Assistance?" %}</span><h2>{% trans "Our team can guide you through the platform." %}</h2><p>{% trans "Contact us if you need help with registration, mosque access or support-request workflows." %}</p></div>
+            <div class="public-cta-actions"><a href="{% url 'core:contact' %}" class="btn btn-premium-gold">{% trans "Contact Us" %}</a><a href="{% url 'accounts:login' %}" class="btn btn-premium-outline-light">{% trans "Login" %}</a></div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "platform_control/base_control.html" %}
+{% load i18n %}
+
+{% block title %}{% if is_edit %}{% trans "Edit User" %}{% else %}{% trans "Create User" %}{% endif %} | {% trans "Platform Control" %}{% endblock %}
+
+{% block control_content %}
+<div class="control-page">
+    <div class="control-page-header">
+        <div>
+            <span class="control-kicker">{% trans "Identity & Access" %}</span>
+            <h1>{% if is_edit %}{% trans "Edit User" %}{% else %}{% trans "Create User / Officer" %}{% endif %}</h1>
+            <p>{% trans "Maintain login identity, role, contact information and account state." %}</p>
+        </div>
+    </div>
+
+    <div class="control-card" style="max-width: 980px;">
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+
+            <div class="row g-3">
+                {% for field in form %}
+                    <div class="{% if field.name == 'is_active' or field.name == 'is_verified' %}col-md-6{% else %}col-md-6{% endif %}">
+                        {% if field.name == "is_active" or field.name == "is_verified" %}
+                            <div class="form-check control-check mt-4">
+                                {{ field }}
+                                <label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            </div>
+                        {% else %}
+                            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+                        {% endif %}
+                        {% for error in field.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-4">
+                <button type="submit" class="btn btn-primary-custom"><i class="bi bi-check-lg me-1"></i>{% trans "Save User" %}</button>
+                {% if target_user %}
+                    <a href="{% url 'platform_control:user_detail' target_user.pk %}" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
+                {% else %}
+                    <a href="{% url 'platform_control:user_list' %}" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

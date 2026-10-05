@@ -1,0 +1,57 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Mosque Approval Queue" %}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container">
+        <span class="dashboard-kicker">{% trans "Platform Approval" %}</span>
+        <h1>{% trans "Mosque Approval Queue" %}</h1>
+        <p>{% trans "Review mosque registrations submitted for Platform Admin approval. Approved mosques are published in the public mosque directory." %}</p>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        {% include "mosques/partials_messages.html" %}
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <form method="get" class="row g-3 align-items-end mb-4">
+                    <div class="col-lg-6">
+                        <label class="form-label">{% trans "Search" %}</label>
+                        <input type="search" name="q" value="{{ query }}" class="form-control" placeholder="{% trans 'Mosque ID, name or district' %}">
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="form-label">{% trans "Status" %}</label>
+                        <select name="status" class="form-select">
+                            <option value="">{% trans "All statuses" %}</option>
+                            {% for value, label in status_choices %}
+                                {% if value != 'DRAFT' %}<option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>{{ label }}</option>{% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-lg-2 d-grid"><button class="btn btn-primary-custom" type="submit">{% trans "Filter" %}</button></div>
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table align-middle location-table">
+                        <thead><tr><th>{% trans "Mosque" %}</th><th>{% trans "District" %}</th><th>{% trans "Submitted" %}</th><th>{% trans "Status" %}</th><th class="text-end">{% trans "Action" %}</th></tr></thead>
+                        <tbody>
+                        {% for mosque in mosques %}
+                            <tr>
+                                <td><strong>{{ mosque.localized_name }}</strong><small class="d-block text-muted">{{ mosque.mosque_id }}</small></td>
+                                <td>{{ mosque.district.localized_name }}</td>
+                                <td>{{ mosque.submitted_at|date:"Y-m-d H:i"|default:"—" }}</td>
+                                <td><span class="status-badge status-{{ mosque.status|lower }}">{{ mosque.get_status_display }}</span></td>
+                                <td class="text-end"><a class="btn btn-sm btn-outline-success" href="{% url 'mosques:review_detail' mosque.mosque_id %}">{% trans "Review" %}</a></td>
+                            </tr>
+                        {% empty %}<tr><td colspan="5" class="text-center text-muted py-5">{% trans "No mosque registrations are waiting for Platform Admin approval." %}</td></tr>{% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

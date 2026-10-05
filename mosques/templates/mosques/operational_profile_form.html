@@ -1,0 +1,75 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Edit Mosque Profile" %} | {{ mosque.localized_name }}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container">
+        <a class="text-white-50 text-decoration-none" href="{% url 'mosques:portal' mosque.mosque_id %}"><i class="bi bi-arrow-left me-1"></i>{% trans "Mosque Portal" %}</a>
+        <h1 class="mt-2">{% trans "Public & Operational Profile" %}</h1>
+        <p>{{ mosque.localized_name }} · {{ mosque.mosque_id }}</p>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container" style="max-width: 1050px;">
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>{% trans "These operational details can be updated without changing the approved registration identity or location." %}
+        </div>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="registration-section-card">
+                <div class="registration-section-heading"><span>1</span><div><h3>{% trans "Public Contact" %}</h3><p>{% trans "Contact information shown in the mosque directory." %}</p></div></div>
+                <div class="row g-3">
+                    {% for field in form %}
+                        {% if field.name == 'public_phone' or field.name == 'whatsapp_number' or field.name == 'public_email' or field.name == 'facebook_url' or field.name == 'youtube_url' %}
+                            <div class="col-md-6"><label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="registration-section-card">
+                <div class="registration-section-heading"><span>2</span><div><h3>{% trans "Religious & Capacity Details" %}</h3><p>{% trans "Operational information useful to mosque visitors." %}</p></div></div>
+                <div class="row g-3">
+                    {% for field in form %}
+                        {% if field.name == 'imam_name' or field.name == 'muezzin_name' or field.name == 'jummah_prayer_time' or field.name == 'capacity_men' or field.name == 'capacity_women' %}
+                            <div class="col-md-6"><label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="registration-section-card">
+                <div class="registration-section-heading"><span>3</span><div><h3>{% trans "Facilities" %}</h3><p>{% trans "Select the facilities currently available at the mosque." %}</p></div></div>
+                <div class="row g-3">
+                    {% for field in form %}
+                        {% if field.name == 'has_womens_prayer_area' or field.name == 'has_parking' or field.name == 'wheelchair_accessible' or field.name == 'has_wudu_facilities' or field.name == 'has_madrasa' %}
+                            <div class="col-md-6 col-lg-4"><div class="form-check facility-check">{{ field }}<label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label></div></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="registration-section-card">
+                <div class="registration-section-heading"><span>4</span><div><h3>{% trans "Public Summary" %}</h3><p>{% trans "Describe the mosque for visitors in the supported languages." %}</p></div></div>
+                <div class="row g-3">
+                    {% for field in form %}
+                        {% if field.name == 'public_summary_en' or field.name == 'public_summary_ta' or field.name == 'public_summary_ar' %}
+                            <div class="col-12"><label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary-custom btn-lg" type="submit"><i class="bi bi-check-lg me-1"></i>{% trans "Save Profile" %}</button>
+                <a class="btn btn-outline-secondary btn-lg" href="{% url 'mosques:portal' mosque.mosque_id %}">{% trans "Cancel" %}</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

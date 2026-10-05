@@ -1,0 +1,2165 @@
+# Sri Lanka Mosque Platform translations
+msgid ""
+msgstr ""
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "%(name)s saved successfully."
+msgstr "%(الاسم)s saved successfully."
+
+msgid "A Central Digital Platform for Sri Lankan Mosques"
+msgstr "A Central Digital المنصة for Sri Lankan مساجد"
+
+msgid "A centralized digital platform for mosque registration, administration, support requests and community services."
+msgstr "منصة رقمية مركزية لتسجيل المساجد وإدارتها وطلبات الدعم والخدمات المجتمعية."
+
+msgid "A connected mosque community supported by reliable information, transparent administration and modern digital services."
+msgstr "A connected مسجد community supported by reliable معلومات, transparent administration and modern digital services."
+
+msgid "A connected national network of well-managed mosques serving their communities."
+msgstr "شبكة وطنية مترابطة من المساجد المُدارة بكفاءة لخدمة مجتمعاتها."
+
+msgid "A digital platform supporting mosque registration, administration and community assistance throughout Sri Lanka."
+msgstr "A digital المنصة supporting مسجد تسجيل, administration and community assistance throughout Sri Lanka."
+
+msgid "A multilingual digital platform for mosque registration, administration and community assistance throughout Sri Lanka."
+msgstr "منصة رقمية متعددة اللغات لتسجيل المساجد وإدارتها والمساعدة المجتمعية في جميع أنحاء سريلانكا."
+
+msgid "A single platform to connect, manage and support mosques throughout Sri Lanka."
+msgstr "منصة واحدة لربط المساجد وإدارتها ودعمها في جميع أنحاء سريلانكا."
+
+msgid "A trusted multilingual digital platform supporting mosque administration, transparency and community assistance across Sri Lanka."
+msgstr "منصة رقمية موثوقة متعددة اللغات تدعم إدارة المساجد والشفافية وخدمة المجتمع في جميع أنحاء سريلانكا."
+
+msgid "A unified platform to register, connect, support and develop mosques across Sri Lanka."
+msgstr "منصة موحدة لتسجيل المساجد وربطها ودعمها وتطويرها في جميع أنحاء سريلانكا."
+
+msgid "About Our Platform"
+msgstr "عن منصتنا"
+
+msgid "About This Mosque"
+msgstr "About This مسجد"
+
+msgid "About Us"
+msgstr "من نحن"
+
+msgid "About the Platform"
+msgstr "عن المنصة"
+
+msgid "Access Denied"
+msgstr "تم رفض الوصول"
+
+msgid "Access district-level operational functions for your assigned district."
+msgstr "Access المنطقة-level operational functions for your معيّن المنطقة."
+
+msgid "Access is based on your assigned mosque platform role."
+msgstr "Access is based on your معيّن مسجد المنصة الدور."
+
+msgid "Access the mosque functions assigned to staff members."
+msgstr "Access the مسجد functions معيّن to موظف members."
+
+msgid "Account"
+msgstr "الحساب"
+
+msgid "Account Details"
+msgstr "تفاصيل الحساب"
+
+msgid "Account Status"
+msgstr "حالة الحساب"
+
+msgid "Action"
+msgstr "الإجراء"
+
+msgid "Actions"
+msgstr "الإجراءات"
+
+msgid "Active"
+msgstr "نشط"
+
+msgid "Active Users"
+msgstr "المستخدمون النشطون"
+
+msgid "Active access"
+msgstr "نشط access"
+
+msgid "Active and historical mosque memberships for this user."
+msgstr "نشط and historical مسجد memberships for this مستخدم."
+
+msgid "Add"
+msgstr "إضافة"
+
+msgid "Add Committee Member"
+msgstr "إضافة عضو لجنة"
+
+msgid "Add Mosque User"
+msgstr "إضافة مسجد مستخدم"
+
+msgid "Add Mosque User Access"
+msgstr "إضافة مسجد مستخدم Access"
+
+msgid "Add User"
+msgstr "إضافة مستخدم"
+
+msgid "Additional Information"
+msgstr "معلومات إضافية"
+
+msgid "Additional Information / Documents Required"
+msgstr "معلومات / مستندات إضافية مطلوبة"
+
+msgid "Additional Information / Officer Note:"
+msgstr "معلومات إضافية / ملاحظة المسؤول:"
+
+msgid "Address"
+msgstr "العنوان"
+
+msgid "Address & Contact"
+msgstr "العنوان & Contact"
+
+msgid "Administer users, locations and Platform Admin mosque approvals."
+msgstr "Administer المستخدمون, locations and المنصة مسؤول مسجد approvals."
+
+msgid "Administration"
+msgstr "الإدارة"
+
+msgid "Administrative Location"
+msgstr "Administrative Location"
+
+msgid "After submission or resubmission, the request returns to the Platform/Support review queue."
+msgstr "بعد الإرسال أو إعادة الإرسال، يعود الطلب إلى قائمة مراجعة المنصة/الدعم."
+
+msgid "All Requests"
+msgstr "جميع الطلبات"
+
+msgid "All Rights Reserved."
+msgstr "جميع الحقوق محفوظة."
+
+msgid "All account states"
+msgstr "جميع الحساب states"
+
+msgid "All categories"
+msgstr "جميع الفئات"
+
+msgid "All channels"
+msgstr "جميع القنوات"
+
+msgid "All delivery states"
+msgstr "جميع حالات التسليم"
+
+msgid "All districts"
+msgstr "جميع districts"
+
+msgid "All roles"
+msgstr "جميع roles"
+
+msgid "All statuses"
+msgstr "جميع الحالات"
+
+msgid "All support notifications marked as read."
+msgstr "جميع دعم إشعارات marked as read."
+
+msgid "Allowed file types: PDF, JPG, JPEG and PNG. Maximum size: 10 MB."
+msgstr "Allowed file types: PDF, JPG, JPEG and PNG. Maximum size: 10 MB."
+
+msgid "Approval Queue"
+msgstr "اعتماد Queue"
+
+msgid "Approve Registration"
+msgstr "اعتماد التسجيل"
+
+msgid "Approve Request"
+msgstr "اعتماد الطلب"
+
+msgid "Approve or reject mosque registration applications before they enter the public directory."
+msgstr "Approve or reject مسجد تسجيل applications before they enter the عام الدليل."
+
+msgid "Approved"
+msgstr "معتمد"
+
+msgid "Approved Amount"
+msgstr "المبلغ المعتمد"
+
+msgid "Approved Mosque"
+msgstr "مسجد معتمد"
+
+msgid "Approved Mosque Portal"
+msgstr "بوابة المسجد المعتمد"
+
+msgid "Approved Mosque Profiles"
+msgstr "ملفات المساجد المعتمدة"
+
+msgid "Approved Mosques"
+msgstr "المساجد المعتمدة"
+
+msgid "Approved Registration"
+msgstr "تسجيل معتمد"
+
+msgid "Approved amount (LKR)"
+msgstr "المبلغ المعتمد (LKR)"
+
+msgid "Approved amount cannot be negative."
+msgstr "معتمد المبلغ cannot be negative."
+
+msgid "Approved mosques can submit requests, upload supporting information and track every decision from the mosque portal."
+msgstr "يمكن للمساجد المعتمدة تقديم الطلبات ورفع المعلومات الداعمة ومتابعة كل قرار من بوابة المسجد."
+
+msgid "Approved mosques will appear here"
+msgstr "ستظهر المساجد المعتمدة هنا"
+
+msgid "Arabic Name"
+msgstr "الاسم بالعربية"
+
+msgid "Assign District Officer"
+msgstr "تعيين مسؤول منطقة"
+
+msgid "Assign Officer"
+msgstr "تعيين مسؤول"
+
+msgid "Assigned District"
+msgstr "معيّن المنطقة"
+
+msgid "Assigned Officer"
+msgstr "المسؤول المعيّن"
+
+msgid "Assigned district: %(district)s (%(province)s)"
+msgstr "معيّن المنطقة: %(المنطقة)s (%(المقاطعة)s)"
+
+msgid "Back to Home"
+msgstr "العودة إلى الرئيسية"
+
+msgid "Back to Queue"
+msgstr "Back to Queue"
+
+msgid "Browse directory"
+msgstr "Browse الدليل"
+
+msgid "Building / Construction Document"
+msgstr "Building / Construction Document"
+
+msgid "Building Stronger Mosques for Stronger Communities"
+msgstr "بناء مساجد أقوى لمجتمعات أقوى"
+
+msgid "Built Around Service, Trust and Community"
+msgstr "منصة تقوم على الخدمة والثقة والمجتمع"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Cancel Request"
+msgstr "إلغاء الطلب"
+
+msgid "Cancel this request if assistance is no longer required."
+msgstr "Cancel this طلب if assistance is no longer مطلوبة."
+
+msgid "Cancelled"
+msgstr "ملغى"
+
+msgid "Cancelled by mosque administration."
+msgstr "ملغى by مسجد administration."
+
+msgid "Category"
+msgstr "الفئة"
+
+msgid "Channel"
+msgstr "Channel"
+
+msgid "Clear"
+msgstr "مسح"
+
+msgid "Clear Search"
+msgstr "مسح البحث"
+
+msgid "Code"
+msgstr "الرمز"
+
+msgid "Committee"
+msgstr "اللجنة"
+
+msgid "Committee & Documents"
+msgstr "اللجنة والمستندات"
+
+msgid "Committee & Key Contacts"
+msgstr "اللجنة وجهات الاتصال الرئيسية"
+
+msgid "Committee Authorization / Letter"
+msgstr "اللجنة Authorization / Letter"
+
+msgid "Committee Contacts"
+msgstr "جهات اتصال اللجنة"
+
+msgid "Committee Member"
+msgstr "عضو اللجنة"
+
+msgid "Committee member added."
+msgstr "اللجنة member added."
+
+msgid "Committee member removed."
+msgstr "اللجنة member removed."
+
+msgid "Committee member updated."
+msgstr "اللجنة member updated."
+
+msgid "Common Platform Admin actions."
+msgstr "Common المنصة مسؤول actions."
+
+msgid "Communications"
+msgstr "الاتصالات"
+
+msgid "Community Assistance"
+msgstr "مساعدة المجتمع"
+
+msgid "Completed"
+msgstr "مكتمل"
+
+msgid "Completed Support Cases"
+msgstr "حالات الدعم المكتملة"
+
+msgid "Confirm new password"
+msgstr "تأكيد كلمة المرور الجديدة"
+
+msgid "Confirm password"
+msgstr "تأكيد كلمة المرور"
+
+msgid "Connecting Mosques, Strengthening Communities"
+msgstr "ربط المساجد وتعزيز المجتمعات"
+
+msgid "Connecting and Supporting Mosques Across Sri Lanka"
+msgstr "ربط ودعم المساجد في جميع أنحاء سريلانكا"
+
+msgid "Connecting mosques, communities and support services across Sri Lanka."
+msgstr "Connecting مساجد, communities and دعم services across Sri Lanka."
+
+msgid "Construction"
+msgstr "الإنشاءات"
+
+msgid "Contact"
+msgstr "الاتصال"
+
+msgid "Contact Our Team"
+msgstr "تواصل مع فريقنا"
+
+msgid "Contact Person"
+msgstr "شخص الاتصال"
+
+msgid "Contact Phone"
+msgstr "هاتف الاتصال"
+
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+msgid "Contact information shown in the mosque directory."
+msgstr "Contact معلومات shown in the مسجد الدليل."
+
+msgid "Contact our team for assistance and platform information."
+msgstr "Contact our team for assistance and المنصة معلومات."
+
+msgid "Contact the platform team and access guidance for mosque services."
+msgstr "تواصل مع فريق المنصة واحصل على الإرشاد لخدمات المساجد."
+
+msgid "Control"
+msgstr "الإدارة"
+
+msgid "Create Draft"
+msgstr "إنشاء Draft"
+
+msgid "Create Request"
+msgstr "إنشاء طلب"
+
+msgid "Create User"
+msgstr "إنشاء مستخدم"
+
+msgid "Create User / Officer"
+msgstr "إنشاء مستخدم / مسؤول"
+
+msgid "Create Your Account"
+msgstr "أنشئ حسابك"
+
+msgid "Create and track construction, salary, utility, maintenance and other mosque assistance requests."
+msgstr "أنشئ وتتبع طلبات مساعدة المسجد المتعلقة بالإنشاء والرواتب والمرافق والصيانة وغيرها."
+
+msgid "Create users and assign platform roles from the administration area."
+msgstr "إنشاء المستخدمون and assign المنصة roles from the administration area."
+
+msgid "Create, track and review mosque assistance requests."
+msgstr "إنشاء, track and مراجعة مسجد assistance طلبات."
+
+msgid "Current mosque and support workflow counts."
+msgstr "الحالي مسجد and دعم workflow counts."
+
+msgid "DS Divisions"
+msgstr "أقسام الأمانات"
+
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+msgid "Decision"
+msgstr "القرار"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Delete Location"
+msgstr "حذف Location"
+
+msgid "Delete Location Record?"
+msgstr "حذف Location Record?"
+
+msgid "Delivery Failures (7 days)"
+msgstr "فشل التسليم (7 أيام)"
+
+msgid "Describe the issue / current situation"
+msgstr "Describe the issue / الحالي situation"
+
+msgid "Describe the mosque for visitors in the supported languages."
+msgstr "Describe the مسجد for visitors in the supported languages."
+
+msgid "Describe the mosque issue and the assistance required."
+msgstr "Describe the مسجد issue and the assistance مطلوبة."
+
+msgid "Description"
+msgstr "الوصف"
+
+msgid "Description (Arabic)"
+msgstr "الوصف (العربية)"
+
+msgid "Description (English)"
+msgstr "الوصف (الإنجليزية)"
+
+msgid "Description (Tamil)"
+msgstr "الوصف (التاميلية)"
+
+msgid "Designation"
+msgstr "الصفة"
+
+msgid "Details"
+msgstr "تفاصيل"
+
+msgid "Digital Services for Stronger Mosque Communities"
+msgstr "خدمات رقمية لمجتمعات مساجد أقوى"
+
+msgid "Digital services supporting mosque administration and community needs."
+msgstr "Digital services supporting مسجد administration and community needs."
+
+msgid "Discover Platform Admin-approved mosques across Sri Lanka."
+msgstr "استكشف المساجد المعتمدة من مسؤول المنصة في جميع أنحاء سريلانكا."
+
+msgid "District"
+msgstr "المنطقة"
+
+msgid "District Assignment"
+msgstr "المنطقة Assignment"
+
+msgid "District Officer"
+msgstr "مسؤول المنطقة"
+
+msgid "District Officer Assignment"
+msgstr "تعيين مسؤول المنطقة"
+
+msgid "District Officer Assignments"
+msgstr "تعيينات مسؤولي المناطق"
+
+msgid "District Officer Dashboard"
+msgstr "لوحة مسؤول المنطقة"
+
+msgid "District Officers"
+msgstr "مسؤولو المناطق"
+
+msgid "District officer assignment removed."
+msgstr "المنطقة مسؤول assignment removed."
+
+msgid "District officer assignment saved for %(user)s."
+msgstr "المنطقة مسؤول assignment saved for %(مستخدم)s."
+
+msgid "District-level mosque information access can be added in a later operational phase."
+msgstr "المنطقة-level مسجد معلومات access can be added in a later operational phase."
+
+msgid "District-level support-request review will be connected to the support engine."
+msgstr "المنطقة-level دعم-طلب مراجعة will be connected to the دعم engine."
+
+msgid "Districts"
+msgstr "المناطق"
+
+msgid "Districts Covered"
+msgstr "المناطق المشمولة"
+
+msgid "Divisional Secretariat"
+msgstr "أمانة القسم"
+
+msgid "Divisional Secretariats"
+msgstr "أمانات الأقسام"
+
+msgid "Django Administration"
+msgstr "Django Administration"
+
+msgid "Document Management"
+msgstr "إدارة المستندات"
+
+msgid "Document removed."
+msgstr "Document removed."
+
+msgid "Documents"
+msgstr "المستندات"
+
+msgid "Documents & Tracking"
+msgstr "المستندات والمتابعة"
+
+msgid "Does Your Mosque Need Assistance?"
+msgstr "هل يحتاج مسجدك إلى مساعدة؟"
+
+msgid "Draft"
+msgstr "مسودة"
+
+msgid "Draft Created"
+msgstr "Draft Created"
+
+msgid "Edit"
+msgstr "تعديل"
+
+msgid "Edit Committee Member"
+msgstr "تعديل عضو اللجنة"
+
+msgid "Edit District Officer Assignment"
+msgstr "تعديل المنطقة مسؤول Assignment"
+
+msgid "Edit Mosque Profile"
+msgstr "تعديل مسجد ملف"
+
+msgid "Edit Mosque Registration"
+msgstr "تعديل مسجد تسجيل"
+
+msgid "Edit Public Profile"
+msgstr "تعديل الملف العام"
+
+msgid "Edit Registration"
+msgstr "تعديل تسجيل"
+
+msgid "Edit Support Request"
+msgstr "تعديل دعم طلب"
+
+msgid "Edit User"
+msgstr "تعديل المستخدم"
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "Email address"
+msgstr "البريد الإلكتروني العنوان"
+
+msgid "Email/SMS deliveries that require configuration or provider attention."
+msgstr "البريد الإلكتروني/SMS deliveries that require configuration or provider attention."
+
+msgid "Emergency Assistance"
+msgstr "المساعدة الطارئة"
+
+msgid "English Name"
+msgstr "الاسم بالإنجليزية"
+
+msgid "English, Tamil and Arabic support"
+msgstr "دعم بالإنجليزية والتاميلية والعربية"
+
+msgid "Enter a valid mosque establishment year."
+msgstr "Enter a valid مسجد establishment year."
+
+msgid "Established"
+msgstr "سنة التأسيس"
+
+msgid "Everything Your Mosque Needs in One Place"
+msgstr "كل ما يحتاجه مسجدك في مكان واحد"
+
+msgid "Existing Registration Certificate"
+msgstr "Existing تسجيل Certificate"
+
+msgid "Existing Registration No."
+msgstr "Existing تسجيل No."
+
+msgid "Explore Approved Mosques Across Sri Lanka"
+msgstr "استعرض المساجد المعتمدة في جميع أنحاء سريلانكا"
+
+msgid "Explore Mosques"
+msgstr "استكشف المساجد"
+
+msgid "Explore Mosques Across Sri Lanka"
+msgstr "استكشف المساجد في جميع أنحاء سريلانكا"
+
+msgid "Facilities"
+msgstr "المرافق"
+
+msgid "Failed"
+msgstr "فشل"
+
+msgid "Faith • Unity • Service • Community"
+msgstr "الإيمان • الوحدة • الخدمة • المجتمع"
+
+msgid "Faith, unity, service, transparency and responsible stewardship guide every part of the platform."
+msgstr "الإيمان والوحدة والخدمة والشفافية والمسؤولية هي القيم التي توجه كل جزء من المنصة."
+
+msgid "Filter"
+msgstr "تصفية"
+
+msgid "Financial Assistance"
+msgstr "المساعدة المالية"
+
+msgid "Financial Support"
+msgstr "الدعم المالي"
+
+msgid "Financial assistance for eligible mosque requirements."
+msgstr "Financial assistance for eligible مسجد requirements."
+
+msgid "Find registered mosques by district, town and other location information."
+msgstr "Find registered مساجد by المنطقة, town and other location معلومات."
+
+msgid "Follow every support-request status update and additional-information request."
+msgstr "تابع كل تحديث لحالة طلب الدعم وأي طلب لمعلومات إضافية."
+
+msgid "Full administrative access to the Sri Lanka Mosque Platform."
+msgstr "Full administrative access to the Sri Lanka مسجد المنصة."
+
+msgid "Furniture / Equipment"
+msgstr "الأثاث / المعدات"
+
+msgid "GN Division"
+msgstr "قسم غراما نيلادهاري"
+
+msgid "GN Divisions"
+msgstr "أقسام غراما نيلادهاري"
+
+msgid "GN division"
+msgstr "GN division"
+
+msgid "GN divisions"
+msgstr "GN divisions"
+
+msgid "General Mosque Issue"
+msgstr "مشكلة عامة في المسجد"
+
+msgid "Get in Touch"
+msgstr "تواصل معنا"
+
+msgid "Go to Dashboard"
+msgstr "الذهاب إلى لوحة التحكم"
+
+msgid "High"
+msgstr "مرتفع"
+
+msgid "Home"
+msgstr "الرئيسية"
+
+msgid "How It Works"
+msgstr "كيف تعمل المنصة"
+
+msgid "How We Serve Our Mosques"
+msgstr "كيف نخدم مساجدنا"
+
+msgid "How can we help?"
+msgstr "كيف يمكننا مساعدتك؟"
+
+msgid "Identity & Access"
+msgstr "الهوية والوصول"
+
+msgid "Identity, role and contact channels."
+msgstr "Identity, الدور and contact channels."
+
+msgid "If dependent records exist, deletion will be blocked. In that case, mark the record inactive instead."
+msgstr "If dependent records exist, deletion will be blocked. In that case, mark the record غير نشط instead."
+
+msgid "If information or documents are missing, choose Request Additional Information / Documents and clearly list what the mosque must provide. The Mosque Admin will be notified in the dashboard, by email and by registered mobile/SMS."
+msgstr "إذا كانت المعلومات أو المستندات ناقصة، اختر طلب معلومات / مستندات إضافية وحدد بوضوح ما يجب على المسجد تقديمه. سيتم إشعار مسؤول المسجد عبر لوحة التحكم والبريد الإلكتروني والهاتف المسجل/SMS."
+
+msgid "Imam"
+msgstr "الإمام"
+
+msgid "Imam / Muezzin / Staff Salary"
+msgstr "راتب الإمام / المؤذن / الموظفين"
+
+msgid "Imam, Muezzin and mosque staff assistance."
+msgstr "Imam, Muezzin and مسجد موظف assistance."
+
+msgid "In Progress"
+msgstr "قيد التنفيذ"
+
+msgid "Inactive"
+msgstr "غير نشط"
+
+msgid "Information visible to the community and used for daily mosque operations."
+msgstr "معلومات visible to the community and used for daily مسجد operations."
+
+msgid "Invalid username/email or password."
+msgstr "اسم المستخدم/البريد الإلكتروني أو كلمة المرور غير صحيحة."
+
+msgid "Invoices, quotations, letters, photos and other supporting files."
+msgstr "Invoices, quotations, letters, photos and other supporting files."
+
+msgid "Is Your Mosque Registered?"
+msgstr "هل مسجدك مسجل؟"
+
+msgid "Issue / Current Situation"
+msgstr "المشكلة / الوضع الحالي"
+
+msgid "Join the national mosque platform and access digital mosque management and support services."
+msgstr "Join the national مسجد المنصة and access digital مسجد إدارة and دعم services."
+
+msgid "Jumma Mosque"
+msgstr "Jumma مسجد"
+
+msgid "Jummah Time"
+msgstr "وقت الجمعة"
+
+msgid "Key contacts"
+msgstr "Key contacts"
+
+msgid "Land / Property Document"
+msgstr "Land / Property Document"
+
+msgid "Language"
+msgstr "اللغة"
+
+msgid "Last Updated"
+msgstr "آخر تحديث"
+
+msgid "Latest mosque records created on the platform."
+msgstr "Latest مسجد records created on the المنصة."
+
+msgid "Latest support cases and current processing state."
+msgstr "Latest دعم cases and الحالي processing state."
+
+msgid "Learn More About Us"
+msgstr "تعرف علينا أكثر"
+
+msgid "Leave blank to keep the current password."
+msgstr "Leave blank to keep the الحالي password."
+
+msgid "Location & Contact"
+msgstr "Location & Contact"
+
+msgid "Location Management"
+msgstr "إدارة المواقع"
+
+msgid "Location record deleted successfully."
+msgstr "Location record deleted successfully."
+
+msgid "Locations"
+msgstr "المواقع"
+
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+msgid "Login and account access"
+msgstr "الدخول والوصول إلى الحساب"
+
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+msgid "Madrasa"
+msgstr "المدرسة"
+
+msgid "Maintain current mosque leadership and contact persons."
+msgstr "Maintain الحالي مسجد leadership and contact persons."
+
+msgid "Maintain current supporting and operational documents."
+msgstr "Maintain الحالي supporting and operational مستندات."
+
+msgid "Maintain login identity, role, contact information and account state."
+msgstr "Maintain login identity, الدور, contact معلومات and الحساب state."
+
+msgid "Maintain mosque information, contacts, committee details and important documents."
+msgstr "Maintain مسجد معلومات, contacts, اللجنة تفاصيل and important مستندات."
+
+msgid "Maintenance"
+msgstr "الصيانة"
+
+msgid "Manage Assignments"
+msgstr "إدارة التعيينات"
+
+msgid "Manage District Assignments"
+msgstr "إدارة تعيينات المناطق"
+
+msgid "Manage Divisional Secretariats"
+msgstr "Manage Divisional Secretariats"
+
+msgid "Manage GN Divisions"
+msgstr "Manage GN Divisions"
+
+msgid "Manage approved mosque public profile, committee, documents and portal users."
+msgstr "Manage معتمد مسجد عام ملف, اللجنة, مستندات and portal المستخدمون."
+
+msgid "Manage district records"
+msgstr "Manage المنطقة records"
+
+msgid "Manage operational user accounts, roles, contact details and account status."
+msgstr "إدارة حسابات المستخدمين التشغيلية والأدوار وبيانات الاتصال وحالة الحساب."
+
+msgid "Manage province records"
+msgstr "Manage المقاطعة records"
+
+msgid "Manage provinces, districts, DS divisions, GN divisions and district officer assignments."
+msgstr "Manage provinces, districts, DS divisions, GN divisions and المنطقة مسؤول assignments."
+
+msgid "Manage public profile, committee information, documents and mosque staff access."
+msgstr "إدارة الملف العام وبيانات اللجنة والمستندات وصلاحيات موظفي المسجد."
+
+msgid "Manage the administrative hierarchy used by mosque registration, officer assignment, search and reporting."
+msgstr "Manage the administrative hierarchy used by مسجد تسجيل, مسؤول assignment, بحث and reporting."
+
+msgid "Manage the administrative location hierarchy and platform configuration."
+msgstr "Manage the administrative location hierarchy and المنصة configuration."
+
+msgid "Manage users, permissions and system records."
+msgstr "Manage المستخدمون, permissions and system records."
+
+msgid "Mark All Read"
+msgstr "تحديد الكل كمقروء"
+
+msgid "Mark Completed"
+msgstr "وضع مكتمل"
+
+msgid "Mark In Progress"
+msgstr "وضع قيد التنفيذ"
+
+msgid "Mark Under Review"
+msgstr "وضع قيد المراجعة"
+
+msgid "Membership"
+msgstr "Membership"
+
+msgid "Men Capacity"
+msgstr "سعة الرجال"
+
+msgid "Message"
+msgstr "الرسالة"
+
+msgid "Mobile"
+msgstr "الهاتف المحمول"
+
+msgid "Monitor email and SMS delivery attempts generated by the mosque support workflow."
+msgstr "راقب محاولات تسليم البريد الإلكتروني وSMS الناتجة عن سير عمل دعم المسجد."
+
+msgid "Monitor mosque registration, support services, users, locations and notification delivery from one workspace."
+msgstr "راقب تسجيل المساجد وخدمات الدعم والمستخدمين والمواقع وتسليم الإشعارات من مساحة عمل واحدة."
+
+msgid "Mosque"
+msgstr "مسجد"
+
+msgid "Mosque / Masjid"
+msgstr "مسجد / Masjid"
+
+msgid "Mosque Access"
+msgstr "الوصول إلى المسجد"
+
+msgid "Mosque Admin"
+msgstr "مسؤول المسجد"
+
+msgid "Mosque Admin Dashboard"
+msgstr "لوحة مسؤول المسجد"
+
+msgid "Mosque Approval Queue"
+msgstr "قائمة اعتماد المساجد"
+
+msgid "Mosque Approvals"
+msgstr "اعتمادات المساجد"
+
+msgid "Mosque Assistance"
+msgstr "مساعدة المساجد"
+
+msgid "Mosque Details"
+msgstr "مسجد تفاصيل"
+
+msgid "Mosque Directory"
+msgstr "دليل المساجد"
+
+msgid "Mosque Documents"
+msgstr "مستندات المسجد"
+
+msgid "Mosque ID"
+msgstr "معرّف المسجد"
+
+msgid "Mosque ID, name or district"
+msgstr "مسجد ID, الاسم or المنطقة"
+
+msgid "Mosque ID, name, town or district"
+msgstr "مسجد ID, الاسم, town or المنطقة"
+
+msgid "Mosque Identity"
+msgstr "هوية المسجد"
+
+msgid "Mosque Information"
+msgstr "معلومات المسجد"
+
+msgid "Mosque Management"
+msgstr "مسجد إدارة"
+
+msgid "Mosque Management & Support Platform"
+msgstr "منصة إدارة ودعم المساجد"
+
+msgid "Mosque Photograph"
+msgstr "مسجد Photograph"
+
+msgid "Mosque Platform Access"
+msgstr "مسجد المنصة Access"
+
+msgid "Mosque Portal"
+msgstr "بوابة المسجد"
+
+msgid "Mosque Portal Members"
+msgstr "أعضاء بوابة المسجد"
+
+msgid "Mosque Profile Management"
+msgstr "إدارة ملف المسجد"
+
+msgid "Mosque Registration"
+msgstr "تسجيل المسجد"
+
+msgid "Mosque Services"
+msgstr "مسجد Services"
+
+msgid "Mosque Staff"
+msgstr "موظف المسجد"
+
+msgid "Mosque Staff Dashboard"
+msgstr "لوحة موظف المسجد"
+
+msgid "Mosque Support"
+msgstr "دعم المساجد"
+
+msgid "Mosque Support Request"
+msgstr "طلب دعم المسجد"
+
+msgid "Mosque Users"
+msgstr "مستخدمو المسجد"
+
+msgid "Mosque Workspace"
+msgstr "مساحة عمل المسجد"
+
+msgid "Mosque community"
+msgstr "مجتمع المسجد"
+
+msgid "Mosque name (Arabic)"
+msgstr "اسم المسجد (العربية)"
+
+msgid "Mosque name (English)"
+msgstr "اسم المسجد (الإنجليزية)"
+
+msgid "Mosque name (Tamil)"
+msgstr "اسم المسجد (التاميلية)"
+
+msgid "Mosque public and operational profile updated."
+msgstr "مسجد عام and operational ملف updated."
+
+msgid "Mosque records"
+msgstr "مسجد records"
+
+msgid "Mosque registration assistance"
+msgstr "مساعدة في تسجيل المسجد"
+
+msgid "Mosque registration details updated."
+msgstr "مسجد تسجيل تفاصيل updated."
+
+msgid "Mosque registration draft created successfully. Add committee members or documents, then submit it for Platform Admin approval."
+msgstr "مسجد تسجيل draft created successfully. إضافة اللجنة members or مستندات, then submit it for المنصة مسؤول اعتماد."
+
+msgid "Mosque registration submitted successfully for Platform Admin approval."
+msgstr "مسجد تسجيل مقدم successfully for المنصة مسؤول اعتماد."
+
+msgid "Mosque user access added."
+msgstr "مسجد مستخدم access added."
+
+msgid "Mosque user access removed."
+msgstr "مسجد مستخدم access removed."
+
+msgid "Mosques Pending Approval"
+msgstr "مساجد بانتظار الاعتماد"
+
+msgid "Mosques Sri Lanka"
+msgstr "مساجد سريلانكا"
+
+msgid "Mosques Sri Lanka is designed to provide a centralized digital platform for mosque registration, administration, support coordination and community services."
+msgstr "مساجد Sri Lanka is designed to provide a centralized digital المنصة for مسجد تسجيل, administration, دعم coordination and community services."
+
+msgid "Move approved assistance through In Progress and Completed states."
+msgstr "Move معتمد assistance through In Progress and مكتمل states."
+
+msgid "Muezzin"
+msgstr "المؤذن"
+
+msgid "Multilingual access"
+msgstr "وصول متعدد اللغات"
+
+msgid "Musalla / Prayer Hall"
+msgstr "Musalla / Prayer Hall"
+
+msgid "My Account"
+msgstr "حسابي"
+
+msgid "My Mosques"
+msgstr "مساجدي"
+
+msgid "My Profile"
+msgstr "ملفي الشخصي"
+
+msgid "Name"
+msgstr "الاسم"
+
+msgid "Names and basic registration details."
+msgstr "Names and basic تسجيل تفاصيل."
+
+msgid "Need Additional Info"
+msgstr "تحتاج معلومات إضافية"
+
+msgid "Need Assistance?"
+msgstr "هل تحتاج إلى مساعدة؟"
+
+msgid "New"
+msgstr "جديد"
+
+msgid "New Mosque Support Request"
+msgstr "جديد مسجد دعم طلب"
+
+msgid "New Support Request"
+msgstr "طلب دعم جديد"
+
+msgid "New construction and renovation requirements."
+msgstr "جديد construction and renovation requirements."
+
+msgid "New password"
+msgstr "كلمة مرور جديدة"
+
+msgid "Next"
+msgstr "التالي"
+
+msgid "No active district has been assigned yet."
+msgstr "No نشط المنطقة has been معيّن yet."
+
+msgid "No approved mosques found"
+msgstr "No معتمد مساجد found"
+
+msgid "No committee contacts added yet."
+msgstr "No اللجنة contacts added yet."
+
+msgid "No committee contacts submitted."
+msgstr "No اللجنة contacts مقدم."
+
+msgid "No district assignment is required for this role."
+msgstr "No المنطقة assignment is مطلوبة for this الدور."
+
+msgid "No district officers have been assigned yet."
+msgstr "No المنطقة officers have been معيّن yet."
+
+msgid "No documents uploaded yet."
+msgstr "No مستندات uploaded yet."
+
+msgid "No documents uploaded."
+msgstr "No مستندات uploaded."
+
+msgid "No further officer action is available for the current status."
+msgstr "No further مسؤول action is available for the الحالي الحالة."
+
+msgid "No location records found."
+msgstr "No location records found."
+
+msgid "No mosque is linked to your account yet"
+msgstr "No مسجد is linked to your الحساب yet"
+
+msgid "No mosque memberships."
+msgstr "No مسجد memberships."
+
+msgid "No mosque registrations are waiting for Platform Admin approval."
+msgstr "No مسجد registrations are waiting for المنصة مسؤول اعتماد."
+
+msgid "No mosque registrations yet."
+msgstr "No مسجد registrations yet."
+
+msgid "No mosque users linked."
+msgstr "No مسجد المستخدمون linked."
+
+msgid "No notification delivery records found."
+msgstr "No إشعار delivery records found."
+
+msgid "No review actions recorded yet."
+msgstr "No مراجعة actions recorded yet."
+
+msgid "No status history yet."
+msgstr "No الحالة السجل yet."
+
+msgid "No support notifications yet."
+msgstr "No دعم إشعارات yet."
+
+msgid "No support requests found."
+msgstr "No دعم طلبات found."
+
+msgid "No support requests match the selected filters."
+msgstr "No دعم طلبات match the selected filters."
+
+msgid "No support requests yet."
+msgstr "No دعم طلبات yet."
+
+msgid "No supporting documents uploaded yet."
+msgstr "No supporting مستندات uploaded yet."
+
+msgid "No users match the selected filters."
+msgstr "No المستخدمون match the selected filters."
+
+msgid "Normal"
+msgstr "عادي"
+
+msgid "Not Verified"
+msgstr "غير موثّق"
+
+msgid "Notification Delivery"
+msgstr "تسليم الإشعارات"
+
+msgid "Notification Delivery Monitor"
+msgstr "مراقبة تسليم الإشعارات"
+
+msgid "Notifications"
+msgstr "الإشعارات"
+
+msgid "Officer"
+msgstr "مسؤول"
+
+msgid "Officer note / requested information"
+msgstr "مسؤول note / requested معلومات"
+
+msgid "Official Email"
+msgstr "Official البريد الإلكتروني"
+
+msgid "Official Phone"
+msgstr "Official الهاتف"
+
+msgid "Official location and communication details."
+msgstr "Official location and communication تفاصيل."
+
+msgid "Once Platform Admin approves mosque registrations, they are published automatically in the public directory."
+msgstr "بعد اعتماد مسؤول المنصة لتسجيل المسجد، يتم نشره تلقائيًا في الدليل العام."
+
+msgid "One Login for Every Mosque Platform Role"
+msgstr "تسجيل دخول واحد لكل أدوار المنصة"
+
+msgid "Only PDF, JPG, JPEG and PNG files are allowed."
+msgstr "يُسمح فقط بملفات PDF وJPG وJPEG وPNG."
+
+msgid "Only active users with the Mosque Admin or Mosque Staff role can be linked. Create the user account first if it does not appear here."
+msgstr "Only نشط المستخدمون with the مسجد مسؤول or مسجد موظف الدور can be linked. إنشاء the مستخدم الحساب first if it does not appear here."
+
+msgid "Only users with the District Officer role can be assigned to a district."
+msgstr "Only المستخدمون with the المنطقة مسؤول الدور can be معيّن to a المنطقة."
+
+msgid "Open"
+msgstr "فتح"
+
+msgid "Open Mosque Directory"
+msgstr "فتح دليل المساجد"
+
+msgid "Open Mosque Portal"
+msgstr "افتح بوابة المسجد"
+
+msgid "Open Portal"
+msgstr "فتح Portal"
+
+msgid "Open Queue"
+msgstr "فتح Queue"
+
+msgid "Open Registration"
+msgstr "فتح تسجيل"
+
+msgid "Open Support Cases"
+msgstr "حالات الدعم المفتوحة"
+
+msgid "Operational Activity"
+msgstr "النشاط التشغيلي"
+
+msgid "Operational Status"
+msgstr "الحالة التشغيلية"
+
+msgid "Operational information useful to mosque visitors."
+msgstr "Operational معلومات useful to مسجد visitors."
+
+msgid "Operations Center"
+msgstr "مركز العمليات"
+
+msgid "Operations Overview"
+msgstr "نظرة عامة على العمليات"
+
+msgid "Optional multilingual description of the mosque."
+msgstr "Optional multilingual description of the مسجد."
+
+msgid "Optional until the master data is loaded."
+msgstr "Optional until the master data is loaded."
+
+msgid "Other"
+msgstr "أخرى"
+
+msgid "Other Supporting Document"
+msgstr "Other Supporting Document"
+
+msgid "Our Mission"
+msgstr "رسالتنا"
+
+msgid "Our Platform"
+msgstr "منصتنا"
+
+msgid "Our Purpose"
+msgstr "هدفنا"
+
+msgid "Our Services"
+msgstr "خدماتنا"
+
+msgid "Our Values"
+msgstr "قيمنا"
+
+msgid "Our Vision"
+msgstr "رؤيتنا"
+
+msgid "Our team can guide you through the platform."
+msgstr "فريقنا جاهز لإرشادك في استخدام المنصة."
+
+msgid "Oversee Platform Admin mosque registration approvals."
+msgstr "Oversee المنصة مسؤول مسجد تسجيل approvals."
+
+msgid "Oversee mosque support requests and the full assistance workflow."
+msgstr "Oversee مسجد دعم طلبات and the full assistance workflow."
+
+msgid "Overview"
+msgstr "Overview"
+
+msgid "PDF/JPG/PNG files, maximum 10 MB each."
+msgstr "PDF/JPG/PNG files, maximum 10 MB each."
+
+msgid "Parking"
+msgstr "مواقف السيارات"
+
+msgid "Password"
+msgstr "كلمة المرور"
+
+msgid "Pending"
+msgstr "Pending"
+
+msgid "Pending Platform Approval"
+msgstr "بانتظار اعتماد المنصة"
+
+msgid "People responsible for the mosque registration and administration."
+msgstr "People responsible for the مسجد تسجيل and administration."
+
+msgid "Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported from verified official CSV data using the supplied management command."
+msgstr "Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported from verified official CSV data using the supplied إدارة command."
+
+msgid "Phone"
+msgstr "الهاتف"
+
+msgid "Platform Admin"
+msgstr "مسؤول المنصة"
+
+msgid "Platform Admin Dashboard"
+msgstr "لوحة مسؤول المنصة"
+
+msgid "Platform Admin Decision"
+msgstr "قرار مسؤول المنصة"
+
+msgid "Platform Administration"
+msgstr "إدارة المنصة"
+
+msgid "Platform Approval"
+msgstr "اعتماد المنصة"
+
+msgid "Platform Configuration"
+msgstr "المنصة Configuration"
+
+msgid "Platform Control"
+msgstr "تحكم المنصة"
+
+msgid "Platform Control Center"
+msgstr "مركز تحكم المنصة"
+
+msgid "Platform Mosque Approval"
+msgstr "المنصة مسجد اعتماد"
+
+msgid "Platform Services"
+msgstr "خدمات المنصة"
+
+msgid "Platform Support"
+msgstr "دعم المنصة"
+
+msgid "Platform statistics"
+msgstr "إحصاءات المنصة"
+
+msgid "Please specify the additional information/documents required, or provide the rejection reason."
+msgstr "Please specify the إضافية معلومات/مستندات مطلوبة, or provide the rejection reason."
+
+msgid "Portal Login"
+msgstr "تسجيل دخول البوابة"
+
+msgid "Portal Users"
+msgstr "مستخدمو البوابة"
+
+msgid "Practical digital services for mosque registration, management, support and transparent follow-up."
+msgstr "خدمات رقمية عملية لتسجيل المساجد وإدارتها ودعمها ومتابعتها بشفافية."
+
+msgid "Preferred Language"
+msgstr "اللغة المفضلة"
+
+msgid "President / Chairman"
+msgstr "الرئيس"
+
+msgid "Previous"
+msgstr "السابق"
+
+msgid "Primary"
+msgstr "رئيسي"
+
+msgid "Primary contact"
+msgstr "جهة الاتصال الرئيسية"
+
+msgid "Priority"
+msgstr "الأولوية"
+
+msgid "Process Request"
+msgstr "معالجة الطلب"
+
+msgid "Process Support Request"
+msgstr "معالجة طلب الدعم"
+
+msgid "Profile Complete"
+msgstr "ملف Complete"
+
+msgid "Provide the official mosque information below. Save the application as a draft, add any required contacts or documents, then submit it for Platform Admin approval."
+msgstr "Provide the official مسجد معلومات below. حفظ the application as a draft, إضافة any مطلوبة contacts or مستندات, then submit it for المنصة مسؤول اعتماد."
+
+msgid "Provider / Details"
+msgstr "المزوّد / التفاصيل"
+
+msgid "Province"
+msgstr "المقاطعة"
+
+msgid "Provinces"
+msgstr "المقاطعات"
+
+msgid "Public & Operational Profile"
+msgstr "الملف العام والتشغيلي"
+
+msgid "Public Contact"
+msgstr "الاتصال العام"
+
+msgid "Public Phone"
+msgstr "الهاتف العام"
+
+msgid "Public Summary"
+msgstr "الملخص العام"
+
+msgid "Public description has not been added yet."
+msgstr "عام description has not been added yet."
+
+msgid "Public operational details"
+msgstr "عام operational تفاصيل"
+
+msgid "Public summary (Arabic)"
+msgstr "الملخص العام (العربية)"
+
+msgid "Public summary (English)"
+msgstr "الملخص العام (الإنجليزية)"
+
+msgid "Public summary (Tamil)"
+msgstr "الملخص العام (التاميلية)"
+
+msgid "Quick Links"
+msgstr "روابط سريعة"
+
+msgid "Quick Operations"
+msgstr "عمليات سريعة"
+
+msgid "Ready to connect your mosque to the platform?"
+msgstr "هل أنت مستعد لربط مسجدك بالمنصة؟"
+
+msgid "Receive notifications about registration and support request progress."
+msgstr "Receive إشعارات about تسجيل and دعم طلب progress."
+
+msgid "Recent Mosque Registrations"
+msgstr "أحدث تسجيلات المساجد"
+
+msgid "Recent Notification Delivery Failures"
+msgstr "أحدث حالات فشل تسليم الإشعارات"
+
+msgid "Recent Support Requests"
+msgstr "أحدث طلبات الدعم"
+
+msgid "Recipient"
+msgstr "المستلم"
+
+msgid "Register Mosque"
+msgstr "تسجيل مسجد"
+
+msgid "Register Your Mosque"
+msgstr "سجّل مسجدك"
+
+msgid "Register a Mosque"
+msgstr "Register a مسجد"
+
+msgid "Register a mosque and receive a unique mosque identification number after verification."
+msgstr "Register a مسجد and receive a unique مسجد identification number after verification."
+
+msgid "Register and Manage Your Mosque"
+msgstr "سجل مسجدك وأدره"
+
+msgid "Register and manage your mosque account and access mosque services."
+msgstr "Register and manage your مسجد الحساب and access مسجد services."
+
+msgid "Register mosques through a structured online registration process and obtain a unique mosque identification number."
+msgstr "Register مساجد through a structured online تسجيل process and obtain a unique مسجد identification number."
+
+msgid "Register new mosques and follow Platform Admin approval status."
+msgstr "Register جديد مساجد and follow المنصة مسؤول اعتماد الحالة."
+
+msgid "Register your mosque through the structured Platform Admin approval workflow."
+msgstr "سجّل مسجدك عبر مسار اعتماد منظم من مسؤول المنصة."
+
+msgid "Register your mosque, manage its profile and access support services through one secure portal."
+msgstr "سجل مسجدك وأدر ملفه واستفد من خدمات الدعم عبر بوابة آمنة واحدة."
+
+msgid "Registered mosques will be able to submit, document and track different types of assistance requests through the platform."
+msgstr "Registered مساجد will be able to submit, document and track different types of assistance طلبات through the المنصة."
+
+msgid "Registration & Community Details"
+msgstr "بيانات التسجيل والمجتمع"
+
+msgid "Registration Details"
+msgstr "تفاصيل التسجيل"
+
+msgid "Registration Information"
+msgstr "معلومات التسجيل"
+
+msgid "Registration Rejected"
+msgstr "تسجيل مرفوض"
+
+msgid "Registration Status"
+msgstr "حالة التسجيل"
+
+msgid "Registration status updated to %(status)s."
+msgstr "تسجيل الحالة updated to %(الحالة)s."
+
+msgid "Reject Registration"
+msgstr "رفض التسجيل"
+
+msgid "Reject Request"
+msgstr "رفض الطلب"
+
+msgid "Rejected"
+msgstr "مرفوض"
+
+msgid "Religious & Capacity Details"
+msgstr "Religious & Capacity تفاصيل"
+
+msgid "Religious / Educational Program"
+msgstr "برنامج ديني / تعليمي"
+
+msgid "Remember me"
+msgstr "تذكرني"
+
+msgid "Remove"
+msgstr "إزالة"
+
+msgid "Remove Assignment?"
+msgstr "Remove Assignment?"
+
+msgid "Remove District Officer Assignment"
+msgstr "Remove المنطقة مسؤول Assignment"
+
+msgid "Renovation / Repair"
+msgstr "الترميم / الإصلاح"
+
+msgid "Request"
+msgstr "الطلب"
+
+msgid "Request Additional Information / Documents"
+msgstr "طلب معلومات / مستندات إضافية"
+
+msgid "Request History"
+msgstr "سجل الطلب"
+
+msgid "Request Queue"
+msgstr "قائمة الطلبات"
+
+msgid "Request Status"
+msgstr "طلب الحالة"
+
+msgid "Request Support"
+msgstr "طلب الدعم"
+
+msgid "Request Support When Your Mosque Needs Assistance"
+msgstr "اطلب الدعم عندما يحتاج مسجدك إلى المساعدة"
+
+msgid "Request Tracking"
+msgstr "تتبع الطلبات"
+
+msgid "Request and Track Support"
+msgstr "اطلب الدعم وتابعه"
+
+msgid "Request assistance for construction, salaries, maintenance, utilities and other requirements."
+msgstr "طلب assistance for construction, salaries, maintenance, utilities and other requirements."
+
+msgid "Request missing information or supporting documents and track resubmissions."
+msgstr "طلب missing معلومات or supporting مستندات and track resubmissions."
+
+msgid "Requested Amount"
+msgstr "المبلغ المطلوب"
+
+msgid "Requested amount (LKR)"
+msgstr "المبلغ المطلوب (LKR)"
+
+msgid "Requested amount cannot be negative."
+msgstr "Requested المبلغ cannot be negative."
+
+msgid "Resubmit"
+msgstr "إعادة الإرسال"
+
+msgid "Resubmit Request"
+msgstr "إعادة إرسال الطلب"
+
+msgid "Return to My Dashboard"
+msgstr "العودة إلى لوحة التحكم"
+
+msgid "Review"
+msgstr "مراجعة"
+
+msgid "Review / Request Additional Information"
+msgstr "مراجعة / طلب إضافية معلومات"
+
+msgid "Review History"
+msgstr "سجل المراجعة"
+
+msgid "Review additional-information requests, approvals and support-request updates."
+msgstr "مراجعة إضافية-معلومات طلبات, approvals and دعم-طلب updates."
+
+msgid "Review and process mosque assistance requests across the platform."
+msgstr "راجع وعالج طلبات مساعدة المساجد على مستوى المنصة."
+
+msgid "Review and process mosque support requests."
+msgstr "مراجعة and process مسجد دعم طلبات."
+
+msgid "Review and process submitted mosque support requests."
+msgstr "راجع وعالج طلبات دعم المساجد المقدمة."
+
+msgid "Review mosque registrations submitted for Platform Admin approval. Approved mosques are published in the public mosque directory."
+msgstr "راجع تسجيلات المساجد المقدمة لاعتماد مسؤول المنصة. تُنشر المساجد المعتمدة في دليل المساجد العام."
+
+msgid "Review notes"
+msgstr "ملاحظات المراجعة"
+
+msgid "Review notes are required when rejecting a mosque registration."
+msgstr "مراجعة notes are مطلوبة when rejecting a مسجد تسجيل."
+
+msgid "Review notes are required when rejecting a mosque registration. Approval notes are optional."
+msgstr "مراجعة notes are مطلوبة when rejecting a مسجد تسجيل. اعتماد notes are optional."
+
+msgid "Review submitted and resubmitted mosque support requests."
+msgstr "مراجعة مقدم and resubmitted مسجد دعم طلبات."
+
+msgid "Role"
+msgstr "الدور"
+
+msgid "Role Assignment"
+msgstr "تعيين الدور"
+
+msgid "Role Dashboard"
+msgstr "لوحة الدور"
+
+msgid "Role Workspace"
+msgstr "مساحة عمل الدور"
+
+msgid "SMS / Mobile"
+msgstr "SMS / Mobile"
+
+msgid "Salary Support"
+msgstr "دعم الرواتب"
+
+msgid "Save"
+msgstr "حفظ"
+
+msgid "Save Assignment"
+msgstr "حفظ Assignment"
+
+msgid "Save Changes"
+msgstr "حفظ التغييرات"
+
+msgid "Save Platform Admin Decision"
+msgstr "حفظ قرار مسؤول المنصة"
+
+msgid "Save Profile"
+msgstr "حفظ الملف"
+
+msgid "Save User"
+msgstr "حفظ المستخدم"
+
+msgid "Search"
+msgstr "بحث"
+
+msgid "Search Directory"
+msgstr "بحث في الدليل"
+
+msgid "Search approved mosque records across Sri Lanka."
+msgstr "بحث معتمد مسجد records across Sri Lanka."
+
+msgid "Search by code, name or parent location"
+msgstr "بحث by code, الاسم or parent location"
+
+msgid "Search mosque"
+msgstr "بحث مسجد"
+
+msgid "Search name, username, email or mobile"
+msgstr "بحث الاسم, username, البريد الإلكتروني or mobile"
+
+msgid "Search request number, mosque or title"
+msgstr "ابحث برقم الطلب أو المسجد أو العنوان"
+
+msgid "Search request, mosque or district"
+msgstr "ابحث عن طلب أو مسجد أو منطقة"
+
+msgid "Search request, mosque, user or recipient"
+msgstr "ابحث عن طلب أو مسجد أو مستخدم أو مستلم"
+
+msgid "Search verified mosques using geographical and administrative information."
+msgstr "بحث verified مساجد using geographical and administrative معلومات."
+
+msgid "Secretary"
+msgstr "السكرتير"
+
+msgid "Secure Platform Access"
+msgstr "دخول آمن إلى المنصة"
+
+msgid "Secure role-based portals"
+msgstr "بوابات آمنة حسب الدور"
+
+msgid "Select the Divisional Secretariat before selecting a GN Division."
+msgstr "Select the Divisional Secretariat before selecting a GN Division."
+
+msgid "Select the Sri Lanka administrative hierarchy for this mosque."
+msgstr "Select the Sri Lanka administrative hierarchy for this مسجد."
+
+msgid "Select the facilities currently available at the mosque."
+msgstr "Select the المرافق currently available at the مسجد."
+
+msgid "Send Message"
+msgstr "إرسال الرسالة"
+
+msgid "Send Us a Message"
+msgstr "أرسل لنا رسالة"
+
+msgid "Send a Message"
+msgstr "أرسل رسالة"
+
+msgid "Sent"
+msgstr "تم الإرسال"
+
+msgid "Services"
+msgstr "الخدمات"
+
+msgid "Services for Mosques and Communities"
+msgstr "خدمات للمساجد والمجتمعات"
+
+msgid "Serving Mosques Across Sri Lanka"
+msgstr "خدمة المساجد في جميع أنحاء سريلانكا"
+
+msgid "Serving mosque communities across all districts."
+msgstr "نخدم مجتمعات المساجد في جميع المناطق."
+
+msgid "Show or hide password"
+msgstr "إظهار أو إخفاء كلمة المرور"
+
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+msgid "Sign in with your username or email address."
+msgstr "Sign in with your username or البريد الإلكتروني العنوان."
+
+msgid "Signed in as"
+msgstr "Signed in as"
+
+msgid "Simple Workflows, Clear Responsibilities"
+msgstr "إجراءات بسيطة ومسؤوليات واضحة"
+
+msgid "Skipped"
+msgstr "تم التخطي"
+
+msgid "Sri Lanka"
+msgstr "سريلانكا"
+
+msgid "Sri Lanka Location Management"
+msgstr "إدارة مواقع سريلانكا"
+
+msgid "Sri Lanka Location Master Data"
+msgstr "البيانات الأساسية لمواقع سريلانكا"
+
+msgid "Sri Lanka Mosque Platform"
+msgstr "منصة مساجد سريلانكا"
+
+msgid "Start Registration"
+msgstr "ابدأ التسجيل"
+
+msgid "Start a new mosque registration to create your mosque workspace."
+msgstr "Start a جديد مسجد تسجيل to إنشاء your مسجد workspace."
+
+msgid "Status"
+msgstr "الحالة"
+
+msgid "Status History"
+msgstr "سجل الحالة"
+
+msgid "Strengthen mosques through accessible technology, support and transparent services."
+msgstr "تعزيز المساجد عبر تقنية سهلة الوصول ودعم وخدمات شفافة."
+
+msgid "Subject"
+msgstr "الموضوع"
+
+msgid "Submit"
+msgstr "إرسال"
+
+msgid "Submit Request"
+msgstr "إرسال الطلب"
+
+msgid "Submit a Support Request"
+msgstr "تقديم طلب دعم"
+
+msgid "Submit and track construction, salary, maintenance, utility and other assistance requests."
+msgstr "Submit and track construction, salary, maintenance, utility and other assistance طلبات."
+
+msgid "Submit construction, salary, maintenance and other assistance requests online."
+msgstr "قدّم طلبات الإنشاء والرواتب والصيانة وغيرها من المساعدات عبر الإنترنت."
+
+msgid "Submit construction, salary, maintenance, financial and other mosque support requests online."
+msgstr "Submit construction, salary, maintenance, financial and other مسجد دعم طلبات online."
+
+msgid "Submit for Platform Approval"
+msgstr "إرسال لاعتماد المنصة"
+
+msgid "Submit this registration for Platform Admin approval?"
+msgstr "Submit this تسجيل for المنصة مسؤول اعتماد?"
+
+msgid "Submitted"
+msgstr "تم التقديم"
+
+msgid "Submitted by"
+msgstr "مقدم by"
+
+msgid "Super Admin"
+msgstr "المسؤول الأعلى"
+
+msgid "Super Admin Dashboard"
+msgstr "لوحة المسؤول الأعلى"
+
+msgid "Support Administration"
+msgstr "إدارة الدعم"
+
+msgid "Support Notifications"
+msgstr "إشعارات الدعم"
+
+msgid "Support Officer"
+msgstr "مسؤول الدعم"
+
+msgid "Support Officer Dashboard"
+msgstr "لوحة مسؤول الدعم"
+
+msgid "Support Request"
+msgstr "طلب دعم"
+
+msgid "Support Request Approved"
+msgstr "تم اعتماد طلب الدعم"
+
+msgid "Support Request Queue"
+msgstr "قائمة طلبات الدعم"
+
+msgid "Support Request Resubmitted"
+msgstr "تمت إعادة إرسال طلب الدعم"
+
+msgid "Support Request Submitted"
+msgstr "تم إرسال طلب الدعم"
+
+msgid "Support Requested"
+msgstr "الدعم المطلوب"
+
+msgid "Support Requests"
+msgstr "طلبات الدعم"
+
+msgid "Support Requests Assigned"
+msgstr "دعم طلبات معيّن"
+
+msgid "Support Requests Created"
+msgstr "دعم طلبات Created"
+
+msgid "Support Reviews"
+msgstr "دعم Reviews"
+
+msgid "Support request cancelled."
+msgstr "دعم طلب ملغى."
+
+msgid "Support request details updated."
+msgstr "دعم طلب تفاصيل updated."
+
+msgid "Support request document removed."
+msgstr "دعم طلب document removed."
+
+msgid "Support request draft created. Add supporting documents if needed, then submit it."
+msgstr "دعم طلب draft created. إضافة supporting مستندات if needed, then submit it."
+
+msgid "Support request guidance"
+msgstr "إرشاد في طلبات الدعم"
+
+msgid "Support request status updated to %(status)s."
+msgstr "دعم طلب الحالة updated to %(الحالة)s."
+
+msgid "Support request submitted successfully."
+msgstr "دعم طلب مقدم successfully."
+
+msgid "Support requested"
+msgstr "دعم requested"
+
+msgid "Support requests can only be created for approved mosques."
+msgstr "دعم طلبات can only be created for معتمد مساجد."
+
+msgid "Supporting Documents"
+msgstr "المستندات الداعمة"
+
+msgid "Supporting Mosques • Strengthening Communities"
+msgstr "دعم المساجد • تعزيز المجتمعات"
+
+msgid "Supporting document uploaded."
+msgstr "Supporting document uploaded."
+
+msgid "Tamil Name"
+msgstr "الاسم بالتاميلية"
+
+msgid "Telephone"
+msgstr "الهاتف"
+
+msgid "Tell Us How We Can Help"
+msgstr "أخبرنا كيف يمكننا مساعدتك"
+
+msgid "The approved identity and registered location remain protected from normal portal edits."
+msgstr "The معتمد identity and registered location remain protected from normal portal edits."
+
+msgid "The document must be 10 MB or smaller."
+msgstr "The document must be 10 MB or smaller."
+
+msgid "The maximum file size is 10 MB."
+msgstr "الحد الأقصى لحجم الملف هو 10 ميغابايت."
+
+msgid "The monitor displays up to the latest 250 matching delivery attempts."
+msgstr "The monitor displays up to the latest 250 matching delivery attempts."
+
+msgid "The operational mosque portal becomes available after Platform Admin approval."
+msgstr "The operational مسجد portal becomes available after المنصة مسؤول اعتماد."
+
+msgid "The original mosque administrator cannot be removed from this registration."
+msgstr "The original مسجد administrator cannot be removed from this تسجيل."
+
+msgid "The platform will help mosque administrators maintain accurate mosque information and request assistance through transparent digital processes."
+msgstr "The المنصة will help مسجد administrators maintain accurate مسجد معلومات and طلب assistance through transparent digital processes."
+
+msgid "The selected Divisional Secretariat does not belong to the selected district."
+msgstr "The selected Divisional Secretariat does not belong to the selected المنطقة."
+
+msgid "The selected GN Division does not belong to the selected Divisional Secretariat."
+msgstr "The selected GN Division does not belong to the selected Divisional Secretariat."
+
+msgid "The selected district does not belong to the selected province."
+msgstr "The selected المنطقة does not belong to the selected المقاطعة."
+
+msgid "The two password fields do not match."
+msgstr "The two password fields do not match."
+
+msgid "These operational details can be updated without changing the approved registration identity or location."
+msgstr "These operational تفاصيل can be updated without changing the معتمد تسجيل identity or location."
+
+msgid "This District Officer does not have an active district assignment."
+msgstr "This المنطقة مسؤول does not have an نشط المنطقة assignment."
+
+msgid "This record cannot be deleted because other records depend on it. Deactivate it instead."
+msgstr "This record cannot be deleted because other records depend on it. Deactivate it instead."
+
+msgid "This registration has already reached a final status."
+msgstr "This تسجيل has already reached a final الحالة."
+
+msgid "This status change is not allowed."
+msgstr "This الحالة change is not allowed."
+
+msgid "Time"
+msgstr "الوقت"
+
+msgid "To improve communication, administration and support services for mosques using secure and accessible digital technology."
+msgstr "To improve communication, administration and دعم services for مساجد using secure and accessible digital technology."
+
+msgid "Together for Stronger Mosques in Sri Lanka"
+msgstr "معًا من أجل مساجد أقوى في سريلانكا"
+
+msgid "Toggle navigation"
+msgstr "Toggle navigation"
+
+msgid "Track Request"
+msgstr "تتبع الطلب"
+
+msgid "Track Requests"
+msgstr "تتبع الطلبات"
+
+msgid "Track mosque registration and assistance requests through transparent status updates."
+msgstr "Track مسجد تسجيل and assistance طلبات through transparent الحالة updates."
+
+msgid "Transparent support workflows"
+msgstr "إجراءات دعم شفافة"
+
+msgid "Treasurer"
+msgstr "أمين الصندوق"
+
+msgid "Trustee"
+msgstr "الأمين"
+
+msgid "Try another search term or district."
+msgstr "Try another بحث term or المنطقة."
+
+msgid "Under Review"
+msgstr "قيد المراجعة"
+
+msgid "United for Stronger Communities"
+msgstr "معًا من أجل مجتمعات أقوى"
+
+msgid "Universal Login"
+msgstr "تسجيل الدخول الموحد"
+
+msgid "Update Status"
+msgstr "تحديث الحالة"
+
+msgid "Updated"
+msgstr "تم التحديث"
+
+msgid "Updates requiring your attention and recent support-request decisions."
+msgstr "تحديثات تتطلب انتباهك وأحدث قرارات طلبات الدعم."
+
+msgid "Upload"
+msgstr "رفع"
+
+msgid "Upload Document"
+msgstr "رفع مستند"
+
+msgid "Upload Mosque Document"
+msgstr "Upload مسجد Document"
+
+msgid "Upload Support Document"
+msgstr "رفع مستند دعم"
+
+msgid "Upload Supporting Document"
+msgstr "رفع مستند داعم"
+
+msgid "Upload a PDF, JPG, JPEG, or PNG file."
+msgstr "Upload a PDF, JPG, JPEG, or PNG file."
+
+msgid "Upload and securely manage mosque registration and support documents."
+msgstr "Upload and securely manage مسجد تسجيل and دعم مستندات."
+
+msgid "Urgent"
+msgstr "عاجل"
+
+msgid "User"
+msgstr "مستخدم"
+
+msgid "User %(username)s created successfully."
+msgstr "مستخدم %(username)s created successfully."
+
+msgid "User %(username)s updated successfully."
+msgstr "مستخدم %(username)s updated successfully."
+
+msgid "User Access"
+msgstr "مستخدم Access"
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Username or email"
+msgstr "اسم المستخدم أو البريد الإلكتروني"
+
+msgid "Users & Officers"
+msgstr "المستخدمون والمسؤولون"
+
+msgid "Utilities"
+msgstr "المرافق"
+
+msgid "Verification"
+msgstr "التحقق"
+
+msgid "Verified"
+msgstr "تم التحقق"
+
+msgid "Verified mosque information"
+msgstr "معلومات مساجد موثقة"
+
+msgid "View"
+msgstr "عرض"
+
+msgid "View All Mosques"
+msgstr "عرض جميع المساجد"
+
+msgid "View All Notifications"
+msgstr "عرض جميع الإشعارات"
+
+msgid "View Failures"
+msgstr "عرض Failures"
+
+msgid "View Mosque"
+msgstr "عرض مسجد"
+
+msgid "View Mosque Profile"
+msgstr "عرض ملف المسجد"
+
+msgid "View Notifications"
+msgstr "عرض الإشعارات"
+
+msgid "View Public Profile"
+msgstr "عرض الملف العام"
+
+msgid "View Registration Record"
+msgstr "عرض سجل التسجيل"
+
+msgid "View Support Requests"
+msgstr "عرض طلبات الدعم"
+
+msgid "View approved mosque operational profiles where you have active staff access."
+msgstr "عرض معتمد مسجد operational profiles where you have نشط موظف access."
+
+msgid "View committee contacts and mosque documents shared through the portal."
+msgstr "عرض اللجنة contacts and مسجد مستندات shared through the portal."
+
+msgid "View mosque registrations linked to your account."
+msgstr "عرض مسجد registrations linked to your الحساب."
+
+msgid "View support requests for mosques where you have active staff access."
+msgstr "عرض دعم طلبات for مساجد where you have نشط موظف access."
+
+msgid "Visit Website"
+msgstr "زيارة الموقع"
+
+msgid "Water / Electricity / Utilities"
+msgstr "المياه / الكهرباء / المرافق"
+
+msgid "Water, electricity and essential facility issues."
+msgstr "Water, electricity and essential مرفق issues."
+
+msgid "We Are Here to Help"
+msgstr "نحن هنا للمساعدة"
+
+msgid "We connect mosque administrators with practical digital tools for registration, public information, support requests and transparent administration across Sri Lanka."
+msgstr "نربط مسؤولي المساجد بأدوات رقمية عملية للتسجيل والمعلومات العامة وطلبات الدعم والإدارة الشفافة في جميع أنحاء سريلانكا."
+
+msgid "Website"
+msgstr "الموقع الإلكتروني"
+
+msgid "Welcome Back"
+msgstr "مرحبًا بعودتك"
+
+msgid "Welcome back, %(name)s."
+msgstr "مرحبًا بعودتك، %(name)s."
+
+msgid "Wheelchair Access"
+msgstr "إمكانية وصول الكراسي المتحركة"
+
+msgid "Who We Are"
+msgstr "من نحن"
+
+msgid "Women Capacity"
+msgstr "سعة النساء"
+
+msgid "Women Prayer Area"
+msgstr "مصلى النساء"
+
+msgid "Write your message here"
+msgstr "اكتب رسالتك هنا"
+
+msgid "Wudu Facilities"
+msgstr "مرافق الوضوء"
+
+msgid "You cannot assign this role."
+msgstr "You cannot assign this الدور."
+
+msgid "You have been signed out successfully."
+msgstr "تم تسجيل خروجك بنجاح."
+
+msgid "Your account does not have permission to open this workspace."
+msgstr "حسابك لا يملك صلاحية فتح مساحة العمل هذه."
+
+msgid "Your message has been sent successfully. Our team will contact you soon."
+msgstr "تم إرسال رسالتك بنجاح. سيتواصل معك فريقنا قريبًا."
+
+msgid "Your message will be sent to the platform support team."
+msgstr "سيتم إرسال رسالتك إلى فريق دعم المنصة."
+
+msgid "Your name"
+msgstr "Your الاسم"
+
+msgid "Your platform account and access information."
+msgstr "Your المنصة الحساب and access معلومات."
+
+msgid "district"
+msgstr "المنطقة"
+
+msgid "district officer assignment"
+msgstr "المنطقة مسؤول assignment"
+
+msgid "district officer assignments"
+msgstr "المنطقة مسؤول assignments"
+
+msgid "districts"
+msgstr "districts"
+
+msgid "divisional secretariat"
+msgstr "divisional secretariat"
+
+msgid "divisional secretariats"
+msgstr "divisional secretariats"
+
+msgid "email address"
+msgstr "البريد الإلكتروني العنوان"
+
+msgid "mosque"
+msgstr "مسجد"
+
+msgid "mosque operational profile"
+msgstr "مسجد operational ملف"
+
+msgid "mosque operational profiles"
+msgstr "مسجد operational profiles"
+
+msgid "mosque review history"
+msgstr "مسجد مراجعة السجل"
+
+msgid "mosque support request"
+msgstr "مسجد دعم طلب"
+
+msgid "mosque support requests"
+msgstr "مسجد دعم طلبات"
+
+msgid "mosques"
+msgstr "مساجد"
+
+msgid "province"
+msgstr "المقاطعة"
+
+msgid "provinces"
+msgstr "provinces"
+
+msgid "results"
+msgstr "نتائج"
+
+msgid "support notification"
+msgstr "دعم إشعار"
+
+msgid "support notification deliveries"
+msgstr "دعم إشعار deliveries"
+
+msgid "support notification delivery"
+msgstr "دعم إشعار delivery"
+
+msgid "support notifications"
+msgstr "دعم إشعارات"
+
+msgid "support request history"
+msgstr "دعم طلب السجل"
+
+msgid "user"
+msgstr "مستخدم"
+
+msgid "users"
+msgstr "المستخدمون"

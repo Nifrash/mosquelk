@@ -1,0 +1,71 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Platform Mosque Approval" %} | {{ mosque.mosque_id }}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container">
+        <a class="text-white-50 text-decoration-none" href="{% url 'mosques:review_queue' %}"><i class="bi bi-arrow-left me-1"></i>{% trans "Approval Queue" %}</a>
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-start gap-3 mt-3">
+            <div>
+                <span class="status-badge status-{{ mosque.status|lower }}">{{ mosque.get_status_display }}</span>
+                <h1 class="mt-3">{{ mosque.localized_name }}</h1>
+                <p>{{ mosque.mosque_id }} · {{ mosque.district.localized_name }} · {% trans "Submitted by" %} {{ mosque.created_by }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container">
+        {% include "mosques/partials_messages.html" %}
+        <div class="row g-4">
+            <div class="col-xl-8">
+                <div class="card border-0 shadow-sm mb-4"><div class="card-body p-4">
+                    <h3>{% trans "Registration Information" %}</h3>
+                    <div class="row g-4 mt-1">
+                        <div class="col-md-6"><span class="detail-label">{% trans "English Name" %}</span><strong>{{ mosque.name_en }}</strong></div>
+                        <div class="col-md-6"><span class="detail-label">{% trans "Category" %}</span><strong>{{ mosque.get_category_display }}</strong></div>
+                        <div class="col-md-6"><span class="detail-label">{% trans "Province" %}</span><strong>{{ mosque.province.localized_name }}</strong></div>
+                        <div class="col-md-6"><span class="detail-label">{% trans "District" %}</span><strong>{{ mosque.district.localized_name }}</strong></div>
+                        <div class="col-md-6"><span class="detail-label">{% trans "Divisional Secretariat" %}</span><strong>{% if mosque.divisional_secretariat %}{{ mosque.divisional_secretariat.localized_name }}{% else %}—{% endif %}</strong></div>
+                        <div class="col-md-6"><span class="detail-label">{% trans "GN Division" %}</span><strong>{% if mosque.gn_division %}{{ mosque.gn_division.localized_name }}{% else %}—{% endif %}</strong></div>
+                        <div class="col-md-6"><span class="detail-label">{% trans "Official Phone" %}</span><strong>{{ mosque.official_phone }}</strong></div>
+                        <div class="col-md-6"><span class="detail-label">{% trans "Official Email" %}</span><strong>{{ mosque.official_email|default:"—" }}</strong></div>
+                        <div class="col-12"><span class="detail-label">{% trans "Address" %}</span><strong>{{ mosque.address_line1 }}{% if mosque.address_line2 %}, {{ mosque.address_line2 }}{% endif %}, {{ mosque.city_or_town }}</strong></div>
+                    </div>
+                </div></div>
+
+                <div class="card border-0 shadow-sm mb-4"><div class="card-body p-4">
+                    <h3>{% trans "Committee Contacts" %}</h3>
+                    <div class="table-responsive mt-3"><table class="table align-middle"><thead><tr><th>{% trans "Name" %}</th><th>{% trans "Designation" %}</th><th>{% trans "Contact" %}</th></tr></thead><tbody>{% for member in mosque.committee_members.all %}<tr><td>{{ member.full_name }}</td><td>{{ member.get_designation_display }}</td><td>{{ member.phone_number|default:"—" }}{% if member.email %}<small class="d-block text-muted">{{ member.email }}</small>{% endif %}</td></tr>{% empty %}<tr><td colspan="3" class="text-muted">{% trans "No committee contacts submitted." %}</td></tr>{% endfor %}</tbody></table></div>
+                </div></div>
+
+                <div class="card border-0 shadow-sm"><div class="card-body p-4">
+                    <h3>{% trans "Documents" %}</h3>
+                    <div class="list-group list-group-flush mt-2">{% for document in mosque.documents.all %}<div class="list-group-item px-0 d-flex justify-content-between align-items-center"><div><strong>{{ document.title }}</strong><small class="d-block text-muted">{{ document.get_document_type_display }}</small></div><a href="{{ document.file.url }}" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye me-1"></i>{% trans "Open" %}</a></div>{% empty %}<div class="text-muted py-3">{% trans "No documents uploaded." %}</div>{% endfor %}</div>
+                </div></div>
+            </div>
+
+            <div class="col-xl-4">
+                {% if mosque.status != 'APPROVED' and mosque.status != 'REJECTED' %}
+                    <div class="card border-0 shadow-sm mb-4"><div class="card-body p-4">
+                        <h3>{% trans "Platform Admin Decision" %}</h3>
+                        <form method="post" action="{% url 'mosques:review_action' mosque.mosque_id %}" novalidate>{% csrf_token %}
+                            {% for field in review_form %}<div class="mb-3"><label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% for error in field.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>{% endfor %}
+                            <div class="alert alert-light small border">{% trans "Review notes are required when rejecting a mosque registration. Approval notes are optional." %}</div>
+                            <button class="btn btn-primary-custom w-100" type="submit"><i class="bi bi-check2-square me-1"></i>{% trans "Save Platform Admin Decision" %}</button>
+                        </form>
+                    </div></div>
+                {% endif %}
+
+                <div class="card border-0 shadow-sm"><div class="card-body p-4">
+                    <h4>{% trans "Review History" %}</h4>
+                    <div class="registration-timeline mt-3">{% for history in mosque.review_history.all %}<div class="timeline-step active"><span></span><div><strong>{{ history.get_to_status_display }}</strong><small>{{ history.created_at|date:"Y-m-d H:i" }}{% if history.reviewer %} · {{ history.reviewer }}{% endif %}</small>{% if history.notes %}<p>{{ history.notes }}</p>{% endif %}</div></div>{% empty %}<p class="text-muted mb-0">{% trans "No review actions recorded yet." %}</p>{% endfor %}</div>
+                </div></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "platform_control/base_control.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Users & Officers" %} | {% trans "Platform Control" %}{% endblock %}
+
+{% block control_content %}
+<div class="control-page">
+    <div class="control-page-header">
+        <div>
+            <span class="control-kicker">{% trans "Identity & Access" %}</span>
+            <h1>{% trans "Users & Officers" %}</h1>
+            <p>{% trans "Manage operational user accounts, roles, contact details and account status." %}</p>
+        </div>
+        <a href="{% url 'platform_control:user_create' %}" class="btn btn-primary-custom">
+            <i class="bi bi-person-plus me-1"></i>{% trans "Create User" %}
+        </a>
+    </div>
+
+    <div class="control-card">
+        <form method="get" class="row g-2 mb-4">
+            <div class="col-xl-5">
+                <input type="search" name="q" value="{{ query }}" class="form-control" placeholder="{% trans 'Search name, username, email or mobile' %}">
+            </div>
+            <div class="col-xl-3">
+                <select name="role" class="form-select">
+                    <option value="">{% trans "All roles" %}</option>
+                    {% for value, label in role_choices %}
+                        <option value="{{ value }}" {% if selected_role == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-xl-2">
+                <select name="status" class="form-select">
+                    <option value="">{% trans "All account states" %}</option>
+                    <option value="active" {% if selected_status == "active" %}selected{% endif %}>{% trans "Active" %}</option>
+                    <option value="inactive" {% if selected_status == "inactive" %}selected{% endif %}>{% trans "Inactive" %}</option>
+                </select>
+            </div>
+            <div class="col-xl-2 d-grid">
+                <button class="btn btn-outline-success" type="submit"><i class="bi bi-search me-1"></i>{% trans "Filter" %}</button>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table align-middle control-table mb-0">
+                <thead>
+                    <tr>
+                        <th>{% trans "User" %}</th>
+                        <th>{% trans "Role" %}</th>
+                        <th>{% trans "Contact" %}</th>
+                        <th>{% trans "Language" %}</th>
+                        <th>{% trans "Status" %}</th>
+                        <th class="text-end">{% trans "Action" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>
+                                <strong>{{ user.get_full_name|default:user.username }}</strong>
+                                <small>@{{ user.username }}</small>
+                            </td>
+                            <td>{{ user.get_role_display }}</td>
+                            <td>
+                                {{ user.email }}
+                                <small>{{ user.phone_number|default:"No mobile" }}</small>
+                            </td>
+                            <td>{{ user.get_preferred_language_display }}</td>
+                            <td>
+                                {% if user.is_active %}
+                                    <span class="badge text-bg-success">{% trans "Active" %}</span>
+                                {% else %}
+                                    <span class="badge text-bg-secondary">{% trans "Inactive" %}</span>
+                                {% endif %}
+                                {% if user.is_verified %}
+                                    <span class="badge text-bg-light">{% trans "Verified" %}</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-end">
+                                <a href="{% url 'platform_control:user_detail' user.pk %}" class="btn btn-sm btn-outline-success">{% trans "Open" %}</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="6" class="text-center text-muted py-5">{% trans "No users match the selected filters." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% if is_edit %}{% trans "Edit" %}{% else %}{% trans "Add" %}{% endif %} {{ title }}{% endblock %}
+
+{% block content %}
+<section class="page-header py-5">
+    <div class="container">
+        <h1>{% if is_edit %}{% trans "Edit" %}{% else %}{% trans "Add" %}{% endif %} {{ title }}</h1>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container" style="max-width: 850px;">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4 p-lg-5">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                    {% endif %}
+
+                    <div class="row g-3">
+                        {% for field in form %}
+                            <div class="{% if field.name == 'is_active' %}col-12{% else %}col-md-6{% endif %}">
+                                {% if field.name == "is_active" %}
+                                    <div class="form-check mt-3">
+                                        {{ field }}
+                                        <label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    </div>
+                                {% else %}
+                                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    {{ field }}
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <div class="text-danger small mt-1">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="d-flex gap-2 mt-4">
+                        <button class="btn btn-primary-custom" type="submit">
+                            <i class="bi bi-check-lg me-1"></i>{% trans "Save" %}
+                        </button>
+                        <a class="btn btn-outline-secondary" href="{% url 'locations:list' entity %}">{% trans "Cancel" %}</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

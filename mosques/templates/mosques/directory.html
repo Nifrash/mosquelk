@@ -1,0 +1,57 @@
+{% extends "ui_system/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "Mosque Directory" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+{% block content %}
+<section class="public-page-hero directory-page-hero">
+    <div class="container position-relative">
+        <div class="public-hero-content">
+            <span class="public-eyebrow"><i class="bi bi-patch-check-fill"></i>{% trans "Approved Mosques" %}</span>
+            <h1>{% trans "Explore Mosques Across Sri Lanka" %}</h1>
+            <p>{% trans "Search trusted, Platform Admin-approved mosque profiles by name, district, town or unique mosque ID." %}</p>
+        </div>
+    </div>
+</section>
+
+<section class="directory-search-section">
+    <div class="container">
+        <div class="directory-search-panel">
+            <form method="get" class="row g-3 align-items-end">
+                <div class="col-lg-7"><label class="form-label">{% trans "Search mosque" %}</label><div class="public-input-icon"><i class="bi bi-search"></i><input type="search" class="form-control" name="q" value="{{ query }}" placeholder="{% trans 'Mosque ID, name, town or district' %}"></div></div>
+                <div class="col-lg-3"><label class="form-label">{% trans "District" %}</label><select name="district" class="form-select"><option value="">{% trans "All districts" %}</option>{% for district in districts %}<option value="{{ district.pk }}" {% if selected_district == district.pk|stringformat:'s' %}selected{% endif %}>{{ district.localized_name }}</option>{% endfor %}</select></div>
+                <div class="col-lg-2 d-grid"><button class="btn btn-primary-custom btn-lg" type="submit"><i class="bi bi-search me-1"></i>{% trans "Search" %}</button></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="public-section directory-results-section">
+    <div class="container">
+        <div class="directory-results-heading">
+            <div><span class="public-section-label">{% trans "Mosque Directory" %}</span><h2>{% trans "Approved Mosque Profiles" %}</h2></div>
+            <span class="directory-result-count"><strong>{{ result_count }}</strong> {% trans "results" %}</span>
+        </div>
+        <div class="row g-4 mt-1">
+            {% for mosque in mosques %}
+                <div class="col-md-6 col-xl-4">
+                    <article class="premium-mosque-card h-100">
+                        <a href="{% url 'mosques:public_detail' mosque.mosque_id %}" class="premium-mosque-image">
+                            {% if mosque.public_photo_url %}<img src="{{ mosque.public_photo_url }}" alt="{{ mosque.localized_name }}">{% else %}<img src="{% static 'img/home/featured-mosque.jpg' %}" alt="{{ mosque.localized_name }}">{% endif %}
+                            <span class="premium-approved-badge"><i class="bi bi-patch-check-fill"></i>{% trans "Approved" %}</span>
+                        </a>
+                        <div class="premium-mosque-body">
+                            <div class="premium-mosque-id">{{ mosque.mosque_id }}</div>
+                            <h3><a href="{% url 'mosques:public_detail' mosque.mosque_id %}">{{ mosque.localized_name }}</a></h3>
+                            <p><i class="bi bi-geo-alt-fill"></i>{{ mosque.city_or_town }}, {{ mosque.district.localized_name }}</p>
+                            <div class="premium-mosque-meta"><span><i class="bi bi-building"></i>{{ mosque.get_category_display }}</span></div>
+                            <a href="{% url 'mosques:public_detail' mosque.mosque_id %}" class="premium-mosque-link">{% trans "View Mosque Profile" %}<i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            {% empty %}
+                <div class="col-12"><div class="empty-state-card premium-empty-state"><span><i class="bi bi-search"></i></span><h3>{% trans "No approved mosques found" %}</h3><p>{% trans "Try another search term or district." %}</p><a href="{% url 'mosques:directory' %}" class="btn btn-outline-success">{% trans "Clear Search" %}</a></div></div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

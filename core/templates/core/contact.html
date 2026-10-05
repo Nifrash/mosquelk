@@ -1,0 +1,57 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Contact Us" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+{% block content %}
+<section class="public-page-hero contact-page-hero">
+    <div class="container position-relative">
+        <div class="public-hero-content">
+            <span class="public-eyebrow"><i class="bi bi-chat-dots"></i>{% trans "Contact Us" %}</span>
+            <h1>{% trans "We Are Here to Help" %}</h1>
+            <p>{% trans "Contact our team for platform guidance, mosque registration help, account assistance or general information." %}</p>
+        </div>
+    </div>
+</section>
+
+<section class="public-section public-soft-section">
+    <div class="container">
+        <div class="row g-4 mb-5">
+            <div class="col-md-4"><div class="public-contact-card h-100"><span><i class="bi bi-geo-alt"></i></span><h3>{% trans "Sri Lanka" %}</h3><p>{% trans "Serving mosque communities across all districts." %}</p></div></div>
+            <div class="col-md-4"><a class="public-contact-card h-100" href="mailto:info@mosques.lk"><span><i class="bi bi-envelope"></i></span><h3>{% trans "Email" %}</h3><p>info@mosques.lk</p></a></div>
+            <div class="col-md-4"><div class="public-contact-card h-100"><span><i class="bi bi-clock"></i></span><h3>{% trans "Platform Support" %}</h3><p>{% trans "Send us a message and our team will respond as soon as possible." %}</p></div></div>
+        </div>
+
+        <div class="row g-5 align-items-stretch">
+            <div class="col-lg-5">
+                <div class="contact-information-panel h-100">
+                    <span class="public-section-label text-warning">{% trans "Get in Touch" %}</span>
+                    <h2>{% trans "Tell Us How We Can Help" %}</h2>
+                    <p>{% trans "For faster assistance, include the relevant mosque ID or support request number when available." %}</p>
+                    <div class="contact-help-list">
+                        <div><i class="bi bi-building-add"></i><span>{% trans "Mosque registration assistance" %}</span></div>
+                        <div><i class="bi bi-person-lock"></i><span>{% trans "Login and account access" %}</span></div>
+                        <div><i class="bi bi-hand-heart"></i><span>{% trans "Support request guidance" %}</span></div>
+                        <div><i class="bi bi-translate"></i><span>{% trans "English, Tamil and Arabic support" %}</span></div>
+                    </div>
+                    <div class="contact-security-note"><i class="bi bi-shield-check"></i><span>{% trans "Please do not send passwords or other confidential login credentials through this form." %}</span></div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="public-form-card h-100">
+                    <div class="mb-4"><span class="public-section-label">{% trans "Send a Message" %}</span><h2 class="h3 mt-2">{% trans "Contact Our Team" %}</h2></div>
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+                        <div class="row g-3">
+                            <div class="col-md-6"><label class="form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>{{ form.name }}{% for error in form.name.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>
+                            <div class="col-md-6"><label class="form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>{{ form.email }}{% for error in form.email.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>
+                            <div class="col-12"><label class="form-label" for="{{ form.subject.id_for_label }}">{{ form.subject.label }}</label>{{ form.subject }}{% for error in form.subject.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>
+                            <div class="col-12"><label class="form-label" for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>{{ form.message }}{% for error in form.message.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>
+                            <div class="col-12 d-flex flex-wrap align-items-center gap-3 mt-4"><button type="submit" class="btn btn-primary-custom btn-lg"><i class="bi bi-send me-2"></i>{% trans "Send Message" %}</button><small class="text-muted">{% trans "Your message will be sent to the platform support team." %}</small></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

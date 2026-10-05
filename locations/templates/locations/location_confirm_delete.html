@@ -1,0 +1,25 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Delete Location" %}{% endblock %}
+
+{% block content %}
+<section class="section-padding bg-light">
+    <div class="container" style="max-width: 680px;">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-5">
+                <div class="text-danger fs-1 mb-3"><i class="bi bi-exclamation-triangle"></i></div>
+                <h2>{% trans "Delete Location Record?" %}</h2>
+                <p>{% blocktrans with object=object %}You are about to delete "{{ object }}".{% endblocktrans %}</p>
+                <p class="text-muted">{% trans "If dependent records exist, deletion will be blocked. In that case, mark the record inactive instead." %}</p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">{% trans "Delete" %}</button>
+                    <a class="btn btn-outline-secondary" href="{% url 'locations:list' entity %}">{% trans "Cancel" %}</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

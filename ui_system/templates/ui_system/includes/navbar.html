@@ -1,0 +1,64 @@
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<header class="site-header">
+    <nav class="navbar navbar-expand-xl navbar-dark mosque-navbar sticky-top">
+        <div class="container">
+            <a class="navbar-brand premium-brand" href="{% url 'core:home' %}">
+                <span class="brand-mark"><i class="bi bi-moon-stars-fill"></i></span>
+                <span class="brand-copy">
+                    <strong>{% trans "Mosques Sri Lanka" %}</strong>
+                    <small>{% trans "United for Stronger Communities" %}</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-xl-auto align-items-xl-center premium-nav-links">
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'core:about' %}">{% trans "About Us" %}</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'core:services' %}">{% trans "Services" %}</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'mosques' and request.resolver_match.url_name == 'directory' %}active{% endif %}" href="{% url 'mosques:directory' %}">{% trans "Mosque Directory" %}</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'support_requests' %}active{% endif %}" href="{% url 'support_requests:create' %}">{% trans "Request Support" %}</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'core:contact' %}">{% trans "Contact Us" %}</a></li>
+                </ul>
+
+                <div class="premium-nav-actions">
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.role == 'MOSQUE_ADMIN' or request.user.role == 'MOSQUE_STAFF' %}
+                            <a href="{% url 'mosques:my_mosques' %}" class="premium-icon-link" title="{% trans 'My Mosques' %}"><i class="bi bi-buildings"></i></a>
+                        {% endif %}
+                        {% if request.user.role == 'PLATFORM_ADMIN' or request.user.role == 'SUPER_ADMIN' %}
+                            <a href="{% url 'platform_control:overview' %}" class="premium-icon-link" title="{% trans 'Platform Control' %}"><i class="bi bi-shield-check"></i></a>
+                        {% endif %}
+                        <a href="{% url 'dashboard:home' %}" class="premium-icon-link" title="{% trans 'Dashboard' %}"><i class="bi bi-grid"></i></a>
+                    {% endif %}
+
+                    <div class="language-switcher premium-language-switcher">
+                        <i class="bi bi-globe2"></i>
+                        <select
+                            class="form-select form-select-sm"
+                            aria-label="{% trans 'Language' %}"
+                            onchange="if (this.value) window.location.href = this.value;"
+                        >
+                            <option value="{% url 'switch_language' 'en' %}?next={{ request.get_full_path|urlencode }}" {% if CURRENT_LANGUAGE == 'en' %}selected{% endif %}>English</option>
+                            <option value="{% url 'switch_language' 'ta' %}?next={{ request.get_full_path|urlencode }}" {% if CURRENT_LANGUAGE == 'ta' %}selected{% endif %}>தமிழ்</option>
+                            <option value="{% url 'switch_language' 'ar' %}?next={{ request.get_full_path|urlencode }}" {% if CURRENT_LANGUAGE == 'ar' %}selected{% endif %}>العربية</option>
+                        </select>
+                    </div>
+
+                    {% if request.user.is_authenticated %}
+                        <form method="post" action="{% url 'accounts:logout' %}" class="m-0">
+                            {% csrf_token %}
+                            <button type="submit" class="btn premium-login-btn"><i class="bi bi-box-arrow-right"></i><span>{% trans "Logout" %}</span></button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'accounts:login' %}" class="btn premium-login-btn"><i class="bi bi-person"></i><span>{% trans "Login" %}</span></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
