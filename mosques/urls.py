@@ -6,6 +6,7 @@ app_name = "mosques"
 
 urlpatterns = [
     path("", views.mosque_directory, name="directory"),
+    path("register/start/", views.registration_start, name="registration_start"),
     path("register/", views.mosque_create, name="create"),
     path("my/", views.my_mosques, name="my_mosques"),
 

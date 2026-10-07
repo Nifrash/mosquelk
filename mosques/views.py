@@ -165,6 +165,25 @@ def my_mosques(request):
     )
 
 
+def registration_start(request):
+    """Public onboarding entry point for mosque registration."""
+
+    if request.user.is_authenticated:
+        if request.user.role == UserRole.MOSQUE_ADMIN:
+            return redirect("mosques:create")
+
+        messages.info(
+            request,
+            _("Mosque registration is available only to Mosque Admin accounts."),
+        )
+        return redirect("dashboard:home")
+
+    return render(
+        request,
+        "mosques/registration_start.html",
+    )
+
+
 @role_required(UserRole.MOSQUE_ADMIN)
 def mosque_create(request):
     form = MosqueRegistrationForm(request.POST or None)

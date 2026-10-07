@@ -1,12 +1,20 @@
 # Sri Lanka Mosque Platform translations
 msgid ""
 msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-10-07 16:18+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ta\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: ta <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
 
+#, python-format
 msgid "%(name)s saved successfully."
 msgstr "%(பெயர்)s saved successfully."
 
@@ -16,7 +24,9 @@ msgstr "A Central Digital தளம் for Sri Lankan பள்ளிவாச�
 msgid "A centralized digital platform for mosque registration, administration, support requests and community services."
 msgstr "பள்ளிவாசல் பதிவு, நிர்வாகம், ஆதரவு கோரிக்கைகள் மற்றும் சமூக சேவைகளுக்கான மையப்படுத்தப்பட்ட டிஜிட்டல் தளம்."
 
-msgid "A connected mosque community supported by reliable information, transparent administration and modern digital services."
+msgid ""
+"A connected mosque community supported by reliable information, transparent administration and modern digital "
+"services."
 msgstr "A connected பள்ளிவாசல் community supported by reliable தகவல், transparent administration and modern digital services."
 
 msgid "A connected national network of well-managed mosques serving their communities."
@@ -31,8 +41,12 @@ msgstr "இலங்கை முழுவதும் பள்ளிவாச�
 msgid "A single platform to connect, manage and support mosques throughout Sri Lanka."
 msgstr "இலங்கை முழுவதும் பள்ளிவாசல்களை இணைக்க, நிர்வகிக்க மற்றும் ஆதரிக்க ஒரே தளம்."
 
-msgid "A trusted multilingual digital platform supporting mosque administration, transparency and community assistance across Sri Lanka."
-msgstr "இலங்கை முழுவதும் பள்ளிவாசல் நிர்வாகம், வெளிப்படைத்தன்மை மற்றும் சமூக ஆதரவை மேம்படுத்தும் நம்பகமான பல்மொழி டிஜிட்டல் தளம்."
+msgid ""
+"A trusted multilingual digital platform supporting mosque administration, transparency and community assistance "
+"across Sri Lanka."
+msgstr ""
+"இலங்கை முழுவதும் பள்ளிவாசல் நிர்வாகம், வெளிப்படைத்தன்மை மற்றும் சமூக ஆதரவை மேம்படுத்தும் நம்பகமான பல்மொழி டிஜிட்டல் "
+"தளம்."
 
 msgid "A unified platform to register, connect, support and develop mosques across Sri Lanka."
 msgstr "இலங்கை முழுவதும் பள்ளிவாசல்களை பதிவு செய்யவும், இணைக்கவும், ஆதரிக்கவும், மேம்படுத்தவும் உதவும் ஒருங்கிணைந்த தளம்."
@@ -203,7 +217,9 @@ msgid "Approved amount cannot be negative."
 msgstr "அனுமதிக்கப்பட்டது தொகை cannot be negative."
 
 msgid "Approved mosques can submit requests, upload supporting information and track every decision from the mosque portal."
-msgstr "அனுமதிக்கப்பட்ட பள்ளிவாசல்கள் கோரிக்கைகளை சமர்ப்பித்து, ஆதாரத் தகவலை பதிவேற்றி, பள்ளிவாசல் தளத்தில் ஒவ்வொரு முடிவையும் கண்காணிக்கலாம்."
+msgstr ""
+"அனுமதிக்கப்பட்ட பள்ளிவாசல்கள் கோரிக்கைகளை சமர்ப்பித்து, ஆதாரத் தகவலை பதிவேற்றி, பள்ளிவாசல் தளத்தில் ஒவ்வொரு "
+"முடிவையும் கண்காணிக்கலாம்."
 
 msgid "Approved mosques will appear here"
 msgstr "அனுமதிக்கப்பட்ட பள்ளிவாசல்கள் இங்கே காணப்படும்"
@@ -223,6 +239,7 @@ msgstr "ஒதுக்கப்பட்டது மாவட்டம்"
 msgid "Assigned Officer"
 msgstr "ஒதுக்கப்பட்ட அதிகாரி"
 
+#, python-format
 msgid "Assigned district: %(district)s (%(province)s)"
 msgstr "ஒதுக்கப்பட்டது மாவட்டம்: %(மாவட்டம்)s (%(மாகாணம்)s)"
 
@@ -374,7 +391,7 @@ msgid "Create User / Officer"
 msgstr "பயனர் / அதிகாரி உருவாக்குக"
 
 msgid "Create Your Account"
-msgstr "உங்கள் கணக்கை உருவாக்குங்கள்"
+msgstr "உங்கள் கணக்கை உருவாக்கவும்"
 
 msgid "Create and track construction, salary, utility, maintenance and other mosque assistance requests."
 msgstr "கட்டுமானம், சம்பளம், அத்தியாவசிய சேவைகள், பராமரிப்பு மற்றும் பிற பள்ளிவாசல் உதவி கோரிக்கைகளை உருவாக்கி கண்காணிக்கவும்."
@@ -469,6 +486,7 @@ msgstr "மாவட்ட அதிகாரிகள்"
 msgid "District officer assignment removed."
 msgstr "மாவட்டம் அதிகாரி assignment removed."
 
+#, python-format
 msgid "District officer assignment saved for %(user)s."
 msgstr "மாவட்டம் அதிகாரி assignment saved for %(பயனர்)s."
 
@@ -664,8 +682,13 @@ msgstr "Identity, பங்கு and contact channels."
 msgid "If dependent records exist, deletion will be blocked. In that case, mark the record inactive instead."
 msgstr "If dependent records exist, deletion will be blocked. In that case, mark the record செயலற்றது instead."
 
-msgid "If information or documents are missing, choose Request Additional Information / Documents and clearly list what the mosque must provide. The Mosque Admin will be notified in the dashboard, by email and by registered mobile/SMS."
-msgstr "தகவல் அல்லது ஆவணங்கள் குறைந்திருந்தால், “கூடுதல் தகவல் / ஆவணங்களை கோருக” என்பதைத் தேர்ந்தெடுத்து பள்ளிவாசல் வழங்க வேண்டியவற்றை தெளிவாக குறிப்பிடவும். பள்ளிவாசல் நிர்வாகிக்கு கட்டுப்பாட்டு பலகம், மின்னஞ்சல் மற்றும் பதிவு செய்யப்பட்ட கைபேசி/SMS வழியாக அறிவிக்கப்படும்."
+msgid ""
+"If information or documents are missing, choose Request Additional Information / Documents and clearly list what the "
+"mosque must provide. The Mosque Admin will be notified in the dashboard, by email and by registered mobile/SMS."
+msgstr ""
+"தகவல் அல்லது ஆவணங்கள் குறைந்திருந்தால், “கூடுதல் தகவல் / ஆவணங்களை கோருக” என்பதைத் தேர்ந்தெடுத்து பள்ளிவாசல் வழங்க "
+"வேண்டியவற்றை தெளிவாக குறிப்பிடவும். பள்ளிவாசல் நிர்வாகிக்கு கட்டுப்பாட்டு பலகம், மின்னஞ்சல் மற்றும் பதிவு செய்யப்பட்ட"
+" கைபேசி/SMS வழியாக அறிவிக்கப்படும்."
 
 msgid "Imam"
 msgstr "இமாம்"
@@ -955,7 +978,9 @@ msgstr "பள்ளிவாசல் பதிவு உதவி"
 msgid "Mosque registration details updated."
 msgstr "பள்ளிவாசல் பதிவு விவரங்கள் updated."
 
-msgid "Mosque registration draft created successfully. Add committee members or documents, then submit it for Platform Admin approval."
+msgid ""
+"Mosque registration draft created successfully. Add committee members or documents, then submit it for Platform Admin"
+" approval."
 msgstr "பள்ளிவாசல் பதிவு draft created successfully. சேர் குழு members or ஆவணங்கள், then submit it for தளம் நிர்வாகி அனுமதி."
 
 msgid "Mosque registration submitted successfully for Platform Admin approval."
@@ -973,8 +998,12 @@ msgstr "அனுமதி நிலுவையில் உள்ள பள்
 msgid "Mosques Sri Lanka"
 msgstr "இலங்கை பள்ளிவாசல்கள்"
 
-msgid "Mosques Sri Lanka is designed to provide a centralized digital platform for mosque registration, administration, support coordination and community services."
-msgstr "பள்ளிவாசல்கள் Sri Lanka is designed to provide a centralized digital தளம் for பள்ளிவாசல் பதிவு, administration, ஆதரவு coordination and community services."
+msgid ""
+"Mosques Sri Lanka is designed to provide a centralized digital platform for mosque registration, administration, "
+"support coordination and community services."
+msgstr ""
+"பள்ளிவாசல்கள் Sri Lanka is designed to provide a centralized digital தளம் for பள்ளிவாசல் பதிவு, administration, ஆதரவு"
+" coordination and community services."
 
 msgid "Move approved assistance through In Progress and Completed states."
 msgstr "Move அனுமதிக்கப்பட்டது assistance through In Progress and முடிக்கப்பட்டது states."
@@ -1138,8 +1167,12 @@ msgstr "ஒவ்வொரு தளப் பங்கிற்கும் ஒ
 msgid "Only PDF, JPG, JPEG and PNG files are allowed."
 msgstr "PDF, JPG, JPEG மற்றும் PNG கோப்புகள் மட்டுமே அனுமதிக்கப்படுகின்றன."
 
-msgid "Only active users with the Mosque Admin or Mosque Staff role can be linked. Create the user account first if it does not appear here."
-msgstr "Only செயலில் பயனர்கள் with the பள்ளிவாசல் நிர்வாகி or பள்ளிவாசல் பணியாளர் பங்கு can be linked. உருவாக்கு the பயனர் கணக்கு first if it does not appear here."
+msgid ""
+"Only active users with the Mosque Admin or Mosque Staff role can be linked. Create the user account first if it does "
+"not appear here."
+msgstr ""
+"Only செயலில் பயனர்கள் with the பள்ளிவாசல் நிர்வாகி or பள்ளிவாசல் பணியாளர் பங்கு can be linked. உருவாக்கு the பயனர் "
+"கணக்கு first if it does not appear here."
 
 msgid "Only users with the District Officer role can be assigned to a district."
 msgstr "Only பயனர்கள் with the மாவட்டம் அதிகாரி பங்கு can be ஒதுக்கப்பட்டது to a மாவட்டம்."
@@ -1240,8 +1273,12 @@ msgstr "தள அனுமதி நிலுவையில்"
 msgid "People responsible for the mosque registration and administration."
 msgstr "People responsible for the பள்ளிவாசல் பதிவு and administration."
 
-msgid "Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported from verified official CSV data using the supplied management command."
-msgstr "Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported from verified official CSV data using the supplied மேலாண்மை command."
+msgid ""
+"Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported"
+" from verified official CSV data using the supplied management command."
+msgstr ""
+"Phase 3 seeds the 9 provinces and 25 districts. DS and GN master data can be added through this interface or imported"
+" from verified official CSV data using the supplied மேலாண்மை command."
 
 msgid "Phone"
 msgstr "தொலைபேசி"
@@ -1321,8 +1358,12 @@ msgstr "ஆதரவு கோரிக்கையை செயலாக்க�
 msgid "Profile Complete"
 msgstr "சுயவிவரம் Complete"
 
-msgid "Provide the official mosque information below. Save the application as a draft, add any required contacts or documents, then submit it for Platform Admin approval."
-msgstr "Provide the official பள்ளிவாசல் தகவல் below. சேமி the application as a draft, சேர் any தேவை contacts or ஆவணங்கள், then submit it for தளம் நிர்வாகி அனுமதி."
+msgid ""
+"Provide the official mosque information below. Save the application as a draft, add any required contacts or "
+"documents, then submit it for Platform Admin approval."
+msgstr ""
+"Provide the official பள்ளிவாசல் தகவல் below. சேமி the application as a draft, சேர் any தேவை contacts or ஆவணங்கள், "
+"then submit it for தளம் நிர்வாகி அனுமதி."
 
 msgid "Provider / Details"
 msgstr "சேவை வழங்குநர் / விவரங்கள்"
@@ -1414,8 +1455,12 @@ msgstr "தள நிர்வாகியின் ஒழுங்கமைக�
 msgid "Register your mosque, manage its profile and access support services through one secure portal."
 msgstr "உங்கள் பள்ளிவாசலை பதிவு செய்து, அதன் சுயவிவரத்தை நிர்வகித்து, ஒரே பாதுகாப்பான தளத்தில் ஆதரவு சேவைகளைப் பெறுங்கள்."
 
-msgid "Registered mosques will be able to submit, document and track different types of assistance requests through the platform."
-msgstr "Registered பள்ளிவாசல்கள் will be able to submit, document and track different types of assistance கோரிக்கைகள் through the தளம்."
+msgid ""
+"Registered mosques will be able to submit, document and track different types of assistance requests through the "
+"platform."
+msgstr ""
+"Registered பள்ளிவாசல்கள் will be able to submit, document and track different types of assistance கோரிக்கைகள் through"
+" the தளம்."
 
 msgid "Registration & Community Details"
 msgstr "பதிவு மற்றும் சமூக விவரங்கள்"
@@ -1432,6 +1477,7 @@ msgstr "பதிவு நிராகரிக்கப்பட்டது"
 msgid "Registration Status"
 msgstr "பதிவு நிலை"
 
+#, python-format
 msgid "Registration status updated to %(status)s."
 msgstr "பதிவு நிலை updated to %(நிலை)s."
 
@@ -1537,8 +1583,12 @@ msgstr "மதிப்பாய்வு and process பள்ளிவாச�
 msgid "Review and process submitted mosque support requests."
 msgstr "சமர்ப்பிக்கப்பட்ட பள்ளிவாசல் ஆதரவு கோரிக்கைகளை மதிப்பாய்வு செய்து செயலாக்கவும்."
 
-msgid "Review mosque registrations submitted for Platform Admin approval. Approved mosques are published in the public mosque directory."
-msgstr "தள நிர்வாகி அனுமதிக்காக சமர்ப்பிக்கப்பட்ட பள்ளிவாசல் பதிவுகளை மதிப்பாய்வு செய்யவும். அனுமதிக்கப்பட்ட பள்ளிவாசல்கள் பொது பள்ளிவாசல் அடைவில் வெளியிடப்படும்."
+msgid ""
+"Review mosque registrations submitted for Platform Admin approval. Approved mosques are published in the public "
+"mosque directory."
+msgstr ""
+"தள நிர்வாகி அனுமதிக்காக சமர்ப்பிக்கப்பட்ட பள்ளிவாசல் பதிவுகளை மதிப்பாய்வு செய்யவும். அனுமதிக்கப்பட்ட பள்ளிவாசல்கள் "
+"பொது பள்ளிவாசல் அடைவில் வெளியிடப்படும்."
 
 msgid "Review notes"
 msgstr "மதிப்பாய்வு குறிப்புகள்"
@@ -1801,6 +1851,7 @@ msgstr "ஆதரவு கோரிக்கை draft created. சேர் sup
 msgid "Support request guidance"
 msgstr "ஆதரவு கோரிக்கை வழிகாட்டல்"
 
+#, python-format
 msgid "Support request status updated to %(status)s."
 msgstr "ஆதரவு கோரிக்கை நிலை updated to %(நிலை)s."
 
@@ -1849,8 +1900,12 @@ msgstr "The operational பள்ளிவாசல் portal becomes available 
 msgid "The original mosque administrator cannot be removed from this registration."
 msgstr "The original பள்ளிவாசல் administrator cannot be removed from this பதிவு."
 
-msgid "The platform will help mosque administrators maintain accurate mosque information and request assistance through transparent digital processes."
-msgstr "The தளம் will help பள்ளிவாசல் administrators maintain accurate பள்ளிவாசல் தகவல் and கோரிக்கை assistance through transparent digital processes."
+msgid ""
+"The platform will help mosque administrators maintain accurate mosque information and request assistance through "
+"transparent digital processes."
+msgstr ""
+"The தளம் will help பள்ளிவாசல் administrators maintain accurate பள்ளிவாசல் தகவல் and கோரிக்கை assistance through "
+"transparent digital processes."
 
 msgid "The selected Divisional Secretariat does not belong to the selected district."
 msgstr "The selected Divisional Secretariat does not belong to the selected மாவட்டம்."
@@ -1882,8 +1937,12 @@ msgstr "This நிலை change is not allowed."
 msgid "Time"
 msgstr "நேரம்"
 
-msgid "To improve communication, administration and support services for mosques using secure and accessible digital technology."
-msgstr "To improve communication, administration and ஆதரவு services for பள்ளிவாசல்கள் using secure and accessible digital technology."
+msgid ""
+"To improve communication, administration and support services for mosques using secure and accessible digital "
+"technology."
+msgstr ""
+"To improve communication, administration and ஆதரவு services for பள்ளிவாசல்கள் using secure and accessible digital "
+"technology."
 
 msgid "Together for Stronger Mosques in Sri Lanka"
 msgstr "இலங்கையில் வலிமையான பள்ளிவாசல்களுக்காக ஒன்றிணைவோம்"
@@ -1957,9 +2016,11 @@ msgstr "அவசரம்"
 msgid "User"
 msgstr "பயனர்"
 
+#, python-format
 msgid "User %(username)s created successfully."
 msgstr "பயனர் %(username)s created successfully."
 
+#, python-format
 msgid "User %(username)s updated successfully."
 msgstr "பயனர் %(username)s updated successfully."
 
@@ -2041,8 +2102,12 @@ msgstr "Water, electricity and essential வசதி issues."
 msgid "We Are Here to Help"
 msgstr "உதவ நாங்கள் இருக்கிறோம்"
 
-msgid "We connect mosque administrators with practical digital tools for registration, public information, support requests and transparent administration across Sri Lanka."
-msgstr "பதிவு, பொது தகவல், ஆதரவு கோரிக்கைகள் மற்றும் வெளிப்படையான நிர்வாகத்திற்கான நடைமுறை டிஜிட்டல் கருவிகள் மூலம் இலங்கை முழுவதும் பள்ளிவாசல் நிர்வாகிகளை இணைக்கிறோம்."
+msgid ""
+"We connect mosque administrators with practical digital tools for registration, public information, support requests "
+"and transparent administration across Sri Lanka."
+msgstr ""
+"பதிவு, பொது தகவல், ஆதரவு கோரிக்கைகள் மற்றும் வெளிப்படையான நிர்வாகத்திற்கான நடைமுறை டிஜிட்டல் கருவிகள் மூலம் இலங்கை "
+"முழுவதும் பள்ளிவாசல் நிர்வாகிகளை இணைக்கிறோம்."
 
 msgid "Website"
 msgstr "இணையதளம்"
@@ -2050,6 +2115,7 @@ msgstr "இணையதளம்"
 msgid "Welcome Back"
 msgstr "மீண்டும் வரவேற்கிறோம்"
 
+#, python-format
 msgid "Welcome back, %(name)s."
 msgstr "மீண்டும் வரவேற்கிறோம், %(name)s."
 
@@ -2163,3 +2229,99 @@ msgstr "பயனர்"
 
 msgid "users"
 msgstr "பயனர்கள்"
+
+msgid "Connect your mosque to the Sri Lanka mosque platform."
+msgstr "உங்கள் பள்ளிவாசலை இலங்கை பள்ளிவாசல் தளத்துடன் இணைக்கவும்."
+
+msgid "Get Started"
+msgstr "தொடங்குங்கள்"
+
+msgid "Choose how you want to continue"
+msgstr "எவ்வாறு தொடர விரும்புகிறீர்கள் என்பதைத் தேர்ந்தெடுக்கவும்"
+
+msgid ""
+"A Mosque Admin account is required so the registration, approval history and future mosque portal remain connected to"
+" the correct administrator."
+msgstr ""
+"பதிவு, அனுமதி வரலாறு மற்றும் எதிர்கால பள்ளிவாசல் போர்டல் சரியான நிர்வாகியுடன் இணைந்திருக்க பள்ளிவாசல் நிர்வாகி கணக்கு"
+" தேவை."
+
+msgid "New to the platform?"
+msgstr "தளத்திற்கு புதியவரா?"
+
+msgid "Create Mosque Admin Account"
+msgstr "பள்ளிவாசல் நிர்வாகி கணக்கை உருவாக்கவும்"
+
+msgid "Create a Mosque Admin account, then continue directly to the mosque registration form."
+msgstr "பள்ளிவாசல் நிர்வாகி கணக்கை உருவாக்கி, பின்னர் நேரடியாக பள்ளிவாசல் பதிவு படிவத்துக்குச் செல்லுங்கள்."
+
+msgid "Already have an account?"
+msgstr "ஏற்கனவே கணக்கு உள்ளதா?"
+
+msgid "Sign In to Continue"
+msgstr "தொடர உள்நுழையவும்"
+
+msgid "Sign in and continue to mosque registration."
+msgstr "உள்நுழைந்து பள்ளிவாசல் பதிவைத் தொடருங்கள்."
+
+msgid "Why create an account?"
+msgstr "ஏன் கணக்கு உருவாக்க வேண்டும்?"
+
+msgid ""
+"Your Mosque Admin account links the registration to you, enables future portal access, and keeps approval and support"
+" notifications connected to the correct administrator."
+msgstr ""
+"உங்கள் பள்ளிவாசல் நிர்வாகி கணக்கு பதிவை உங்களுடன் இணைத்து, எதிர்கால போர்டல் அணுகலை வழங்கி, அனுமதி மற்றும் ஆதரவு "
+"அறிவிப்புகள் சரியான நிர்வாகியுடன் இணைந்திருப்பதை உறுதிப்படுத்துகிறது."
+
+msgid "Create your secure account to register and manage a mosque."
+msgstr "பள்ளிவாசலை பதிவு செய்து நிர்வகிக்க பாதுகாப்பான கணக்கை உருவாக்கவும்."
+
+msgid "Submit mosque registration"
+msgstr "பள்ளிவாசல் பதிவை சமர்ப்பிக்கவும்"
+
+msgid "Track Platform Admin approval"
+msgstr "தள நிர்வாகி அனுமதியை கண்காணிக்கவும்"
+
+msgid "Access the mosque portal after approval"
+msgstr "அனுமதிக்குப் பிறகு பள்ளிவாசல் போர்டலை அணுகவும்"
+
+msgid "Back to registration options"
+msgstr "பதிவு விருப்பங்களுக்கு திரும்பவும்"
+
+msgid "This account will be created only with the Mosque Admin role."
+msgstr "இந்த கணக்கு பள்ளிவாசல் நிர்வாகி பாத்திரத்துடன் மட்டுமே உருவாக்கப்படும்."
+
+msgid "Create Account & Continue"
+msgstr "கணக்கை உருவாக்கி தொடரவும்"
+
+msgid "New Mosque Admin?"
+msgstr "புதிய பள்ளிவாசல் நிர்வாகியா?"
+
+msgid "Mosque registration is available only to Mosque Admin accounts."
+msgstr "பள்ளிவாசல் பதிவு பள்ளிவாசல் நிர்வாகி கணக்குகளுக்கு மட்டுமே கிடைக்கும்."
+
+msgid "Account created successfully. You can now register your mosque."
+msgstr "கணக்கு வெற்றிகரமாக உருவாக்கப்பட்டது. இப்போது உங்கள் பள்ளிவாசலை பதிவு செய்யலாம்."
+
+msgid "Mobile number"
+msgstr "கைபேசி எண்"
+
+msgid "Registered mobile number"
+msgstr "பதிவு செய்யப்பட்ட கைபேசி எண்"
+
+msgid "Preferred language"
+msgstr "விருப்பமான மொழி"
+
+msgid "Choose a username"
+msgstr "பயனர் பெயரைத் தேர்ந்தெடுக்கவும்"
+
+msgid "Create a password"
+msgstr "கடவுச்சொல்லை உருவாக்கவும்"
+
+msgid "An account with this email address already exists."
+msgstr "இந்த மின்னஞ்சல் முகவரியுடன் ஏற்கனவே ஒரு கணக்கு உள்ளது."
+
+msgid "An account with this mobile number already exists."
+msgstr "இந்த கைபேசி எண்ணுடன் ஏற்கனவே ஒரு கணக்கு உள்ளது."
+

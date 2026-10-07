@@ -1,0 +1,67 @@
+{% extends "ui_system/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Register Your Mosque" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<section class="public-page-hero about-page-hero">
+    <div class="container position-relative">
+        <div class="public-hero-content">
+            <span class="public-eyebrow">
+                <i class="bi bi-building-add"></i>{% trans "Mosque Registration" %}
+            </span>
+            <h1>{% trans "Register Your Mosque" %}</h1>
+            <p>{% trans "Connect your mosque to the Sri Lanka mosque platform." %}</p>
+        </div>
+    </div>
+</section>
+
+<section class="public-section public-soft-section">
+    <div class="container">
+        <div class="public-section-heading text-center mx-auto mb-5">
+            <span class="public-section-label">{% trans "Get Started" %}</span>
+            <h2 class="public-display-title">{% trans "Choose how you want to continue" %}</h2>
+            <p>{% trans "A Mosque Admin account is required so the registration, approval history and future mosque portal remain connected to the correct administrator." %}</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-5">
+                <div class="public-value-card h-100 p-4 p-lg-5">
+                    <span class="public-value-icon"><i class="bi bi-person-plus"></i></span>
+                    <span class="public-section-label">{% trans "New to the platform?" %}</span>
+                    <h3 class="mt-2">{% trans "Create a Mosque Admin Account" %}</h3>
+                    <p>{% trans "Create a Mosque Admin account, then continue directly to the mosque registration form." %}</p>
+                    <a href="{% url 'accounts:mosque_admin_register' %}" class="btn btn-primary-custom btn-lg w-100 mt-3">
+                        <i class="bi bi-person-plus me-2"></i>{% trans "Create Mosque Admin Account" %}
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="public-value-card h-100 p-4 p-lg-5">
+                    <span class="public-value-icon"><i class="bi bi-box-arrow-in-right"></i></span>
+                    <span class="public-section-label">{% trans "Already have an account?" %}</span>
+                    <h3 class="mt-2">{% trans "Sign In to Continue" %}</h3>
+                    <p>{% trans "Sign in and continue to mosque registration." %}</p>
+                    <a href="{% url 'accounts:login' %}?next={% url 'mosques:create' %}" class="btn btn-outline-success btn-lg w-100 mt-3">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>{% trans "Sign In to Continue" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-10">
+                <div class="alert alert-light border d-flex gap-3 align-items-start mb-0">
+                    <i class="bi bi-shield-check text-success fs-4"></i>
+                    <div>
+                        <strong>{% trans "Why create an account?" %}</strong>
+                        <div class="text-muted mt-1">{% trans "Your Mosque Admin account links the registration to you, enables future portal access, and keeps approval and support notifications connected to the correct administrator." %}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

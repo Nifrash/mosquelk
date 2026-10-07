@@ -7,7 +7,8 @@ from django.utils.http import url_has_allowed_host_and_scheme
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 
-from .forms import UniversalLoginForm
+from .forms import MosqueAdminRegistrationForm, UniversalLoginForm
+from .models import UserRole
 
 
 def login_view(request):
@@ -35,6 +36,44 @@ def login_view(request):
         return redirect("dashboard:home")
 
     return render(request, "accounts/login.html", {"form": form, "next": next_url})
+
+
+def mosque_admin_register(request):
+    """Create a public Mosque Admin account and continue to registration."""
+
+    if request.user.is_authenticated:
+        if request.user.role == UserRole.MOSQUE_ADMIN:
+            return redirect("mosques:create")
+
+        messages.info(
+            request,
+            _("Mosque registration is available only to Mosque Admin accounts."),
+        )
+        return redirect("dashboard:home")
+
+    form = MosqueAdminRegistrationForm(request.POST or None)
+
+    if request.method == "POST" and form.is_valid():
+        user = form.save()
+
+        # The project uses this backend for username/email authentication.
+        login(
+            request,
+            user,
+            backend="accounts.backends.UsernameOrEmailBackend",
+        )
+
+        messages.success(
+            request,
+            _("Account created successfully. You can now register your mosque."),
+        )
+        return redirect("mosques:create")
+
+    return render(
+        request,
+        "accounts/mosque_admin_register.html",
+        {"form": form},
+    )
 
 
 @require_POST
