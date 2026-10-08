@@ -1,21 +1,24 @@
 {% extends "ui_system/base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Support Notifications" %}{% endblock %}
+{% block title %}{% trans "Notifications" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
 
 {% block content %}
-<section class="dashboard-hero">
+<section class="dashboard-hero notification-hero">
     <div class="container">
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
             <div>
-                <span class="dashboard-kicker">{% trans "Notifications" %}</span>
-                <h1>{% trans "Support Notifications" %}</h1>
-                <p>{% trans "Review additional-information requests, approvals and support-request updates." %}</p>
+                <span class="dashboard-kicker">{% trans "Communication Center" %}</span>
+                <h1>{% trans "Notifications" %}</h1>
+                <p>{% trans "Mosque registration, support, access, account and officer-assignment updates in one place." %}</p>
             </div>
-            <form method="post" action="{% url 'support_requests:notifications_mark_all_read' %}">
-                {% csrf_token %}
-                <button class="btn btn-outline-light" type="submit"><i class="bi bi-check2-all me-1"></i>{% trans "Mark All Read" %}</button>
-            </form>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="{% url 'notifications:preferences' %}" class="btn btn-outline-light"><i class="bi bi-sliders me-1"></i>{% trans "Preferences" %}</a>
+                <form method="post" action="{% url 'notifications:mark_all_read' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-light" type="submit"><i class="bi bi-check2-all me-1"></i>{% trans "Mark All Read" %}</button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
@@ -23,25 +26,68 @@
 <section class="section-padding bg-light">
     <div class="container">
         {% include "support_requests/partials_messages.html" %}
-        <div class="card border-0 shadow-sm">
-            <div class="list-group list-group-flush">
-                {% for notification in notifications %}
-                    <a href="{% url 'support_requests:notification_open' notification.pk %}" class="list-group-item list-group-item-action p-4 {% if not notification.is_read %}support-notification-unread{% endif %}">
-                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3">
-                            <div>
-                                <div class="d-flex align-items-center gap-2 mb-1">
-                                    <strong>{{ notification.title }}</strong>
-                                    {% if not notification.is_read %}<span class="badge text-bg-primary">{% trans "New" %}</span>{% endif %}
-                                </div>
-                                <p class="mb-2">{{ notification.message }}</p>
-                                <small class="text-muted">{{ notification.support_request.request_no }} · {{ notification.support_request.mosque.localized_name }}</small>
-                            </div>
-                            <small class="text-muted text-nowrap">{{ notification.created_at|date:"Y-m-d H:i" }}</small>
+
+        <div class="row g-4">
+            <div class="col-xl-3">
+                <div class="notification-filter-card">
+                    <div class="notification-count-circle"><i class="bi bi-bell"></i><strong>{{ unread_count }}</strong><span>{% trans "Unread" %}</span></div>
+                    <form method="get" class="mt-4">
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Category" %}</label>
+                            <select class="form-select" name="category">
+                                <option value="">{% trans "All categories" %}</option>
+                                {% for value, label in category_choices %}
+                                    <option value="{{ value }}" {% if selected_category == value %}selected{% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
-                    </a>
-                {% empty %}
-                    <div class="p-5 text-center text-muted">{% trans "No support notifications yet." %}</div>
-                {% endfor %}
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Read status" %}</label>
+                            <select class="form-select" name="state">
+                                <option value="">{% trans "All" %}</option>
+                                <option value="unread" {% if selected_state == 'unread' %}selected{% endif %}>{% trans "Unread" %}</option>
+                                <option value="read" {% if selected_state == 'read' %}selected{% endif %}>{% trans "Read" %}</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary-custom w-100" type="submit">{% trans "Apply Filter" %}</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-xl-9">
+                <div class="notification-list-card">
+                    {% for notification in notifications %}
+                        <a href="{% url 'notifications:open' notification.pk %}" class="platform-notification-item {% if not notification.is_read %}is-unread{% endif %}">
+                            <div class="notification-type-icon notification-category-{{ notification.category|lower }}">
+                                {% if notification.category == 'MOSQUE' %}<i class="bi bi-building-check"></i>
+                                {% elif notification.category == 'SUPPORT' %}<i class="bi bi-hand-heart"></i>
+                                {% elif notification.category == 'ACCESS' %}<i class="bi bi-person-check"></i>
+                                {% elif notification.category == 'ASSIGNMENT' %}<i class="bi bi-geo-alt"></i>
+                                {% elif notification.category == 'ACCOUNT' %}<i class="bi bi-person-gear"></i>
+                                {% else %}<i class="bi bi-bell"></i>{% endif %}
+                            </div>
+                            <div class="notification-item-body">
+                                <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                                    <strong>{{ notification.title }}</strong>
+                                    {% if not notification.is_read %}<span class="badge text-bg-success">{% trans "New" %}</span>{% endif %}
+                                    {% if notification.priority == 'HIGH' %}<span class="badge text-bg-warning">{% trans "Important" %}</span>{% endif %}
+                                </div>
+                                <p>{{ notification.message }}</p>
+                                <div class="notification-meta">
+                                    <span>{{ notification.get_category_display }}</span>
+                                    {% if notification.reference_label %}<span>• {{ notification.reference_label }}</span>{% endif %}
+                                    <span>• {{ notification.created_at|date:"Y-m-d H:i" }}</span>
+                                </div>
+                            </div>
+                            <i class="bi bi-chevron-right notification-open-icon"></i>
+                        </a>
+                    {% empty %}
+                        <div class="p-5 text-center text-muted">
+                            <i class="bi bi-bell-slash display-6 d-block mb-3"></i>
+                            {% trans "No notifications match the selected filters." %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

@@ -7,9 +7,6 @@ from django.urls import include, path
 from core import views as core_views
 
 
-# These routes are intentionally outside i18n_patterns.
-# "/" is the public entry point.
-# "/language/<code>/" performs a same-page language switch.
 urlpatterns = [
     path("", core_views.root_home_redirect, name="root_home"),
     path(
@@ -17,8 +14,6 @@ urlpatterns = [
         core_views.switch_language,
         name="switch_language",
     ),
-
-    # Keep Django's standard language endpoint available for compatibility.
     path("i18n/", include("django.conf.urls.i18n")),
 ]
 
@@ -30,6 +25,11 @@ urlpatterns += i18n_patterns(
     path("locations/", include("locations.urls")),
     path("mosques/", include("mosques.urls")),
     path("support/", include("support_requests.urls")),
+
+    # Phase 9/10 global notification center.
+    # This resolves {% url 'notifications:center' %} in the shared navbar.
+    path("notifications/", include("support_requests.notification_urls")),
+
     path("control/", include("platform_control.urls")),
     path("", include("core.urls")),
 )

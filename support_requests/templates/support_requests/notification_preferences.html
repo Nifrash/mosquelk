@@ -1,0 +1,58 @@
+{% extends "ui_system/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Notification Preferences" %}{% endblock %}
+
+{% block content %}
+<section class="dashboard-hero">
+    <div class="container">
+        <span class="dashboard-kicker">{% trans "Communication Center" %}</span>
+        <h1>{% trans "Notification Preferences" %}</h1>
+        <p>{% trans "Choose how you want to receive platform updates." %}</p>
+    </div>
+</section>
+
+<section class="section-padding bg-light">
+    <div class="container" style="max-width: 900px;">
+        {% include "support_requests/partials_messages.html" %}
+        <form method="post" class="notification-preferences-card">
+            {% csrf_token %}
+
+            <div class="preference-section">
+                <h3>{% trans "Delivery Channels" %}</h3>
+                <p>{% trans "Dashboard is available whenever you sign in. Email and SMS use your registered account contact details." %}</p>
+                {% for field in form %}
+                    {% if field.name == 'dashboard_enabled' or field.name == 'email_enabled' or field.name == 'sms_enabled' %}
+                        <label class="preference-switch-row" for="{{ field.id_for_label }}">
+                            <span>
+                                <strong>{{ field.label }}</strong>
+                                {% if field.name == 'email_enabled' %}<small>{{ request.user.email|default:_('No email registered') }}</small>{% endif %}
+                                {% if field.name == 'sms_enabled' %}<small>{{ request.user.phone_number|default:_('No mobile registered') }}</small>{% endif %}
+                            </span>
+                            {{ field }}
+                        </label>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="preference-section mt-4">
+                <h3>{% trans "Notification Topics" %}</h3>
+                <p>{% trans "Turn off a topic if you do not want notifications for that type of activity." %}</p>
+                {% for field in form %}
+                    {% if field.name != 'dashboard_enabled' and field.name != 'email_enabled' and field.name != 'sms_enabled' %}
+                        <label class="preference-switch-row" for="{{ field.id_for_label }}">
+                            <strong>{{ field.label }}</strong>
+                            {{ field }}
+                        </label>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-4">
+                <button class="btn btn-primary-custom" type="submit"><i class="bi bi-check-lg me-1"></i>{% trans "Save Preferences" %}</button>
+                <a href="{% url 'notifications:center' %}" class="btn btn-outline-secondary">{% trans "Back to Notifications" %}</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

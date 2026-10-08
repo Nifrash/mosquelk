@@ -8,6 +8,7 @@ from mosques.models import Mosque, MosqueMembership, MosqueMembershipRole, Mosqu
 
 from .models import (
     MosqueSupportRequest,
+    NotificationPreference,
     SupportRequestDocument,
     SupportRequestStatus,
 )
@@ -188,3 +189,34 @@ class SupportRequestReviewForm(forms.Form):
             )
 
         return cleaned_data
+
+
+
+class NotificationPreferenceForm(forms.ModelForm):
+    class Meta:
+        model = NotificationPreference
+        fields = [
+            "dashboard_enabled",
+            "email_enabled",
+            "sms_enabled",
+            "notify_mosque_registration",
+            "notify_support_requests",
+            "notify_mosque_access",
+            "notify_account_changes",
+            "notify_officer_assignments",
+        ]
+        labels = {
+            "dashboard_enabled": _("Dashboard notifications"),
+            "email_enabled": _("Email notifications"),
+            "sms_enabled": _("SMS / mobile notifications"),
+            "notify_mosque_registration": _("Mosque registration updates"),
+            "notify_support_requests": _("Support request updates"),
+            "notify_mosque_access": _("Mosque staff/access updates"),
+            "notify_account_changes": _("Account and role changes"),
+            "notify_officer_assignments": _("Officer assignment updates"),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs["class"] = "form-check-input"

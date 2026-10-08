@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
 
 from .models import UserRole
+from .otp import normalize_phone_number
 
 
 User = get_user_model()
@@ -141,7 +142,9 @@ class MosqueAdminRegistrationForm(UserCreationForm):
         return email
 
     def clean_phone_number(self):
-        phone_number = (self.cleaned_data.get("phone_number") or "").strip()
+        phone_number = normalize_phone_number(
+            self.cleaned_data.get("phone_number") or ""
+        )
         if User.objects.filter(phone_number=phone_number).exists():
             raise forms.ValidationError(
                 _("An account with this mobile number already exists.")
@@ -151,7 +154,8 @@ class MosqueAdminRegistrationForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.role = UserRole.MOSQUE_ADMIN
-        user.is_active = True
+        # Phase 10: the account becomes active only after SMS OTP verification.
+        user.is_active = False
         user.is_verified = False
 
         if commit:
@@ -159,3 +163,27 @@ class MosqueAdminRegistrationForm(UserCreationForm):
 
         return user
 
+
+
+class SMSOTPVerificationForm(forms.Form):
+    code = forms.CharField(
+        label=_("SMS verification code"),
+        min_length=6,
+        max_length=6,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control form-control-lg text-center",
+                "placeholder": _("6-digit OTP"),
+                "inputmode": "numeric",
+                "autocomplete": "one-time-code",
+                "pattern": "[0-9]{6}",
+                "autofocus": True,
+            }
+        ),
+    )
+
+    def clean_code(self):
+        code = (self.cleaned_data.get("code") or "").strip()
+        if not code.isdigit():
+            raise forms.ValidationError(_("Enter the 6-digit code sent by SMS."))
+        return code

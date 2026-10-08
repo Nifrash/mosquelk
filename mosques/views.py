@@ -7,8 +7,19 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.translation import gettext as _
 
-from accounts.models import UserRole
+from accounts.models import OTPPurpose, UserRole
+from accounts.otp import (
+    OTPError,
+    attach_challenge_to_session,
+    ensure_request_session_key,
+    start_otp_challenge,
+)
 from dashboard.access import role_required
+from support_requests.notifications import (
+    notify_mosque_access,
+    notify_mosque_admins_registration_decision,
+    notify_platform_mosque_submitted,
+)
 from locations.models import District
 
 from .access import (
@@ -178,10 +189,7 @@ def registration_start(request):
         )
         return redirect("dashboard:home")
 
-    return render(
-        request,
-        "mosques/registration_start.html",
-    )
+    return render(request, "mosques/registration_start.html")
 
 
 @role_required(UserRole.MOSQUE_ADMIN)
@@ -273,7 +281,6 @@ def mosque_edit(request, mosque_id):
 
 
 @login_required
-@transaction.atomic
 def mosque_submit(request, mosque_id):
     mosque = _get_mosque(mosque_id)
     assert_can_manage_mosque(request.user, mosque)
@@ -282,28 +289,40 @@ def mosque_submit(request, mosque_id):
     if request.method != "POST":
         raise PermissionDenied
 
-    mosque.status = MosqueStatus.SUBMITTED
-    mosque.submitted_at = timezone.now()
-    mosque.reviewed_at = None
-    mosque.reviewed_by = None
-    mosque.review_notes = ""
-    mosque.save(
-        update_fields=[
-            "status",
-            "submitted_at",
-            "reviewed_at",
-            "reviewed_by",
-            "review_notes",
-            "updated_at",
-        ]
-    )
+    phone_number = (request.user.phone_number or "").strip()
+    if not phone_number:
+        messages.error(
+            request,
+            _("Add a registered mobile number to your account before submitting a mosque registration."),
+        )
+        return redirect("mosques:detail", mosque_id=mosque.mosque_id)
 
+    try:
+        challenge, delivered, _details = start_otp_challenge(
+            user=request.user,
+            phone_number=phone_number,
+            purpose=OTPPurpose.MOSQUE_SUBMISSION,
+            session_key=ensure_request_session_key(request),
+            target_reference=mosque.mosque_id,
+        )
+    except OTPError as exc:
+        messages.error(request, str(exc))
+        return redirect("mosques:detail", mosque_id=mosque.mosque_id)
 
-    messages.success(
-        request,
-        _("Mosque registration submitted successfully for Platform Admin approval."),
-    )
-    return redirect("mosques:detail", mosque_id=mosque.mosque_id)
+    attach_challenge_to_session(request, challenge)
+
+    if delivered:
+        messages.info(
+            request,
+            _("An SMS OTP was sent to your registered mobile number. Verify it to submit the mosque registration."),
+        )
+    else:
+        messages.warning(
+            request,
+            _("The OTP challenge was created, but SMS delivery failed. You can retry from the verification page."),
+        )
+
+    return redirect("accounts:otp_verify")
 
 
 @login_required
@@ -401,6 +420,15 @@ def membership_add(request, mosque_id):
         membership.mosque = mosque
         membership.added_by = request.user
         membership.save()
+        transaction.on_commit(
+            lambda: notify_mosque_access(
+                membership.user,
+                mosque,
+                membership.membership_role,
+                added=True,
+                actor=request.user,
+            )
+        )
         messages.success(request, _("Mosque user access added."))
         target = "mosques:portal" if mosque.status == MosqueStatus.APPROVED else "mosques:detail"
         return redirect(target, mosque_id=mosque.mosque_id)
@@ -432,7 +460,18 @@ def membership_remove(request, mosque_id, membership_id):
             _("The original mosque administrator cannot be removed from this registration."),
         )
     else:
+        removed_user = membership.user
+        removed_role = membership.membership_role
         membership.delete()
+        transaction.on_commit(
+            lambda: notify_mosque_access(
+                removed_user,
+                mosque,
+                removed_role,
+                added=False,
+                actor=request.user,
+            )
+        )
         messages.success(request, _("Mosque user access removed."))
 
     target = "mosques:portal" if mosque.status == MosqueStatus.APPROVED else "mosques:detail"
@@ -637,6 +676,15 @@ def review_action(request, mosque_id):
         to_status=target,
         reviewer=request.user,
         notes=notes,
+    )
+
+    transaction.on_commit(
+        lambda: notify_mosque_admins_registration_decision(
+            mosque,
+            approved=(target == MosqueStatus.APPROVED),
+            notes=notes,
+            actor=request.user,
+        )
     )
 
     messages.success(

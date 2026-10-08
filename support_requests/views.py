@@ -7,7 +7,13 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.translation import gettext as _
 
-from accounts.models import UserRole
+from accounts.models import OTPPurpose, UserRole
+from accounts.otp import (
+    OTPError,
+    attach_challenge_to_session,
+    ensure_request_session_key,
+    start_otp_challenge,
+)
 from dashboard.access import role_required
 from mosques.models import (
     Mosque,
@@ -23,12 +29,15 @@ from .access import (
     is_support_reviewer,
 )
 from .forms import (
+    NotificationPreferenceForm,
     SupportRequestDocumentForm,
     SupportRequestForm,
     SupportRequestReviewForm,
 )
 from .models import (
     MosqueSupportRequest,
+    NotificationCategory,
+    NotificationPreference,
     SupportNotification,
     SupportRequestDocument,
     SupportRequestHistory,
@@ -37,6 +46,7 @@ from .models import (
 from .notifications import (
     notify_mosque_admins_approved,
     notify_mosque_admins_documents_required,
+    notify_mosque_admins_support_status,
     notify_review_team_submission,
 )
 
@@ -235,7 +245,6 @@ def support_request_edit(request, request_no):
 
 
 @login_required
-@transaction.atomic
 def support_request_submit(request, request_no):
     support_request = _get_request(request_no)
     assert_can_manage_support_request(request.user, support_request)
@@ -249,45 +258,46 @@ def support_request_submit(request, request_no):
     }:
         raise PermissionDenied
 
-    old_status = support_request.status
-    is_resubmission = old_status == SupportRequestStatus.DOCUMENTS_REQUIRED
-    support_request.status = SupportRequestStatus.SUBMITTED
-    support_request.submitted_at = timezone.now()
-    support_request.latest_admin_note = ""
-    support_request.save(
-        update_fields=[
-            "status",
-            "submitted_at",
-            "latest_admin_note",
-            "updated_at",
-        ]
-    )
+    phone_number = (request.user.phone_number or "").strip()
+    if not phone_number:
+        messages.error(
+            request,
+            _("Add a registered mobile number to your account before submitting a support request."),
+        )
+        return redirect(
+            "support_requests:detail",
+            request_no=support_request.request_no,
+        )
 
-    _record_history(
-        support_request,
-        old_status,
-        SupportRequestStatus.SUBMITTED,
-        request.user,
-        _(
-            "Resubmitted by mosque administration after adding requested information/documents."
-            if is_resubmission
-            else "Submitted by mosque administration."
-        ),
-    )
+    try:
+        challenge, delivered, _details = start_otp_challenge(
+            user=request.user,
+            phone_number=phone_number,
+            purpose=OTPPurpose.SUPPORT_SUBMISSION,
+            session_key=ensure_request_session_key(request),
+            target_reference=support_request.request_no,
+        )
+    except OTPError as exc:
+        messages.error(request, str(exc))
+        return redirect(
+            "support_requests:detail",
+            request_no=support_request.request_no,
+        )
 
-    notify_review_team_submission(
-        support_request,
-        resubmitted=is_resubmission,
-    )
+    attach_challenge_to_session(request, challenge)
 
-    messages.success(
-        request,
-        _("Support request submitted successfully."),
-    )
-    return redirect(
-        "support_requests:detail",
-        request_no=support_request.request_no,
-    )
+    if delivered:
+        messages.info(
+            request,
+            _("An SMS OTP was sent to your registered mobile number. Verify it to submit the support request."),
+        )
+    else:
+        messages.warning(
+            request,
+            _("The OTP challenge was created, but SMS delivery failed. You can retry from the verification page."),
+        )
+
+    return redirect("accounts:otp_verify")
 
 
 @login_required
@@ -530,9 +540,25 @@ def review_action(request, request_no):
         notify_mosque_admins_documents_required(
             support_request,
             notes,
+            actor=request.user,
         )
     elif new_status == SupportRequestStatus.APPROVED:
-        notify_mosque_admins_approved(support_request)
+        notify_mosque_admins_approved(
+            support_request,
+            actor=request.user,
+        )
+    elif new_status in {
+        SupportRequestStatus.UNDER_REVIEW,
+        SupportRequestStatus.REJECTED,
+        SupportRequestStatus.IN_PROGRESS,
+        SupportRequestStatus.COMPLETED,
+    }:
+        notify_mosque_admins_support_status(
+            support_request,
+            new_status,
+            notes=notes,
+            actor=request.user,
+        )
 
     messages.success(
         request,
@@ -550,46 +576,114 @@ def review_action(request, request_no):
 def notification_center(request):
     notifications = SupportNotification.objects.filter(
         user=request.user,
+        dashboard_visible=True,
     ).select_related(
         "support_request",
         "support_request__mosque",
-    ).prefetch_related("deliveries")[:100]
+        "mosque",
+        "actor",
+    ).prefetch_related("deliveries")
+
+    category = request.GET.get("category", "").strip()
+    state = request.GET.get("state", "").strip()
+
+    if category in NotificationCategory.values:
+        notifications = notifications.filter(category=category)
+
+    if state == "unread":
+        notifications = notifications.filter(is_read=False)
+    elif state == "read":
+        notifications = notifications.filter(is_read=True)
 
     return render(
         request,
         "support_requests/notification_center.html",
-        {"notifications": notifications},
+        {
+            "notifications": notifications[:200],
+            "category_choices": NotificationCategory.choices,
+            "selected_category": category,
+            "selected_state": state,
+            "unread_count": SupportNotification.objects.filter(
+                user=request.user,
+                dashboard_visible=True,
+                is_read=False,
+            ).count(),
+        },
     )
 
 
-@login_required
-def notification_open(request, notification_id):
+def _open_notification(request, notification_id):
     notification = get_object_or_404(
         SupportNotification,
         pk=notification_id,
         user=request.user,
+        dashboard_visible=True,
     )
     notification.mark_read()
 
-    return redirect(
-        "support_requests:detail",
-        request_no=notification.support_request.request_no,
-    )
+    target = (notification.action_url or "").strip()
+    if not target.startswith("/"):
+        return redirect("dashboard:home")
+    return redirect(target)
 
 
 @login_required
-def notifications_mark_all_read(request):
+def notification_open(request, notification_id):
+    # Backward-compatible Phase 6 route.
+    return _open_notification(request, notification_id)
+
+
+@login_required
+def notification_open_global(request, notification_id):
+    return _open_notification(request, notification_id)
+
+
+def _mark_all_read(request, redirect_name):
     if request.method != "POST":
         raise PermissionDenied
 
     now = timezone.now()
     SupportNotification.objects.filter(
         user=request.user,
+        dashboard_visible=True,
         is_read=False,
     ).update(
         is_read=True,
         read_at=now,
     )
 
-    messages.success(request, _("All support notifications marked as read."))
-    return redirect("support_requests:notifications")
+    messages.success(request, _("All notifications marked as read."))
+    return redirect(redirect_name)
+
+
+@login_required
+def notifications_mark_all_read(request):
+    # Backward-compatible Phase 6 route.
+    return _mark_all_read(request, "support_requests:notifications")
+
+
+@login_required
+def notifications_mark_all_read_global(request):
+    return _mark_all_read(request, "notifications:center")
+
+
+@login_required
+def notification_preferences(request):
+    preferences, _created = NotificationPreference.objects.get_or_create(
+        user=request.user,
+    )
+    form = NotificationPreferenceForm(
+        request.POST or None,
+        instance=preferences,
+    )
+
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, _("Notification preferences updated."))
+        return redirect("notifications:preferences")
+
+    return render(
+        request,
+        "support_requests/notification_preferences.html",
+        {"form": form},
+    )

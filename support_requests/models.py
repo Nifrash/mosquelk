@@ -249,14 +249,60 @@ class SupportRequestHistory(models.Model):
         return f"{self.support_request.request_no}: {self.from_status} → {self.to_status}"
 
 
+class NotificationCategory(models.TextChoices):
+    MOSQUE = "MOSQUE", _("Mosque Registration")
+    SUPPORT = "SUPPORT", _("Support Requests")
+    ACCESS = "ACCESS", _("Mosque Access")
+    ACCOUNT = "ACCOUNT", _("Account")
+    ASSIGNMENT = "ASSIGNMENT", _("Officer Assignment")
+    SYSTEM = "SYSTEM", _("System")
+
+
+class NotificationPriority(models.TextChoices):
+    NORMAL = "NORMAL", _("Normal")
+    HIGH = "HIGH", _("High")
+
+
 class SupportNotificationType(models.TextChoices):
+    # Support request events (existing + Phase 9 extensions)
     REQUEST_SUBMITTED = "REQUEST_SUBMITTED", _("Support Request Submitted")
     REQUEST_RESUBMITTED = "REQUEST_RESUBMITTED", _("Support Request Resubmitted")
+    REQUEST_UNDER_REVIEW = "REQUEST_UNDER_REVIEW", _("Support Request Under Review")
     DOCUMENTS_REQUIRED = "DOCUMENTS_REQUIRED", _("Additional Information / Documents Required")
     REQUEST_APPROVED = "REQUEST_APPROVED", _("Support Request Approved")
+    REQUEST_REJECTED = "REQUEST_REJECTED", _("Support Request Rejected")
+    REQUEST_IN_PROGRESS = "REQUEST_IN_PROGRESS", _("Support Request In Progress")
+    REQUEST_COMPLETED = "REQUEST_COMPLETED", _("Support Request Completed")
+
+    # Mosque registration events
+    MOSQUE_SUBMITTED = "MOSQUE_SUBMITTED", _("Mosque Registration Submitted")
+    MOSQUE_APPROVED = "MOSQUE_APPROVED", _("Mosque Registration Approved")
+    MOSQUE_REJECTED = "MOSQUE_REJECTED", _("Mosque Registration Rejected")
+
+    # Mosque membership/access events
+    MOSQUE_ACCESS_ADDED = "MOSQUE_ACCESS_ADDED", _("Mosque Access Added")
+    MOSQUE_ACCESS_REMOVED = "MOSQUE_ACCESS_REMOVED", _("Mosque Access Removed")
+
+    # Account management events
+    ACCOUNT_CREATED = "ACCOUNT_CREATED", _("Account Created")
+    ACCOUNT_ACTIVATED = "ACCOUNT_ACTIVATED", _("Account Activated")
+    ACCOUNT_DEACTIVATED = "ACCOUNT_DEACTIVATED", _("Account Deactivated")
+    ACCOUNT_ROLE_CHANGED = "ACCOUNT_ROLE_CHANGED", _("Account Role Changed")
+
+    # Officer assignment events
+    DISTRICT_ASSIGNED = "DISTRICT_ASSIGNED", _("District Assigned")
+    DISTRICT_ASSIGNMENT_REMOVED = "DISTRICT_ASSIGNMENT_REMOVED", _("District Assignment Removed")
 
 
 class SupportNotification(models.Model):
+    """
+    Phase 9 platform-wide notification record.
+
+    The model name/table are intentionally retained from Phase 6 so existing
+    support-notification history is preserved. It now supports platform events
+    that are not tied to a support request.
+    """
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -264,16 +310,48 @@ class SupportNotification(models.Model):
     )
     support_request = models.ForeignKey(
         MosqueSupportRequest,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name="notifications",
+        null=True,
+        blank=True,
+    )
+    mosque = models.ForeignKey(
+        Mosque,
+        on_delete=models.SET_NULL,
+        related_name="platform_notifications",
+        null=True,
+        blank=True,
+    )
+    actor = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        related_name="generated_platform_notifications",
+        null=True,
+        blank=True,
     )
     notification_type = models.CharField(
-        max_length=40,
+        max_length=50,
         choices=SupportNotificationType.choices,
+        db_index=True,
+    )
+    category = models.CharField(
+        max_length=20,
+        choices=NotificationCategory.choices,
+        default=NotificationCategory.SUPPORT,
+        db_index=True,
+    )
+    priority = models.CharField(
+        max_length=10,
+        choices=NotificationPriority.choices,
+        default=NotificationPriority.NORMAL,
         db_index=True,
     )
     title = models.CharField(max_length=220)
     message = models.TextField()
+    action_url = models.CharField(max_length=500, blank=True)
+    source_label = models.CharField(max_length=160, blank=True)
+    language_code = models.CharField(max_length=10, default="en")
+    dashboard_visible = models.BooleanField(default=True, db_index=True)
     is_read = models.BooleanField(default=False, db_index=True)
     read_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -284,19 +362,70 @@ class SupportNotification(models.Model):
             models.Index(
                 fields=["user", "is_read", "created_at"],
                 name="support_notif_user_read_idx",
-            )
+            ),
+            models.Index(
+                fields=["user", "category", "created_at"],
+                name="platform_notif_category_idx",
+            ),
         ]
-        verbose_name = _("support notification")
-        verbose_name_plural = _("support notifications")
+        verbose_name = _("platform notification")
+        verbose_name_plural = _("platform notifications")
 
     def __str__(self):
         return f"{self.user}: {self.title}"
+
+    @property
+    def reference_label(self):
+        if self.source_label:
+            return self.source_label
+        if self.support_request_id:
+            return self.support_request.request_no
+        if self.mosque_id:
+            return self.mosque.mosque_id
+        return ""
 
     def mark_read(self):
         if not self.is_read:
             self.is_read = True
             self.read_at = timezone.now()
             self.save(update_fields=["is_read", "read_at"])
+
+
+class NotificationPreference(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="notification_preferences",
+    )
+    dashboard_enabled = models.BooleanField(default=True)
+    email_enabled = models.BooleanField(default=True)
+    sms_enabled = models.BooleanField(default=True)
+
+    notify_mosque_registration = models.BooleanField(default=True)
+    notify_support_requests = models.BooleanField(default=True)
+    notify_mosque_access = models.BooleanField(default=True)
+    notify_account_changes = models.BooleanField(default=True)
+    notify_officer_assignments = models.BooleanField(default=True)
+
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = _("notification preference")
+        verbose_name_plural = _("notification preferences")
+
+    def __str__(self):
+        return f"Notification preferences - {self.user}"
+
+    def category_enabled(self, category):
+        mapping = {
+            NotificationCategory.MOSQUE: self.notify_mosque_registration,
+            NotificationCategory.SUPPORT: self.notify_support_requests,
+            NotificationCategory.ACCESS: self.notify_mosque_access,
+            NotificationCategory.ACCOUNT: self.notify_account_changes,
+            NotificationCategory.ASSIGNMENT: self.notify_officer_assignments,
+            NotificationCategory.SYSTEM: True,
+        }
+        return mapping.get(category, True)
 
 
 class NotificationChannel(models.TextChoices):
@@ -327,12 +456,26 @@ class SupportNotificationDelivery(models.Model):
     )
     provider = models.CharField(max_length=160, blank=True)
     details = models.TextField(blank=True)
+    retry_of = models.ForeignKey(
+        "self",
+        on_delete=models.SET_NULL,
+        related_name="retry_attempts",
+        null=True,
+        blank=True,
+    )
+    retried_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        related_name="retried_notification_deliveries",
+        null=True,
+        blank=True,
+    )
     attempted_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ["-attempted_at"]
-        verbose_name = _("support notification delivery")
-        verbose_name_plural = _("support notification deliveries")
+        verbose_name = _("notification delivery")
+        verbose_name_plural = _("notification deliveries")
 
     def __str__(self):
         return f"{self.notification_id} - {self.channel} - {self.status}"

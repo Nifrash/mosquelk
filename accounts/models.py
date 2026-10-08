@@ -49,3 +49,59 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.get_full_name() or self.username
+
+class OTPPurpose(models.TextChoices):
+    ACCOUNT_REGISTRATION = "ACCOUNT_REGISTRATION", _("Account Registration")
+    MOSQUE_SUBMISSION = "MOSQUE_SUBMISSION", _("Mosque Registration Submission")
+    SUPPORT_SUBMISSION = "SUPPORT_SUBMISSION", _("Support Request Submission")
+
+
+class SMSOTPChallenge(models.Model):
+    user = models.ForeignKey(
+        "accounts.User",
+        on_delete=models.CASCADE,
+        related_name="sms_otp_challenges",
+        null=True,
+        blank=True,
+    )
+    phone_number = models.CharField(max_length=30, db_index=True)
+    purpose = models.CharField(max_length=40, choices=OTPPurpose.choices, db_index=True)
+    target_reference = models.CharField(max_length=160, blank=True, db_index=True)
+    code_hash = models.CharField(max_length=255)
+    session_key = models.CharField(max_length=64, blank=True, db_index=True)
+    expires_at = models.DateTimeField(db_index=True)
+    verified_at = models.DateTimeField(null=True, blank=True)
+    consumed_at = models.DateTimeField(null=True, blank=True)
+    attempt_count = models.PositiveSmallIntegerField(default=0)
+    send_count = models.PositiveSmallIntegerField(default=1)
+    last_sent_at = models.DateTimeField(auto_now_add=True)
+    provider = models.CharField(max_length=160, blank=True)
+    last_delivery_error = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(
+                fields=["phone_number", "purpose", "created_at"],
+                name="acct_otp_phone_purpose_idx",
+            ),
+            models.Index(
+                fields=["user", "purpose", "consumed_at"],
+                name="acct_otp_user_purpose_idx",
+            ),
+        ]
+        verbose_name = _("SMS OTP challenge")
+        verbose_name_plural = _("SMS OTP challenges")
+
+    @property
+    def is_verified(self):
+        return self.verified_at is not None
+
+    @property
+    def is_consumed(self):
+        return self.consumed_at is not None
+
+    def __str__(self):
+        return f"{self.get_purpose_display()} - {self.phone_number}"
+
