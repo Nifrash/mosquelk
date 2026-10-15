@@ -22,6 +22,7 @@ from .otp import (
     clear_challenge_from_session,
     consume_otp_challenge,
     ensure_request_session_key,
+    mask_email_address,
     mask_phone_number,
     resend_otp_challenge,
     start_otp_challenge,
@@ -61,7 +62,7 @@ def login_view(request):
 
 
 def mosque_admin_register(request):
-    """Create a Mosque Admin account pending SMS OTP verification."""
+    """Create a Mosque Admin account pending OTP verification."""
 
     if request.user.is_authenticated:
         if request.user.role == UserRole.MOSQUE_ADMIN:
@@ -99,12 +100,12 @@ def mosque_admin_register(request):
         if delivered:
             messages.info(
                 request,
-                _("We sent a 6-digit SMS OTP to your registered mobile number."),
+                _("We sent a 6-digit OTP to your registered mobile number and email address."),
             )
         else:
             messages.warning(
                 request,
-                _("Your account was created, but SMS delivery failed. Use Resend OTP on the verification page."),
+                _("Your account was created, but OTP delivery failed. Use Resend OTP on the verification page."),
             )
 
         return redirect("accounts:otp_verify")
@@ -129,7 +130,7 @@ def _get_session_challenge(request):
 
 
 def _complete_verified_action(request, challenge):
-    """Execute the business action only after the SMS OTP has been verified."""
+    """Execute the business action only after the OTP has been verified."""
 
     if not challenge.is_verified or challenge.is_consumed:
         raise PermissionDenied
@@ -153,7 +154,7 @@ def _complete_verified_action(request, challenge):
         )
         messages.success(
             request,
-            _("Your mobile number has been verified. You can now register your mosque."),
+            _("Your verification code was accepted. You can now register your mosque."),
         )
         return redirect("mosques:create")
 
@@ -230,6 +231,9 @@ def otp_verify(request):
             "form": form,
             "challenge": challenge,
             "masked_phone": mask_phone_number(challenge.phone_number),
+            "masked_email": mask_email_address(
+                challenge.user.email if challenge.user else ""
+            ),
         },
     )
 
@@ -248,7 +252,7 @@ def otp_resend(request):
         else:
             messages.error(
                 request,
-                _("The OTP was regenerated, but SMS delivery failed. Please try again or contact support."),
+                _("The OTP was regenerated, but delivery failed. Please try again or contact support."),
             )
     except (OTPRateLimitError, OTPVerificationError) as exc:
         messages.error(request, str(exc))

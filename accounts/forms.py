@@ -167,7 +167,7 @@ class MosqueAdminRegistrationForm(UserCreationForm):
 
 class SMSOTPVerificationForm(forms.Form):
     code = forms.CharField(
-        label=_("SMS verification code"),
+        label=_("Verification code"),
         min_length=6,
         max_length=6,
         widget=forms.TextInput(
@@ -185,5 +185,5 @@ class SMSOTPVerificationForm(forms.Form):
     def clean_code(self):
         code = (self.cleaned_data.get("code") or "").strip()
         if not code.isdigit():
-            raise forms.ValidationError(_("Enter the 6-digit code sent by SMS."))
+            raise forms.ValidationError(_("Enter the 6-digit code sent to your mobile number or email address."))
         return code

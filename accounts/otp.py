@@ -4,6 +4,7 @@ from datetime import timedelta
 
 from django.conf import settings
 from django.contrib.auth.hashers import check_password, make_password
+from django.core.mail import send_mail
 from django.db.models import Sum
 from django.utils import timezone
 from django.utils.module_loading import import_string
@@ -49,6 +50,19 @@ def mask_phone_number(value):
     if len(value) <= 4:
         return value
     return f"{'*' * max(0, len(value) - 4)}{value[-4:]}"
+
+
+def mask_email_address(value):
+    value = (value or "").strip()
+    if "@" not in value:
+        return value
+
+    local, domain = value.split("@", 1)
+    if not local:
+        return f"***@{domain}"
+
+    visible = local[:2] if len(local) > 2 else local[:1]
+    return f"{visible}{'*' * max(3, len(local) - len(visible))}@{domain}"
 
 
 def _generate_code():
@@ -100,7 +114,24 @@ def _backend_path():
 
 
 def _send_code(challenge, code):
+    """
+    Send the SAME OTP code through both configured channels:
+      1. SMS (Text.lk in production)
+      2. Email (Gmail SMTP in production)
+
+    Verification succeeds with the one 6-digit code received through either
+    channel. This is dual-channel delivery, not two separate mandatory OTPs.
+    """
+    errors = []
+    providers = []
+    sms_delivered = False
+    email_delivered = False
+
+    # -----------------------------
+    # SMS delivery
+    # -----------------------------
     backend_path = _backend_path()
+
     try:
         backend_class = import_string(backend_path)
         backend = backend_class()
@@ -108,15 +139,63 @@ def _send_code(challenge, code):
             challenge.phone_number,
             _otp_message(challenge.user, code),
         )
-        challenge.provider = getattr(backend, "provider_name", backend_path)
-        challenge.last_delivery_error = ""
-        challenge.save(update_fields=["provider", "last_delivery_error"])
-        return True, str(result or "")
+        sms_delivered = True
+        providers.append(
+            f"sms:{getattr(backend, 'provider_name', backend_path)}"
+        )
     except Exception as exc:
-        challenge.provider = backend_path
-        challenge.last_delivery_error = str(exc)
-        challenge.save(update_fields=["provider", "last_delivery_error"])
-        return False, str(exc)
+        errors.append(f"SMS: {exc}")
+        providers.append(f"sms:{backend_path}")
+
+    # -----------------------------
+    # Email delivery
+    # -----------------------------
+    email = (
+        getattr(challenge.user, "email", "")
+        if challenge.user
+        else ""
+    )
+    email = (email or "").strip()
+
+    if email:
+        try:
+            sent_count = send_mail(
+                subject="Sri Lanka Mosque Platform - Verification Code",
+                message=_otp_message(challenge.user, code),
+                from_email=getattr(settings, "DEFAULT_FROM_EMAIL", None),
+                recipient_list=[email],
+                fail_silently=False,
+            )
+            email_delivered = sent_count > 0
+
+            if not email_delivered:
+                raise RuntimeError(
+                    "Email backend returned zero delivered messages."
+                )
+
+            providers.append("email:smtp")
+        except Exception as exc:
+            errors.append(f"Email: {exc}")
+            providers.append("email:smtp")
+    else:
+        errors.append("Email: no registered email address.")
+
+    challenge.provider = " | ".join(providers)[:160]
+    challenge.last_delivery_error = " | ".join(errors)
+    challenge.save(
+        update_fields=[
+            "provider",
+            "last_delivery_error",
+        ]
+    )
+
+    details = (
+        f"sms={'sent' if sms_delivered else 'failed'}; "
+        f"email={'sent' if email_delivered else 'failed'}"
+    )
+
+    # The user can continue if at least one channel delivered the code.
+    return (sms_delivered or email_delivered), details
 
 
 def _hourly_send_count(phone_number):
