@@ -20,7 +20,7 @@ from support_requests.notifications import (
     notify_mosque_admins_registration_decision,
     notify_platform_mosque_submitted,
 )
-from locations.models import District
+from locations.models import District, DivisionalSecretariat, GNDivision
 
 from .access import (
     assert_can_manage_mosque,
@@ -113,6 +113,14 @@ def mosque_directory(request):
 
     query = request.GET.get("q", "").strip()
     district_id = request.GET.get("district", "").strip()
+    divisional_secretariat_id = request.GET.get(
+        "divisional_secretariat",
+        "",
+    ).strip()
+    gn_division_id = request.GET.get(
+        "gn_division",
+        "",
+    ).strip()
 
     if query:
         queryset = queryset.filter(
@@ -122,12 +130,64 @@ def mosque_directory(request):
             | Q(name_ar__icontains=query)
             | Q(city_or_town__icontains=query)
             | Q(district__name_en__icontains=query)
+            | Q(district__name_ta__icontains=query)
+            | Q(district__name_ar__icontains=query)
+            | Q(divisional_secretariat__name_en__icontains=query)
+            | Q(divisional_secretariat__name_ta__icontains=query)
+            | Q(divisional_secretariat__name_ar__icontains=query)
+            | Q(gn_division__name_en__icontains=query)
+            | Q(gn_division__name_ta__icontains=query)
+            | Q(gn_division__name_ar__icontains=query)
         )
 
     if district_id:
         queryset = queryset.filter(district_id=district_id)
 
+    if divisional_secretariat_id:
+        queryset = queryset.filter(
+            divisional_secretariat_id=divisional_secretariat_id
+        )
+
+    if gn_division_id:
+        queryset = queryset.filter(gn_division_id=gn_division_id)
+
+    districts = District.objects.filter(
+        is_active=True
+    ).order_by("name_en")
+
+    divisional_secretariats = (
+        DivisionalSecretariat.objects
+        .filter(is_active=True)
+        .select_related("district")
+        .order_by("name_en")
+    )
+
+    if district_id:
+        divisional_secretariats = divisional_secretariats.filter(
+            district_id=district_id
+        )
+
+    gn_divisions = (
+        GNDivision.objects
+        .filter(is_active=True)
+        .select_related(
+            "divisional_secretariat",
+            "divisional_secretariat__district",
+        )
+        .order_by("name_en")
+    )
+
+    if divisional_secretariat_id:
+        gn_divisions = gn_divisions.filter(
+            divisional_secretariat_id=divisional_secretariat_id
+        )
+    elif district_id:
+        gn_divisions = gn_divisions.filter(
+            divisional_secretariat__district_id=district_id
+        )
+
     mosques = list(queryset.order_by("name_en"))
+
     for mosque in mosques:
         _attach_public_photo(mosque)
 
@@ -138,11 +198,14 @@ def mosque_directory(request):
             "mosques": mosques,
             "query": query,
             "selected_district": district_id,
-            "districts": District.objects.filter(is_active=True).order_by("name_en"),
+            "selected_divisional_secretariat": divisional_secretariat_id,
+            "selected_gn_division": gn_division_id,
+            "districts": districts,
+            "divisional_secretariats": divisional_secretariats,
+            "gn_divisions": gn_divisions,
             "result_count": len(mosques),
         },
     )
-
 
 def public_mosque_detail(request, mosque_id):
     mosque = get_object_or_404(

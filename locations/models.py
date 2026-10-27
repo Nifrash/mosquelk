@@ -102,17 +102,14 @@ class GNDivision(LocalizedNameMixin, models.Model):
 
     class Meta:
         ordering = ["name_en"]
-        constraints = [
-            models.UniqueConstraint(
-                fields=["divisional_secretariat", "name_en"],
-                name="unique_gn_name_per_ds",
-            )
-        ]
         verbose_name = _("GN division")
         verbose_name_plural = _("GN divisions")
 
     def __str__(self):
-        return f"{self.name_en} - {self.divisional_secretariat.name_en}"
+        return (
+            f"{self.name_en} [{self.code}] - "
+            f"{self.divisional_secretariat.name_en}"
+        )
 
 
 class DistrictOfficerAssignment(models.Model):
