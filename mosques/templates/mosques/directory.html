@@ -1,90 +1,281 @@
 {% extends "ui_system/base.html" %}
 {% load static %}
 {% load i18n %}
+
 {% block title %}{% trans "Mosque Directory" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/mosque_directory_filters.css' %}">
+<link rel="stylesheet" href="{% static 'css/mosque_main_search_autocomplete.css' %}">
+<script src="{% static 'js/mosque_directory_filters.js' %}" defer></script>
+<script src="{% static 'js/mosque_main_search_autocomplete.js' %}" defer></script>
+
 <section class="public-page-hero directory-page-hero">
     <div class="container position-relative">
         <div class="public-hero-content">
-            <span class="public-eyebrow"><i class="bi bi-patch-check-fill"></i>{% trans "Approved Mosques" %}</span>
+            <span class="public-eyebrow">
+                <i class="bi bi-patch-check-fill"></i>{% trans "Approved Mosques" %}
+            </span>
             <h1>{% trans "Explore Mosques Across Sri Lanka" %}</h1>
-            <p>{% trans "Search trusted, Platform Admin-approved mosque profiles by name, district, Divisional Secretariat, GN Division, town or unique mosque ID." %}</p>
+            <p>
+                {% trans "Search approved mosque profiles by name or narrow the directory step-by-step from Province to GN Division." %}
+            </p>
         </div>
     </div>
 </section>
 
 <section class="directory-search-section">
     <div class="container">
-        <div class="directory-search-panel">
-            <form method="get" class="row g-3 align-items-end">
-                <div class="col-lg-4 col-md-12">
-                    <label class="form-label">{% trans "Search mosque" %}</label>
-                    <div class="public-input-icon">
-                        <i class="bi bi-search"></i>
-                        <input
-                            type="search"
-                            class="form-control"
-                            name="q"
-                            value="{{ query }}"
-                            placeholder="{% trans 'Mosque ID, name, town or location' %}"
-                        >
+        <div class="directory-search-panel directory-search-panel-v2">
+            <div class="directory-filter-intro">
+                <div>
+                    <span class="directory-filter-kicker">{% trans "Find a Mosque" %}</span>
+                    <h2>{% trans "Search by mosque or location" %}</h2>
+                    <p>
+                        {% trans "Select a province first. Each next location field will show only locations that belong to your previous selection. You can also type inside each location search box." %}
+                    </p>
+                </div>
+                <a href="{% url 'mosques:directory' %}" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>{% trans "Reset Filters" %}
+                </a>
+            </div>
+
+            <form
+                method="get"
+                action="{% url 'mosques:directory' %}#directory-results"
+                id="mosqueDirectorySearchForm"
+                data-directory-url="{% url 'mosques:directory' %}"
+                data-district-api="{% url 'locations:api_districts' %}"
+                data-ds-api="{% url 'locations:api_ds_divisions' %}"
+                data-gn-api="{% url 'locations:api_gn_divisions' %}"
+            >
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label fw-semibold" for="directoryMosqueQuery">
+                            {% trans "Mosque search" %}
+                        </label>
+                        <div class="public-input-icon directory-main-search">
+                            <i class="bi bi-search"></i>
+                            <input
+                                id="directoryMosqueQuery"
+                                type="search"
+                                class="form-control form-control-lg"
+                                name="q"
+                                value="{{ query }}"
+                                placeholder="{% trans 'Mosque ID, mosque name, town or location' %}"
+                                autocomplete="off"
+                                aria-autocomplete="list"
+                                aria-expanded="false"
+                            >
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-lg-2 col-md-4">
-                    <label class="form-label">{% trans "District" %}</label>
-                    <select name="district" class="form-select">
-                        <option value="">{% trans "All districts" %}</option>
-                        {% for district in districts %}
-                            <option value="{{ district.pk }}" {% if selected_district == district.pk|stringformat:'s' %}selected{% endif %}>
-                                {{ district.localized_name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
+                    <!-- Province -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="directory-location-field">
+                            <div class="directory-location-step">
+                                <span>1</span>
+                                <label for="directoryProvince">{% trans "Province" %}</label>
+                            </div>
 
-                <div class="col-lg-2 col-md-4">
-                    <label class="form-label">{% trans "Divisional Secretariat" %}</label>
-                    <select name="divisional_secretariat" class="form-select">
-                        <option value="">{% trans "All Divisional Secretariats" %}</option>
-                        {% for ds in divisional_secretariats %}
-                            <option value="{{ ds.pk }}" {% if selected_divisional_secretariat == ds.pk|stringformat:'s' %}selected{% endif %}>
-                                {{ ds.localized_name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
+                            <div class="directory-option-search">
+                                <i class="bi bi-search"></i>
+                                <input
+                                    type="search"
+                                    class="form-control form-control-sm"
+                                    placeholder="{% trans 'Search province' %}"
+                                    data-option-search="directoryProvince"
+                                    autocomplete="off"
+                                >
+                            </div>
 
-                <div class="col-lg-2 col-md-4">
-                    <label class="form-label">{% trans "GN Division" %}</label>
-                    <select name="gn_division" class="form-select">
-                        <option value="">{% trans "All GN Divisions" %}</option>
-                        {% for gn in gn_divisions %}
-                            <option value="{{ gn.pk }}" {% if selected_gn_division == gn.pk|stringformat:'s' %}selected{% endif %}>
-                                {{ gn.localized_name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
+                            <select
+                                id="directoryProvince"
+                                name="province"
+                                class="form-select"
+                                data-placeholder="{% trans 'Select province' %}"
+                            >
+                                <option value="">{% trans "All provinces" %}</option>
+                                {% for province in provinces %}
+                                    <option
+                                        value="{{ province.pk }}"
+                                        {% if selected_province == province.pk|stringformat:'s' %}selected{% endif %}
+                                    >
+                                        {{ province.localized_name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="col-lg-2 col-md-12 d-grid">
-                    <button class="btn btn-primary-custom btn-lg" type="submit">
-                        <i class="bi bi-search me-1"></i>{% trans "Search" %}
-                    </button>
+                    <!-- District -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="directory-location-field">
+                            <div class="directory-location-step">
+                                <span>2</span>
+                                <label for="directoryDistrict">{% trans "District" %}</label>
+                            </div>
+
+                            <div class="directory-option-search">
+                                <i class="bi bi-search"></i>
+                                <input
+                                    type="search"
+                                    class="form-control form-control-sm"
+                                    placeholder="{% trans 'Search district' %}"
+                                    data-option-search="directoryDistrict"
+                                    autocomplete="off"
+                                    {% if not selected_province %}disabled{% endif %}
+                                >
+                            </div>
+
+                            <select
+                                id="directoryDistrict"
+                                name="district"
+                                class="form-select"
+                                data-placeholder="{% trans 'Select district' %}"
+                                {% if not selected_province %}disabled{% endif %}
+                            >
+                                <option value="">
+                                    {% if selected_province %}
+                                        {% trans "All districts in selected province" %}
+                                    {% else %}
+                                        {% trans "Select province first" %}
+                                    {% endif %}
+                                </option>
+                                {% for district in districts %}
+                                    <option
+                                        value="{{ district.pk }}"
+                                        {% if selected_district == district.pk|stringformat:'s' %}selected{% endif %}
+                                    >
+                                        {{ district.localized_name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- DS -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="directory-location-field">
+                            <div class="directory-location-step">
+                                <span>3</span>
+                                <label for="directoryDS">{% trans "Divisional Secretariat" %}</label>
+                            </div>
+
+                            <div class="directory-option-search">
+                                <i class="bi bi-search"></i>
+                                <input
+                                    type="search"
+                                    class="form-control form-control-sm"
+                                    placeholder="{% trans 'Search Divisional Secretariat' %}"
+                                    data-option-search="directoryDS"
+                                    autocomplete="off"
+                                    {% if not selected_district %}disabled{% endif %}
+                                >
+                            </div>
+
+                            <select
+                                id="directoryDS"
+                                name="divisional_secretariat"
+                                class="form-select"
+                                data-placeholder="{% trans 'Select Divisional Secretariat' %}"
+                                {% if not selected_district %}disabled{% endif %}
+                            >
+                                <option value="">
+                                    {% if selected_district %}
+                                        {% trans "All Divisional Secretariats in selected district" %}
+                                    {% else %}
+                                        {% trans "Select district first" %}
+                                    {% endif %}
+                                </option>
+                                {% for ds in divisional_secretariats %}
+                                    <option
+                                        value="{{ ds.pk }}"
+                                        {% if selected_divisional_secretariat == ds.pk|stringformat:'s' %}selected{% endif %}
+                                    >
+                                        {{ ds.localized_name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- GN -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="directory-location-field">
+                            <div class="directory-location-step">
+                                <span>4</span>
+                                <label for="directoryGN">{% trans "GN Division" %}</label>
+                            </div>
+
+                            <div class="directory-option-search">
+                                <i class="bi bi-search"></i>
+                                <input
+                                    type="search"
+                                    class="form-control form-control-sm"
+                                    placeholder="{% trans 'Search GN Division' %}"
+                                    data-option-search="directoryGN"
+                                    autocomplete="off"
+                                    {% if not selected_divisional_secretariat %}disabled{% endif %}
+                                >
+                            </div>
+
+                            <select
+                                id="directoryGN"
+                                name="gn_division"
+                                class="form-select"
+                                data-placeholder="{% trans 'Select GN Division' %}"
+                                {% if not selected_divisional_secretariat %}disabled{% endif %}
+                            >
+                                <option value="">
+                                    {% if selected_divisional_secretariat %}
+                                        {% trans "All GN Divisions in selected DS" %}
+                                    {% else %}
+                                        {% trans "Select Divisional Secretariat first" %}
+                                    {% endif %}
+                                </option>
+                                {% for gn in gn_divisions %}
+                                    <option
+                                        value="{{ gn.pk }}"
+                                        {% if selected_gn_division == gn.pk|stringformat:'s' %}selected{% endif %}
+                                    >
+                                        {{ gn.localized_name }}{% if gn.code %} · {{ gn.code }}{% endif %}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="directory-search-actions">
+                            <div class="directory-hierarchy-hint">
+                                <i class="bi bi-diagram-3"></i>
+                                <span>
+                                    {% trans "Province → District → Divisional Secretariat → GN Division" %}
+                                </span>
+                            </div>
+
+                            <button class="btn btn-primary-custom btn-lg px-4" type="submit">
+                                <i class="bi bi-search me-1"></i>{% trans "Search Mosques" %}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </section>
 
-<section class="public-section directory-results-section">
+<section id="directory-results" class="public-section directory-results-section">
     <div class="container">
         <div class="directory-results-heading">
             <div>
                 <span class="public-section-label">{% trans "Mosque Directory" %}</span>
                 <h2>{% trans "Approved Mosque Profiles" %}</h2>
             </div>
-            <span class="directory-result-count"><strong>{{ result_count }}</strong> {% trans "results" %}</span>
+            <span class="directory-result-count">
+                <strong>{{ result_count }}</strong> {% trans "results" %}
+            </span>
         </div>
 
         <div class="row g-4 mt-1">
@@ -116,18 +307,18 @@
                                 {{ mosque.city_or_town }}, {{ mosque.district.localized_name }}
                             </p>
 
+                            <p class="mb-2">
+                                <i class="bi bi-map-fill"></i>
+                                {{ mosque.province.localized_name }}
+                            </p>
+
                             {% if mosque.divisional_secretariat or mosque.gn_division %}
                                 <p class="mb-2">
                                     <i class="bi bi-diagram-3-fill"></i>
-
                                     {% if mosque.divisional_secretariat %}
                                         {{ mosque.divisional_secretariat.localized_name }}
                                     {% endif %}
-
-                                    {% if mosque.divisional_secretariat and mosque.gn_division %}
-                                        ·
-                                    {% endif %}
-
+                                    {% if mosque.divisional_secretariat and mosque.gn_division %} · {% endif %}
                                     {% if mosque.gn_division %}
                                         {{ mosque.gn_division.localized_name }}
                                     {% endif %}
@@ -153,7 +344,7 @@
                     <div class="empty-state-card premium-empty-state">
                         <span><i class="bi bi-search"></i></span>
                         <h3>{% trans "No approved mosques found" %}</h3>
-                        <p>{% trans "Try another search term or location filter." %}</p>
+                        <p>{% trans "Try another mosque name or move one step higher in the location hierarchy." %}</p>
                         <a href="{% url 'mosques:directory' %}" class="btn btn-outline-success">
                             {% trans "Clear Search" %}
                         </a>

@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.translation import gettext as _
@@ -20,7 +21,7 @@ from support_requests.notifications import (
     notify_mosque_admins_registration_decision,
     notify_platform_mosque_submitted,
 )
-from locations.models import District, DivisionalSecretariat, GNDivision
+from locations.models import District, DivisionalSecretariat, GNDivision, Province
 
 from .access import (
     assert_can_manage_mosque,
@@ -108,10 +109,113 @@ def _reviewer_queryset_for_user(user):
     return queryset.none()
 
 
+def _mosque_directory_autocomplete(request):
+    """
+    JSON suggestions for the main public Mosque Directory search field.
+
+    This is deliberately separate from the Province/District/DS/GN
+    autocomplete logic so the working location hierarchy is not changed.
+    """
+    query = request.GET.get("q", "").strip()
+
+    if len(query) < 2:
+        return JsonResponse({"results": []})
+
+    queryset = _mosque_queryset().filter(
+        status=MosqueStatus.APPROVED,
+    )
+
+    # Respect location filters only when the user has selected them.
+    province_id = request.GET.get("province", "").strip()
+    district_id = request.GET.get("district", "").strip()
+    ds_id = request.GET.get("divisional_secretariat", "").strip()
+    gn_id = request.GET.get("gn_division", "").strip()
+
+    if province_id:
+        queryset = queryset.filter(province_id=province_id)
+
+    if district_id:
+        queryset = queryset.filter(district_id=district_id)
+
+    if ds_id:
+        queryset = queryset.filter(
+            divisional_secretariat_id=ds_id
+        )
+
+    if gn_id:
+        queryset = queryset.filter(
+            gn_division_id=gn_id
+        )
+
+    queryset = queryset.filter(
+        Q(mosque_id__icontains=query)
+        | Q(name_en__icontains=query)
+        | Q(name_ta__icontains=query)
+        | Q(name_ar__icontains=query)
+        | Q(city_or_town__icontains=query)
+        | Q(province__name_en__icontains=query)
+        | Q(province__name_ta__icontains=query)
+        | Q(province__name_ar__icontains=query)
+        | Q(district__name_en__icontains=query)
+        | Q(district__name_ta__icontains=query)
+        | Q(district__name_ar__icontains=query)
+        | Q(divisional_secretariat__name_en__icontains=query)
+        | Q(divisional_secretariat__name_ta__icontains=query)
+        | Q(divisional_secretariat__name_ar__icontains=query)
+        | Q(gn_division__name_en__icontains=query)
+        | Q(gn_division__name_ta__icontains=query)
+        | Q(gn_division__name_ar__icontains=query)
+    ).distinct()
+
+    results = []
+
+    for mosque in queryset.order_by("name_en", "mosque_id")[:8]:
+        location_parts = []
+
+        if mosque.city_or_town:
+            location_parts.append(mosque.city_or_town)
+
+        if mosque.district_id:
+            location_parts.append(
+                mosque.district.localized_name
+            )
+
+        if mosque.province_id:
+            location_parts.append(
+                mosque.province.localized_name
+            )
+
+        results.append(
+            {
+                "value": mosque.localized_name,
+                "name": mosque.localized_name,
+                "mosque_id": mosque.mosque_id,
+                "location": " · ".join(location_parts),
+            }
+        )
+
+    return JsonResponse({"results": results})
+
+
 def mosque_directory(request):
+    # Main-search autocomplete uses this same public endpoint.
+    # It returns JSON only when explicitly requested.
+    if request.GET.get("autocomplete") == "1":
+        return _mosque_directory_autocomplete(request)
+    """
+    Public directory with hierarchical location filters.
+
+    The hierarchy is always:
+        Province -> District -> Divisional Secretariat -> GN Division
+
+    Parent values are inferred from a directly supplied child value so saved
+    URLs remain usable, while every dropdown only contains records belonging
+    to its selected parent.
+    """
     queryset = _mosque_queryset().filter(status=MosqueStatus.APPROVED)
 
     query = request.GET.get("q", "").strip()
+    province_id = request.GET.get("province", "").strip()
     district_id = request.GET.get("district", "").strip()
     divisional_secretariat_id = request.GET.get(
         "divisional_secretariat",
@@ -122,6 +226,61 @@ def mosque_directory(request):
         "",
     ).strip()
 
+    # Infer parent selections from a child selection when a bookmarked URL
+    # contains only the child ID.
+    selected_gn = None
+    selected_ds = None
+    selected_district = None
+
+    if gn_division_id:
+        selected_gn = (
+            GNDivision.objects.filter(
+                pk=gn_division_id,
+                is_active=True,
+            )
+            .select_related(
+                "divisional_secretariat",
+                "divisional_secretariat__district",
+                "divisional_secretariat__district__province",
+            )
+            .first()
+        )
+        if selected_gn:
+            selected_ds = selected_gn.divisional_secretariat
+            selected_district = selected_ds.district
+            divisional_secretariat_id = str(selected_ds.pk)
+            district_id = str(selected_district.pk)
+            province_id = str(selected_district.province_id)
+
+    if not selected_ds and divisional_secretariat_id:
+        selected_ds = (
+            DivisionalSecretariat.objects.filter(
+                pk=divisional_secretariat_id,
+                is_active=True,
+            )
+            .select_related(
+                "district",
+                "district__province",
+            )
+            .first()
+        )
+        if selected_ds:
+            selected_district = selected_ds.district
+            district_id = str(selected_district.pk)
+            province_id = str(selected_district.province_id)
+
+    if not selected_district and district_id:
+        selected_district = (
+            District.objects.filter(
+                pk=district_id,
+                is_active=True,
+            )
+            .select_related("province")
+            .first()
+        )
+        if selected_district:
+            province_id = str(selected_district.province_id)
+
     if query:
         queryset = queryset.filter(
             Q(mosque_id__icontains=query)
@@ -129,6 +288,9 @@ def mosque_directory(request):
             | Q(name_ta__icontains=query)
             | Q(name_ar__icontains=query)
             | Q(city_or_town__icontains=query)
+            | Q(province__name_en__icontains=query)
+            | Q(province__name_ta__icontains=query)
+            | Q(province__name_ar__icontains=query)
             | Q(district__name_en__icontains=query)
             | Q(district__name_ta__icontains=query)
             | Q(district__name_ar__icontains=query)
@@ -139,6 +301,9 @@ def mosque_directory(request):
             | Q(gn_division__name_ta__icontains=query)
             | Q(gn_division__name_ar__icontains=query)
         )
+
+    if province_id:
+        queryset = queryset.filter(province_id=province_id)
 
     if district_id:
         queryset = queryset.filter(district_id=district_id)
@@ -151,40 +316,41 @@ def mosque_directory(request):
     if gn_division_id:
         queryset = queryset.filter(gn_division_id=gn_division_id)
 
-    districts = District.objects.filter(
+    provinces = Province.objects.filter(
         is_active=True
     ).order_by("name_en")
 
-    divisional_secretariats = (
-        DivisionalSecretariat.objects
-        .filter(is_active=True)
-        .select_related("district")
-        .order_by("name_en")
-    )
+    if province_id:
+        districts = District.objects.filter(
+            province_id=province_id,
+            is_active=True,
+        ).order_by("name_en")
+    else:
+        districts = District.objects.none()
 
     if district_id:
-        divisional_secretariats = divisional_secretariats.filter(
-            district_id=district_id
+        divisional_secretariats = (
+            DivisionalSecretariat.objects.filter(
+                district_id=district_id,
+                is_active=True,
+            )
+            .select_related("district")
+            .order_by("name_en")
         )
-
-    gn_divisions = (
-        GNDivision.objects
-        .filter(is_active=True)
-        .select_related(
-            "divisional_secretariat",
-            "divisional_secretariat__district",
-        )
-        .order_by("name_en")
-    )
+    else:
+        divisional_secretariats = DivisionalSecretariat.objects.none()
 
     if divisional_secretariat_id:
-        gn_divisions = gn_divisions.filter(
-            divisional_secretariat_id=divisional_secretariat_id
+        gn_divisions = (
+            GNDivision.objects.filter(
+                divisional_secretariat_id=divisional_secretariat_id,
+                is_active=True,
+            )
+            .select_related("divisional_secretariat")
+            .order_by("name_en", "code")
         )
-    elif district_id:
-        gn_divisions = gn_divisions.filter(
-            divisional_secretariat__district_id=district_id
-        )
+    else:
+        gn_divisions = GNDivision.objects.none()
 
     mosques = list(queryset.order_by("name_en"))
 
@@ -197,9 +363,11 @@ def mosque_directory(request):
         {
             "mosques": mosques,
             "query": query,
+            "selected_province": province_id,
             "selected_district": district_id,
             "selected_divisional_secretariat": divisional_secretariat_id,
             "selected_gn_division": gn_division_id,
+            "provinces": provinces,
             "districts": districts,
             "divisional_secretariats": divisional_secretariats,
             "gn_divisions": gn_divisions,

@@ -1,0 +1,55 @@
+/* ================================================================
+   Secure Contact Form
+================================================================ */
+
+/*
+   Honeypot is positioned outside the viewport instead of using display:none.
+   Normal visitors and keyboard users cannot reach it because tabindex=-1.
+*/
+.contact-form-honeypot {
+    position: absolute !important;
+    left: -10000px !important;
+    top: auto !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.contact-form-security-summary {
+    display: flex;
+    align-items: flex-start;
+    gap: .65rem;
+    padding: .8rem .9rem;
+    border: 1px solid #dcebe5;
+    border-radius: 13px;
+    background: #f2faf6;
+    color: #526a62;
+    font-size: .74rem;
+    line-height: 1.5;
+}
+
+.contact-form-security-summary i {
+    flex: 0 0 auto;
+    margin-top: .08rem;
+    color: #147054;
+    font-size: .95rem;
+}
+
+.public-form-card .alert ul.errorlist,
+.public-form-card ul.errorlist {
+    margin: 0;
+    padding-left: 1.15rem;
+}
+
+html[dir="rtl"] .contact-form-honeypot {
+    left: auto !important;
+    right: -10000px !important;
+}
+
+html[dir="rtl"] .public-form-card .alert ul.errorlist,
+html[dir="rtl"] .public-form-card ul.errorlist {
+    padding-left: 0;
+    padding-right: 1.15rem;
+}

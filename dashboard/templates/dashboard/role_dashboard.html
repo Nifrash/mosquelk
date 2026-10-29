@@ -1,9 +1,474 @@
 {% extends "ui_system/base.html" %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}{{ dashboard_title }} | {% trans "Mosques Sri Lanka" %}{% endblock %}
 
 {% block content %}
+{% if mosque_admin_overview %}
+<link rel="stylesheet" href="{% static 'css/mosque_admin_dashboard.css' %}">
+
+<section class="ma-workspace">
+    <div class="container py-4 py-lg-5">
+
+        <!-- ======================================================
+             PROFESSIONAL HEADER
+        ======================================================= -->
+        <div class="ma-hero">
+            <div class="ma-hero-pattern"></div>
+
+            <div class="row align-items-center g-4 position-relative">
+                <div class="col-xl-8">
+                    <div class="ma-eyebrow">
+                        <span class="ma-eyebrow-icon">
+                            <i class="bi bi-moon-stars-fill"></i>
+                        </span>
+                        {% trans "Mosque Administration Workspace" %}
+                    </div>
+
+                    <h1 class="ma-hero-title">
+                        {% trans "Assalamu Alaikum," %}
+                        <span>{{ request.user.get_full_name|default:request.user.username }}</span>
+                    </h1>
+
+                    <p class="ma-hero-copy">
+                        {% trans "Manage your mosque registrations, public profiles, support requests and important updates from one secure workspace." %}
+                    </p>
+
+                    <div class="ma-hero-meta">
+                        <span>
+                            <i class="bi bi-calendar3"></i>
+                            {% now "l, d F Y" %}
+                        </span>
+                        <span>
+                            <i class="bi bi-shield-check"></i>
+                            {{ request.user.get_role_display }}
+                        </span>
+                        {% if request.user.email %}
+                            <span>
+                                <i class="bi bi-envelope"></i>
+                                {{ request.user.email }}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-xl-4">
+                    <div class="ma-hero-actions">
+                        <a href="{% url 'mosques:create' %}" class="ma-btn ma-btn-light">
+                            <i class="bi bi-building-add"></i>
+                            <span>{% trans "Register Mosque" %}</span>
+                        </a>
+
+                        {% if has_approved_mosque %}
+                            <a href="{% url 'support_requests:create' %}" class="ma-btn ma-btn-gold">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>{% trans "New Support Request" %}</span>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'mosques:my_mosques' %}" class="ma-btn ma-btn-gold">
+                                <i class="bi bi-buildings"></i>
+                                <span>{% trans "View My Mosques" %}</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================
+             KPI SUMMARY
+        ======================================================= -->
+        <div class="ma-stat-grid">
+            <a href="{% url 'mosques:my_mosques' %}" class="ma-stat-card ma-stat-primary">
+                <div class="ma-stat-icon"><i class="bi bi-buildings"></i></div>
+                <div class="ma-stat-content">
+                    <span class="ma-stat-label">{% trans "My Mosques" %}</span>
+                    <strong>{{ mosque_counts.total }}</strong>
+                    <small>{{ mosque_counts.approved }} {% trans "approved" %}</small>
+                </div>
+                <i class="bi bi-arrow-up-right ma-stat-arrow"></i>
+            </a>
+
+            <a href="{% url 'mosques:my_mosques' %}" class="ma-stat-card ma-stat-warning">
+                <div class="ma-stat-icon"><i class="bi bi-hourglass-split"></i></div>
+                <div class="ma-stat-content">
+                    <span class="ma-stat-label">{% trans "Pending Approval" %}</span>
+                    <strong>{{ mosque_counts.pending }}</strong>
+                    <small>{{ mosque_counts.draft }} {% trans "draft registrations" %}</small>
+                </div>
+                <i class="bi bi-arrow-up-right ma-stat-arrow"></i>
+            </a>
+
+            <a href="{% url 'support_requests:my_requests' %}" class="ma-stat-card ma-stat-info">
+                <div class="ma-stat-icon"><i class="bi bi-hand-heart"></i></div>
+                <div class="ma-stat-content">
+                    <span class="ma-stat-label">{% trans "Open Support Requests" %}</span>
+                    <strong>{{ support_counts.open }}</strong>
+                    <small>{{ support_counts.total }} {% trans "total requests" %}</small>
+                </div>
+                <i class="bi bi-arrow-up-right ma-stat-arrow"></i>
+            </a>
+
+            <a href="{% url 'notifications:center' %}" class="ma-stat-card ma-stat-danger">
+                <div class="ma-stat-icon"><i class="bi bi-bell"></i></div>
+                <div class="ma-stat-content">
+                    <span class="ma-stat-label">{% trans "Notifications" %}</span>
+                    <strong>{{ unread_notification_count }}</strong>
+                    <small>{% trans "unread updates" %}</small>
+                </div>
+                <i class="bi bi-arrow-up-right ma-stat-arrow"></i>
+            </a>
+        </div>
+
+        <!-- ======================================================
+             MAIN DASHBOARD GRID
+        ======================================================= -->
+        <div class="row g-4 mt-1">
+
+            <!-- MY MOSQUES -->
+            <div class="col-xl-8">
+                <section class="ma-panel h-100">
+                    <div class="ma-panel-head">
+                        <div>
+                            <span class="ma-section-kicker">{% trans "Management" %}</span>
+                            <h2>{% trans "My Mosques" %}</h2>
+                            <p>{% trans "Monitor registration status and access each mosque workspace." %}</p>
+                        </div>
+
+                        <a href="{% url 'mosques:my_mosques' %}" class="ma-text-link">
+                            {% trans "View all" %}
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    {% if mosque_cards %}
+                        <div class="ma-mosque-list">
+                            {% for item in mosque_cards %}
+                                <article class="ma-mosque-card">
+                                    <div class="ma-mosque-avatar">
+                                        <i class="bi bi-moon-stars"></i>
+                                    </div>
+
+                                    <div class="ma-mosque-main">
+                                        <div class="ma-mosque-title-row">
+                                            <div>
+                                                <h3>{{ item.mosque.localized_name }}</h3>
+                                                <div class="ma-mosque-id">
+                                                    <i class="bi bi-upc-scan"></i>
+                                                    {{ item.mosque.mosque_id|default:"—" }}
+                                                </div>
+                                            </div>
+
+                                            <span class="ma-status ma-status-{{ item.status_class }}">
+                                                <span></span>
+                                                {{ item.mosque.get_status_display }}
+                                            </span>
+                                        </div>
+
+                                        <div class="ma-mosque-meta">
+                                            <span>
+                                                <i class="bi bi-geo-alt"></i>
+                                                {{ item.mosque.city_or_town }}
+                                                {% if item.mosque.district %}
+                                                    · {{ item.mosque.district.localized_name }}
+                                                {% endif %}
+                                            </span>
+
+                                            {% if item.mosque.divisional_secretariat %}
+                                                <span>
+                                                    <i class="bi bi-diagram-3"></i>
+                                                    {{ item.mosque.divisional_secretariat.localized_name }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+
+                                        {% if item.profile_completion != None %}
+                                            <div class="ma-profile-progress">
+                                                <div class="ma-profile-progress-label">
+                                                    <span>{% trans "Public profile completion" %}</span>
+                                                    <strong>{{ item.profile_completion }}%</strong>
+                                                </div>
+                                                <div class="progress" role="progressbar"
+                                                     aria-valuenow="{{ item.profile_completion }}"
+                                                     aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <div class="progress-bar"
+                                                         style="width: {{ item.profile_completion }}%"></div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="ma-mosque-actions">
+                                        {% if item.mosque.status == "APPROVED" %}
+                                            <a href="{% url 'mosques:portal' item.mosque.mosque_id %}"
+                                               class="ma-icon-action"
+                                               title="{% trans 'Open Mosque Portal' %}">
+                                                <i class="bi bi-grid"></i>
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'mosques:detail' item.mosque.mosque_id %}"
+                                               class="ma-icon-action"
+                                               title="{% trans 'View Registration' %}">
+                                                <i class="bi bi-eye"></i>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="ma-empty-state">
+                            <div class="ma-empty-icon">
+                                <i class="bi bi-building-add"></i>
+                            </div>
+                            <h3>{% trans "No mosque registered yet" %}</h3>
+                            <p>{% trans "Start by registering your mosque. You can save the application as a draft and submit it for Platform Admin approval." %}</p>
+                            <a href="{% url 'mosques:create' %}" class="btn btn-success">
+                                <i class="bi bi-plus-circle me-2"></i>
+                                {% trans "Register Your First Mosque" %}
+                            </a>
+                        </div>
+                    {% endif %}
+                </section>
+            </div>
+
+            <!-- ACTION CENTRE -->
+            <div class="col-xl-4">
+                <section class="ma-panel h-100">
+                    <div class="ma-panel-head ma-panel-head-compact">
+                        <div>
+                            <span class="ma-section-kicker">{% trans "Shortcuts" %}</span>
+                            <h2>{% trans "Action Centre" %}</h2>
+                            <p>{% trans "Frequently used Mosque Admin functions." %}</p>
+                        </div>
+                    </div>
+
+                    <div class="ma-action-list">
+                        <a href="{% url 'mosques:create' %}" class="ma-action-item">
+                            <span class="ma-action-icon ma-action-green">
+                                <i class="bi bi-building-add"></i>
+                            </span>
+                            <span class="ma-action-copy">
+                                <strong>{% trans "Register Mosque" %}</strong>
+                                <small>{% trans "Create a new mosque registration" %}</small>
+                            </span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{% url 'mosques:my_mosques' %}" class="ma-action-item">
+                            <span class="ma-action-icon ma-action-blue">
+                                <i class="bi bi-buildings"></i>
+                            </span>
+                            <span class="ma-action-copy">
+                                <strong>{% trans "Manage My Mosques" %}</strong>
+                                <small>{% trans "Open registrations and mosque portals" %}</small>
+                            </span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        {% if has_approved_mosque %}
+                            <a href="{% url 'support_requests:create' %}" class="ma-action-item">
+                                <span class="ma-action-icon ma-action-gold">
+                                    <i class="bi bi-plus-circle"></i>
+                                </span>
+                                <span class="ma-action-copy">
+                                    <strong>{% trans "New Support Request" %}</strong>
+                                    <small>{% trans "Request assistance for an approved mosque" %}</small>
+                                </span>
+                                <i class="bi bi-chevron-right"></i>
+                            </a>
+                        {% endif %}
+
+                        <a href="{% url 'support_requests:my_requests' %}" class="ma-action-item">
+                            <span class="ma-action-icon ma-action-purple">
+                                <i class="bi bi-hand-heart"></i>
+                            </span>
+                            <span class="ma-action-copy">
+                                <strong>{% trans "Support Requests" %}</strong>
+                                <small>{% trans "Track submitted requests and decisions" %}</small>
+                            </span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+
+                        <a href="{% url 'accounts:profile' %}" class="ma-action-item">
+                            <span class="ma-action-icon ma-action-slate">
+                                <i class="bi bi-person-gear"></i>
+                            </span>
+                            <span class="ma-action-copy">
+                                <strong>{% trans "My Account" %}</strong>
+                                <small>{% trans "Review your account information" %}</small>
+                            </span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- ======================================================
+             SUPPORT + NOTIFICATIONS
+        ======================================================= -->
+        <div class="row g-4 mt-1">
+
+            <!-- SUPPORT REQUESTS -->
+            <div class="col-xl-7">
+                <section class="ma-panel">
+                    <div class="ma-panel-head">
+                        <div>
+                            <span class="ma-section-kicker">{% trans "Assistance" %}</span>
+                            <h2>{% trans "Recent Support Requests" %}</h2>
+                            <p>
+                                {% if support_counts.action_required %}
+                                    <span class="text-danger fw-semibold">
+                                        {{ support_counts.action_required }}
+                                        {% trans "request(s) require additional information." %}
+                                    </span>
+                                {% else %}
+                                    {% trans "Track the latest activity on your mosque assistance requests." %}
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <a href="{% url 'support_requests:my_requests' %}" class="ma-text-link">
+                            {% trans "View all" %}
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    {% if recent_support_requests %}
+                        <div class="ma-request-list">
+                            {% for item in recent_support_requests %}
+                                <a href="{% url 'support_requests:detail' item.request.request_no %}"
+                                   class="ma-request-row">
+                                    <div class="ma-request-icon">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+
+                                    <div class="ma-request-main">
+                                        <div class="ma-request-title">
+                                            <strong>{{ item.request.title }}</strong>
+                                            <span class="ma-status ma-status-{{ item.status_class }}">
+                                                {{ item.request.get_status_display }}
+                                            </span>
+                                        </div>
+
+                                        <div class="ma-request-meta">
+                                            <span>{{ item.request.request_no }}</span>
+                                            <span>{{ item.request.mosque.localized_name }}</span>
+                                            <span>{{ item.request.updated_at|date:"d M Y" }}</span>
+                                        </div>
+                                    </div>
+
+                                    <i class="bi bi-chevron-right ma-row-arrow"></i>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="ma-compact-empty">
+                            <i class="bi bi-hand-heart"></i>
+                            <div>
+                                <strong>{% trans "No support requests yet" %}</strong>
+                                <p>{% trans "Approved mosques can submit support requests when assistance is needed." %}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </section>
+            </div>
+
+            <!-- NOTIFICATIONS -->
+            <div class="col-xl-5">
+                <section class="ma-panel">
+                    <div class="ma-panel-head">
+                        <div>
+                            <span class="ma-section-kicker">{% trans "Updates" %}</span>
+                            <h2>
+                                {% trans "Notifications" %}
+                                {% if unread_notification_count %}
+                                    <span class="ma-count-badge">{{ unread_notification_count }}</span>
+                                {% endif %}
+                            </h2>
+                            <p>{% trans "Recent mosque, support and account updates." %}</p>
+                        </div>
+
+                        <a href="{% url 'notifications:center' %}" class="ma-text-link">
+                            {% trans "View all" %}
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    {% if platform_notifications %}
+                        <div class="ma-notification-list">
+                            {% for notification in platform_notifications %}
+                                <a href="{% url 'notifications:open' notification.pk %}"
+                                   class="ma-notification-item {% if not notification.is_read %}is-unread{% endif %}">
+                                    <span class="ma-notification-dot"></span>
+                                    <div>
+                                        <div class="ma-notification-title">
+                                            <strong>{{ notification.title }}</strong>
+                                            <small>{{ notification.created_at|date:"d M" }}</small>
+                                        </div>
+                                        <p>{{ notification.message|truncatechars:120 }}</p>
+                                        {% if notification.reference_label %}
+                                            <span class="ma-reference">
+                                                <i class="bi bi-link-45deg"></i>
+                                                {{ notification.reference_label }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="ma-compact-empty">
+                            <i class="bi bi-bell-slash"></i>
+                            <div>
+                                <strong>{% trans "You're all caught up" %}</strong>
+                                <p>{% trans "New platform updates will appear here." %}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </section>
+            </div>
+        </div>
+
+        <!-- ======================================================
+             ACCOUNT FOOTER
+        ======================================================= -->
+        <div class="ma-account-strip">
+            <div class="ma-account-person">
+                <div class="ma-account-avatar">
+                    {{ request.user.get_full_name|default:request.user.username|first|upper }}
+                </div>
+                <div>
+                    <strong>{{ request.user.get_full_name|default:request.user.username }}</strong>
+                    <span>
+                        {% trans "Signed in as" %} {{ request.user.username }}
+                        {% if request.user.email %} · {{ request.user.email }}{% endif %}
+                    </span>
+                </div>
+            </div>
+
+            <div class="ma-account-actions">
+                <a href="{% url 'accounts:profile' %}" class="btn btn-outline-success">
+                    <i class="bi bi-person me-1"></i>
+                    {% trans "My Profile" %}
+                </a>
+                <a href="{% url 'accounts:password_reset' %}" class="btn btn-outline-secondary">
+                    <i class="bi bi-key me-1"></i>
+                    {% trans "Password Help" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% else %}
+
+<!-- ============================================================
+     EXISTING GENERIC DASHBOARD FOR ALL OTHER ROLES
+============================================================= -->
 <section class="dashboard-hero">
     <div class="container">
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
@@ -37,34 +502,35 @@
             {% endfor %}
         </div>
 
-
-
-        {% if support_notifications %}
+        {% if platform_notifications %}
             <div class="card border-0 shadow-sm mt-4 support-notification-panel">
                 <div class="card-body p-4">
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
                         <div>
                             <h3 class="h5 mb-1">
-                                <i class="bi bi-bell me-1"></i>{% trans "Support Notifications" %}
-                                {% if unread_support_notification_count %}
-                                    <span class="badge text-bg-danger ms-1">{{ unread_support_notification_count }}</span>
+                                <i class="bi bi-bell me-1"></i>{% trans "Notifications" %}
+                                {% if unread_notification_count %}
+                                    <span class="badge text-bg-danger ms-1">{{ unread_notification_count }}</span>
                                 {% endif %}
                             </h3>
-                            <p class="text-muted mb-0">{% trans "Updates requiring your attention and recent support-request decisions." %}</p>
+                            <p class="text-muted mb-0">{% trans "Recent mosque, support, access and account updates." %}</p>
                         </div>
-                        <a href="{% url 'support_requests:notifications' %}" class="btn btn-sm btn-outline-success">{% trans "View All Notifications" %}</a>
+                        <a href="{% url 'notifications:center' %}" class="btn btn-sm btn-outline-success">{% trans "View All Notifications" %}</a>
                     </div>
 
                     <div class="list-group list-group-flush">
-                        {% for notification in support_notifications %}
-                            <a href="{% url 'support_requests:notification_open' notification.pk %}" class="list-group-item list-group-item-action px-0 {% if not notification.is_read %}support-notification-unread{% endif %}">
+                        {% for notification in platform_notifications %}
+                            <a href="{% url 'notifications:open' notification.pk %}" class="list-group-item list-group-item-action px-0 {% if not notification.is_read %}support-notification-unread{% endif %}">
                                 <div class="d-flex justify-content-between gap-3">
                                     <div>
                                         <strong>{{ notification.title }}</strong>
                                         <p class="mb-1 small text-muted">{{ notification.message|truncatechars:180 }}</p>
-                                        <small>{{ notification.support_request.request_no }} · {{ notification.support_request.mosque.localized_name }}</small>
+                                        <small>{{ notification.get_category_display }}{% if notification.reference_label %} · {{ notification.reference_label }}{% endif %}</small>
                                     </div>
-                                    <small class="text-muted text-nowrap">{{ notification.created_at|date:"Y-m-d H:i" }}</small>
+                                    <div class="text-end">
+                                        {% if not notification.is_read %}<span class="badge text-bg-success d-block mb-1">{% trans "New" %}</span>{% endif %}
+                                        <small class="text-muted text-nowrap">{{ notification.created_at|date:"Y-m-d H:i" }}</small>
+                                    </div>
                                 </div>
                             </a>
                         {% endfor %}
@@ -92,4 +558,5 @@
         </div>
     </div>
 </section>
+{% endif %}
 {% endblock %}

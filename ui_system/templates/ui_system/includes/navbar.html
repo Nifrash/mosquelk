@@ -21,10 +21,8 @@
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'core:about' %}">{% trans "About Us" %}</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'core:services' %}">{% trans "Services" %}</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'mosques' and request.resolver_match.url_name == 'directory' %}active{% endif %}" href="{% url 'mosques:directory' %}">{% trans "Mosque Directory" %}</a></li>
-                    {% if not request.user.is_authenticated or request.user.role == 'MOSQUE_ADMIN' %}
-                        <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'mosques' and request.resolver_match.url_name == 'registration_start' or request.resolver_match.namespace == 'mosques' and request.resolver_match.url_name == 'create' %}active{% endif %}" href="{% url 'mosques:registration_start' %}">{% trans "Register Mosque" %}</a></li>
-                    {% endif %}
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'support_requests' %}active{% endif %}" href="{% url 'support_requests:create' %}">{% trans "Request Support" %}</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name|slice:':12' == 'prayer_times' %}active{% endif %}" href="{% url 'core:prayer_times' %}">{% trans "Prayer Times" %}</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.resolver_match.namespace == 'core' and request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'core:contact' %}">{% trans "Contact Us" %}</a></li>
                 </ul>
 

@@ -1,8 +1,15 @@
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from django.contrib.auth.views import (
+    PasswordResetCompleteView,
+    PasswordResetConfirmView,
+    PasswordResetDoneView,
+    PasswordResetView,
+)
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
@@ -10,6 +17,8 @@ from django.views.decorators.http import require_POST
 from .forms import (
     MosqueAdminRegistrationForm,
     SMSOTPVerificationForm,
+    StyledPasswordResetForm,
+    StyledSetPasswordForm,
     UniversalLoginForm,
 )
 from .models import OTPPurpose, SMSOTPChallenge, UserRole
@@ -22,12 +31,42 @@ from .otp import (
     clear_challenge_from_session,
     consume_otp_challenge,
     ensure_request_session_key,
-    mask_email_address,
     mask_phone_number,
     resend_otp_challenge,
     start_otp_challenge,
     verify_otp_code,
 )
+
+
+
+class PlatformPasswordResetView(PasswordResetView):
+    """
+    Secure email-based password recovery.
+
+    Django intentionally does not reveal whether the submitted email exists.
+    Only active users with a usable password receive a reset email.
+    """
+
+    template_name = "accounts/password_reset_form.html"
+    email_template_name = "accounts/password_reset_email.txt"
+    html_email_template_name = "accounts/password_reset_email.html"
+    subject_template_name = "accounts/password_reset_subject.txt"
+    form_class = StyledPasswordResetForm
+    success_url = reverse_lazy("accounts:password_reset_done")
+
+
+class PlatformPasswordResetDoneView(PasswordResetDoneView):
+    template_name = "accounts/password_reset_done.html"
+
+
+class PlatformPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = "accounts/password_reset_confirm.html"
+    form_class = StyledSetPasswordForm
+    success_url = reverse_lazy("accounts:password_reset_complete")
+
+
+class PlatformPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = "accounts/password_reset_complete.html"
 
 
 def login_view(request):
@@ -62,7 +101,7 @@ def login_view(request):
 
 
 def mosque_admin_register(request):
-    """Create a Mosque Admin account pending OTP verification."""
+    """Create a Mosque Admin account pending SMS OTP verification."""
 
     if request.user.is_authenticated:
         if request.user.role == UserRole.MOSQUE_ADMIN:
@@ -100,12 +139,12 @@ def mosque_admin_register(request):
         if delivered:
             messages.info(
                 request,
-                _("We sent a 6-digit OTP to your registered mobile number and email address."),
+                _("We sent a 6-digit SMS OTP to your registered mobile number."),
             )
         else:
             messages.warning(
                 request,
-                _("Your account was created, but OTP delivery failed. Use Resend OTP on the verification page."),
+                _("Your account was created, but SMS delivery failed. Use Resend OTP on the verification page."),
             )
 
         return redirect("accounts:otp_verify")
@@ -130,7 +169,7 @@ def _get_session_challenge(request):
 
 
 def _complete_verified_action(request, challenge):
-    """Execute the business action only after the OTP has been verified."""
+    """Execute the business action only after the SMS OTP has been verified."""
 
     if not challenge.is_verified or challenge.is_consumed:
         raise PermissionDenied
@@ -154,7 +193,7 @@ def _complete_verified_action(request, challenge):
         )
         messages.success(
             request,
-            _("Your verification code was accepted. You can now register your mosque."),
+            _("Your mobile number has been verified. You can now register your mosque."),
         )
         return redirect("mosques:create")
 
@@ -231,9 +270,6 @@ def otp_verify(request):
             "form": form,
             "challenge": challenge,
             "masked_phone": mask_phone_number(challenge.phone_number),
-            "masked_email": mask_email_address(
-                challenge.user.email if challenge.user else ""
-            ),
         },
     )
 
@@ -252,7 +288,7 @@ def otp_resend(request):
         else:
             messages.error(
                 request,
-                _("The OTP was regenerated, but delivery failed. Please try again or contact support."),
+                _("The OTP was regenerated, but SMS delivery failed. Please try again or contact support."),
             )
     except (OTPRateLimitError, OTPVerificationError) as exc:
         messages.error(request, str(exc))

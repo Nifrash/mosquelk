@@ -1,7 +1,8 @@
 {% extends "ui_system/base.html" %}
-{% load i18n %}
+{% load static i18n %}
 {% block title %}{% trans "Contact Us" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/contact_form_security.css' %}">
 <section class="public-page-hero contact-page-hero">
     <div class="container position-relative">
         <div class="public-hero-content">
@@ -38,15 +39,37 @@
             <div class="col-lg-7">
                 <div class="public-form-card h-100">
                     <div class="mb-4"><span class="public-section-label">{% trans "Send a Message" %}</span><h2 class="h3 mt-2">{% trans "Contact Our Team" %}</h2></div>
-                    <form method="post" novalidate>
+                    <form method="post" action="{% url 'core:contact' %}">
                         {% csrf_token %}
+                        {{ form.form_token }}
+
+                        <div class="contact-form-honeypot" aria-hidden="true">
+                            <label for="{{ form.website.id_for_label }}">Website</label>
+                            {{ form.website }}
+                        </div>
                         {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
                         <div class="row g-3">
                             <div class="col-md-6"><label class="form-label" for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>{{ form.name }}{% for error in form.name.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>
                             <div class="col-md-6"><label class="form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>{{ form.email }}{% for error in form.email.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>
                             <div class="col-12"><label class="form-label" for="{{ form.subject.id_for_label }}">{{ form.subject.label }}</label>{{ form.subject }}{% for error in form.subject.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>
                             <div class="col-12"><label class="form-label" for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>{{ form.message }}{% for error in form.message.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}</div>
-                            <div class="col-12 d-flex flex-wrap align-items-center gap-3 mt-4"><button type="submit" class="btn btn-primary-custom btn-lg"><i class="bi bi-send me-2"></i>{% trans "Send Message" %}</button><small class="text-muted">{% trans "Your message will be sent to the platform support team." %}</small></div>
+                            <div class="col-12 mt-2">
+                                <div class="contact-form-security-summary">
+                                    <i class="bi bi-shield-lock"></i>
+                                    <span>
+                                        {% trans "This form is protected against automated abuse. Your message is sent securely to info@mosques.lk. Never include passwords, OTP codes or other login credentials." %}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 d-flex flex-wrap align-items-center gap-3 mt-2">
+                                <button type="submit" class="btn btn-primary-custom btn-lg">
+                                    <i class="bi bi-send me-2"></i>{% trans "Send Message" %}
+                                </button>
+                                <small class="text-muted">
+                                    {% trans "All Contact page messages are delivered to info@mosques.lk." %}
+                                </small>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -5,6 +5,7 @@
 {% block title %}{% trans "Home" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/public_support.css' %}">
 <section class="home-hero" id="home-top">
     <div class="home-hero-pattern" aria-hidden="true"></div>
     <div class="container position-relative home-hero-container">
@@ -25,7 +26,7 @@
                     </p>
 
                     <div class="home-hero-actions">
-                        <a href="{% url 'mosques:registration_start' %}" class="btn home-btn-gold">
+                        <a href="{% url 'mosques:create' %}" class="btn home-btn-gold">
                             <i class="bi bi-building-add"></i>
                             <span>{% trans "Register Mosque" %}</span>
                             <i class="bi bi-arrow-right home-action-arrow"></i>
@@ -95,7 +96,7 @@
 
         <div class="row g-3 g-xl-4 mt-4">
             <div class="col-md-6 col-xl-4">
-                <a href="{% url 'mosques:registration_start' %}" class="home-service-card">
+                <a href="{% url 'mosques:create' %}" class="home-service-card">
                     <span class="home-service-icon home-service-icon-green"><i class="bi bi-building-add"></i></span>
                     <h3>{% trans "Mosque Registration" %}</h3>
                     <p>{% trans "Register your mosque through the structured Platform Admin approval workflow." %}</p>
@@ -187,6 +188,91 @@
         </div>
     </div>
 </section>
+
+{% if public_support_requests %}
+<section class="home-section public-support-home-section">
+    <div class="container">
+        <div class="home-section-heading home-heading-row">
+            <div>
+                <span class="home-section-kicker">{% trans "Community Support Needs" %}</span>
+                <h2>{% trans "Approved Mosque Support Requests" %}</h2>
+                <p>
+                    {% trans "These mosque support requests have been reviewed and approved by the platform and are currently open for community assistance." %}
+                </p>
+
+                <div class="public-support-guidance">
+                    <div class="public-support-guidance-icon">
+                        <i class="bi bi-heart-fill"></i>
+                    </div>
+                    <div>
+                        <strong>{% trans "Would you like to help?" %}</strong>
+                        <p>
+                            {% trans "If you wish to support any of these mosques, please open the request to review the full details and contact the mosque directly using the contact information provided. We recommend confirming the mosque's current need with its authorized contact person before providing any assistance." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="{% url 'support_requests:public_list' %}" class="home-text-link">
+                {% trans "View All Support Requests" %}
+                <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="row g-4 mt-2">
+            {% for support_request in public_support_requests %}
+                <div class="col-md-6 col-xl-4">
+                    <article class="public-support-card h-100">
+                        <div class="public-support-card-top">
+                            <span class="public-support-category">
+                                <i class="bi bi-hand-heart-fill"></i>
+                                {{ support_request.get_category_display }}
+                            </span>
+
+                            <span class="public-support-status">
+                                <i class="bi bi-patch-check-fill"></i>
+                                {{ support_request.get_status_display }}
+                            </span>
+                        </div>
+
+                        <div class="public-support-mosque">
+                            <i class="bi bi-moon-stars"></i>
+                            <div>
+                                <strong>{{ support_request.mosque.localized_name }}</strong>
+                                <span>
+                                    {{ support_request.mosque.city_or_town }},
+                                    {{ support_request.mosque.district.localized_name }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <h3>{{ support_request.title }}</h3>
+                        <p>{{ support_request.issue_description|truncatechars:170 }}</p>
+
+                        {% if support_request.requested_amount %}
+                            <div class="public-support-amount">
+                                <span>{% trans "Requested" %}</span>
+                                <strong>LKR {{ support_request.requested_amount|floatformat:2 }}</strong>
+                            </div>
+                        {% endif %}
+
+                        <div class="public-support-card-footer">
+                            <small>
+                                <i class="bi bi-upc-scan"></i>
+                                {{ support_request.request_no }}
+                            </small>
+                            <a href="{% url 'support_requests:public_detail' support_request.request_no %}">
+                                {% trans "View Full Details" %}
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
 
 <section class="home-section home-directory-section">
     <div class="container">

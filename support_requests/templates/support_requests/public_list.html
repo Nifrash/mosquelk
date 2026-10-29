@@ -1,0 +1,125 @@
+{% extends "ui_system/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Approved Support Requests" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/public_support.css' %}">
+
+<section class="public-page-hero public-support-page-hero">
+    <div class="container position-relative">
+        <div class="public-hero-content">
+            <span class="public-eyebrow">
+                <i class="bi bi-hand-heart-fill"></i>{% trans "Community Support" %}
+            </span>
+            <h1>{% trans "Approved Mosque Support Requests" %}</h1>
+            <p>
+                {% trans "Browse active support requests that have been reviewed and approved by the platform. Open a request to read the full details and contact the mosque directly." %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="public-section">
+    <div class="container">
+        <div class="public-support-search-panel">
+            <form method="get" class="row g-3 align-items-end">
+                <div class="col-lg-9">
+                    <label for="publicSupportQuery" class="form-label fw-semibold">
+                        {% trans "Search support requests" %}
+                    </label>
+                    <div class="public-input-icon">
+                        <i class="bi bi-search"></i>
+                        <input
+                            id="publicSupportQuery"
+                            type="search"
+                            class="form-control form-control-lg"
+                            name="q"
+                            value="{{ query }}"
+                            placeholder="{% trans 'Mosque, request number, title, need or location' %}"
+                        >
+                    </div>
+                </div>
+                <div class="col-lg-3 d-grid">
+                    <button type="submit" class="btn btn-primary-custom btn-lg">
+                        <i class="bi bi-search me-1"></i>{% trans "Search" %}
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="directory-results-heading mt-5">
+            <div>
+                <span class="public-section-label">{% trans "Active Needs" %}</span>
+                <h2>{% trans "Requests Open for Public Contact" %}</h2>
+            </div>
+            <span class="directory-result-count">
+                <strong>{{ result_count }}</strong> {% trans "results" %}
+            </span>
+        </div>
+
+        <div class="row g-4 mt-1">
+            {% for support_request in support_requests %}
+                <div class="col-md-6 col-xl-4">
+                    <article class="public-support-card h-100">
+                        <div class="public-support-card-top">
+                            <span class="public-support-category">
+                                <i class="bi bi-hand-heart-fill"></i>
+                                {{ support_request.get_category_display }}
+                            </span>
+                            <span class="public-support-status">
+                                <i class="bi bi-patch-check-fill"></i>
+                                {{ support_request.get_status_display }}
+                            </span>
+                        </div>
+
+                        <div class="public-support-mosque">
+                            <i class="bi bi-moon-stars"></i>
+                            <div>
+                                <strong>{{ support_request.mosque.localized_name }}</strong>
+                                <span>
+                                    {{ support_request.mosque.city_or_town }},
+                                    {{ support_request.mosque.district.localized_name }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <h3>{{ support_request.title }}</h3>
+                        <p>{{ support_request.issue_description|truncatechars:190 }}</p>
+
+                        {% if support_request.requested_amount %}
+                            <div class="public-support-amount">
+                                <span>{% trans "Requested" %}</span>
+                                <strong>LKR {{ support_request.requested_amount|floatformat:2 }}</strong>
+                            </div>
+                        {% endif %}
+
+                        <div class="public-support-card-footer">
+                            <small>
+                                <i class="bi bi-upc-scan"></i>
+                                {{ support_request.request_no }}
+                            </small>
+                            <a href="{% url 'support_requests:public_detail' support_request.request_no %}">
+                                {% trans "View Full Details" %}
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <div class="empty-state-card premium-empty-state">
+                        <span><i class="bi bi-hand-heart"></i></span>
+                        <h3>{% trans "No active approved support requests found" %}</h3>
+                        <p>{% trans "Try another search term or check again when new mosque support requests are approved." %}</p>
+                        <a href="{% url 'support_requests:public_list' %}" class="btn btn-outline-success">
+                            {% trans "Clear Search" %}
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

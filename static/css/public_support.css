@@ -1,0 +1,473 @@
+
+/* ================================================================
+   Public mosque support requests
+================================================================ */
+
+.public-support-home-section {
+    background: linear-gradient(180deg, #fbfdfc 0%, #f5faf7 100%);
+}
+
+.public-support-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    border: 1px solid #e1ebe6;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(22, 79, 63, .06);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.public-support-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(22, 119, 89, .25);
+    box-shadow: 0 20px 42px rgba(22, 79, 63, .10);
+}
+
+.public-support-card-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
+
+.public-support-category,
+.public-support-status {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .32rem .55rem;
+    border-radius: 999px;
+    font-size: .68rem;
+    font-weight: 800;
+}
+
+.public-support-category {
+    color: #116950;
+    background: #e6f5ef;
+}
+
+.public-support-status {
+    color: #8a670b;
+    background: #fff1c9;
+}
+
+.public-support-mosque {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin-bottom: .9rem;
+    padding: .75rem;
+    border-radius: 14px;
+    background: #f7faf8;
+}
+
+.public-support-mosque > i {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #e4f2ec;
+    color: #147054;
+    font-size: 1rem;
+}
+
+.public-support-mosque strong,
+.public-support-mosque span {
+    display: block;
+}
+
+.public-support-mosque strong {
+    color: #1f3e35;
+    font-size: .8rem;
+}
+
+.public-support-mosque span {
+    margin-top: .1rem;
+    color: #78857f;
+    font-size: .68rem;
+}
+
+.public-support-card h3 {
+    margin: 0 0 .55rem;
+    color: #173b31;
+    font-size: 1.03rem;
+    font-weight: 760;
+    line-height: 1.35;
+}
+
+.public-support-card > p {
+    flex-grow: 1;
+    margin: 0;
+    color: #6c7a75;
+    font-size: .79rem;
+    line-height: 1.6;
+}
+
+.public-support-amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .7rem;
+    margin-top: 1rem;
+    padding: .7rem .8rem;
+    border-radius: 12px;
+    background: #fff9e9;
+}
+
+.public-support-amount span {
+    color: #86754d;
+    font-size: .68rem;
+    font-weight: 700;
+}
+
+.public-support-amount strong {
+    color: #6c5318;
+    font-size: .83rem;
+}
+
+.public-support-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .7rem;
+    margin-top: 1rem;
+    padding-top: .85rem;
+    border-top: 1px solid #eef2f0;
+}
+
+.public-support-card-footer small {
+    color: #8b9691;
+    font-size: .65rem;
+}
+
+.public-support-card-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    color: #157255;
+    font-size: .72rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.public-support-search-panel {
+    padding: 1.25rem;
+    border: 1px solid #e1ebe6;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(22, 79, 63, .06);
+}
+
+.public-support-page-hero {
+    background:
+        radial-gradient(circle at 80% 20%, rgba(218, 181, 76, .13), transparent 28rem),
+        linear-gradient(135deg, #063b30, #0d654f);
+}
+
+.public-support-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    margin-bottom: .8rem;
+    color: rgba(255, 255, 255, .78);
+    font-size: .76rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.public-support-back-link:hover {
+    color: #fff;
+}
+
+.public-support-detail-section {
+    background: #f6f9f7;
+}
+
+.public-support-detail-card,
+.public-support-contact-card {
+    border: 1px solid #e1e9e5;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 14px 36px rgba(22, 79, 63, .07);
+}
+
+.public-support-detail-card {
+    padding: 1.5rem;
+}
+
+.public-support-contact-card {
+    position: sticky;
+    top: 100px;
+    padding: 1.35rem;
+}
+
+.public-support-detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .8rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #edf1ef;
+}
+
+.public-support-request-no {
+    color: #84908b;
+    font-size: .73rem;
+    font-weight: 700;
+}
+
+.public-support-detail-block {
+    padding: 1.35rem 0;
+    border-bottom: 1px solid #edf1ef;
+}
+
+.public-support-detail-label {
+    display: block;
+    margin-bottom: .55rem;
+    color: #147054;
+    font-size: .7rem;
+    font-weight: 850;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.public-support-rich-text {
+    color: #465851;
+    font-size: .9rem;
+    line-height: 1.75;
+}
+
+.public-support-rich-text p:last-child {
+    margin-bottom: 0;
+}
+
+.public-support-amount-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .8rem;
+    margin-top: 1.3rem;
+}
+
+.public-support-amount-grid > div {
+    padding: 1rem;
+    border-radius: 15px;
+    background: #fff8e4;
+}
+
+.public-support-amount-grid span,
+.public-support-amount-grid strong {
+    display: block;
+}
+
+.public-support-amount-grid span {
+    color: #8b7950;
+    font-size: .7rem;
+}
+
+.public-support-amount-grid strong {
+    margin-top: .25rem;
+    color: #654e18;
+    font-size: 1rem;
+}
+
+.public-support-safety-note {
+    display: flex;
+    gap: .75rem;
+    margin-top: 1.35rem;
+    padding: 1rem;
+    border-radius: 15px;
+    background: #eef8f3;
+    color: #426158;
+}
+
+.public-support-safety-note i {
+    flex: 0 0 auto;
+    color: #147054;
+    font-size: 1.05rem;
+}
+
+.public-support-safety-note p {
+    margin: 0;
+    font-size: .75rem;
+    line-height: 1.55;
+}
+
+.public-support-contact-card h2 {
+    margin: 0 0 1rem;
+    color: #173b31;
+    font-size: 1.15rem;
+    font-weight: 780;
+}
+
+.public-support-location {
+    display: flex;
+    gap: .65rem;
+    margin-bottom: 1rem;
+    padding: .8rem;
+    border-radius: 14px;
+    background: #f6faf8;
+}
+
+.public-support-location > i {
+    color: #147054;
+}
+
+.public-support-location strong,
+.public-support-location span {
+    display: block;
+}
+
+.public-support-location strong {
+    color: #284b41;
+    font-size: .8rem;
+}
+
+.public-support-location span {
+    margin-top: .1rem;
+    color: #74827d;
+    font-size: .68rem;
+}
+
+.public-support-contact-list {
+    display: grid;
+    gap: .55rem;
+}
+
+.public-support-contact-item {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .7rem;
+    border: 1px solid #e7eeea;
+    border-radius: 13px;
+    color: #30473f;
+    text-decoration: none;
+}
+
+a.public-support-contact-item:hover {
+    border-color: #bcd9cd;
+    background: #f8fcfa;
+    color: #135f49;
+}
+
+.public-support-contact-item > span {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 35px;
+    height: 35px;
+    border-radius: 11px;
+    background: #e9f5ef;
+    color: #147054;
+}
+
+.public-support-contact-item small,
+.public-support-contact-item strong {
+    display: block;
+}
+
+.public-support-contact-item small {
+    color: #89958f;
+    font-size: .62rem;
+}
+
+.public-support-contact-item strong {
+    margin-top: .1rem;
+    font-size: .75rem;
+    overflow-wrap: anywhere;
+}
+
+.public-support-contact-note {
+    display: flex;
+    gap: .45rem;
+    margin: 1rem 0 0;
+    color: #7c8883;
+    font-size: .66rem;
+    line-height: 1.45;
+}
+
+.public-support-contact-note i {
+    color: #147054;
+}
+
+html[dir="rtl"] .public-support-back-link i,
+html[dir="rtl"] .public-support-card-footer a i {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 1199.98px) {
+    .public-support-contact-card {
+        position: static;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .public-support-card-footer,
+    .public-support-detail-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .public-support-amount-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .public-support-detail-card,
+    .public-support-contact-card {
+        padding: 1rem;
+        border-radius: 18px;
+    }
+}
+/* ================================================================
+   Community Support guidance message
+================================================================ */
+
+.public-support-guidance {
+    display: flex;
+    align-items: flex-start;
+    gap: .8rem;
+    max-width: 860px;
+    margin-top: 1rem;
+    padding: .95rem 1rem;
+    border: 1px solid #d9ebe3;
+    border-radius: 15px;
+    background: #f0f9f5;
+}
+
+.public-support-guidance-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    background: #dff2e9;
+    color: #157255;
+    font-size: .9rem;
+}
+
+.public-support-guidance strong {
+    display: block;
+    margin-bottom: .2rem;
+    color: #17493a;
+    font-size: .82rem;
+    font-weight: 800;
+}
+
+.public-support-guidance p {
+    margin: 0;
+    color: #5f746c;
+    font-size: .76rem;
+    line-height: 1.55;
+}
+
+@media (max-width: 575.98px) {
+    .public-support-guidance {
+        padding: .8rem;
+    }
+}

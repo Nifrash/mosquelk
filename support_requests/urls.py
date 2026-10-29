@@ -8,6 +8,18 @@ urlpatterns = [
     path("", views.my_requests, name="my_requests"),
     path("new/", views.support_request_create, name="create"),
 
+    path(
+        "public/",
+        views.public_support_list,
+        name="public_list",
+    ),
+    path(
+        "public/<str:request_no>/",
+        views.public_support_detail,
+        name="public_detail",
+    ),
+
+
     path("notifications/", views.notification_center, name="notifications"),
     path(
         "notifications/mark-all-read/",

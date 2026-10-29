@@ -1,0 +1,135 @@
+/* ================================================================
+   Main Mosque Search Autocomplete
+   This file does not style or control Province/District/DS/GN fields.
+================================================================ */
+
+.directory-main-search {
+    position: relative;
+    z-index: 40;
+}
+
+.main-mosque-autocomplete {
+    position: absolute;
+    z-index: 1200;
+    top: calc(100% + 7px);
+    left: 0;
+    right: 0;
+    max-height: 340px;
+    overflow-y: auto;
+    padding: .4rem;
+    border: 1px solid #dbe7e2;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 18px 40px rgba(23, 83, 65, .16);
+}
+
+.main-mosque-autocomplete[hidden] {
+    display: none !important;
+}
+
+.main-mosque-autocomplete-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: .75rem;
+    width: 100%;
+    padding: .72rem .75rem;
+    border: 0;
+    border-radius: 11px;
+    background: transparent;
+    color: #29463e;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        background .15s ease,
+        color .15s ease;
+}
+
+.main-mosque-autocomplete-item:hover,
+.main-mosque-autocomplete-item.is-active {
+    background: #edf8f3;
+    color: #105f49;
+}
+
+.main-mosque-autocomplete-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #e7f4ee;
+    color: #17775f;
+    font-size: .95rem;
+}
+
+.main-mosque-autocomplete-body {
+    display: block;
+    min-width: 0;
+}
+
+.main-mosque-autocomplete-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .7rem;
+}
+
+.main-mosque-autocomplete-top strong {
+    overflow: hidden;
+    color: #24483e;
+    font-size: .82rem;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.main-mosque-autocomplete-top small {
+    flex: 0 0 auto;
+    padding: .2rem .4rem;
+    border-radius: 7px;
+    background: #f1f5f3;
+    color: #7c8b85;
+    font-size: .61rem;
+    font-weight: 700;
+}
+
+.main-mosque-autocomplete-location {
+    display: block;
+    overflow: hidden;
+    margin-top: .18rem;
+    color: #78857f;
+    font-size: .68rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.main-mosque-autocomplete-empty {
+    padding: .85rem;
+    color: #89958f;
+    text-align: center;
+    font-size: .75rem;
+}
+
+#directory-results {
+    scroll-margin-top: 95px;
+}
+
+html[dir="rtl"] .main-mosque-autocomplete-item {
+    text-align: right;
+}
+
+@media (max-width: 575.98px) {
+    .main-mosque-autocomplete-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: .25rem;
+    }
+
+    .main-mosque-autocomplete {
+        max-height: 290px;
+    }
+
+    #directory-results {
+        scroll-margin-top: 80px;
+    }
+}

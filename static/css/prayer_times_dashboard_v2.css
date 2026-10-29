@@ -1,0 +1,563 @@
+/* ================================================================
+   Mosques Sri Lanka — Prayer Dashboard V2
+   Loaded AFTER prayer_times.css to provide a polished, cache-safe layout.
+================================================================ */
+
+#prayerTimesApp.prayer-auto-section {
+    padding: 38px 0 64px;
+    background:
+        radial-gradient(circle at 8% 8%, rgba(18, 112, 84, .06), transparent 24rem),
+        radial-gradient(circle at 92% 16%, rgba(214, 170, 55, .06), transparent 22rem),
+        #f6faf8;
+}
+
+#prayerTimesResult.prayer-auto-dashboard {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+/* ---------- Top location + clock ---------- */
+
+#prayerTimesResult .prayer-auto-dashboard-top {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 330px !important;
+    gap: 18px !important;
+    margin-bottom: 18px !important;
+}
+
+#prayerTimesResult .prayer-auto-location-block,
+#prayerTimesResult .prayer-auto-clock-card {
+    min-height: 168px;
+    border-radius: 26px !important;
+    box-shadow: 0 16px 45px rgba(18, 75, 59, .08) !important;
+}
+
+#prayerTimesResult .prayer-auto-location-block {
+    position: relative;
+    overflow: hidden;
+    padding: 26px 28px !important;
+    border: 1px solid #dbe9e3 !important;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.98), rgba(246,252,249,.98)) !important;
+}
+
+#prayerTimesResult .prayer-auto-location-block::after {
+    content: "";
+    position: absolute;
+    right: -55px;
+    bottom: -72px;
+    width: 220px;
+    height: 220px;
+    border: 36px solid rgba(18, 112, 84, .045);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+#prayerTimesResult .prayer-auto-location-block h2 {
+    position: relative;
+    z-index: 1;
+    margin: 8px 0 13px !important;
+    color: #123f33 !important;
+    font-size: clamp(1.8rem, 3vw, 2.55rem) !important;
+    font-weight: 850 !important;
+    letter-spacing: -.035em;
+    line-height: 1.08;
+}
+
+#prayerTimesResult .prayer-auto-location-meta {
+    position: relative;
+    z-index: 1;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 10px 18px !important;
+    color: #667b73 !important;
+    font-size: .79rem !important;
+}
+
+#prayerTimesResult .prayer-auto-location-meta > span {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+}
+
+#prayerTimesResult .prayer-auto-clock-card {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px 26px !important;
+    border: 1px solid rgba(255,255,255,.08) !important;
+    background:
+        radial-gradient(circle at 78% 12%, rgba(224, 183, 73, .25), transparent 9rem),
+        linear-gradient(145deg, #0c624e, #073b32) !important;
+    color: #fff !important;
+}
+
+#prayerTimesResult .prayer-auto-clock-card strong {
+    margin: 8px 0 5px !important;
+    color: #fff !important;
+    font-size: clamp(2.1rem, 4vw, 3.2rem) !important;
+    font-weight: 900 !important;
+    letter-spacing: -.045em;
+    line-height: 1;
+}
+
+#prayerTimesResult .prayer-auto-clock-card small {
+    color: rgba(255,255,255,.72) !important;
+    font-size: .78rem !important;
+    line-height: 1.45;
+}
+
+/* ---------- Next prayer ---------- */
+
+#prayerTimesResult .prayer-next-banner {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 18px !important;
+    margin-bottom: 18px !important;
+    padding: 20px 24px !important;
+    border: 1px solid #d4e7df !important;
+    border-radius: 24px !important;
+    background:
+        radial-gradient(circle at 92% 10%, rgba(224, 183, 73, .18), transparent 11rem),
+        linear-gradient(135deg, #eef9f4, #ffffff) !important;
+    box-shadow: 0 14px 38px rgba(18, 75, 59, .07) !important;
+}
+
+#prayerTimesResult .prayer-next-icon {
+    display: grid !important;
+    place-items: center;
+    width: 58px !important;
+    height: 58px !important;
+    border-radius: 18px !important;
+    background: linear-gradient(145deg, #137158, #0b5744) !important;
+    color: #fff !important;
+    font-size: 1.35rem !important;
+    box-shadow: 0 10px 24px rgba(17, 101, 77, .22);
+}
+
+#prayerTimesResult .prayer-next-copy strong {
+    margin-top: 3px !important;
+    color: #143f33 !important;
+    font-size: 1.35rem !important;
+    font-weight: 900 !important;
+}
+
+#prayerTimesResult .prayer-next-copy small {
+    margin-top: 2px !important;
+    color: #9b7415 !important;
+    font-size: .84rem !important;
+    font-weight: 800 !important;
+}
+
+#prayerTimesResult .prayer-next-countdown {
+    min-width: 190px !important;
+    padding-left: 22px;
+    border-left: 1px solid #d8e7e1;
+    text-align: right !important;
+}
+
+#prayerTimesResult .prayer-next-countdown strong {
+    margin-top: 4px !important;
+    color: #0f674f !important;
+    font-size: 1.8rem !important;
+    font-weight: 950 !important;
+    letter-spacing: -.04em;
+}
+
+/* ---------- Information tiles ---------- */
+
+#prayerTimesResult .prayer-auto-date-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    margin-bottom: 18px !important;
+}
+
+#prayerTimesResult .prayer-auto-date-grid article {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    min-height: 88px;
+    padding: 15px 16px !important;
+    border: 1px solid #dde9e4 !important;
+    border-radius: 18px !important;
+    background: #fff !important;
+    box-shadow: 0 8px 24px rgba(18, 75, 59, .045);
+}
+
+#prayerTimesResult .prayer-info-icon {
+    display: grid !important;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 43px !important;
+    height: 43px !important;
+    border-radius: 13px !important;
+    background: #e9f5ef !important;
+    color: #137158 !important;
+    font-size: 1rem;
+}
+
+#prayerTimesResult .prayer-info-icon-gold,
+#prayerTimesResult .prayer-info-icon-iftar {
+    background: #fff2d8 !important;
+    color: #9a7110 !important;
+}
+
+#prayerTimesResult .prayer-info-icon-fajr {
+    background: #eff0fb !important;
+    color: #5c65a7 !important;
+}
+
+#prayerTimesResult .prayer-auto-date-grid small {
+    display: block;
+    margin-bottom: 3px;
+    color: #899690 !important;
+    font-size: .65rem !important;
+    font-weight: 800 !important;
+    letter-spacing: .02em;
+}
+
+#prayerTimesResult .prayer-auto-date-grid strong {
+    display: block;
+    color: #23483d !important;
+    font-size: .82rem !important;
+    font-weight: 850 !important;
+    line-height: 1.35;
+    white-space: normal !important;
+}
+
+/* ---------- Timetable ---------- */
+
+#prayerTimesResult .prayer-auto-table-card {
+    overflow: hidden;
+    border: 1px solid #d9e7e1 !important;
+    border-radius: 26px !important;
+    background: #fff !important;
+    box-shadow: 0 18px 48px rgba(18, 75, 59, .08) !important;
+}
+
+#prayerTimesResult .prayer-auto-table-heading {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 18px !important;
+    padding: 22px 24px !important;
+    border-bottom: 1px solid #e5ede9 !important;
+    background:
+        radial-gradient(circle at 90% 0%, rgba(224,183,73,.11), transparent 12rem),
+        linear-gradient(135deg, #f7fcfa, #fff) !important;
+}
+
+#prayerTimesResult .prayer-auto-table-heading h3 {
+    margin: 5px 0 0 !important;
+    color: #153f33 !important;
+    font-size: 1.45rem !important;
+    font-weight: 900 !important;
+}
+
+#prayerTimesResult .prayer-auto-table-actions {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 8px !important;
+}
+
+#prayerTimesResult .prayer-auto-table-actions .btn {
+    min-height: 38px;
+    padding: 8px 13px !important;
+    border-radius: 10px !important;
+    font-size: .76rem !important;
+    font-weight: 750 !important;
+}
+
+#prayerTimesResult .prayer-auto-table-wrap {
+    overflow-x: auto;
+    padding: 10px 22px 14px !important;
+}
+
+#prayerTimesResult .prayer-auto-table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+}
+
+#prayerTimesResult .prayer-auto-table thead th {
+    padding: 9px 14px !important;
+    color: #899690 !important;
+    background: transparent !important;
+    border: 0 !important;
+    font-size: .65rem !important;
+    font-weight: 850 !important;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+#prayerTimesResult .prayer-auto-table tbody td {
+    padding: 13px 14px !important;
+    border-top: 1px solid #e4ede9 !important;
+    border-bottom: 1px solid #e4ede9 !important;
+    background: #fbfdfc !important;
+    vertical-align: middle !important;
+}
+
+#prayerTimesResult .prayer-auto-table tbody td:first-child {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    border-left: 1px solid #e4ede9 !important;
+    border-radius: 15px 0 0 15px !important;
+}
+
+#prayerTimesResult .prayer-auto-table tbody td:last-child {
+    border-right: 1px solid #e4ede9 !important;
+    border-radius: 0 15px 15px 0 !important;
+}
+
+#prayerTimesResult .prayer-auto-table tbody tr.is-next-prayer td {
+    border-color: #a8d8c7 !important;
+    background: linear-gradient(90deg, #eaf8f2, #f4fbf8) !important;
+}
+
+#prayerTimesResult .prayer-auto-table tbody tr.is-next-prayer td:first-child {
+    box-shadow: inset 4px 0 0 #137158 !important;
+}
+
+#prayerTimesResult .prayer-table-icon {
+    display: grid !important;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 14px !important;
+    background: #e8f5ef !important;
+    color: #137158 !important;
+    font-size: 1rem;
+}
+
+#prayerTimesResult .prayer-icon-fajr {
+    background: #eff0fb !important;
+    color: #5b65a6 !important;
+}
+
+#prayerTimesResult .prayer-icon-maghrib {
+    background: #fff1d8 !important;
+    color: #a67312 !important;
+}
+
+#prayerTimesResult .prayer-icon-isha {
+    background: #eeeaf9 !important;
+    color: #66538e !important;
+}
+
+#prayerTimesResult .prayer-auto-table tbody td:first-child strong {
+    display: block;
+    color: #21463b !important;
+    font-size: .86rem !important;
+    font-weight: 850 !important;
+}
+
+#prayerTimesResult .prayer-auto-table tbody td:first-child small {
+    display: block;
+    margin-top: 2px;
+    color: #899690 !important;
+    font-size: .64rem !important;
+}
+
+#prayerTimesResult .prayer-auto-table tbody td:nth-child(2) > strong {
+    color: #103e32 !important;
+    font-size: 1.18rem !important;
+    font-weight: 950 !important;
+}
+
+#prayerTimesResult .prayer-auto-row-status,
+#prayerTimesResult .prayer-auto-row-note {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 4px 9px !important;
+    border-radius: 999px !important;
+    font-size: .62rem !important;
+    font-weight: 850 !important;
+}
+
+#prayerTimesResult .prayer-auto-row-status {
+    color: #12684f !important;
+    background: #d9f1e7 !important;
+}
+
+#prayerTimesResult .prayer-auto-row-note {
+    color: #737f79 !important;
+    background: #f0f3f2 !important;
+}
+
+#prayerTimesResult .prayer-auto-row-status:empty {
+    display: none !important;
+}
+
+#prayerTimesResult .prayer-dashboard-source {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    padding: 12px 24px 16px;
+    border-top: 1px solid #edf2ef;
+    color: #798780;
+    font-size: .66rem;
+}
+
+#prayerTimesResult .prayer-dashboard-source span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#prayerTimesResult .prayer-dashboard-source i {
+    color: #137158;
+}
+
+/* ---------- Privacy note ---------- */
+
+#prayerTimesResult .prayer-auto-note {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 10px !important;
+    margin-top: 16px !important;
+    padding: 14px 16px !important;
+    border: 1px solid #dce9e4 !important;
+    border-radius: 16px !important;
+    background: #f4faf7 !important;
+}
+
+#prayerTimesResult .prayer-auto-note strong {
+    color: #315247 !important;
+    font-size: .73rem !important;
+}
+
+#prayerTimesResult .prayer-auto-note p {
+    margin: 3px 0 0 !important;
+    color: #65776f !important;
+    font-size: .68rem !important;
+    line-height: 1.55 !important;
+}
+
+/* ---------- RTL ---------- */
+
+html[dir="rtl"] #prayerTimesResult .prayer-next-countdown {
+    padding-left: 0;
+    padding-right: 22px;
+    border-left: 0;
+    border-right: 1px solid #d8e7e1;
+    text-align: left !important;
+}
+
+html[dir="rtl"] #prayerTimesResult .prayer-auto-table tbody td:first-child {
+    border-left: 0 !important;
+    border-right: 1px solid #e4ede9 !important;
+    border-radius: 0 15px 15px 0 !important;
+}
+
+html[dir="rtl"] #prayerTimesResult .prayer-auto-table tbody td:last-child {
+    border-right: 0 !important;
+    border-left: 1px solid #e4ede9 !important;
+    border-radius: 15px 0 0 15px !important;
+}
+
+html[dir="rtl"] #prayerTimesResult .prayer-auto-table tbody tr.is-next-prayer td:first-child {
+    box-shadow: inset -4px 0 0 #137158 !important;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 991.98px) {
+    #prayerTimesResult .prayer-auto-dashboard-top {
+        grid-template-columns: minmax(0, 1fr) 285px !important;
+    }
+
+    #prayerTimesResult .prayer-auto-date-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #prayerTimesResult .prayer-auto-dashboard-top {
+        grid-template-columns: 1fr !important;
+    }
+
+    #prayerTimesResult .prayer-auto-location-block,
+    #prayerTimesResult .prayer-auto-clock-card {
+        min-height: 0;
+    }
+
+    #prayerTimesResult .prayer-next-banner {
+        grid-template-columns: auto minmax(0, 1fr) !important;
+    }
+
+    #prayerTimesResult .prayer-next-countdown {
+        grid-column: 1 / -1;
+        min-width: 0 !important;
+        padding: 13px 0 0 !important;
+        border-left: 0 !important;
+        border-top: 1px solid #d8e7e1;
+        text-align: left !important;
+    }
+
+    html[dir="rtl"] #prayerTimesResult .prayer-next-countdown {
+        padding: 13px 0 0 !important;
+        border-right: 0;
+        text-align: right !important;
+    }
+
+    #prayerTimesResult .prayer-auto-table-heading {
+        align-items: stretch !important;
+        flex-direction: column !important;
+    }
+
+    #prayerTimesResult .prayer-auto-table-actions {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #prayerTimesResult .prayer-auto-table-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #prayerTimesResult .prayer-auto-date-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    #prayerTimesResult .prayer-auto-location-block {
+        padding: 20px !important;
+    }
+
+    #prayerTimesResult .prayer-auto-clock-card {
+        padding: 20px !important;
+    }
+
+    #prayerTimesResult .prayer-next-banner {
+        padding: 16px !important;
+    }
+
+    #prayerTimesResult .prayer-auto-table-wrap {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    #prayerTimesResult .prayer-auto-table-heading {
+        padding: 18px !important;
+    }
+
+    #prayerTimesResult .prayer-auto-table tbody td {
+        padding: 10px !important;
+    }
+
+    #prayerTimesResult .prayer-table-icon {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    #prayerTimesResult .prayer-auto-table-actions {
+        grid-template-columns: 1fr;
+    }
+}

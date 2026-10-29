@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate, get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm, UserCreationForm
 from django.utils.translation import gettext_lazy as _
 
 from .models import UserRole
@@ -165,9 +165,48 @@ class MosqueAdminRegistrationForm(UserCreationForm):
 
 
 
+class StyledPasswordResetForm(PasswordResetForm):
+    """Bootstrap-styled password reset request form."""
+
+    email = forms.EmailField(
+        label=_("Registered email address"),
+        max_length=254,
+        widget=forms.EmailInput(
+            attrs={
+                "class": "form-control form-control-lg",
+                "placeholder": _("Enter your registered email address"),
+                "autocomplete": "email",
+                "autofocus": True,
+            }
+        ),
+    )
+
+
+class StyledSetPasswordForm(SetPasswordForm):
+    """Bootstrap-styled new-password form used by Django's secure reset flow."""
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(user, *args, **kwargs)
+
+        self.fields["new_password1"].widget.attrs.update(
+            {
+                "class": "form-control form-control-lg",
+                "placeholder": _("New password"),
+                "autocomplete": "new-password",
+            }
+        )
+        self.fields["new_password2"].widget.attrs.update(
+            {
+                "class": "form-control form-control-lg",
+                "placeholder": _("Confirm new password"),
+                "autocomplete": "new-password",
+            }
+        )
+
+
 class SMSOTPVerificationForm(forms.Form):
     code = forms.CharField(
-        label=_("Verification code"),
+        label=_("SMS verification code"),
         min_length=6,
         max_length=6,
         widget=forms.TextInput(
@@ -185,5 +224,5 @@ class SMSOTPVerificationForm(forms.Form):
     def clean_code(self):
         code = (self.cleaned_data.get("code") or "").strip()
         if not code.isdigit():
-            raise forms.ValidationError(_("Enter the 6-digit code sent to your mobile number or email address."))
+            raise forms.ValidationError(_("Enter the 6-digit code sent by SMS."))
         return code

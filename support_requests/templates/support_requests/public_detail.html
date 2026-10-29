@@ -1,0 +1,200 @@
+{% extends "ui_system/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ support_request.title }} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/public_support.css' %}">
+
+<section class="public-page-hero public-support-page-hero">
+    <div class="container position-relative">
+        <div class="public-hero-content">
+            <a href="{% url 'support_requests:public_list' %}" class="public-support-back-link">
+                <i class="bi bi-arrow-left"></i>{% trans "Approved Support Requests" %}
+            </a>
+            <span class="public-eyebrow">
+                <i class="bi bi-patch-check-fill"></i>
+                {% trans "Platform-Approved Support Request" %}
+            </span>
+            <h1>{{ support_request.title }}</h1>
+            <p>
+                {{ mosque.localized_name }} · {{ mosque.city_or_town }},
+                {{ mosque.district.localized_name }}
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="public-section public-support-detail-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-xl-8">
+                <article class="public-support-detail-card">
+                    <div class="public-support-detail-head">
+                        <div>
+                            <span class="public-support-category">
+                                <i class="bi bi-hand-heart-fill"></i>
+                                {{ support_request.get_category_display }}
+                            </span>
+                            <span class="public-support-status ms-2">
+                                <i class="bi bi-patch-check-fill"></i>
+                                {{ support_request.get_status_display }}
+                            </span>
+                        </div>
+                        <span class="public-support-request-no">
+                            {{ support_request.request_no }}
+                        </span>
+                    </div>
+
+                    <div class="public-support-detail-block">
+                        <span class="public-support-detail-label">
+                            {% trans "Current Situation / Need" %}
+                        </span>
+                        <div class="public-support-rich-text">
+                            {{ support_request.issue_description|linebreaks }}
+                        </div>
+                    </div>
+
+                    <div class="public-support-detail-block">
+                        <span class="public-support-detail-label">
+                            {% trans "Support Requested" %}
+                        </span>
+                        <div class="public-support-rich-text">
+                            {{ support_request.requested_support|linebreaks }}
+                        </div>
+                    </div>
+
+                    {% if support_request.requested_amount or support_request.approved_amount %}
+                        <div class="public-support-amount-grid">
+                            {% if support_request.requested_amount %}
+                                <div>
+                                    <span>{% trans "Requested Amount" %}</span>
+                                    <strong>LKR {{ support_request.requested_amount|floatformat:2 }}</strong>
+                                </div>
+                            {% endif %}
+                            {% if support_request.approved_amount %}
+                                <div>
+                                    <span>{% trans "Approved Amount" %}</span>
+                                    <strong>LKR {{ support_request.approved_amount|floatformat:2 }}</strong>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    <div class="public-support-safety-note">
+                        <i class="bi bi-shield-check"></i>
+                        <p>
+                            {% trans "This page shows the public summary of a request reviewed by the platform. Uploaded documents, internal notes, reviewer details and administrative history are not published." %}
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-xl-4">
+                <aside class="public-support-contact-card">
+                    <span class="public-support-detail-label">{% trans "Contact the Mosque" %}</span>
+                    <h2>{{ mosque.localized_name }}</h2>
+
+                    <div class="public-support-location">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <div>
+                            <strong>{{ mosque.city_or_town }}</strong>
+                            <span>
+                                {{ mosque.district.localized_name }},
+                                {{ mosque.province.localized_name }}
+                            </span>
+                            {% if mosque.divisional_secretariat %}
+                                <span>{{ mosque.divisional_secretariat.localized_name }}</span>
+                            {% endif %}
+                            {% if mosque.gn_division %}
+                                <span>{{ mosque.gn_division.localized_name }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="public-support-contact-list">
+                        <div class="public-support-contact-item">
+                            <span><i class="bi bi-person"></i></span>
+                            <div>
+                                <small>{% trans "Support contact person" %}</small>
+                                <strong>{{ support_request.contact_person }}</strong>
+                            </div>
+                        </div>
+
+                        <a class="public-support-contact-item"
+                           href="tel:{{ support_request.contact_phone }}">
+                            <span><i class="bi bi-telephone"></i></span>
+                            <div>
+                                <small>{% trans "Support contact phone" %}</small>
+                                <strong>{{ support_request.contact_phone }}</strong>
+                            </div>
+                        </a>
+
+                        {% if mosque_profile and mosque_profile.public_phone %}
+                            <a class="public-support-contact-item"
+                               href="tel:{{ mosque_profile.public_phone }}">
+                                <span><i class="bi bi-phone"></i></span>
+                                <div>
+                                    <small>{% trans "Mosque public phone" %}</small>
+                                    <strong>{{ mosque_profile.public_phone }}</strong>
+                                </div>
+                            </a>
+                        {% elif mosque.official_phone %}
+                            <a class="public-support-contact-item"
+                               href="tel:{{ mosque.official_phone }}">
+                                <span><i class="bi bi-phone"></i></span>
+                                <div>
+                                    <small>{% trans "Mosque phone" %}</small>
+                                    <strong>{{ mosque.official_phone }}</strong>
+                                </div>
+                            </a>
+                        {% endif %}
+
+                        {% if mosque_profile and mosque_profile.public_email %}
+                            <a class="public-support-contact-item"
+                               href="mailto:{{ mosque_profile.public_email }}">
+                                <span><i class="bi bi-envelope"></i></span>
+                                <div>
+                                    <small>{% trans "Mosque public email" %}</small>
+                                    <strong>{{ mosque_profile.public_email }}</strong>
+                                </div>
+                            </a>
+                        {% elif mosque.official_email %}
+                            <a class="public-support-contact-item"
+                               href="mailto:{{ mosque.official_email }}">
+                                <span><i class="bi bi-envelope"></i></span>
+                                <div>
+                                    <small>{% trans "Mosque email" %}</small>
+                                    <strong>{{ mosque.official_email }}</strong>
+                                </div>
+                            </a>
+                        {% endif %}
+
+                        {% if mosque_profile and mosque_profile.whatsapp_number %}
+                            <div class="public-support-contact-item">
+                                <span><i class="bi bi-whatsapp"></i></span>
+                                <div>
+                                    <small>{% trans "WhatsApp" %}</small>
+                                    <strong>{{ mosque_profile.whatsapp_number }}</strong>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <a href="{% url 'mosques:public_detail' mosque.mosque_id %}"
+                       class="btn btn-outline-success w-100 mt-3">
+                        <i class="bi bi-building me-1"></i>
+                        {% trans "View Mosque Profile" %}
+                    </a>
+
+                    <p class="public-support-contact-note">
+                        <i class="bi bi-info-circle"></i>
+                        {% trans "Please contact the mosque directly to confirm the current need and appropriate way to provide assistance." %}
+                    </p>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

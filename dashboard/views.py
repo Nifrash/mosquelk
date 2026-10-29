@@ -4,7 +4,12 @@ from django.utils.translation import gettext as _
 
 from accounts.models import UserRole
 from locations.models import DistrictOfficerAssignment
-from support_requests.models import SupportNotification
+from mosques.models import MosqueMembership, MosqueOperationalProfile, MosqueStatus
+from support_requests.models import (
+    MosqueSupportRequest,
+    SupportNotification,
+    SupportRequestStatus,
+)
 from .access import role_required
 
 
@@ -25,31 +30,173 @@ def dashboard_home(request):
     return redirect(ROLE_ROUTES.get(request.user.role, "accounts:profile"))
 
 
-def _render_dashboard(request, title, description, modules, quick_actions=None):
+def _render_dashboard(
+    request,
+    title,
+    description,
+    modules,
+    quick_actions=None,
+    extra_context=None,
+):
     notifications = SupportNotification.objects.filter(
         user=request.user,
+        dashboard_visible=True,
     ).select_related(
         "support_request",
         "support_request__mosque",
+        "mosque",
     )[:5]
 
     unread_notification_count = SupportNotification.objects.filter(
         user=request.user,
+        dashboard_visible=True,
         is_read=False,
     ).count()
+
+    context = {
+        "dashboard_title": title,
+        "dashboard_description": description,
+        "modules": modules,
+        "quick_actions": quick_actions or [],
+        "platform_notifications": notifications,
+        "unread_notification_count": unread_notification_count,
+    }
+
+    if extra_context:
+        context.update(extra_context)
 
     return render(
         request,
         "dashboard/role_dashboard.html",
-        {
-            "dashboard_title": title,
-            "dashboard_description": description,
-            "modules": modules,
-            "quick_actions": quick_actions or [],
-            "support_notifications": notifications,
-            "unread_support_notification_count": unread_notification_count,
-        },
+        context,
     )
+
+
+
+def _mosque_admin_overview(request):
+    """Build a compact operational overview for the Mosque Admin workspace."""
+
+    memberships = list(
+        MosqueMembership.objects.filter(
+            user=request.user,
+            is_active=True,
+        )
+        .select_related(
+            "mosque",
+            "mosque__province",
+            "mosque__district",
+            "mosque__divisional_secretariat",
+            "mosque__gn_division",
+        )
+        .order_by("-mosque__updated_at")
+    )
+
+    mosques = [membership.mosque for membership in memberships]
+    mosque_ids = [mosque.pk for mosque in mosques]
+
+    mosque_counts = {
+        "total": len(mosques),
+        "approved": sum(
+            mosque.status == MosqueStatus.APPROVED for mosque in mosques
+        ),
+        "pending": sum(
+            mosque.status == MosqueStatus.SUBMITTED for mosque in mosques
+        ),
+        "draft": sum(
+            mosque.status == MosqueStatus.DRAFT for mosque in mosques
+        ),
+        "rejected": sum(
+            mosque.status == MosqueStatus.REJECTED for mosque in mosques
+        ),
+    }
+
+    mosque_cards = []
+    status_classes = {
+        MosqueStatus.APPROVED: "success",
+        MosqueStatus.SUBMITTED: "warning",
+        MosqueStatus.DRAFT: "secondary",
+        MosqueStatus.REJECTED: "danger",
+    }
+
+    for membership in memberships[:5]:
+        mosque = membership.mosque
+
+        profile_completion = None
+        if mosque.status == MosqueStatus.APPROVED:
+            try:
+                profile = MosqueOperationalProfile.objects.get(mosque=mosque)
+            except MosqueOperationalProfile.DoesNotExist:
+                profile_completion = 0
+            else:
+                profile_completion = profile.profile_completion_percent
+
+        mosque_cards.append(
+            {
+                "mosque": mosque,
+                "membership": membership,
+                "status_class": status_classes.get(
+                    mosque.status,
+                    "secondary",
+                ),
+                "profile_completion": profile_completion,
+            }
+        )
+
+    support_requests = MosqueSupportRequest.objects.filter(
+        mosque_id__in=mosque_ids,
+    ).select_related(
+        "mosque",
+    )
+
+    support_counts = {
+        "total": support_requests.count(),
+        "open": support_requests.exclude(
+            status__in=[
+                SupportRequestStatus.COMPLETED,
+                SupportRequestStatus.REJECTED,
+                SupportRequestStatus.CANCELLED,
+            ]
+        ).count(),
+        "action_required": support_requests.filter(
+            status=SupportRequestStatus.DOCUMENTS_REQUIRED,
+        ).count(),
+        "completed": support_requests.filter(
+            status=SupportRequestStatus.COMPLETED,
+        ).count(),
+    }
+
+    support_status_classes = {
+        SupportRequestStatus.DRAFT: "secondary",
+        SupportRequestStatus.SUBMITTED: "info",
+        SupportRequestStatus.UNDER_REVIEW: "warning",
+        SupportRequestStatus.DOCUMENTS_REQUIRED: "danger",
+        SupportRequestStatus.APPROVED: "success",
+        SupportRequestStatus.IN_PROGRESS: "primary",
+        SupportRequestStatus.COMPLETED: "success",
+        SupportRequestStatus.REJECTED: "danger",
+        SupportRequestStatus.CANCELLED: "secondary",
+    }
+
+    recent_support_requests = []
+    for support_request in support_requests.order_by("-updated_at")[:5]:
+        recent_support_requests.append(
+            {
+                "request": support_request,
+                "status_class": support_status_classes.get(
+                    support_request.status,
+                    "secondary",
+                ),
+            }
+        )
+
+    return {
+        "mosque_admin_overview": True,
+        "mosque_counts": mosque_counts,
+        "mosque_cards": mosque_cards,
+        "support_counts": support_counts,
+        "recent_support_requests": recent_support_requests,
+        "has_approved_mosque": mosque_counts["approved"] > 0,
+    }
 
 
 @role_required(UserRole.MOSQUE_ADMIN)
@@ -57,7 +204,7 @@ def mosque_admin_dashboard(request):
     return _render_dashboard(
         request,
         _("Mosque Admin Dashboard"),
-        _("Register and manage your mosque account and access mosque services."),
+        _("Manage mosque registrations, approved mosque profiles, support requests and account activity from one workspace."),
         [
             (_("Mosque Registration"), _("Register new mosques and follow Platform Admin approval status."), "bi-building-add"),
             (_("Mosque Portal"), _("Manage approved mosque public profile, committee, documents and portal users."), "bi-grid"),
@@ -69,6 +216,7 @@ def mosque_admin_dashboard(request):
             (_("My Mosques"), "mosques:my_mosques", "bi-buildings"),
             (_("Register Mosque"), "mosques:create", "bi-building-add"),
         ],
+        extra_context=_mosque_admin_overview(request),
     )
 
 

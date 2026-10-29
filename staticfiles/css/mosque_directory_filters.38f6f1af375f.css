@@ -1,0 +1,256 @@
+
+.directory-search-panel-v2 {
+    border-radius: 24px;
+    padding: 1.5rem;
+}
+
+.directory-filter-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(20, 91, 72, .10);
+}
+
+.directory-filter-kicker {
+    display: block;
+    margin-bottom: .2rem;
+    color: #17775f;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+}
+
+.directory-filter-intro h2 {
+    margin: 0;
+    color: #153a31;
+    font-size: 1.35rem;
+    font-weight: 750;
+}
+
+.directory-filter-intro p {
+    max-width: 780px;
+    margin: .35rem 0 0;
+    color: #6d7d77;
+    font-size: .86rem;
+    line-height: 1.6;
+}
+
+.directory-main-search .form-control {
+    min-height: 52px;
+}
+
+.directory-location-field {
+    height: 100%;
+    padding: 1rem;
+    border: 1px solid #e2ebe7;
+    border-radius: 17px;
+    background: #fbfdfc;
+}
+
+.directory-location-step {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin-bottom: .7rem;
+}
+
+.directory-location-step span {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 8px;
+    background: #e3f3ec;
+    color: #11664f;
+    font-size: .7rem;
+    font-weight: 800;
+}
+
+.directory-location-step label {
+    margin: 0;
+    color: #24483f;
+    font-size: .82rem;
+    font-weight: 750;
+}
+
+.directory-option-search {
+    position: relative;
+    margin-bottom: .55rem;
+}
+
+.directory-option-search i {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: .7rem;
+    transform: translateY(-50%);
+    color: #82928c;
+    font-size: .78rem;
+    pointer-events: none;
+}
+
+.directory-option-search .form-control {
+    min-height: 36px;
+    padding-left: 2rem;
+    border-color: #e2e9e6;
+    background: #fff;
+    font-size: .77rem;
+}
+
+.directory-location-field .form-select {
+    min-height: 43px;
+    border-color: #dce6e2;
+    font-size: .8rem;
+}
+
+.directory-location-field .form-select:disabled,
+.directory-option-search .form-control:disabled {
+    background-color: #f1f4f3;
+    color: #98a39f;
+    cursor: not-allowed;
+}
+
+.directory-search-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-top: .25rem;
+}
+
+.directory-hierarchy-hint {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    color: #72817c;
+    font-size: .78rem;
+}
+
+.directory-hierarchy-hint i {
+    color: #17775f;
+}
+
+html[dir="rtl"] .directory-option-search i {
+    left: auto;
+    right: .7rem;
+}
+
+html[dir="rtl"] .directory-option-search .form-control {
+    padding-left: .75rem;
+    padding-right: 2rem;
+}
+
+@media (max-width: 767.98px) {
+    .directory-filter-intro,
+    .directory-search-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .directory-search-panel-v2 {
+        padding: 1rem;
+    }
+
+    .directory-search-actions .btn {
+        width: 100%;
+    }
+}
+/* ================================================================
+   Location autocomplete suggestions
+================================================================ */
+
+.directory-option-search {
+    z-index: 10;
+}
+
+.directory-location-field {
+    overflow: visible;
+}
+
+.directory-autocomplete-suggestions {
+    position: absolute;
+    z-index: 1050;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    padding: .35rem;
+    border: 1px solid #dbe7e2;
+    border-radius: 13px;
+    background: #ffffff;
+    box-shadow: 0 16px 34px rgba(23, 83, 65, .14);
+}
+
+.directory-autocomplete-suggestions[hidden] {
+    display: none !important;
+}
+
+.directory-autocomplete-item {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    width: 100%;
+    padding: .62rem .7rem;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #304b43;
+    text-align: left;
+    font-size: .76rem;
+    cursor: pointer;
+    transition:
+        background .15s ease,
+        color .15s ease;
+}
+
+.directory-autocomplete-item:hover,
+.directory-autocomplete-item.is-active {
+    background: #edf8f3;
+    color: #11664f;
+}
+
+.directory-autocomplete-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: #e7f4ee;
+    color: #17775f;
+    font-size: .72rem;
+}
+
+.directory-autocomplete-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.directory-autocomplete-text strong {
+    color: #0d6b51;
+    font-weight: 850;
+}
+
+.directory-autocomplete-empty {
+    padding: .7rem;
+    color: #89958f;
+    text-align: center;
+    font-size: .73rem;
+}
+
+html[dir="rtl"] .directory-autocomplete-item {
+    text-align: right;
+}
+
+@media (max-width: 767.98px) {
+    .directory-autocomplete-suggestions {
+        max-height: 220px;
+    }
+}

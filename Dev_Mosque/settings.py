@@ -233,3 +233,12 @@ SMS_DEFAULT_COUNTRY_CODE = os.getenv(
     "SMS_DEFAULT_COUNTRY_CODE",
     "+94",
 )
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
+    },
+}

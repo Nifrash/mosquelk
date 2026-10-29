@@ -19,6 +19,7 @@ from mosques.models import (
     Mosque,
     MosqueMembership,
     MosqueMembershipRole,
+    MosqueOperationalProfile,
     MosqueStatus,
 )
 
@@ -79,6 +80,81 @@ def _record_history(support_request, from_status, to_status, actor, notes=""):
         to_status=to_status,
         actor=actor,
         notes=notes or "",
+    )
+
+
+
+PUBLIC_SUPPORT_STATUSES = {
+    SupportRequestStatus.APPROVED,
+    SupportRequestStatus.IN_PROGRESS,
+}
+
+
+def _public_support_queryset():
+    """Only requests explicitly approved for active support are public."""
+    return (
+        MosqueSupportRequest.objects.filter(
+            status__in=PUBLIC_SUPPORT_STATUSES,
+            mosque__status=MosqueStatus.APPROVED,
+        )
+        .select_related(
+            "mosque",
+            "mosque__province",
+            "mosque__district",
+            "mosque__divisional_secretariat",
+            "mosque__gn_division",
+        )
+        .order_by("-reviewed_at", "-updated_at")
+    )
+
+
+def public_support_list(request):
+    queryset = _public_support_queryset()
+
+    query = request.GET.get("q", "").strip()
+
+    if query:
+        queryset = queryset.filter(
+            Q(request_no__icontains=query)
+            | Q(title__icontains=query)
+            | Q(issue_description__icontains=query)
+            | Q(requested_support__icontains=query)
+            | Q(mosque__name_en__icontains=query)
+            | Q(mosque__name_ta__icontains=query)
+            | Q(mosque__name_ar__icontains=query)
+            | Q(mosque__city_or_town__icontains=query)
+            | Q(mosque__district__name_en__icontains=query)
+        )
+
+    return render(
+        request,
+        "support_requests/public_list.html",
+        {
+            "support_requests": queryset,
+            "query": query,
+            "result_count": queryset.count(),
+        },
+    )
+
+
+def public_support_detail(request, request_no):
+    support_request = get_object_or_404(
+        _public_support_queryset(),
+        request_no=request_no,
+    )
+
+    mosque_profile = MosqueOperationalProfile.objects.filter(
+        mosque=support_request.mosque,
+    ).first()
+
+    return render(
+        request,
+        "support_requests/public_detail.html",
+        {
+            "support_request": support_request,
+            "mosque": support_request.mosque,
+            "mosque_profile": mosque_profile,
+        },
     )
 
 

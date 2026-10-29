@@ -1,0 +1,335 @@
+{% extends "ui_system/base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Prayer Times by City or Town" %} | {% trans "Mosques Sri Lanka" %}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/prayer_times.css' %}">
+<link rel="stylesheet" href="{% static 'css/prayer_times_dashboard_v2.css' %}?v=20261029-2">
+<script src="{% static 'js/prayer_times_ds_search.js' %}?v=20261029-2" defer></script>
+
+<section class="prayer-hero prayer-hero-compact">
+    <div class="container">
+        <div class="prayer-hero-inner">
+            <a href="{% url 'core:prayer_times' %}" class="prayer-back-link">
+                <i class="bi bi-arrow-left"></i>
+                {% trans "Prayer Times Near Me" %}
+            </a>
+
+            <span class="prayer-eyebrow">
+                <i class="bi bi-geo-alt-fill"></i>
+                {% trans "Sri Lanka Locations" %}
+            </span>
+
+            <h1>{% trans "Choose Your City or Town" %}</h1>
+
+            <p>
+                {% trans "Search your city or town and select it. The same live prayer dashboard will appear immediately with current local time, next prayer, countdown and today's timetable." %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<section
+    id="dsPrayerSearchApp"
+    class="prayer-section prayer-auto-section"
+    data-suggestions-url="{% url 'core:prayer_times_ds_suggestions' %}"
+    data-prayer-api-template="{% url 'core:prayer_times_ds_api' 999999 %}"
+>
+    <div class="container">
+        <div class="ds-prayer-search-card">
+            <div class="ds-search-heading">
+                <div>
+                    <span class="prayer-section-label">{% trans "Your Location" %}</span>
+                    <h2>{% trans "Search Your City or Town" %}</h2>
+                    <p>
+                        {% trans "Type at least two letters and select a suggestion. Prayer times will load on this page without leaving the search." %}
+                    </p>
+                </div>
+
+                <div class="ds-prayer-date">
+                    <label for="dsPrayerDate">{% trans "Prayer date" %}</label>
+                    <input
+                        id="dsPrayerDate"
+                        type="date"
+                        class="form-control"
+                        value="{% now 'Y-m-d' %}"
+                    >
+                </div>
+            </div>
+
+            <div class="ds-prayer-autocomplete">
+                <i class="bi bi-search"></i>
+                <input
+                    id="dsPrayerSearchInput"
+                    type="search"
+                    class="form-control form-control-lg"
+                    placeholder="{% trans 'Example: Akkaraipattu, Kalmunai, Kattankudy...' %}"
+                    autocomplete="off"
+                    aria-autocomplete="list"
+                    aria-expanded="false"
+                >
+
+                <div
+                    id="dsPrayerSuggestions"
+                    class="ds-prayer-suggestions"
+                    role="listbox"
+                    hidden
+                ></div>
+            </div>
+
+            <div class="ds-search-help">
+                <i class="bi bi-lightbulb"></i>
+                <span>
+                    {% trans "Search by City or Town, District, Province or official location code." %}
+                </span>
+            </div>
+        </div>
+
+        <div id="dsPrayerLoading" class="prayer-inline-loading d-none">
+            <div class="spinner-border text-success" role="status" aria-hidden="true"></div>
+            <div>
+                <strong>{% trans "Loading prayer times..." %}</strong>
+                <span>{% trans "Preparing the live prayer dashboard for the selected location." %}</span>
+            </div>
+        </div>
+
+        <div id="dsPrayerError" class="alert alert-warning d-none mt-4" role="alert"></div>
+
+        <!-- SAME DESIGN AS AUTOMATIC LOCATION PAGE -->
+        <div id="prayerTimesResult" class="prayer-auto-dashboard d-none mt-4">
+
+            <div id="dsPrayerApproximate" class="alert alert-info d-none mb-3">
+                <i class="bi bi-info-circle me-2"></i>
+                {% trans "The selected city or town could not be resolved precisely, so prayer times for the surrounding District or Province are shown as an approximation." %}
+            </div>
+
+            <div class="prayer-auto-dashboard-top">
+                <div class="prayer-auto-location-block">
+                    <span class="prayer-section-label">{% trans "Your Prayer Times" %}</span>
+
+                    <h2 id="prayerResultLocation">—</h2>
+
+                    <div class="prayer-auto-location-meta">
+                        <span>
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span id="prayerLocationAccuracy">—</span>
+                        </span>
+
+                        <span>
+                            <i class="bi bi-globe2"></i>
+                            <span id="prayerTimezone">—</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="prayer-auto-clock-card">
+                    <span class="prayer-auto-clock-label">{% trans "Current Time" %}</span>
+                    <strong id="prayerCurrentTime">--:--:--</strong>
+                    <small id="prayerCurrentDate">—</small>
+                </div>
+            </div>
+
+            <div class="prayer-next-banner">
+                <div class="prayer-next-icon">
+                    <i class="bi bi-alarm"></i>
+                </div>
+
+                <div class="prayer-next-copy">
+                    <span>{% trans "Next Prayer" %}</span>
+                    <strong id="prayerNextName">—</strong>
+                    <small id="prayerNextTime">—</small>
+                </div>
+
+                <div class="prayer-next-countdown">
+                    <span>{% trans "Time Remaining" %}</span>
+                    <strong id="prayerNextCountdown">--:--:--</strong>
+                </div>
+            </div>
+
+            <div class="prayer-auto-date-grid">
+                <article>
+                    <span class="prayer-info-icon">
+                        <i class="bi bi-calendar3"></i>
+                    </span>
+                    <div>
+                        <small>{% trans "Gregorian Date" %}</small>
+                        <strong id="prayerGregorianDate">—</strong>
+                    </div>
+                </article>
+
+                <article>
+                    <span class="prayer-info-icon prayer-info-icon-gold">
+                        <i class="bi bi-moon-stars"></i>
+                    </span>
+                    <div>
+                        <small>{% trans "Hijri Date" %}</small>
+                        <strong id="prayerHijriDate">—</strong>
+                    </div>
+                </article>
+
+                <article>
+                    <span class="prayer-info-icon">
+                        <i class="bi bi-calculator"></i>
+                    </span>
+                    <div>
+                        <small>{% trans "Calculation Method" %}</small>
+                        <strong id="prayerMethod">—</strong>
+                    </div>
+                </article>
+
+                <article>
+                    <span class="prayer-info-icon">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </span>
+                    <div>
+                        <small>{% trans "Last Updated" %}</small>
+                        <strong id="prayerLastUpdated">—</strong>
+                    </div>
+                </article>
+
+                <article>
+                    <span class="prayer-info-icon prayer-info-icon-fajr">
+                        <i class="bi bi-cup-hot"></i>
+                    </span>
+                    <div>
+                        <small>{% trans "Suhoor Ends" %}</small>
+                        <strong id="prayerSuhoorEnds">—</strong>
+                    </div>
+                </article>
+
+                <article>
+                    <span class="prayer-info-icon prayer-info-icon-iftar">
+                        <i class="bi bi-sunset-fill"></i>
+                    </span>
+                    <div>
+                        <small>{% trans "Iftar Time" %}</small>
+                        <strong id="prayerIftarTime">—</strong>
+                    </div>
+                </article>
+            </div>
+
+            <div class="prayer-auto-table-card">
+                <div class="prayer-auto-table-heading">
+                    <div>
+                        <span class="prayer-section-label">{% trans "Today's Timetable" %}</span>
+                        <h3>{% trans "Daily Prayer Schedule" %}</h3>
+                    </div>
+
+                    <div class="prayer-auto-table-actions">
+                        <a
+                            href="{% url 'core:prayer_times' %}"
+                            class="btn btn-outline-success btn-sm"
+                        >
+                            <i class="bi bi-crosshair me-1"></i>
+                            {% trans "Use Current Location" %}
+                        </a>
+
+                        <button
+                            type="button"
+                            id="focusPrayerLocationSearch"
+                            class="btn btn-success btn-sm"
+                        >
+                            <i class="bi bi-search me-1"></i>
+                            {% trans "Change City / Town" %}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="prayer-auto-table-wrap">
+                    <table class="prayer-auto-table">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Prayer" %}</th>
+                                <th>{% trans "Prayer Time" %}</th>
+                                <th class="d-none d-md-table-cell">{% trans "Information" %}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr data-prayer-row="Fajr">
+                                <td>
+                                    <span class="prayer-table-icon prayer-icon-fajr"><i class="bi bi-stars"></i></span>
+                                    <span><strong>{% trans "Fajr" %}</strong><small>{% trans "Dawn Prayer" %}</small></span>
+                                </td>
+                                <td><strong data-prayer="Fajr">--:--</strong></td>
+                                <td class="d-none d-md-table-cell"><span class="prayer-auto-row-status"></span></td>
+                            </tr>
+
+                            <tr data-prayer-row="Sunrise">
+                                <td>
+                                    <span class="prayer-table-icon"><i class="bi bi-sunrise"></i></span>
+                                    <span><strong>{% trans "Sunrise" %}</strong><small>{% trans "Sunrise time" %}</small></span>
+                                </td>
+                                <td><strong data-prayer="Sunrise">--:--</strong></td>
+                                <td class="d-none d-md-table-cell">
+                                    <span class="prayer-auto-row-note">{% trans "Not a prayer" %}</span>
+                                </td>
+                            </tr>
+
+                            <tr data-prayer-row="Dhuhr">
+                                <td>
+                                    <span class="prayer-table-icon"><i class="bi bi-sun"></i></span>
+                                    <span><strong>{% trans "Dhuhr" %}</strong><small>{% trans "Noon Prayer" %}</small></span>
+                                </td>
+                                <td><strong data-prayer="Dhuhr">--:--</strong></td>
+                                <td class="d-none d-md-table-cell"><span class="prayer-auto-row-status"></span></td>
+                            </tr>
+
+                            <tr data-prayer-row="Asr">
+                                <td>
+                                    <span class="prayer-table-icon"><i class="bi bi-brightness-high"></i></span>
+                                    <span><strong>{% trans "Asr" %}</strong><small>{% trans "Afternoon Prayer" %}</small></span>
+                                </td>
+                                <td><strong data-prayer="Asr">--:--</strong></td>
+                                <td class="d-none d-md-table-cell"><span class="prayer-auto-row-status"></span></td>
+                            </tr>
+
+                            <tr data-prayer-row="Maghrib">
+                                <td>
+                                    <span class="prayer-table-icon prayer-icon-maghrib"><i class="bi bi-sunset"></i></span>
+                                    <span><strong>{% trans "Maghrib" %}</strong><small>{% trans "Sunset Prayer" %}</small></span>
+                                </td>
+                                <td><strong data-prayer="Maghrib">--:--</strong></td>
+                                <td class="d-none d-md-table-cell"><span class="prayer-auto-row-status"></span></td>
+                            </tr>
+
+                            <tr data-prayer-row="Isha">
+                                <td>
+                                    <span class="prayer-table-icon prayer-icon-isha"><i class="bi bi-moon-stars"></i></span>
+                                    <span><strong>{% trans "Isha" %}</strong><small>{% trans "Night Prayer" %}</small></span>
+                                </td>
+                                <td><strong data-prayer="Isha">--:--</strong></td>
+                                <td class="d-none d-md-table-cell"><span class="prayer-auto-row-status"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="prayer-dashboard-source">
+                    <span>
+                        <i class="bi bi-database-check"></i>
+                        {% trans "Prayer-time data:" %}
+                        <strong>{% trans "AlAdhan calculation service" %}</strong>
+                    </span>
+
+                    <a id="prayerDedicatedPageLink" href="#" class="text-decoration-none">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                        {% trans "Open dedicated City / Town page" %}
+                    </a>
+                </div>
+            </div>
+
+            <div class="prayer-auto-note">
+                <i class="bi bi-info-circle"></i>
+                <div>
+                    <strong>{% trans "Prayer time guidance" %}</strong>
+                    <p>
+                        {% trans "Calculated prayer times may differ slightly from timings published by a local mosque or religious authority. Please follow your trusted local mosque where there is a difference." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
